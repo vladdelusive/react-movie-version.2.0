@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import './Movie.css'
 import image from './image.jpg'
-import { API_URL, API_KEY, IMAGE_URL, EXTEND_SIZE, YOUTUBE_URL, DEFAULT_TRAILER } from '../config'
+import { API_KEY, IMAGE_URL, EXTEND_SIZE, YOUTUBE_URL, DEFAULT_TRAILER } from '../config'
 import { setLocalStorage, getLocalStorage } from '../localStorage/localStorage'
 import Loader from '../Loader/Loader'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import Cast from '../Cast/Cast'
+
+import API from '../../API'
 
 function Movie(props) {
     const [results, setResults] = useState([])
@@ -24,17 +26,17 @@ function Movie(props) {
 
     useEffect(() => {
         async function setFetchData() {
-          const urlData = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
-          const urlCast = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
+          const urlData = `movie/${movieId}?api_key=${API_KEY}`;
+          const urlCast = `movie/${movieId}/credits?api_key=${API_KEY}`;
 
           const fetches = [
-            fetch(urlData),
-            fetch(YOUTUBE_URL(movieId)),
-            fetch(urlCast),
+            API(urlData),
+            API(YOUTUBE_URL(movieId)),
+            API(urlCast),
           ];
 
           const [INFO, TRA, CAST] = await Promise.all(fetches).then((res) =>
-            Promise.all(res.map((r) => r.json()))
+            Promise.all(res.map((r) => r.data))
           );
 
           const trailer = TRA.results[0] ? TRA.results[0].key : DEFAULT_TRAILER;

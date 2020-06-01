@@ -4,6 +4,8 @@ import { getLocalStorage, setLocalStorage } from '../localStorage/localStorage'
 import Loader from '../Loader/Loader'
 import ActorDetails from './ActorDetails/ActorDetails'
 
+import API from '../../API'
+
 export default function ActorPage(props) {
     const [personInfo, setPersonInfo] = useState({})
     const [loading, setLoading] = useState(true)
@@ -20,12 +22,12 @@ export default function ActorPage(props) {
   useEffect(() => {
     async function setFetchData() {
       const fetches = [
-        fetch(ACTOR_DETAILS(personId)),
-        fetch(ACTOR_MOVIES(personId)),
+          API(ACTOR_DETAILS(personId)),
+          API(ACTOR_MOVIES(personId)),
       ];
 
       const [AC_DET, AC_MOV] = await Promise.all(fetches).then((res) =>
-        Promise.all(res.map((r) => r.json()))
+        Promise.all(res.map((r) => r.data))
       );
 
       setLocalStorage(`person-${personId}`, {

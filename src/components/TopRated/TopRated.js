@@ -7,14 +7,16 @@ import Loader from '../Loader/Loader'
 import ArrowTop from '../ArrowTop/ArrowTop'
 import { setLocalStorage, getLocalStorage } from '../localStorage/localStorage'
 
+import API from '../../API'
+
 function TopRated() {
     const [results, setResults] = useState([])
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(true)
 
     const handlerLoading = async () => {
-        const fetched = await fetch(TOP_URL(page));
-        const data = await fetched.json()
+        const fetched = await API(TOP_URL(page));
+        const {data} = fetched
         const state = {
             results: [...results, ...data.results],
             page: page + 1,

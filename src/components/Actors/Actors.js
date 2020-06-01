@@ -5,14 +5,16 @@ import Loader from '../Loader/Loader'
 import Cast from '../Cast/Cast'
 import ArrowTop from '../ArrowTop/ArrowTop'
 
+import API from '../../API'
+
 export default function Actors() {
     const [results, setResults] = useState([])
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(true)
 
     const handlerLoading = async () => {
-        const fetched = await fetch(ACTORS_PAGE_URL(page));
-        const data = await fetched.json()
+        const fetched = await API(ACTORS_PAGE_URL(page));
+        const {data} = fetched
         const state = {
             results: [...results, ...data.results],
             page: page + 1,

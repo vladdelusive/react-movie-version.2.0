@@ -6,6 +6,8 @@ import LoaderButton from '../LoaderButton/LoaderButton'
 import { setLocalStorage, getLocalStorage } from '../localStorage/localStorage'
 import NotFound from '../NotFound/NotFound'
 
+import API from '../../API'
+
 let timer;
 
 function Input() {
@@ -41,13 +43,13 @@ function Input() {
     const doSearch = async (value, nextPage = false) => {
         if (nextPage) {
             const url = `${SEARCH_URL(value)}&page=${nextPage}`;
-            const fetched = await fetch(url);
-            const data = await fetched.json();
+            const fetched = await API(url);
+            const {data} = fetched
             setResults([...results, ...data.results])
             setPage(page + 1)
         } else {
-            const fetched = await fetch(SEARCH_URL(value));
-            const data = await fetched.json();
+            const fetched = await API(SEARCH_URL(value));
+            const {data} = fetched
             const newState = {
                 results: [...data.results],
                 allPages: data.total_pages,
