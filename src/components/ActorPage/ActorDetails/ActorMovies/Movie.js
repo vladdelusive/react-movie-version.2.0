@@ -5,18 +5,17 @@ import image from './image.jpg'
 
 export default function Movie({ id, img, title }) {
     return (
-        <div className="card col-3 mb-5 actor" >
+        <div>
             <Link to={`/movies/${id}`} title={title}>
-                <img 
-                className="card-img-top" 
+                <img
                 src={img === null
                     ? image
                     : `${IMAGE_URL}${CARD_SIZE}${img}`}
                 alt="movie_image" />
             </Link>
-            <div className="card-body" >
+            <div>
                 <Link to={`/movies/${id}`} title={title}>
-                    <h5 className="card-title">{title}</h5>
+                    <h5>{title}</h5>
                 </Link>
             </div>
         </div>

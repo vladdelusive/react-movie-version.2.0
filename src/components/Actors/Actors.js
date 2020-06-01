@@ -40,16 +40,14 @@ export default function Actors() {
 
     return (
         <>
-            <h1 className="display-1 mx-auto">Actors</h1>
+            <h1>Actors</h1>
             {
                 loading
                     ? <Loader />
                     : <>
                         <Cast cast={results}/>
                         <div>
-                            <button
-                                className="btn btn-info mx-auto center"
-                                onClick={handlerLoading}>Load more..</button>
+                            <button onClick={handlerLoading}>Load more..</button>
                         </div>
                     </>
             }

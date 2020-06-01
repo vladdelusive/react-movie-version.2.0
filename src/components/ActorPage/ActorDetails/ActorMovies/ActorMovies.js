@@ -12,7 +12,7 @@ export default memo(function ActorMovies({ cast }) {
         />
     })
     return <>
-        <div className="card-deck row justify-content-center my-5 cast" >
+        <div>
             {movies}
         </div>
         {movies.length > 12 ? <ArrowTop/> : ""}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { SEARCH_URL, SEARCH, FETCH_INTERVAL } from '../config'
 import './Input.css'
 import Content from '../Content/Content'
@@ -75,9 +74,9 @@ function Input() {
     }
 
     return <>
-        <form className="form-inline order-0 center"
+        <form
             onSubmit={e => e.preventDefault()}>
-            <input className="form-control mr-sm-2"
+            <input
                 type="search"
                 value={inputValue}
                 placeholder="Search film" aria-label="Search"
@@ -86,8 +85,8 @@ function Input() {
         </form>
         {results
             ?
-            <div className="container-fluid">
-                <div className="card-deck row justify-content-center my-5">
+            <div>
+                <div>
                     {
                         results.length > 0
                             ?

@@ -4,10 +4,10 @@ import './Actor.css'
 
 export default function Actor({path, id, gender, name}) {
     return (
-        <div className="card col-3 mb-5 actor" >
-            <img src={`${IMAGE_URL}${CARD_SIZE}${path}`} className="card-img-top" alt="sorry" />
-            <div className="card-body">
-                <h5 className="card-title">
+        <div>
+            <img src={`${IMAGE_URL}${CARD_SIZE}${path}`} alt="sorry" />
+            <div>
+                <h5>
                     <a href="/">{name}</a>
                 </h5>
             </div>

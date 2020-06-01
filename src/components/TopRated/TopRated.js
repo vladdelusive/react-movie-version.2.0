@@ -36,15 +36,16 @@ function TopRated() {
             setLoading(false)
         }
     }, [])
+    console.log(process)
     return (
         <>
-            <h1 className="display-1 mx-auto">Top Rated</h1>
+            <h1>Top Rated</h1>
             {
                 loading
                     ? <Loader />
                     : <>
-                        <div className="container-fluid">
-                            <div className="card-deck row justify-content-center my-5">
+                        <div>
+                            <div>
                                 <Content
                                     results={results}
                                     path="/movies"
@@ -52,10 +53,9 @@ function TopRated() {
                             </div>
                         </div>
                         <div>
+                            {process.env.REACT_APP_API_KEY + " hi"}
                             <ArrowTop />
-                            <button
-                                className="btn btn-info mx-auto center"
-                                onClick={handlerLoading}>Load more..</button>
+                            <button onClick={handlerLoading}>Load more..</button>
                         </div>
                     </>
             }

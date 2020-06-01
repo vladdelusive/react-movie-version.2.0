@@ -81,8 +81,8 @@ class Form extends Component {
 
     render() {
         return <>
-            <form className="form-inline order-0 center">
-                <input className="form-control mr-sm-2"
+            <form>
+                <input
                 type="search" value={this.state.inputValue}
                 placeholder="Search film" aria-label="Search"
                 onChange={this.valueTarget}
@@ -90,8 +90,8 @@ class Form extends Component {
             </form>
             {this.state.results
                 ?
-                <div className="container-fluid">
-                    <div className="card-deck row justify-content-center my-5">
+                <div>
+                    <div>
                         {
                             this.state.results.length > 0
                                 ?

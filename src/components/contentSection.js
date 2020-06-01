@@ -42,13 +42,13 @@ function ContentSection({section}) {
     }, []) 
     return (
         <>
-            <h1 className="display-1 mx-auto">{section === "top" ? "Top Rated" : "Popular"}</h1>
+            <h1>{section === "top" ? "Top Rated" : "Popular"}</h1>
             {
                 loading
                     ? <Loader />
                     : <>
-                        <div className="container-fluid">
-                            <div className="card-deck row justify-content-center my-5">
+                        <div>
+                            <div>
                                 <Content
                                     results={results}
                                     path="/movies"
@@ -57,9 +57,7 @@ function ContentSection({section}) {
                         </div>
                         <div>
                             <ArrowTop />
-                            <button
-                                className="btn btn-info mx-auto center"
-                                onClick={handlerLoading}>Load more..</button>
+                            <button onClick={handlerLoading}>Load more..</button>
                         </div>
                     </>
             }

@@ -17,7 +17,7 @@ export default React.memo(function Cast({ cast }) {
         />)
     })
     return (<>
-            <div className="card-deck row justify-content-center my-5 cast" >
+            <div>
                 {actors}
             </div>
             {actors.length > 12 ? <ArrowTop/> : ""}

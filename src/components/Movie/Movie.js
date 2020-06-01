@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Movie.css'
 import image from './image.jpg'
-import { API_URL, API_KEY, IMAGE_URL, EXTEND_SIZE, YOUTUBE_URL, DEFAULT_TRAILER } from '..//config'
+import { API_URL, API_KEY, IMAGE_URL, EXTEND_SIZE, YOUTUBE_URL, DEFAULT_TRAILER } from '../config'
 import { setLocalStorage, getLocalStorage } from '../localStorage/localStorage'
 import Loader from '../Loader/Loader'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
@@ -114,16 +114,16 @@ function Movie(props) {
 
     return (
         <>
-            <div className="container row new-row">
+            <div>
                 {
                     trailer
                         ?
                         <img src={results.poster_path
                             ? `${IMAGE_URL}${EXTEND_SIZE}${results.poster_path}`
-                            : image} className="rounded col-xl-4 offset-md-1" alt="movie-post" />
+                            : image} alt="movie-post" />
                         : <Loader />
                 }
-                <div className="col-xl-4 offset-xl-1">
+                <div>
                     <h1>{results.title}</h1>
                     <hr />
                     <strong> Description: </strong>
@@ -154,7 +154,7 @@ function Movie(props) {
                     <div>
                         <strong> Trailer: </strong>
                     </div>
-                    <div className="trailer">
+                    <div>
                         {
                             trailer
                                 ? (<iframe frameBorder="0" allowFullScreen="1"
@@ -169,7 +169,7 @@ function Movie(props) {
             {
                 cast.length
                     ? <>
-                        <h1 className="credited-cast">Credited cast:</h1>
+                        <h1>Credited cast:</h1>
                         <Cast cast={cast}/>
                     </>
                     : <Loader />
