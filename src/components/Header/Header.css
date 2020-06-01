@@ -1,18 +1,9 @@
-.navbar {
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     border-bottom: 1px solid #e8e8e8;
-}
-
-.github {
-    width: 130px;
-    mix-blend-mode: multiply;
-    cursor: pointer;
-    transition: unset !important;
-    margin: 0;
-}
-
-.github:hover {
-    transition: unset !important;
-    transform: unset;
+    background-color: #f9fafc;
 }
 
 @media (max-width: 560px) {

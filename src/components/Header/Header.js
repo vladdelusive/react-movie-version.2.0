@@ -1,15 +1,15 @@
 import React from 'react'
 import './Header.css'
 import Navbar from './Navbar/Navbar'
-import image from '../../markup/github.png'
+import image from './movie-logo.jpg'
+import Logo from "./Logo/Logo";
+import FormSearch from "./FormSearch/FormSearch";
 
 export default function Header() {
     return (
-        <nav>
+        <header className="header">
+            <Logo/>
             <Navbar />
-            <a style={{margin: 0}} href="https://github.com/vladdelusive">
-                <img src={image} className="github" alt="" />
-            </a>
-        </nav>
+        </header>
     )
 }

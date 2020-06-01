@@ -13,7 +13,7 @@ export default function Cast({ cast }) {
             />)
     })
     return (
-        <div className="card-deck row justify-content-center my-5">
+        <div>
             <h1>Credited cast:</h1>
             {actors}
         </div>

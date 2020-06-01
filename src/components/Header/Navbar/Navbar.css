@@ -17,3 +17,27 @@
         border: 1px solid #c9c9f4;
     }
 }
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.navbar__item {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.navbar__link {
+    padding: .5rem 1rem;
+    text-decoration: none;
+
+}
+
+.active {
+    color: #fff;
+    background-color: #007bff;
+    border-radius: .25rem;
+}

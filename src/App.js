@@ -8,6 +8,7 @@ import Movie from './components/Movie/Movie'
 import ActorPage from './components/ActorPage/ActorPage'
 import Actors from './components/Actors/Actors'
 import Main from './components/Main/Main'
+import {Footer} from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/actors/:actor" component={ActorPage} />
         <Redirect to={'/main'}/>
       </Switch>
+      <Footer/>
     </>
   );
 }

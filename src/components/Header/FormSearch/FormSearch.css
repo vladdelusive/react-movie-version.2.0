@@ -1,0 +1,7 @@
+.form {
+    margin: 15px 0px;
+    width: 35%;
+    height: 25px;
+    display: flex;
+    align-items: center;
+}
