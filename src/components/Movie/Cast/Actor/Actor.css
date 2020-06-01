@@ -1,0 +1,5 @@
+.actor {
+    max-width: 250px !important;
+    min-width: 200px !important;
+    padding: 0;
+}

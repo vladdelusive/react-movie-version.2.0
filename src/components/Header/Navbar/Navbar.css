@@ -1,0 +1,19 @@
+@media (max-width: 500px) {
+    .nav {
+        padding: unset;
+        margin: auto;
+        justify-content: center;
+    }
+
+    .nav-item {
+        width: 105px;
+        text-align: center;
+        margin: auto 5px;
+    }
+    .navbar {
+        padding: .5rem 0 !important;
+    }
+    a {
+        border: 1px solid #c9c9f4;
+    }
+}

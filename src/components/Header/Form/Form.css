@@ -1,0 +1,9 @@
+.center {
+    justify-content: center;
+    display: flex;
+}
+
+.form-control {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}

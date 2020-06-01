@@ -1,0 +1,10 @@
+.center {
+    justify-content: center;
+    display: flex;
+    margin: auto 35px;
+}
+
+.form-control {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}

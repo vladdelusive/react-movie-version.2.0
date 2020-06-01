@@ -1,0 +1,42 @@
+.card {
+    width: 300px;
+    min-width: 300px;
+    transition: all .4s ease;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    transition: all .4s ease;
+}
+
+img {
+    transition: all .4s ease;
+}
+
+a {
+    margin-bottom: 10px;
+}
+
+img:hover {
+    transform: scale(1.08);
+    transition: all .4s ease;
+}
+
+@media (min-width: 908px) {
+    .card {
+        min-width: 350px !important;
+        transition: all .4s ease;
+    }
+}
+@media (max-width: 700px) {
+    .card {
+        min-width: 400px !important;
+        transition: all .4s ease;
+    }
+}
+@media (max-width: 500px) {
+    .card {
+        min-width: 320px !important;
+        transition: all .4s ease;
+    }
+}

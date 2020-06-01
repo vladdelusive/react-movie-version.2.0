@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    .card {
+        width: 300px;
+        min-width: 300px;
+    }
+
+    .navbar {
+        border-bottom: 1px solid #e8e8e8;
+    }
+
+    .container {
+        justify-content: center;
+        margin: 50px auto auto;
+        max-width: 100%;
+    }
+
+    .rounded {
+        max-height: 875px;
+        max-width: 550px;
+        min-width: 390px;
+    }
+
+    .display-1 {
+        text-align: center;
+    }
+
+    .badge {
+        cursor: pointer;
+        transition: all .2s ease;
+    }
+
+    .badge:hover {
+        transform: scale(1.2);
+        transition: all .2s ease;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    .progress {
+        width: 200px;
+    }
+
+    .fa {
+        cursor: pointer;
+        transition: all .2s ease;
+    }
+
+    hr {
+        height: 1px;
+    }
+
+    iframe {
+        width: auto;
+        height: auto;
+    }
+
+    .fa:hover {
+        transform: scale(1.5);
+        transition: all .2s ease;
+    }
+
+    @media (min-width: 908px) {
+        .card {
+            min-width: 350px !important;
+            transition: all .4s ease;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .card {
+            min-width: 400px !important;
+            transition: all .4s ease;
+        }
+    }
+    .actor {
+        max-width: 250px !important;
+        min-width: 200px !important;
+        padding: 0;
+
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-light bg-light justify-content-between flex-nowrap" aria-orientation="vertical">
+        <ul class="nav nav-pills my-1" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="index.html" role="tab"
+                    aria-controls="pills-home" aria-selected="true">Main</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                    aria-controls="pills-profile" aria-selected="false">Popular</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                    aria-controls="pills-contact" aria-selected="false">Top Rated</a>
+            </li>
+        </ul>
+        <form class="form-inline order-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search film" aria-label="Search">
+        </form>
+    </nav>
+
+
+    <div class="container row">
+        <img src="./image.jpg" class="rounded col-xl-4 offset-md-1" alt="movie-post">
+        <div class="col-xl-4 offset-xl-1">
+            <h1>Ad Astra</h1>
+            <hr>
+            <strong> Description: </strong>
+            <p>The near future, a time when both hope and hardships drive humanity to look to the stars and beyond.
+                While a mysterious phenomenon menaces to
+                destroy life on planet Earth, astronaut Roy McBride undertakes a mission across the immensity
+                of space and its many perils to uncover the truth about a lost expedition that decades before boldly
+                faced emptiness and silence in search of
+                the unknown.</p>
+            <hr>
+
+            <!--
+                https://getbootstrap.com/docs/4.4/components/badge/#pill-badges
+             -->
+
+            <div class="generes"><strong>Generes: </strong>
+                <span class="badge badge-pill badge-success">Success</span>
+                <span class="badge badge-pill badge-danger">Danger</span>
+                <span class="badge badge-pill badge-warning">Warning</span>
+                <span class="badge badge-pill badge-info">Info</span>
+            </div>
+
+            <hr>
+
+            <div><strong>Rate: </strong><i>7/10</i></div>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <hr>
+            <div class="trailer">
+                <strong> Trailer: </strong>
+            </div>
+            <span>
+                <iframe frameborder="0" allowfullscreen="1"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    title="YouTube video player"
+                    src="https://www.youtube.com/embed/0?enablejsapi=1&amp;origin=http%3A%2F%2Freact-movie-finder.surge.sh&amp;widgetid=7"
+                    id="undefined" class="undefined">
+                </iframe>
+            </span>
+        </div>
+    </div>
+    <div class="card-deck row justify-content-center my-5">
+        <h1>Credited cast:</h1>
+        <div class="card col-3 mb-5 actor" style="width: 150px;">
+            <img src="./Will_Smith.jpg" class="card-img-top" alt="sorry">
+            <div class="card-body">
+                <h5 class="card-title"><a href="#">Will Smith</a></h5>
+            </div>
+        </div>
+        <div class="card col-3 mb-5 actor" style="width: 150px;">
+            <img src="./Margot_Robbie.jpg" class="card-img-top" alt="sorry">
+            <div class="card-body">
+                <h5 class="card-title"><a href="#">Margot Robbie</a></h5>
+            </div>
+        </div>
+        <div class="card col-3 mb-5 actor" style="width: 150px;">
+            <img src="./Will_Smith.jpg" class="card-img-top" alt="sorry">
+            <div class="card-body">
+                <h5 class="card-title"><a href="#">Will Smith</a></h5>
+            </div>
+        </div>
+        <div class="card col-3 mb-5 actor" style="width: 150px;">
+            <img src="./Margot_Robbie.jpg" class="card-img-top" alt="sorry">
+            <div class="card-body">
+                <h5 class="card-title"><a href="#">Margot Robbie</a></h5>
+            </div>
+        </div>
+        <div class="card col-3 mb-5 actor" style="width: 150px;">
+            <img src="./Will_Smith.jpg" class="card-img-top" alt="sorry">
+            <div class="card-body">
+                <h5 class="card-title"><a href="#">Will Smith</a></h5>
+            </div>
+        </div>
+        <div class="card col-3 mb-5 actor" style="width: 150px;">
+            <img src="./Margot_Robbie.jpg" class="card-img-top" alt="sorry">
+            <div class="card-body">
+                <h5 class="card-title"><a href="#">Margot Robbie</a></h5>
+            </div>
+        </div>
+        <div class="card col-3 mb-5 actor" style="width: 150px;">
+            <img src="./Will_Smith.jpg" class="card-img-top" alt="sorry">
+            <div class="card-body">
+                <h5 class="card-title"><a href="#">Will Smith</a></h5>
+            </div>
+        </div>
+        <div class="card col-3 mb-5 actor" style="width: 150px;">
+            <img src="./Margot_Robbie.jpg" class="card-img-top" alt="sorry">
+            <div class="card-body">
+                <h5 class="card-title"><a href="#">Margot Robbie</a></h5>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
