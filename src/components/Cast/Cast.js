@@ -4,11 +4,13 @@ import './Cast.css'
 import ArrowTop from '../ArrowTop/ArrowTop'
 
 export default React.memo(function Cast({ cast }) {
+    debugger
     const identityId = []
     const actors = cast.map((actor) => {
         if(identityId.find((el)=>el===actor.id)){
             return ""
         }
+        identityId.push(actor.id)
         return (<Actor name={actor.name}
             key={actor.id}
             id={actor.id}
@@ -16,6 +18,7 @@ export default React.memo(function Cast({ cast }) {
             path={actor.profile_path}
         />)
     })
+    console.log(identityId)
     return (<>
             <div>
                 {actors}

@@ -1,5 +1,5 @@
-export const API_URL = 'https://api.themoviedb.org/3/';
-export const API_KEY = '844dba0bfd8f3a4f3799f6130ef9e335';
+export const API_URL = process.env.REACT_APP_API_URL;
+export const API_KEY = process.env.REACT_APP_API_KEY;
 
 export const SEARCH_URL = (word) => `${API_URL}search/movie?api_key=${API_KEY}&query=${word}`;
 

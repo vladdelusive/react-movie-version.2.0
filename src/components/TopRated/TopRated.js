@@ -36,7 +36,6 @@ function TopRated() {
             setLoading(false)
         }
     }, [])
-    console.log(process)
     return (
         <>
             <h1>Top Rated</h1>
@@ -53,7 +52,6 @@ function TopRated() {
                             </div>
                         </div>
                         <div>
-                            {process.env.REACT_APP_API_KEY + " hi"}
                             <ArrowTop />
                             <button onClick={handlerLoading}>Load more..</button>
                         </div>
