@@ -7,6 +7,8 @@ import Loader from '../Loader/Loader'
 import ArrowTop from '../ArrowTop/ArrowTop'
 import { setLocalStorage, getLocalStorage } from '../localStorage/localStorage'
 
+import BtnLoader from '../../hoc/btnHoc'
+
 import API from '../../API'
 
 function MoviesPage() {
@@ -55,7 +57,7 @@ function MoviesPage() {
                         </div>
                         <div>
                             <ArrowTop />
-                            <button onClick={handlerLoading}>Load more..</button>
+                            <BtnLoader handlerLoading={handlerLoading}>Load more movies...</BtnLoader>
                         </div>
                     </>
             }

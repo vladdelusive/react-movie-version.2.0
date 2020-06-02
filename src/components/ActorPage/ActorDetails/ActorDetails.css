@@ -1,2 +1,49 @@
+.actor-info {
+    font-family: cursive;
+    display: flex;
+    margin: auto 5%;
+    flex-wrap: nowrap;
+}
 
+.actor-info__right {
+    align-self: flex-end;
+    margin-left: 50px;
+}
 
+.actor-info__right--font {
+    font-size: 20px;
+}
+
+.actor--info__text {
+    margin: 10px auto;
+}
+
+.actor-movies {
+    display: flex;
+    margin: 50px auto;
+    outline: none;
+    font-size: 40px;
+    border: 5px solid #17a2b8;
+    background: aliceblue;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+
+.actor-movies:active {
+    transition: all .4s ease;
+    opacity: 0.3;
+}
+
+@media screen and (max-width: 1300px) {
+    .actor-info {
+        flex-wrap: wrap;
+    }
+    .actor-info__right {
+        margin: auto;
+    }
+    .actor-info__left {
+        margin: auto;
+    }
+}

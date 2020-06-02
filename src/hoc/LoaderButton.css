@@ -1,0 +1,26 @@
+.button-loading {
+    text-align: center;
+    margin-bottom: 25px;
+    justify-content: center;
+    display: flex;
+}
+
+.button-loading__btn {
+    color: #fff;
+    background-color: #17a2b8;
+    border: 1px solid transparent;
+    border-color: #117a8b;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-loading__btn:hover {
+    color: #fff;
+    background-color: #138496;
+    border-color: #117a8b;
+}

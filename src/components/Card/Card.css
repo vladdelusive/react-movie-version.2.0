@@ -3,6 +3,7 @@
     transition: all .4s ease;
     margin: 50px 10px;
     background: white;
+    border-radius: 10px;
 }
 
 .card__post {

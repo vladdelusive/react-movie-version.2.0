@@ -12,7 +12,7 @@ export default memo(function ActorMovies({ cast }) {
         />
     })
     return <>
-        <div>
+        <div className="container__content">
             {movies}
         </div>
         {movies.length > 12 ? <ArrowTop/> : ""}
