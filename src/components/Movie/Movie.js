@@ -10,6 +10,7 @@ import Cast from '../Cast/Cast'
 import API from '../../API'
 
 function Movie(props) {
+
     const [results, setResults] = useState([])
     const [trailer, setTrailer] = useState("")
     const [badges] = useState([

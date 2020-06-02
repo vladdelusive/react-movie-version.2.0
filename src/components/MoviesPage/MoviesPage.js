@@ -1,54 +1,60 @@
-import React, { useEffect, useState } from 'react'
-import { ACTORS_PAGE_URL, ACTORS } from '../config'
-import { getLocalStorage, setLocalStorage } from '../localStorage/localStorage'
+import React, { useState, useEffect } from 'react'
+
+import './MoviesPage.css'
+import Content from '..//Content/Content'
+import { NEWLY_MOVIES_URL, NEWLY } from '../config'
 import Loader from '../Loader/Loader'
-import Cast from '../Cast/Cast'
 import ArrowTop from '../ArrowTop/ArrowTop'
+import { setLocalStorage, getLocalStorage } from '../localStorage/localStorage'
 
 import API from '../../API'
 
-export default function Actors() {
+function MoviesPage() {
     const [results, setResults] = useState([])
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(true)
 
     const handlerLoading = async () => {
-        const fetched = await API(ACTORS_PAGE_URL(page));
+        const fetched = await API(NEWLY_MOVIES_URL(page));
         const {data} = fetched
         const state = {
             results: [...results, ...data.results],
             page: page + 1,
             loading: false
         }
-        setLocalStorage(ACTORS, state)
-
+        setLocalStorage(NEWLY, state)
         setResults([...results, ...data.results])
         setPage(page + 1)
-
-        page === 1 && setLoading(false)
     }
 
     useEffect(() => {
-        if (getLocalStorage(ACTORS)) {
-            const localState = getLocalStorage(ACTORS)
-
+        if (getLocalStorage(NEWLY)) {
+            const localState = getLocalStorage(NEWLY)
             setResults(localState.results)
             setPage(localState.page)
             setLoading(false)
         } else {
             handlerLoading()
+            setLoading(false)
         }
     }, [])
-
     return (
         <>
-            <h1 className="title" >ACTORS</h1>
+            <h1 className="title">NEWLY MOVIES</h1>
             {
                 loading
                     ? <Loader />
                     : <>
-                        <Cast cast={results}/>
+                        <div className="container">
+                            <div className="container__content">
+                                <Content
+                                    results={results}
+                                    path="/movies"
+                                />
+                            </div>
+                        </div>
                         <div>
+                            <ArrowTop />
                             <button onClick={handlerLoading}>Load more..</button>
                         </div>
                     </>
@@ -56,3 +62,6 @@ export default function Actors() {
         </>
     )
 }
+
+
+export default MoviesPage;

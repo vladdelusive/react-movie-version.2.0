@@ -1,5 +1,12 @@
-.container-fluid {
-    max-width: 1800px;
+.container {
     background-color: #f8f9fa;
     padding-top: 25px;
+}
+
+.container__content {
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

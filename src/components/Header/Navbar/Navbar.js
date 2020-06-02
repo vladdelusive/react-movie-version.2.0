@@ -11,7 +11,7 @@ export default function Navbar() {
                 <NavLink className="navbar__link" to="/main">Main</NavLink>
             </li>
             <li className="navbar__item">
-                <NavLink className="navbar__link" to="/top">Movies</NavLink>
+                <NavLink className="navbar__link" to="/movies">Movies</NavLink>
             </li>
             <li className="navbar__item">
                 <NavLink className="navbar__link" to="/actors">Actors</NavLink>

@@ -9,6 +9,8 @@ import ActorPage from './components/ActorPage/ActorPage'
 import Actors from './components/Actors/Actors'
 import Main from './components/Main/Main'
 import {Footer} from "./components/Footer/Footer";
+import NotFoundPage from "./components/WrongPath/WrongPath";
+import MoviesPage from "./components/MoviesPage/MoviesPage";
 
 function App() {
   return (
@@ -16,12 +18,11 @@ function App() {
       <Header/>
       <Switch>
         <Route path="/main" exact component={Main} />
-        <Route path="/popular" component={Popular} />
-        <Route path="/top" component={TopRated} />
         <Route path="/actors" exact component={Actors} />
+        <Route path="/movies" exact component={MoviesPage} />
         <Route path="/movies/:movie" component={Movie} />
         <Route path="/actors/:actor" component={ActorPage} />
-        <Redirect to={'/main'}/>
+        <Route path="*" component={NotFoundPage}/>
       </Switch>
       <Footer/>
     </>

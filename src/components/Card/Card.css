@@ -1,7 +1,12 @@
 .card {
-    width: 300px;
-    min-width: 300px;
+    width: 400px;
     transition: all .4s ease;
+    margin: 50px 10px;
+    background: white;
+}
+
+.card__post {
+    width: 400px;
 }
 
 .card:hover {
@@ -9,34 +14,11 @@
     transition: all .4s ease;
 }
 
-img {
-    transition: all .4s ease;
+.card__description {
+    padding: 0px 30px 20px;
 }
 
-a {
-    margin-bottom: 10px;
-}
-
-img:hover {
-    transform: scale(1.08);
-    transition: all .4s ease;
-}
-
-@media (min-width: 908px) {
-    .card {
-        min-width: 350px !important;
-        transition: all .4s ease;
-    }
-}
-@media (max-width: 700px) {
-    .card {
-        min-width: 400px !important;
-        transition: all .4s ease;
-    }
-}
-@media (max-width: 500px) {
-    .card {
-        min-width: 320px !important;
-        transition: all .4s ease;
-    }
+.card__title {
+    font-size: 22px;
+    margin: 12px 0px 0px;
 }
