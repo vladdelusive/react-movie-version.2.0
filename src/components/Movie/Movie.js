@@ -7,21 +7,15 @@ import Loader from '../Loader/Loader'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import Cast from '../Cast/Cast'
 
+import {badges} from './badges'
+import getRandomColor from "./randomColor";
+
 import API from '../../API'
 
 function Movie(props) {
 
     const [results, setResults] = useState([])
     const [trailer, setTrailer] = useState("")
-    const [badges] = useState([
-        "success",
-        "warning",
-        "danger",
-        "primary",
-        "info",
-        "secondary",
-        "dark"
-    ])
     const [movieBadges, setMovieBadges] = useState([])
     const [cast, setCast] = useState([])
 
@@ -77,7 +71,7 @@ function Movie(props) {
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
                         key={id}
-                        className={`badge badge-pill badge-${badges[badgesId[id]]}`}
+                        className={`${badges[badgesId[id]]} badge__pill`}
                     >
                         {genre.name}
                     </span>
@@ -85,7 +79,7 @@ function Movie(props) {
             </Draggable>
         ))
         setMovieBadges(badgesList)
-    }, [badges, results])
+    }, [results])
 
     const averageRate = () => {
         return Math.round(results.vote_average);
@@ -117,17 +111,21 @@ function Movie(props) {
 
     return (
         <>
-            <div>
+            <div className="movie">
                 {
                     trailer
                         ?
-                        <img src={results.poster_path
+                        <img
+                            src={results.poster_path
                             ? `${IMAGE_URL}${EXTEND_SIZE}${results.poster_path}`
-                            : image} alt="movie-post" />
+                            : image}
+                            alt="movie-post"
+                            className="movie__post"
+                        />
                         : <Loader />
                 }
-                <div>
-                    <h1>{results.title}</h1>
+                <div className="movie__description">
+                    <h1 className="movie__title">{results.title}</h1>
                     <hr />
                     <strong> Description: </strong>
                     <p>
@@ -154,7 +152,7 @@ function Movie(props) {
                     <div><strong>Rate: </strong><i>{averageRate() || "?"}/10</i></div>
                     {setRate()}
                     <hr />
-                    <div>
+                    <div className="movie__trailer">
                         <strong> Trailer: </strong>
                     </div>
                     <div>
@@ -172,7 +170,7 @@ function Movie(props) {
             {
                 cast.length
                     ? <>
-                        <h1>Credited cast:</h1>
+                        <h1 className="movie__cast">Credited cast:</h1>
                         <Cast cast={cast}/>
                     </>
                     : <Loader />

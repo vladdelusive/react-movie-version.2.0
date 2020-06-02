@@ -1,33 +1,22 @@
 .actor {
-    max-width: 250px !important;
-    min-width: 200px !important;
-    padding: 0 !important;
-    align-items: center;
-    align-self: flex-end;
+    padding-bottom: 10px;
+    border-radius: 6px;
+    margin: 10px 10px 30px;
+    border: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
-.actor img {
-    margin-bottom: 0px;
+.actor__photo {
+    width: 350px;
 }
 
-.actor img:hover {
-    transform: unset;
-    transition: unset;
+.actor__name {
+    font-size: 25px;
+    margin: auto;
+    text-align: center;
 }
 
-.actor .card-body {
-    padding: 1.25rem 0px;
-}
-
-@media (max-width: 560px) {
-    img {
-        margin-bottom: 0px;
-    }
-    img:hover {
-        transform: unset;
-        transition: unset;
-    }
-    .actor a {
-        border: none;
-    }
+.actor__name--link {
+    text-decoration: none;
+    color: #007bff;
 }

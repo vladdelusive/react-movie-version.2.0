@@ -22,3 +22,12 @@
     font-size: 22px;
     margin: 12px 0px 0px;
 }
+
+.card__button {
+    text-decoration: unset;
+    color: white;
+    font-size: 20px;
+    background: #5a5aff;
+    padding: 4px 10px;
+    border-radius: 5%;
+}

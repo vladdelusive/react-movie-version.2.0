@@ -1,7 +1,7 @@
 
 div.arrow {
     width: 50px;
-    height: 50px; 
+    height: 50px;
     transform: rotate(-45deg);
     cursor: pointer;
     margin-left: 15px;
@@ -31,15 +31,17 @@ div.arrow:after {
     border-style: solid;
     border-color: #67adfd;
     transform-origin: 100% 0;
-    transition:.2s ease;
+    transition: .2s ease;
 }
 
 div.arrow:hover::after {
     transform: rotate(45deg);
     border-color: orange;
     height: 120%;
-    margin-top: 6px;
+    margin-top: 0px;
+
 }
+
 div.arrow:hover::before {
     border-color: orange;
     transform: scale(.8);

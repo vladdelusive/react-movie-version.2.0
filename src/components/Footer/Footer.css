@@ -1,0 +1,13 @@
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 0;
+    right: 0px;
+    mix-blend-mode: multiply;
+}
+
+.footer__image {
+    width: 130px;
+    cursor: pointer;
+}

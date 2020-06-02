@@ -1,6 +1,6 @@
 .navbar {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     list-style-type: none;
     align-items: center;
     width: 50%;
@@ -15,7 +15,6 @@
 .navbar__link {
     padding: .5rem 1rem;
     text-decoration: none;
-
 }
 
 .active {
