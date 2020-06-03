@@ -26,7 +26,6 @@
     transition: all .4s ease;
 }
 
-
 .input__search--clicked {
 }
 
@@ -72,11 +71,20 @@
     transition: opacity .25s, transform .25s;
     transform-origin: right;
     min-width: 210px;
+    width: 220px;
+}
+
+.input__search:focus {
+
 }
 
 .input__search.show {
     transform: scaleX(1);
     opacity: 1;
+}
+
+.input__block {
+    width: 230px;
 }
 
 @media screen and (max-width: 700px) {
@@ -86,7 +94,6 @@
 
     }
     .input__search {
-        width: 100%;
         transition: all .4s ease;
         min-width: 180px;
     }

@@ -1,0 +1,14 @@
+.search-icon__type {
+    width: 40px;
+}
+
+.input__search--below-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.search-icon__text {
+    margin-left: 5px;
+}
