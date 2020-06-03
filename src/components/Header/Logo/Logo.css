@@ -2,3 +2,10 @@
     width: 130px;
     mix-blend-mode: multiply;
 }
+
+
+@media screen and (max-width: 700px) {
+    .logo__img {
+        display: none;
+    }
+}

@@ -19,7 +19,10 @@ export default function ActorDetails({ personInfo, handleClick, isHidden, movies
                             }
                         </h3>
                     </div>
-                    <img src={`${IMAGE_URL}${CARD_SIZE}${personInfo.profile_path}`} alt="person_image" />
+                    <img
+                        className="actor-info__left--width"
+                        src={`${IMAGE_URL}${CARD_SIZE}${personInfo.profile_path}`}
+                        alt="person_image" />
                 </div>
                 <div className="actor-info__right">
                     <p className="actor-info__right--font">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {personInfo.biography}</p>

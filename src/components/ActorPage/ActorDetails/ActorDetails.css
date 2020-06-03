@@ -47,3 +47,14 @@
         margin: auto;
     }
 }
+@media screen and (max-width: 600px) {
+    .actor-info__left--width {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 400px) {
+    .actor-movie {
+        width: 270px !important;
+    }
+}
+

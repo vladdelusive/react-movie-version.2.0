@@ -17,6 +17,7 @@
     background-repeat: no-repeat;
     transform: scale(0.9);
     transition: all .4s ease;
+    min-width: 50px;
 }
 
 .input__btn:hover {
@@ -33,12 +34,13 @@
 }
 
 .close {
+    opacity: 0.3;
+    cursor: pointer;
     position: sticky;
     top: 25px;
     width: 35px;
+    min-width: 35px;
     height: 35px;
-    opacity: 0.3;
-    cursor: pointer;
 }
 .close:hover {
     opacity: 1;
@@ -69,9 +71,23 @@
     opacity: 0;
     transition: opacity .25s, transform .25s;
     transform-origin: right;
+    min-width: 210px;
 }
 
 .input__search.show {
     transform: scaleX(1);
     opacity: 1;
+}
+
+@media screen and (max-width: 700px) {
+    .input {
+        width: 100%;
+        transition: all .4s ease;
+
+    }
+    .input__search {
+        width: 100%;
+        transition: all .4s ease;
+        min-width: 180px;
+    }
 }

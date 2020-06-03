@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch, Redirect} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 
 import Header from './components/Header/Header'
 import Popular from './components/Popular/Popular'
@@ -16,15 +16,14 @@ function App() {
     return (
         <>
             <Header/>
-            <Switch>
-                <Route path="/main" exact component={Main}/>
-                <Route path="/actors" exact component={Actors}/>
-                <Route path="/movies" exact component={MoviesPage}/>
-                <Route path="/movies/:movie" component={Movie}/>
-                <Route path="/actors/:actor" component={ActorPage}/>
-                <Route path="/error" component={NotFoundPage}/>
-                <Redirect to="/error"/>
-            </Switch>
+                <Switch>
+                    <Route path="/" exact component={Main}/>
+                    <Route path="/actors" exact component={Actors}/>
+                    <Route path="/movies" exact component={MoviesPage}/>
+                    <Route path="/movies/:movie" component={Movie}/>
+                    <Route path="/actors/:actor" component={ActorPage}/>
+                    <Route component={NotFoundPage}/>
+                </Switch>
             <Footer/>
         </>
     );

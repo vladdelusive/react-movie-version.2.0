@@ -32,3 +32,21 @@
     padding: 4px 10px;
     border-radius: 5%;
 }
+
+@media screen and (max-width: 480px) {
+    .card {
+        width: 350px;
+    }
+    .card__post {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .card {
+        width: 300px;
+    }
+    .card__post {
+        width: 300px;
+    }
+}

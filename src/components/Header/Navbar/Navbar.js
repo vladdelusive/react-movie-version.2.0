@@ -8,7 +8,7 @@ export default function Navbar() {
         <ul className="navbar">
             <FormSearch/>
             <li className="navbar__item">
-                <NavLink className="navbar__link" to="/main">Main</NavLink>
+                <NavLink exact className="navbar__link" to="/">Main</NavLink>
             </li>
             <li className="navbar__item">
                 <NavLink className="navbar__link" to="/movies">Movies</NavLink>
