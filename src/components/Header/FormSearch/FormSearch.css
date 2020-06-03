@@ -1,4 +1,4 @@
-.input {
+.form {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.input__btn {
+.form__btn {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -20,27 +20,35 @@
     min-width: 50px;
 }
 
-.input__btn:hover {
+.form__btn:hover {
     cursor: pointer;
     transform: scale(1.0);
     transition: all .4s ease;
 }
 
-.input__search--clicked {
+.input-block {
+    width: 230px;
 }
 
-.input__btn--clicked {
-}
+@media screen and (max-width: 700px) {
+    .input {
+        width: 100%;
+        transition: all .4s ease;
 
+    }
+    .input__search {
+        transition: all .4s ease;
+        min-width: 180px;
+    }
+}
 .close {
-    opacity: 0.3;
-    cursor: pointer;
-    position: sticky;
-    top: 25px;
-    width: 35px;
-    min-width: 35px;
-    height: 35px;
-}
+     opacity: 0.3;
+     cursor: pointer;
+     position: sticky;
+     width: 35px;
+     min-width: 35px;
+     height: 35px;
+ }
 .close:hover {
     opacity: 1;
 }
@@ -58,43 +66,6 @@
 .close:after {
     transform: rotate(-45deg);
 }
-
 .hide {
     display: none;
-}
-
-.input__search {
-    margin: 15px 0px;
-    height: 25px;
-    transform: scaleX(0);
-    opacity: 0;
-    transition: opacity .25s, transform .25s;
-    transform-origin: right;
-    min-width: 210px;
-    width: 220px;
-}
-
-.input__search:focus {
-
-}
-
-.input__search.show {
-    transform: scaleX(1);
-    opacity: 1;
-}
-
-.input__block {
-    width: 230px;
-}
-
-@media screen and (max-width: 700px) {
-    .input {
-        width: 100%;
-        transition: all .4s ease;
-
-    }
-    .input__search {
-        transition: all .4s ease;
-        min-width: 180px;
-    }
 }

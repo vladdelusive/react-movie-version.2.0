@@ -5,17 +5,19 @@ import FormSearch from "../FormSearch/FormSearch";
 
 export default function Navbar() {
     return (
-        <ul className="navbar">
+        <div className="form-wrapper">
             <FormSearch/>
-            <li className="navbar__item">
-                <NavLink exact className="navbar__link" to="/">Main</NavLink>
-            </li>
-            <li className="navbar__item">
-                <NavLink className="navbar__link" to="/movies">Movies</NavLink>
-            </li>
-            <li className="navbar__item">
-                <NavLink className="navbar__link" to="/actors">Actors</NavLink>
-            </li>
-        </ul>
+            <ul className="navbar">
+                <li className="navbar__item">
+                    <NavLink exact className="navbar__link" to="/">Main</NavLink>
+                </li>
+                <li className="navbar__item">
+                    <NavLink className="navbar__link" to="/movies">Movies</NavLink>
+                </li>
+                <li className="navbar__item">
+                    <NavLink className="navbar__link" to="/actors">Actors</NavLink>
+                </li>
+            </ul>
+        </div>
     )
 }

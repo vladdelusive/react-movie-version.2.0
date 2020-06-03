@@ -1,4 +1,4 @@
-.input__search--below {
+.input-block__items {
     width: 216px;
     height: 220px;
     position: absolute;
@@ -9,7 +9,7 @@
     z-index: 1;
 }
 
-.input__search--below-link{
+.input-block__link{
     display: flex;
     justify-content: center;
     font-weight: 500;
@@ -19,7 +19,7 @@
     transition: all .4s ease;
 }
 
-.input__search--below-link:hover {
+.input-block__link:hover {
     opacity: 1;
     transition: all .4s ease;
 }

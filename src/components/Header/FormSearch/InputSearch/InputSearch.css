@@ -1,0 +1,15 @@
+.input-block__search-field {
+    margin: 15px 0px;
+    height: 25px;
+    transform: scaleX(0);
+    opacity: 0;
+    transition: opacity .25s, transform .25s;
+    transform-origin: right;
+    min-width: 210px;
+    width: 220px;
+}
+
+.input-block__search-field.show {
+    transform: scaleX(1);
+    opacity: 1;
+}

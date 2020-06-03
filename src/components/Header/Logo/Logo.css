@@ -3,6 +3,9 @@
     mix-blend-mode: multiply;
 }
 
+.logo-wrapper a {
+    display: block;
+}
 
 @media screen and (max-width: 700px) {
     .logo__img {

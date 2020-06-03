@@ -1,5 +1,5 @@
 import React from "react";
-import '../../hoc/LoaderButton.css'
+import '../../hoc/loaderBtn/LoaderButton.css'
 
 export default function ({handlerLoading, children}) {
     return (

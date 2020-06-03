@@ -4,8 +4,10 @@ import "./Logo.css"
 
 export default function Logo() {
     return (
-        <a className="logo" href="https://www.themoviedb.org/">
-            <img className="logo__img" src={image} alt="logo" />
-        </a>
+        <div className="logo-wrapper">
+            <a href="https://www.themoviedb.org/">
+                <img className="logo__img" src={image} alt="logo"/>
+            </a>
+        </div>
     )
 }

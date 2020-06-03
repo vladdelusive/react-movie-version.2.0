@@ -12,10 +12,13 @@ import {Footer} from "./components/Footer/Footer";
 import NotFoundPage from "./components/WrongPath/WrongPath";
 import MoviesPage from "./components/MoviesPage/MoviesPage";
 
+import MainContainer from "./containers/Main/Main";
+
 function App() {
     return (
         <>
             <Header/>
+            <MainContainer>
                 <Switch>
                     <Route path="/" exact component={Main}/>
                     <Route path="/actors" exact component={Actors}/>
@@ -24,6 +27,7 @@ function App() {
                     <Route path="/actors/:actor" component={ActorPage}/>
                     <Route component={NotFoundPage}/>
                 </Switch>
+            </MainContainer>
             <Footer/>
         </>
     );

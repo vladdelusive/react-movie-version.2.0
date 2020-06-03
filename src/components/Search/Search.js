@@ -9,13 +9,13 @@ export default function Search({searchResult, amountPages}) {
     //     SearchItem
     // })
     return (
-        <div className="input__search--below" style={{height: pixels}}>
+        <div className="input-block__items" style={{height: pixels}}>
             <SearchItem/>
             <SearchItem/>
             <SearchItem/>
             <SearchItem/>
             <SearchItem/>
-            <Link className="input__search--below-link" to={'/actors'}>More...</Link>
+            <Link className="input-block__link" to={'/actors'}>More...</Link>
         </div>
     )
 }

@@ -12,12 +12,10 @@ export default function FormSearch() {
         sendClass: "hide"
     });
 
-    const formRef = React.createRef()
-
     const onClickOpenSearch = () => {
         setClasses({
-            inputClass: "input__search--clicked show",
-            btnClass: "input__btn--clicked hide",
+            inputClass: "show",
+            btnClass: "hide",
             closeClass: "",
             sendClass: ""
         })
@@ -33,12 +31,12 @@ export default function FormSearch() {
     };
 
     return (
-        <form ref={formRef} className="input" onSubmit={(e) => e.preventDefault()}>
-            <button type="button" className={`${classes.sendClass} input__btn`} onClick={() =>{}}/>
-            <div className="input__block">
+        <form className="form" onSubmit={(e) => e.preventDefault()}>
+            <button type="submit" className={`${classes.sendClass} form__btn`} onClick={() =>{}}/>
+            <div className="input-block">
                 <InputSearch classes={classes}/>
             </div>
-            <button type="button" className={`${classes.btnClass} input__btn`} onClick={onClickOpenSearch}/>
+            <button type="button" className={`${classes.btnClass} form__btn`} onClick={onClickOpenSearch}/>
             <a className={`${classes.closeClass} close`} onClick={onClickCloseSearch}/>
         </form>
     );
