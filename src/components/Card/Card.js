@@ -4,14 +4,14 @@ import {Link} from 'react-router-dom'
 
 export default function Card({title, overview, poster, pathTo}) {
     return (
-        <div className="card">
-            <Link to={pathTo}>
-                <img className="card__post" src={poster} alt="sorry" />
+        <div className="card-movie">
+            <Link className="card-movie__post" to={pathTo}>
+                <img src={poster} alt="sorry" />
             </Link>
-            <div className="card__description">
-                <h5 className="card__title">{title}</h5>
-                <p className="card__overview">{overview}</p>
-                <Link className="card__button" to={pathTo}>Read more...</Link>
+            <div className="card-body">
+                <h5 className="card-body__title">{title}</h5>
+                <p className="card-body__overview">{overview}</p>
+                <Link className="card-body__link" to={pathTo}>Read more...</Link>
             </div>
         </div>
     )

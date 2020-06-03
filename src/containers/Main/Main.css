@@ -1,4 +1,4 @@
 .main {
-    display: grid;
+    display: inherit;
     justify-content: center;
 }

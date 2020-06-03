@@ -17,7 +17,7 @@ export default React.memo(function Cast({cast}) {
                        path={actor.profile_path}
         />)
     })
-    return <div className="container">
+    return <div className="cast-wrapper__content">
         <div className="container__content">
             {actors}
         </div>

@@ -21,7 +21,7 @@
 //////////////////////////
 */
 
-.movie {
+.movie-info {
     display: flex;
     justify-content: space-around;
     flex-wrap: nowrap;
@@ -47,9 +47,23 @@
     margin-bottom: 10px;
 }
 
-hr {
+.line {
     height: 1px;
     background: black;
+}
+
+.movie-info__type {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.movie__description-overview {
+    display: block;
+    margin-top: 0.8em;
+    color: black;
+    font-size: 1.1em;
 }
 
 iframe {
@@ -63,7 +77,7 @@ iframe {
 }
 
 @media screen and (max-width: 1000px) {
-    .movie {
+    .movie-info {
         flex-wrap: wrap;
     }
 
@@ -73,7 +87,7 @@ iframe {
 }
 
 @media screen and (max-width: 500px) {
-    .movie {
+    .movie-info {
         margin: 40px auto;
     }
     .movie__post {
@@ -88,7 +102,15 @@ iframe {
     }
 }
 
+.generes-wrapper {
+    display: flex;
+}
 
+.generes-items {
+    flex-wrap: wrap;
+    display: flex;
+    margin-left: 6px;
+}
 
 .success {
     background: #0f6674;
@@ -120,7 +142,7 @@ iframe {
     color: white;
 }
 
-.movie__cast {
+.cast-title {
     text-align: center;
     margin: 50px;
     font-size: 40px;

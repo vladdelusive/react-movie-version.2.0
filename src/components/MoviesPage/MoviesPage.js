@@ -54,10 +54,10 @@ function MoviesPage() {
                                     path="/movies"
                                 />
                             </div>
+                            <BtnLoader handlerLoading={handlerLoading}>Load more movies...</BtnLoader>
                         </div>
                         <div>
                             <ArrowTop />
-                            <BtnLoader handlerLoading={handlerLoading}>Load more movies...</BtnLoader>
                         </div>
                     </>
             }

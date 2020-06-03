@@ -1,4 +1,4 @@
-.card {
+.card-movie {
     width: 400px;
     transition: all .4s ease;
     margin: 50px 10px;
@@ -6,7 +6,11 @@
     border-radius: 10px;
 }
 
-.card__post {
+.card-movie a {
+    display: inline-flex;
+}
+
+.card-movie__post img {
     width: 400px;
 }
 
@@ -15,16 +19,25 @@
     transition: all .4s ease;
 }
 
-.card__description {
+.card-body {
     padding: 0px 30px 20px;
 }
 
-.card__title {
+.card-body__title {
     font-size: 22px;
     margin: 12px 0px 0px;
 }
 
-.card__button {
+.card-body__overview {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-size: 1.1em;
+}
+
+.card-body__link {
     text-decoration: unset;
     color: white;
     font-size: 20px;
@@ -34,7 +47,7 @@
 }
 
 @media screen and (max-width: 480px) {
-    .card {
+    .card-movie {
         width: 350px;
     }
     .card__post {
@@ -43,7 +56,7 @@
 }
 
 @media screen and (max-width: 400px) {
-    .card {
+    .card-movie {
         width: 300px;
     }
     .card__post {
