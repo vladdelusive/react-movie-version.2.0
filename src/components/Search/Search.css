@@ -1,5 +1,4 @@
 .input-block__items {
-    width: 216px;
     height: 220px;
     position: absolute;
     border: 1px solid #767676;
@@ -7,6 +6,7 @@
     background: white;
     padding: 0 5px;
     z-index: 1;
+    width: 212px;
 }
 
 .input-block__link{

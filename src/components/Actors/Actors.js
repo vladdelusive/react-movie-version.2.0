@@ -4,7 +4,8 @@ import { getLocalStorage, setLocalStorage } from '../localStorage/localStorage'
 import Loader from '../Loader/Loader'
 import Cast from '../Cast/Cast'
 import ArrowTop from '../ArrowTop/ArrowTop'
-import BtnLoader from '../LoaderButton/LoadNextPage'
+
+import BtnLoader from '../../hoc/loaderBtn/btnHoc'
 
 import API from '../../API'
 

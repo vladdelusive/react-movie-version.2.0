@@ -18,6 +18,7 @@ function MoviesPage() {
 
     const handlerLoading = async () => {
         const fetched = await API(NEWLY_MOVIES_URL(page));
+        debugger
         const {data} = fetched
         const state = {
             results: [...results, ...data.results],

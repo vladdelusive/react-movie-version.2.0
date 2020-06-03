@@ -47,10 +47,10 @@
 }
 
 @media screen and (max-width: 480px) {
-    .card-movie {
+    .card-movie__post img {
         width: 350px;
     }
-    .card__post {
+    .card-movie {
         width: 350px;
     }
 }
@@ -59,7 +59,7 @@
     .card-movie {
         width: 300px;
     }
-    .card__post {
+    .card-movie__post img {
         width: 300px;
     }
 }
