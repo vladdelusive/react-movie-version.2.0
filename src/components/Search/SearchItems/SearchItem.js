@@ -6,15 +6,22 @@ import MovieIcon from './MovieIcon.png'
 import {IMAGE_URL, CARD_SIZE} from "../../config";
 import {Link} from "react-router-dom";
 
-export default function SearchItem({image, title, typeItem, id}) {
+export default function SearchItem({image, title, typeItem, id, setShowSearchedItems}) {
     const link = (typeItem === "movie" ? "/movies/" : "/actors/") + id
+    const nullImage = typeItem === "movie" ? MovieIcon : ActorIcon
     return (
         <div className="input-item">
-            <Link to={link}>
-                <img src={`${IMAGE_URL}${CARD_SIZE}${image}`}
-                     className="input-item__icon"/>
-                <div className="input-item__text">{title}</div>
+            <Link className="input-item__icon" to={link} onClick={()=>setShowSearchedItems(false)}>
+                <img
+                    src={image ? IMAGE_URL+CARD_SIZE+image : nullImage}
+                />
             </Link>
+
+            <div className="input-item__text">
+                <Link className="input-item__text--link" to={link} onClick={()=>setShowSearchedItems(false)}>
+                    {title}
+                </Link>
+            </div>
         </div>
     )
 }

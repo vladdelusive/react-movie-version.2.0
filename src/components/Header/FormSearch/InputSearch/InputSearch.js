@@ -8,15 +8,13 @@ import './InputSearch.css'
 const doc = document.getElementById("root")
 
 let timer;
-export default function ({classes, btnRefClose, btnRefSearch}) {
+export default function ({classes, btnRefClose, btnRefSearch, linkRefRedirect}) {
     const [inputValue, setInputValue] = useState("")
+
     const [showSearchedItems, setShowSearchedItems] = useState(false)
 
     const [resultsActors, setResultsActors] = useState(null)
     const [resultsMovies, setResultsMovies] = useState(null)
-    const [allPagesActors, setAllPagesActors] = useState(0)
-    const [allPagesMovies, setAllPagesMovies] = useState(0)
-
 
     useEffect(()=> {
         const func = (e) => {
@@ -34,9 +32,6 @@ export default function ({classes, btnRefClose, btnRefSearch}) {
         if (target.value === "") {
             setResultsActors(null)
             setResultsMovies(null)
-            setAllPagesActors(0)
-            setAllPagesMovies(0)
-
             return
         }
         timer = setTimeout(doSearch.bind(null, target.value), FETCH_INTERVAL);
@@ -44,22 +39,15 @@ export default function ({classes, btnRefClose, btnRefSearch}) {
     }
 
     const doSearch = async (value) => {
-
         const fetches = [
             API(SEARCH_URL(value)),
             API(ACTOR_SEARCH(value))
         ];
-
         const [MOVIES, ACTORS] = await Promise.all(fetches).then((res) =>
             Promise.all(res.map((r) => r.data))
         );
-        console.log(ACTORS)
-        console.log(MOVIES)
         setResultsActors(ACTORS.results)
         setResultsMovies(MOVIES.results)
-
-        setAllPagesActors(ACTORS.total_pages)
-        setAllPagesMovies(MOVIES.total_pages)
     }
 
 
@@ -75,10 +63,9 @@ export default function ({classes, btnRefClose, btnRefSearch}) {
                 onChange={valueTarget}/>
             {showSearchedItems && (resultsActors !== null || resultsMovies !== null) &&
             <Search
+                setShowSearchedItems={setShowSearchedItems}
                 searchResultActors={resultsActors}
                 searchResultMovies={resultsMovies}
-                amountPagesMovies={allPagesMovies}
-                amountPagesActors={allPagesActors}
             />}
         </div>)
 }

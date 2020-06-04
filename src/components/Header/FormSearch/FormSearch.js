@@ -37,7 +37,11 @@ export default function FormSearch() {
         <form className="form" onSubmit={(e) => e.preventDefault()}>
             <button ref={btnRefSearch} type="submit" className={`${classes.sendClass} form__btn`} onClick={() =>{}}/>
             <div className="input-block">
-                <InputSearch classes={classes} btnRefClose={btnRefClose} btnRefSearch={btnRefSearch}/>
+                <InputSearch
+                    classes={classes}
+                    btnRefClose={btnRefClose}
+                    btnRefSearch={btnRefSearch}
+                />
             </div>
             <button type="button" className={`${classes.btnClass} form__btn`} onClick={onClickOpenSearch}/>
             <a ref={btnRefClose} className={`${classes.closeClass} close`} onClick={onClickCloseSearch}/>
