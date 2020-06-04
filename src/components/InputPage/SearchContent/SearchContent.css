@@ -1,0 +1,12 @@
+.subtitle {
+    text-align: start;
+    margin: 0em 1em;
+}
+
+.subtitle__actors {
+    color: blue;
+}
+
+.subtitle__movies {
+    color: red;
+}

@@ -14,6 +14,8 @@ import MoviesPage from "./components/MoviesPage/MoviesPage";
 
 import MainContainer from "./containers/Main/Main";
 
+import InputPage from "./components/InputPage/InputPage";
+
 import Input from "./components/Input/Input";
 
 function App() {
@@ -25,7 +27,7 @@ function App() {
                     <Route path="/" exact component={Main}/>
                     <Route path="/actors" exact component={Actors}/>
                     <Route path="/movies" exact component={MoviesPage}/>
-                    <Route path="/search" component={Input}/>
+                    <Route path="/search" component={InputPage}/>
                     <Route path="/movies/:movie" component={Movie}/>
                     <Route path="/actors/:actor" component={ActorPage}/>
                     <Route component={NotFoundPage}/>

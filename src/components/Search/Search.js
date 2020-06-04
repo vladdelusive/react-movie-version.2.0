@@ -4,7 +4,7 @@ import SearchItem from "./SearchItems/SearchItem";
 import {Link} from "react-router-dom";
 import NoOneFound from "./NoOneFound/NoOneFound";
 
-export default function Search({searchResultActors, searchResultMovies, setShowSearchedItems}) {
+export default function Search({value, searchResultActors, searchResultMovies, setShowSearchedItems}) {
 
     if (!searchResultMovies || !searchResultActors) return null
     const searchedItemsMovies = [];
@@ -59,7 +59,7 @@ export default function Search({searchResultActors, searchResultMovies, setShowS
                 </div>
                 : null
             }
-            <Link className="input-block__link" to={'/actors'}
+            <Link className="input-block__link" to={`/search?query=${value}`}
                   onClick={() => setShowSearchedItems(false)}>More...</Link>
 
         </div>

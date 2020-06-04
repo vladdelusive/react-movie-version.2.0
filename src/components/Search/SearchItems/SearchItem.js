@@ -18,7 +18,8 @@ export default function SearchItem({image, title, typeItem, id, setShowSearchedI
             </Link>
 
             <div className="input-item__text">
-                <Link className="input-item__text--link" to={link} onClick={()=>setShowSearchedItems(false)}>
+                <Link className="input-item__text--link" to={link}
+                      onClick={()=>setShowSearchedItems(false)}>
                     {title}
                 </Link>
             </div>

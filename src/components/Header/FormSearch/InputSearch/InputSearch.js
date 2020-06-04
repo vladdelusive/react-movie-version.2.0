@@ -8,22 +8,20 @@ import './InputSearch.css'
 const doc = document.getElementById("root")
 
 let timer;
-export default function ({classes, btnRefClose, btnRefSearch, linkRefRedirect}) {
-    const [inputValue, setInputValue] = useState("")
-
+export default function ({classes, btnRefClose, btnRefSearch, inputValue, setInputValue}) {
     const [showSearchedItems, setShowSearchedItems] = useState(false)
 
     const [resultsActors, setResultsActors] = useState(null)
     const [resultsMovies, setResultsMovies] = useState(null)
 
     useEffect(()=> {
-        const func = (e) => {
+        const checkerEvents = (e) => {
             if(e.target == btnRefClose.current || e.target == btnRefSearch.current) setShowSearchedItems(false)
             if(e.target.closest(".form")) return
             setShowSearchedItems(false)
         }
-        doc.addEventListener("click", func)
-        return ()=>doc.removeEventListener("click", func)
+        doc.addEventListener("click", checkerEvents)
+        return ()=>doc.removeEventListener("click", checkerEvents)
     })
 
     const valueTarget = ({target}) => {
@@ -66,6 +64,7 @@ export default function ({classes, btnRefClose, btnRefSearch, linkRefRedirect}) 
                 setShowSearchedItems={setShowSearchedItems}
                 searchResultActors={resultsActors}
                 searchResultMovies={resultsMovies}
+                value={inputValue.replace(/\s+/g,' ').trim()}
             />}
         </div>)
 }

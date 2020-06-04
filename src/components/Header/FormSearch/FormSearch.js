@@ -3,8 +3,9 @@ import "./FormSearch.css";
 import Search from "../../Search/Search";
 
 import InputSearch from "./InputSearch/InputSearch";
+import {Link} from "react-router-dom";
 
-export default function FormSearch() {
+export default function FormSearch(props) {
     const [classes, setClasses] = useState({
         inputClass: "",
         btnClass: "",
@@ -14,6 +15,8 @@ export default function FormSearch() {
 
     const btnRefClose = createRef()
     const btnRefSearch = createRef()
+
+    const [inputValue, setInputValue] = useState("")
 
     const onClickOpenSearch = () => {
         setClasses({
@@ -35,12 +38,21 @@ export default function FormSearch() {
 
     return (
         <form className="form" onSubmit={(e) => e.preventDefault()}>
-            <button ref={btnRefSearch} type="submit" className={`${classes.sendClass} form__btn`} onClick={() =>{}}/>
+            <Link to={`/search?query=${inputValue}`}>
+                <button
+                    ref={btnRefSearch}
+                    type="submit"
+                    className={`${classes.sendClass} form__btn`}
+                    onClick={() => console.log(props)}
+                />
+            </Link>
             <div className="input-block">
                 <InputSearch
                     classes={classes}
                     btnRefClose={btnRefClose}
                     btnRefSearch={btnRefSearch}
+                    inputValue={inputValue}
+                    setInputValue={setInputValue}
                 />
             </div>
             <button type="button" className={`${classes.btnClass} form__btn`} onClick={onClickOpenSearch}/>

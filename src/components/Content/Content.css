@@ -10,5 +10,5 @@
     flex-direction: row;
     flex-wrap: wrap;
     padding: 0px 5%;
-    align-items: flex-end;
+    align-items: stretch;
 }
