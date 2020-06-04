@@ -3,26 +3,30 @@
     border-radius: 6px;
     margin: 10px 10px 30px;
     border: 2px solid black;
-    border-bottom: 2px solid black;
 }
 
-.actor__photo {
+.actor__photo{
+    display: block;
+}
+
+.actor__photo img {
     width: 350px;
 }
 
-.actor__name {
+.actor-name__link--text {
     font-size: 25px;
     margin: auto;
     text-align: center;
 }
 
-.actor__name--link {
+.actor-name__link {
     text-decoration: none;
     color: #007bff;
+    display: block;
 }
 
 @media (max-width: 400px) {
-    .actor__photo {
+    .actor__photo img {
         width: 300px;
     }
 }

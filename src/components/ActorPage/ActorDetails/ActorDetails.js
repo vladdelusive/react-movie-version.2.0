@@ -8,11 +8,11 @@ export default function ActorDetails({ personInfo, handleClick, isHidden, movies
     return (
         <>
             <div className="actor-info">
-                <div className="actor-info__left">
-                    <div>
-                        <h1 className="actor--info__text">{personInfo.name}</h1>
-                        <h3 className="actor--info__text">{personInfo.place_of_birth}</h3>
-                        <h3 className="actor--info__text">
+                <div className="actor-info__block actor-info__block--left">
+                    <div className="actor-info__header">
+                        <h1 className="actor-info__text actor-info__text--name">{personInfo.name}</h1>
+                        <h3 className="actor-info__text actor-info__text--birth">{personInfo.place_of_birth}</h3>
+                        <h3 className="actor-info__text actor-info__text--deathday">
                             {personInfo.deathday === null
                                 ? convertAge(personInfo.birthday)
                                 : <>from {personInfo.birthday.slice(0, 4)} to {personInfo.deathday.slice(0, 4)}</>
@@ -20,11 +20,10 @@ export default function ActorDetails({ personInfo, handleClick, isHidden, movies
                         </h3>
                     </div>
                     <img
-                        className="actor-info__left--width"
                         src={`${IMAGE_URL}${CARD_SIZE}${personInfo.profile_path}`}
                         alt="person_image" />
                 </div>
-                <div className="actor-info__right">
+                <div className="actor-info__block actor-info__block--right">
                     <p className="actor-info__right--font">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {personInfo.biography}</p>
                 </div>
             </div>

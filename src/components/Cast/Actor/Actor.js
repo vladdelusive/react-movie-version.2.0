@@ -9,11 +9,11 @@ export default function Actor({path, id, gender, name}) {
     const image = path === null ? gender === 2 ? male : female : `${IMAGE_URL}${CARD_SIZE}${path}`
     return (
         <div className="actor">
-            <Link to={`/actors/${id}`}> <img src={image} alt="actor_image" className="actor__photo"/> </Link>
-            <div className="">
-                <h5 className="actor__name">
-                    <Link className="actor__name--link" to={`/actors/${id}`}> {name} </Link>
-                </h5>
+            <Link className="actor__photo" to={`/actors/${id}`}> <img src={image} alt="actor_image"/> </Link>
+            <div className="actor-name">
+                <Link className="actor-name__link" to={`/actors/${id}`}>
+                    <h5 className="actor-name__link actor-name__link--text">{name}</h5>
+                </Link>
             </div>
         </div>
     )

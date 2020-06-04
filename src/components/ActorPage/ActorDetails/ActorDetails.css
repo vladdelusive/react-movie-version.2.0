@@ -5,17 +5,50 @@
     flex-wrap: nowrap;
 }
 
-.actor-info__right {
+.actor-info__block {
+
+}
+
+.actor-info__block--left {
+
+}
+
+.actor-info__block--right {
     align-self: flex-end;
     margin-left: 50px;
 }
 
-.actor-info__right--font {
-    font-size: 20px;
+.actor-info__header {
+    display: block;
 }
 
-.actor--info__text {
+.actor-info__right--font {
+    font-size: 20px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.actor-info__text {
     margin: 10px auto;
+}
+
+.actor-info__text--name {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.actor-info__text--birth {
+    display: block;
+    font-size: 1.15em;
+}
+
+.actor-info__text--deathday {
+    display: block;
+    font-size: 1.20em;
 }
 
 .actor-movies {
@@ -40,15 +73,15 @@
     .actor-info {
         flex-wrap: wrap;
     }
-    .actor-info__right {
+    .actor-info__block--right {
         margin: auto;
     }
-    .actor-info__left {
+    .actor-info__block--left {
         margin: auto;
     }
 }
 @media screen and (max-width: 600px) {
-    .actor-info__left--width {
+    .actor-info__block--left img {
         width: 100%;
     }
 }

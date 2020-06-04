@@ -4,11 +4,20 @@
     border-radius: 30px;
 }
 
-.dsdsa {
+.ca {
     font-size: 25px;
     margin: auto;
     text-align: center;
 }
+.card {
+    margin: 15px;
+    display: block;
+}
+
+.card a {
+    display: block;
+}
+
 .card__title--link {
     font-size: 25px;
     margin: 10px auto;

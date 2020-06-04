@@ -163,7 +163,7 @@ function Movie(props) {
                     <div className="movie__trailer">
                         <strong className="movie-info__type"> Trailer: </strong>
                     </div>
-                    <div>
+                    <div className="movie__trailer movie__trailer--youtube-trailer">
                         {
                             trailer
                                 ? (<iframe frameBorder="0" allowFullScreen="1"

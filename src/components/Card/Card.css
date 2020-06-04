@@ -14,7 +14,7 @@
     width: 400px;
 }
 
-.card:hover {
+.card-movie:hover {
     transform: scale(1.1);
     transition: all .4s ease;
 }

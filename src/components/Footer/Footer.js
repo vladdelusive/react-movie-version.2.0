@@ -3,7 +3,9 @@ import mainImage from './githubImage.png'
 import './Footer.css'
 
 export const Footer = () => {
-    return<a className="footer" href="https://github.com/vladdelusive">
-            <img className="footer__image" src={mainImage} alt={"github_image"}/>
+    return <div className="footer">
+        <a className="footer__image" href="https://github.com/vladdelusive">
+            <img src={mainImage} alt={"github_image"}/>
         </a>
+    </div>
 }

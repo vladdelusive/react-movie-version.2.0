@@ -7,7 +7,7 @@
     mix-blend-mode: multiply;
 }
 
-.footer__image {
+.footer__image img {
     width: 130px;
     cursor: pointer;
 }
