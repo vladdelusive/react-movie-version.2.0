@@ -15,7 +15,7 @@ export default function ActorDetails({ personInfo, handleClick, isHidden, movies
                         <h3 className="actor-info__text actor-info__text--deathday">
                             {personInfo.deathday === null
                                 ? convertAge(personInfo.birthday)
-                                : <>from {personInfo.birthday.slice(0, 4)} to {personInfo.deathday.slice(0, 4)}</>
+                                : <>from {personInfo.birthday && personInfo.birthday.slice(0, 4)} to {personInfo.deathday.slice(0, 4)}</>
                             }
                         </h3>
                     </div>
