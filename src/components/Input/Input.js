@@ -10,7 +10,7 @@ import API from '../../API'
 
 let timer;
 
-function Input() {
+function Input({location}) {
     const [inputValue, setInputValue] = useState("")
     const [page, setPage] = useState(1)
     const [results, setResults] = useState(undefined)

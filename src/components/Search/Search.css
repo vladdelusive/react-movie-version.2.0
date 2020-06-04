@@ -23,3 +23,20 @@
     opacity: 1;
     transition: all .4s ease;
 }
+
+.category {
+    color: white;
+    font-size: 15px;
+    margin: 5px 0;
+    width: 100%;
+    padding: 0px;
+    border: 1px black solid;
+}
+
+.category__actors {
+    background: #2065ef;
+}
+
+.category__movies {
+    background: #ff0000;
+}
