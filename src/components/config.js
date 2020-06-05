@@ -1,6 +1,6 @@
 export const API_KEY = process.env.REACT_APP_API_KEY;
 
-export const SEARCH_URL = (word) => `search/movie?api_key=${API_KEY}&query=${word}`;
+export const SEARCH_URL = (word, page= 1) => `search/movie?api_key=${API_KEY}&query=${word}&page=${page}`;
 
 export const POPULAR_URL = (page = 1) => `movie/popular?api_key=${API_KEY}&page=${page}`;
 export const TOP_URL = (page = 1) =>`movie/top_rated?api_key=${API_KEY}&page=${page}`;

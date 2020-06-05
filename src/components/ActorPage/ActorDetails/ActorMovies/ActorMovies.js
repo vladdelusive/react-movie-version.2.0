@@ -3,7 +3,12 @@ import Movie from './Movie'
 import ArrowTop from '../../../ArrowTop/ArrowTop'
 
 export default memo(function ActorMovies({ cast }) {
+    const identityId = []
     const movies = cast.map(movie => {
+        if (identityId.find((el) => el === movie.id)) {
+            return ""
+        }
+        identityId.push(movie.id)
         return <Movie
             key={movie.id}
             id={movie.id}
@@ -12,7 +17,7 @@ export default memo(function ActorMovies({ cast }) {
         />
     })
     return <>
-        <div className="container__content">
+        <div className="section__content-container">
             {movies}
         </div>
         {movies.length > 12 ? <ArrowTop/> : ""}

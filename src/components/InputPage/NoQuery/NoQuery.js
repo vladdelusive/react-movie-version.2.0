@@ -3,11 +3,10 @@ import './NoQuery.css'
 
 function NoQuery() {
     return (
-        <div className="search-wrapper">
-            <div>
-                <h1 className="title">Search Page</h1>
-            </div>
-        </div>
+            <>
+                <h1 className="section__title">Search Page</h1>
+                <h1 className="subtitle">Please type something..</h1>
+            </>
     )
 }
 

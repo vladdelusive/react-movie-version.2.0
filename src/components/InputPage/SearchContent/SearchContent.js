@@ -5,29 +5,45 @@ import Content from "../../Content/Content";
 import API from "../../../API";
 import {ACTOR_SEARCH, SEARCH_URL} from "../../config";
 import Loader from "../../Loader/Loader";
-import Cast from "../../Cast/Cast";
+import Cast from "../../Cast/Cast"
 
-function SearchContent({query}) {
+import NotFound from "../../NotFound/NotFound"
+import Pagination from "../../Pagination/Pagination";
+
+function SearchContent({query, page}) {
     const [dataMovies, setDataMovies] = useState(null)
     const [dataActors, setDataActors] = useState(null)
     const [loading, setLoading] = useState(true)
 
+    const [currentPageMovies, setCurrentPageMovies] = useState(page)
+    const [currentPageActors, setCurrentPageActors] = useState(page)
+
+    const [totalPagesMovies, setTotalPagesMovies] = useState(null)
+    const [totalPagesActors, setTotalPagesActors] = useState(null)
+
     useEffect(() => {
         const fetch = async () => {
             const fetches = [
-                API(SEARCH_URL(query)),
+                API(SEARCH_URL(query, currentPageMovies)),
                 API(ACTOR_SEARCH(query))
             ];
             const [MOVIES, ACTORS] = await Promise.all(fetches).then((res) =>
                 Promise.all(res.map((r) => r.data))
             );
+
             setDataActors(ACTORS.results)
             setDataMovies(MOVIES.results)
             setLoading(false)
+
+            setTotalPagesMovies(MOVIES.total_pages)
+            setTotalPagesActors(ACTORS.total_pages)
         }
         fetch()
+    }, [query, currentPageMovies])
 
-    }, [query])
+    useEffect(()=>{
+        setCurrentPageMovies(page)
+    }, [page])
 
     return (
         <>
@@ -37,9 +53,20 @@ function SearchContent({query}) {
                     {
                         loading ?
                             <Loader/>
-                            : <Content results={dataMovies} path="/movies" searching={true} />
+                            :
+                            (dataMovies.length ?
+                                <>
+                                    <Content results={dataMovies} path="/movies" searching={true}/>
+                                    <Pagination
+                                        total_pages={totalPagesMovies}
+                                        currentPage={currentPageMovies}
+                                        setCurrentPage={(page) => setCurrentPageMovies(page)}
+                                    />
+                                </>
+                                : <NotFound/>)
                     }
                 </div>
+
             </div>
             <div className="section__content section__content--actors">
                 <div className="subtitle subtitle__actors">Actors:</div>
@@ -47,7 +74,10 @@ function SearchContent({query}) {
                     {
                         loading ?
                             <Loader/>
-                            : <Cast cast={dataActors} searching={true}/>
+                            : (dataActors.length ?
+                                <Cast cast={dataActors} searching={true}/>
+                                : <NotFound/>
+                            )
                     }
                 </div>
             </div>
