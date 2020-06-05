@@ -11,7 +11,6 @@ export default function Pagination({currentPage, total_pages, setCurrentPage}) {
                 className={currentPage === i ? "active" : ""}>{i}
             </div>)
     }
-
     return (
         <div className="pagination">
             <div>&laquo;</div>
@@ -20,16 +19,3 @@ export default function Pagination({currentPage, total_pages, setCurrentPage}) {
         </div>
     );
 };
-
-
-// <nav>
-//     <ul className='pagination'>
-//         {pageNumbers.map(number => (
-//             <li key={number} className='page-item'>
-//                 <a onClick={() => paginate(number)} className='page-link'>
-//                     {number}
-//                 </a>
-//             </li>
-//         ))}
-//     </ul>
-// </nav>

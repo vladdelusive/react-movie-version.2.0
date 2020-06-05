@@ -3,16 +3,18 @@ import './Search.css'
 import SearchItem from "./SearchItems/SearchItem";
 import {Link} from "react-router-dom";
 import NoOneFound from "./NoOneFound/NoOneFound";
+import {HEADER_TOGGLE} from "../../store/actions/actionTypes";
+import {useDispatch} from "react-redux";
 
-export default function Search({value, searchResultActors, searchResultMovies, setShowSearchedItems}) {
-
+export default function Search({value, searchResultActors, searchResultMovies}) {
+    const dispatch = useDispatch();
     if (!searchResultMovies || !searchResultActors) return null
     const searchedItemsMovies = [];
     const toM = searchResultMovies.length > 2 ? 2 : searchResultMovies.length
     for (let i = 0; i < toM; i++) {
         searchedItemsMovies.push(
             <SearchItem
-                setShowSearchedItems={setShowSearchedItems}
+                setShowSearchedItems={()=>dispatch({type: HEADER_TOGGLE, payload: false})}
                 key={searchResultMovies[i].id}
                 title={searchResultMovies[i].title}
                 image={searchResultMovies[i].poster_path}
@@ -20,13 +22,12 @@ export default function Search({value, searchResultActors, searchResultMovies, s
                 typeItem="movie"
             />)
     }
-
     const searchedItemsActors = [];
     const toA = searchResultActors.length > 2 ? 2 : searchResultActors.length
     for (let i = 0; i < toA; i++) {
         searchedItemsActors.push(
             <SearchItem
-                setShowSearchedItems={setShowSearchedItems}
+                setShowSearchedItems={()=>dispatch({type: HEADER_TOGGLE, payload: false})}
                 key={searchResultActors[i].id}
                 title={searchResultActors[i].name}
                 image={searchResultActors[i].profile_path}
@@ -60,7 +61,7 @@ export default function Search({value, searchResultActors, searchResultMovies, s
                 : null
             }
             <Link className="input-block__link" to={`/search?query=${value}`}
-                  onClick={() => setShowSearchedItems(false)}>More...</Link>
+                  onClick={()=>dispatch({type: HEADER_TOGGLE, payload: false})}>More...</Link>
 
         </div>
     )

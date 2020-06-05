@@ -18,9 +18,14 @@ import InputPage from "./components/InputPage/InputPage";
 
 import Input from "./components/Input/Input";
 
+
+export const ContextPage = React.createContext(1);
+
+
+
 function App() {
     return (
-        <>
+        <ContextPage.Provider value={1}>
             <Header/>
             <MainContainer>
                 <Switch>
@@ -34,7 +39,7 @@ function App() {
                 </Switch>
             </MainContainer>
             <Footer/>
-        </>
+        </ContextPage.Provider>
     );
 }
 

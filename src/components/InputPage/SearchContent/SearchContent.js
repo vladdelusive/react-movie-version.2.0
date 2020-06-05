@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import './SearchContent.css'
 
 import Content from "../../Content/Content";
@@ -9,8 +9,11 @@ import Cast from "../../Cast/Cast"
 
 import NotFound from "../../NotFound/NotFound"
 import Pagination from "../../Pagination/Pagination";
+import {ContextPage} from "../../../App";
 
-function SearchContent({query, page}) {
+function SearchContent({query}) {
+    const page = useContext(ContextPage);
+
     const [dataMovies, setDataMovies] = useState(null)
     const [dataActors, setDataActors] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -42,8 +45,8 @@ function SearchContent({query, page}) {
     }, [query, currentPageMovies])
 
     useEffect(()=>{
-        setCurrentPageMovies(page)
-    }, [page])
+        console.log("d")
+    }, [])
 
     return (
         <>

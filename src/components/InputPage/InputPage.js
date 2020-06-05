@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useContext} from 'react'
 import './InputPage.css'
 import NoQuery from "./NoQuery/NoQuery";
 import SearchContent from "./SearchContent/SearchContent";
@@ -14,7 +14,7 @@ function InputPage({location}) {
             <div className="section__title">Your search is
                 "<span className="search-text">{text}</span>"
             </div>
-            <SearchContent query={text} page={1}/>
+            <SearchContent query={text}/>
         </div>
     )
 }
