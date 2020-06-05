@@ -5,7 +5,7 @@ import { IMAGE_URL, CARD_SIZE } from '../config'
 import image from '../Card/image.jpg'
 import overviewEditor  from './overviewEditor'
 
-export default React.memo(function Content({ results, path }) {
+export default React.memo(function Content({ results, path, searching }) {
     const identityId = []
     const cards = results.map((movie) => {
         if(identityId.find((el)=>el===movie.id)){
@@ -19,6 +19,7 @@ export default React.memo(function Content({ results, path }) {
 
         return (
             <Card
+                searching={searching}
                 title={movie.title}
                 key={movie.id}
                 overview={overview}

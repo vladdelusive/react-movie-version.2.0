@@ -21,8 +21,8 @@ function SearchContent({query}) {
             const [MOVIES, ACTORS] = await Promise.all(fetches).then((res) =>
                 Promise.all(res.map((r) => r.data))
             );
-            setDataActors(ACTORS.results.length > 8 ? ACTORS.results.slice(0, 8) : ACTORS.results)
-            setDataMovies(MOVIES.results.length > 8 ? MOVIES.results.slice(0, 8) : MOVIES.results)
+            setDataActors(ACTORS.results)
+            setDataMovies(MOVIES.results)
             setLoading(false)
         }
         fetch()
@@ -31,23 +31,23 @@ function SearchContent({query}) {
 
     return (
         <>
-            <div className="section__content">
-                <div className="title subtitle subtitle__movies">Movies:</div>
+            <div className="section__content section__content--movies">
+                <div className="subtitle subtitle__movies">Movies:</div>
                 <div className="section__content-container">
                     {
                         loading ?
                             <Loader/>
-                            : <Content results={dataMovies} path="/movies"/>
+                            : <Content results={dataMovies} path="/movies" searching={true} />
                     }
                 </div>
             </div>
-            <div className="section__content">
-                <div className="title subtitle subtitle__actors">Actors:</div>
+            <div className="section__content section__content--actors">
+                <div className="subtitle subtitle__actors">Actors:</div>
                 <div className="section__content-container">
                     {
                         loading ?
                             <Loader/>
-                            : <Cast cast={dataActors} path="/actors"/>
+                            : <Cast cast={dataActors} searching={true}/>
                     }
                 </div>
             </div>

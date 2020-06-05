@@ -1,6 +1,10 @@
 .subtitle {
     text-align: start;
     margin: 0em 1em;
+    color: red;
+    font-size: 50px;
+    font-weight: bold;
+    display: block;
 }
 
 .subtitle__actors {

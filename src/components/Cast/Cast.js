@@ -3,7 +3,7 @@ import Actor from './Actor/Actor'
 import './Cast.css'
 import ArrowTop from '../ArrowTop/ArrowTop'
 
-export default React.memo(function Cast({cast}) {
+export default React.memo(function Cast({cast, searching}) {
     const identityId = []
     const actors = cast.map((actor) => {
         if (identityId.find((el) => el === actor.id)) {
@@ -15,6 +15,7 @@ export default React.memo(function Cast({cast}) {
                        id={actor.id}
                        gender={actor.gender}
                        path={actor.profile_path}
+                       searching={searching}
         />)
     })
     return <div className="section__content">
