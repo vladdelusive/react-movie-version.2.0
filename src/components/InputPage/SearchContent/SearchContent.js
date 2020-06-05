@@ -31,9 +31,9 @@ function SearchContent({query}) {
 
     return (
         <>
-            <div className="container">
+            <div className="section__content">
                 <div className="title subtitle subtitle__movies">Movies:</div>
-                <div className="container__content">
+                <div className="section__content-container">
                     {
                         loading ?
                             <Loader/>
@@ -41,9 +41,9 @@ function SearchContent({query}) {
                     }
                 </div>
             </div>
-            <div className="container">
+            <div className="section__content">
                 <div className="title subtitle subtitle__actors">Actors:</div>
-                <div className="container__content">
+                <div className="section__content-container">
                     {
                         loading ?
                             <Loader/>

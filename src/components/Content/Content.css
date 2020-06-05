@@ -1,9 +1,9 @@
-.container {
+.section__content {
     background-color: #f8f9fa;
     padding-top: 25px;
 }
 
-.container__content {
+.section__content-container {
     display: flex;
     justify-content: space-around;
     justify-items: center;

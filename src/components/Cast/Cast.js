@@ -17,8 +17,8 @@ export default React.memo(function Cast({cast}) {
                        path={actor.profile_path}
         />)
     })
-    return <div className="cast-wrapper__content">
-        <div className="container__content">
+    return <div className="section__content">
+        <div className="section__content-container">
             {actors}
         </div>
         {actors.length > 12 ? <ArrowTop/> : ""}

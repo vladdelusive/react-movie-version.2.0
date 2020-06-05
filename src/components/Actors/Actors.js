@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { ACTORS_PAGE_URL, ACTORS } from '../config'
-import { getLocalStorage, setLocalStorage } from '../localStorage/localStorage'
+import React, {useEffect, useState} from 'react'
+import {ACTORS_PAGE_URL, ACTORS} from '../config'
+import {getLocalStorage, setLocalStorage} from '../localStorage/localStorage'
 import Loader from '../Loader/Loader'
 import Cast from '../Cast/Cast'
 import ArrowTop from '../ArrowTop/ArrowTop'
@@ -44,13 +44,17 @@ export default function Actors() {
 
     return (
         <>
-            <h1 className="title" >ACTORS</h1>
+            <div className="section__head">
+                <h1 className="section__title">ACTORS</h1>
+            </div>
             {
                 loading
-                    ? <Loader />
+                    ? <Loader/>
                     : <>
                         <Cast cast={results}/>
-                        <BtnLoader handlerLoading={handlerLoading}>Load more actors...</BtnLoader>
+                        <div className="section__footer">
+                            <BtnLoader handlerLoading={handlerLoading}>Load more actors...</BtnLoader>
+                        </div>
                     </>
             }
         </>

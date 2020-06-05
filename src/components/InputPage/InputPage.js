@@ -9,12 +9,10 @@ function InputPage({location}) {
     if(!location.search) return <NoQuery/>
 
     return (
-        <div className="search-wrapper">
-            <div>
-                <h1 className="title">Your search is
+        <div className="section__search">
+                <div className="section__title">Your search is
                     "<span className="search-text">{text}</span>"
-                </h1>
-            </div>
+                </div>
             <SearchContent query={text}/>
         </div>
     )

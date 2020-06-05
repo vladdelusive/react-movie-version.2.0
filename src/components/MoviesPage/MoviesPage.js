@@ -43,13 +43,15 @@ function MoviesPage() {
     }, [])
     return (
         <>
-            <h1 className="title">NEWLY MOVIES</h1>
+            <div className="section__head">
+                <h1 className="section__title">NEWLY MOVIES</h1>
+            </div>
             {
                 loading
                     ? <Loader />
                     : <>
-                        <div className="container">
-                            <div className="container__content">
+                        <div className="section__content">
+                            <div className="section__content-container">
                                 <Content
                                     results={results}
                                     path="/movies"
@@ -57,7 +59,7 @@ function MoviesPage() {
                             </div>
                             <BtnLoader handlerLoading={handlerLoading}>Load more movies...</BtnLoader>
                         </div>
-                        <div>
+                        <div className="section__footer">
                             <ArrowTop />
                         </div>
                     </>
