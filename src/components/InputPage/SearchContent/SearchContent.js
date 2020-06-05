@@ -6,20 +6,23 @@ import API from "../../../API";
 import {ACTOR_SEARCH, SEARCH_URL} from "../../config";
 import Loader from "../../Loader/Loader";
 import Cast from "../../Cast/Cast"
+import {SEARCH_PAGE} from '../../../store/SEARCH/actions/actionTypes'
 
 import NotFound from "../../NotFound/NotFound"
 import Pagination from "../../Pagination/Pagination";
 import {ContextPage} from "../../../App";
+import { useSelector, useDispatch } from 'react-redux';
 
 function SearchContent({query}) {
-    const page = useContext(ContextPage);
+    const {page} = useSelector(({search})=>search)
+    const dispatch = useDispatch()
 
     const [dataMovies, setDataMovies] = useState(null)
     const [dataActors, setDataActors] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    const [currentPageMovies, setCurrentPageMovies] = useState(page)
-    const [currentPageActors, setCurrentPageActors] = useState(page)
+    // const [currentPageMovies, setCurrentPageMovies] = useState(page)
+    // const [currentPageActors, setCurrentPageActors] = useState(page)
 
     const [totalPagesMovies, setTotalPagesMovies] = useState(null)
     const [totalPagesActors, setTotalPagesActors] = useState(null)
@@ -27,7 +30,7 @@ function SearchContent({query}) {
     useEffect(() => {
         const fetch = async () => {
             const fetches = [
-                API(SEARCH_URL(query, currentPageMovies)),
+                API(SEARCH_URL(query, page)),
                 API(ACTOR_SEARCH(query))
             ];
             const [MOVIES, ACTORS] = await Promise.all(fetches).then((res) =>
@@ -42,7 +45,7 @@ function SearchContent({query}) {
             setTotalPagesActors(ACTORS.total_pages)
         }
         fetch()
-    }, [query, currentPageMovies])
+    }, [query, page])
 
     useEffect(()=>{
         console.log("d")
@@ -62,8 +65,8 @@ function SearchContent({query}) {
                                     <Content results={dataMovies} path="/movies" searching={true}/>
                                     <Pagination
                                         total_pages={totalPagesMovies}
-                                        currentPage={currentPageMovies}
-                                        setCurrentPage={(page) => setCurrentPageMovies(page)}
+                                        currentPage={page}
+                                        setCurrentPage={(page) => dispatch({type: SEARCH_PAGE,payload: page})}
                                     />
                                 </>
                                 : <NotFound/>)

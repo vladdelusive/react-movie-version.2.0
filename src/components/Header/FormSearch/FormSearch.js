@@ -5,7 +5,7 @@ import Search from "../../Search/Search";
 import InputSearch from "./InputSearch/InputSearch";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {SEARCH_TOGGLE} from "../../../store/SEARCH/actions/actionTypes";
+import {SEARCH_TOGGLE, SEARCH_RELOAD_PAGE} from "../../../store/SEARCH/actions/actionTypes";
 
 export default function FormSearch() {
     const {inputValue, showSearchedItems} = useSelector(({search}) => search);
@@ -38,16 +38,19 @@ export default function FormSearch() {
     };
 
     return (
-        <form className="form" onSubmit={(e) => e.preventDefault()}>
+        <form className="form" onSubmit={(e) => {e.preventDefault()}}>
             <Link to={`/search?query=${inputValue}`}>
                 <button
-                    onClick={()=>dispatch({type: SEARCH_TOGGLE, payload: false})}
+                    onClick={()=>{
+                        dispatch({type: SEARCH_TOGGLE, payload: false}); 
+                        dispatch({type: SEARCH_RELOAD_PAGE})
+                    }}
                     type="submit"
                     className={`${classes.sendClass} form__btn`}
                 />
             </Link>
             <div className="input-block">
-                <InputSearch
+                <InputSearch 
                     showSearchedItems={showSearchedItems}
                     setShowSearchedItems={()=>dispatch({type: SEARCH_TOGGLE, payload: true})}
                     classes={classes}
