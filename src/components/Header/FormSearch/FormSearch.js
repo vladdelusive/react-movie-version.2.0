@@ -5,11 +5,10 @@ import Search from "../../Search/Search";
 import InputSearch from "./InputSearch/InputSearch";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {HEADER_TOGGLE} from "../../../store/actions/actionTypes";
+import {SEARCH_TOGGLE} from "../../../store/SEARCH/actions/actionTypes";
 
 export default function FormSearch() {
-    const inputValue = useSelector(({header}) => header.inputValue);
-    const showSearchedItems = useSelector(({header}) => header.showSearchedItems);
+    const {inputValue, showSearchedItems} = useSelector(({search}) => search);
     const dispatch = useDispatch()
 
     const [classes, setClasses] = useState({
@@ -35,14 +34,14 @@ export default function FormSearch() {
             closeClass: "hide",
             sendClass: "hide"
         })
-        dispatch({type: HEADER_TOGGLE, payload: false})
+        dispatch({type: SEARCH_TOGGLE, payload: false})
     };
 
     return (
         <form className="form" onSubmit={(e) => e.preventDefault()}>
             <Link to={`/search?query=${inputValue}`}>
                 <button
-                    onClick={()=>dispatch({type: HEADER_TOGGLE, payload: false})}
+                    onClick={()=>dispatch({type: SEARCH_TOGGLE, payload: false})}
                     type="submit"
                     className={`${classes.sendClass} form__btn`}
                 />
@@ -50,13 +49,13 @@ export default function FormSearch() {
             <div className="input-block">
                 <InputSearch
                     showSearchedItems={showSearchedItems}
-                    setShowSearchedItems={()=>dispatch({type: HEADER_TOGGLE, payload: true})}
+                    setShowSearchedItems={()=>dispatch({type: SEARCH_TOGGLE, payload: true})}
                     classes={classes}
                     inputValue={inputValue}
                 />
             </div>
             <button type="button" className={`${classes.btnClass} form__btn`} onClick={onClickOpenSearch}/>
-            <a className={`${classes.closeClass} close`} onClick={onClickCloseSearch}/>
+            <div className={`${classes.closeClass} close`} onClick={onClickCloseSearch}/>
         </form>
     );
 }

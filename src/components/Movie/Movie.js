@@ -8,7 +8,6 @@ import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
 import Cast from '../Cast/Cast'
 
 import {badges} from './badges'
-import getRandomColor from "./randomColor";
 
 import API from '../../API'
 

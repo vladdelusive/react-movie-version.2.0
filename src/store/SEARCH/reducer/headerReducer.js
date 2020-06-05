@@ -1,4 +1,4 @@
-import {SEARCH_UPLOAD , SEARCH_OFFLOAD, HEADER_TOGGLE, HEADER_CLEAR, HEADER_INPUT} from "../../actions/actionTypes";
+import {SEARCH_UPLOAD , SEARCH_OFFLOAD, SEARCH_TOGGLE, SEARCH_CLEAR, SEARCH_INPUT} from "../actions/actionTypes";
 
 const initialState = {
     inputValue: "",
@@ -7,7 +7,7 @@ const initialState = {
     resultsMovies: null,
 }
 
-export default function headerReducer(state = initialState, action) {
+export default function searchReducer(state = initialState, action) {
     switch (action.type) {
         case SEARCH_UPLOAD:
             return {
@@ -21,17 +21,17 @@ export default function headerReducer(state = initialState, action) {
                 resultsActors: null,
                 resultsMovies: null,
             }
-        case HEADER_TOGGLE:
+        case SEARCH_TOGGLE:
             return {
                 ...state,
                 showSearchedItems: action.payload
             }
-        case HEADER_INPUT:
+        case SEARCH_INPUT:
             return {
                 ...state,
                 inputValue: action.payload
             }
-        case HEADER_CLEAR:
+        case SEARCH_CLEAR:
             return {
                 inputValue: "",
                 resultsActors: null,

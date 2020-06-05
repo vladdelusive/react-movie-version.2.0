@@ -1,9 +1,0 @@
-/*
-** HEADER - INPUT COMPONENT
-*/
-
-export const SEARCH_UPLOAD = "HEADER_UPLOAD";
-export const SEARCH_OFFLOAD = "HEADER_OFFLOAD";
-export const HEADER_TOGGLE = "HEADER_TOGGLE"
-export const HEADER_INPUT = "HEADER_INPUT"
-export const HEADER_CLEAR = "HEADER_CLEAR"

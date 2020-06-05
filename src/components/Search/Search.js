@@ -3,7 +3,7 @@ import './Search.css'
 import SearchItem from "./SearchItems/SearchItem";
 import {Link} from "react-router-dom";
 import NoOneFound from "./NoOneFound/NoOneFound";
-import {HEADER_TOGGLE} from "../../store/actions/actionTypes";
+import {SEARCH_TOGGLE} from "../../store/SEARCH/actions/actionTypes";
 import {useDispatch} from "react-redux";
 
 export default function Search({value, searchResultActors, searchResultMovies}) {
@@ -14,7 +14,7 @@ export default function Search({value, searchResultActors, searchResultMovies}) 
     for (let i = 0; i < toM; i++) {
         searchedItemsMovies.push(
             <SearchItem
-                setShowSearchedItems={()=>dispatch({type: HEADER_TOGGLE, payload: false})}
+                setShowSearchedItems={()=>dispatch({type: SEARCH_TOGGLE, payload: false})}
                 key={searchResultMovies[i].id}
                 title={searchResultMovies[i].title}
                 image={searchResultMovies[i].poster_path}
@@ -27,7 +27,7 @@ export default function Search({value, searchResultActors, searchResultMovies}) 
     for (let i = 0; i < toA; i++) {
         searchedItemsActors.push(
             <SearchItem
-                setShowSearchedItems={()=>dispatch({type: HEADER_TOGGLE, payload: false})}
+                setShowSearchedItems={()=>dispatch({type: SEARCH_TOGGLE, payload: false})}
                 key={searchResultActors[i].id}
                 title={searchResultActors[i].name}
                 image={searchResultActors[i].profile_path}
@@ -61,7 +61,7 @@ export default function Search({value, searchResultActors, searchResultMovies}) 
                 : null
             }
             <Link className="input-block__link" to={`/search?query=${value}`}
-                  onClick={()=>dispatch({type: HEADER_TOGGLE, payload: false})}>More...</Link>
+                  onClick={()=>dispatch({type: SEARCH_TOGGLE, payload: false})}>More...</Link>
 
         </div>
     )

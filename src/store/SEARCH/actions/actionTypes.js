@@ -1,0 +1,9 @@
+/*
+** search - INPUT COMPONENT
+*/
+
+export const SEARCH_UPLOAD = "SEARCH_UPLOAD";
+export const SEARCH_OFFLOAD = "SEARCH_OFFLOAD";
+export const SEARCH_TOGGLE = "SEARCH_TOGGLE"
+export const SEARCH_INPUT = "SEARCH_INPUT"
+export const SEARCH_CLEAR = "SEARCH_CLEAR"
