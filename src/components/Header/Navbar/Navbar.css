@@ -30,14 +30,14 @@
     border-radius: .25rem;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
     .navbar {
         width: 100%;
     }
-}
-
-@media screen and (max-width: 575px) {
     .navbar__item {
         display: none;
+    }
+    .form-wrapper {
+        margin-right: 40px;
     }
 }

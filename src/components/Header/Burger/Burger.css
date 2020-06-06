@@ -1,0 +1,23 @@
+.burger__icon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.burger__icon:hover {
+    
+}
+
+.burger {
+    justify-items: center;
+    align-items: center;
+    display: none;
+}
+
+@media screen and (max-width: 750px) {
+    .burger {
+        display: block;
+        position: absolute;
+        right: 0;
+    }
+}
