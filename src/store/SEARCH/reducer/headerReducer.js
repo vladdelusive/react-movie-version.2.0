@@ -4,8 +4,9 @@ import {
   SEARCH_TOGGLE,
   SEARCH_CLEAR,
   SEARCH_INPUT,
-  SEARCH_PAGE,
-  SEARCH_RELOAD_PAGE
+  SEARCH_MOVIES_PAGE,
+  SEARCH_ACTORS_PAGE,
+  SEARCH_RELOAD_PAGE,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -13,7 +14,8 @@ const initialState = {
   showSearchedItems: false,
   resultsActors: null,
   resultsMovies: null,
-  page: 1,
+  pageActors: 1,
+  pageMovies: 1,
 };
 
 export default function searchReducer(state = initialState, action) {
@@ -47,15 +49,21 @@ export default function searchReducer(state = initialState, action) {
         resultsMovies: null,
         showSearchedItems: false,
       };
-    case SEARCH_PAGE:
+    case SEARCH_MOVIES_PAGE:
       return {
         ...state,
-        page: action.payload,
+        pageMovies: action.payload,
+      };
+    case SEARCH_ACTORS_PAGE:
+      return {
+        ...state,
+        pageActors: action.payload,
       };
     case SEARCH_RELOAD_PAGE:
       return {
         ...state,
-        page: 1,
+        pageActors: 1,
+        pageMovies: 1,
       };
     default:
       return state;

@@ -1,4 +1,5 @@
 .section {
     display: inherit;
     justify-content: center;
+    margin-bottom: 60px;
 }
