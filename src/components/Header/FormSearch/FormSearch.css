@@ -40,6 +40,9 @@
         transition: all .4s ease;
         min-width: 180px;
     }
+    .input-block {
+        width: auto;
+    }
 }
 .close {
      opacity: 0.3;

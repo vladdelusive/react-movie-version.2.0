@@ -13,3 +13,10 @@
     transform: scaleX(1);
     opacity: 1;
 }
+
+@media screen and (max-width: 420px) {
+    .header__noActive .input-block__search-field {
+        min-width: auto;
+        width: auto;
+    }
+}

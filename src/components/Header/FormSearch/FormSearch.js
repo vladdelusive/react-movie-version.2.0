@@ -1,11 +1,10 @@
-import React, {createRef, useState} from "react";
+import React, { useState} from "react";
 import "./FormSearch.css";
-import Search from "../../Search/Search";
 
 import InputSearch from "./InputSearch/InputSearch";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {SEARCH_TOGGLE, SEARCH_RELOAD_PAGE} from "../../../store/SEARCH/actions/actionTypes";
+import {SEARCH_TOGGLE, SEARCH_RELOAD_PAGE, SEARCH_INPUT_IS_ACTIVE} from "../../../store/SEARCH/actions/actionTypes";
 
 export default function FormSearch() {
     const {inputValue, showSearchedItems} = useSelector(({search}) => search);
@@ -25,6 +24,7 @@ export default function FormSearch() {
             closeClass: "",
             sendClass: ""
         })
+        dispatch({type: SEARCH_INPUT_IS_ACTIVE, payload: true})
     };
 
     const onClickCloseSearch = () => {
@@ -35,6 +35,7 @@ export default function FormSearch() {
             sendClass: "hide"
         })
         dispatch({type: SEARCH_TOGGLE, payload: false})
+        dispatch({type: SEARCH_INPUT_IS_ACTIVE, payload: false})
     };
 
     return (

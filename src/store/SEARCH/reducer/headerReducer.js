@@ -7,6 +7,7 @@ import {
   SEARCH_MOVIES_PAGE,
   SEARCH_ACTORS_PAGE,
   SEARCH_RELOAD_PAGE,
+  SEARCH_INPUT_IS_ACTIVE
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -64,6 +65,11 @@ export default function searchReducer(state = initialState, action) {
         ...state,
         pageActors: 1,
         pageMovies: 1,
+      };
+    case SEARCH_INPUT_IS_ACTIVE:
+      return {
+        ...state,
+        inputOpen: action.payload
       };
     default:
       return state;

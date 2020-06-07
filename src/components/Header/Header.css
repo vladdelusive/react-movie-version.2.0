@@ -12,3 +12,9 @@
         display: none;
     }
 }
+
+@media (max-width: 500px) {
+    .header__active {
+        justify-content: flex-end;
+    }
+}
