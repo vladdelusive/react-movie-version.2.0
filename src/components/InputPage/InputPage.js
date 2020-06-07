@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React from 'react'
 import './InputPage.css'
 import NoQuery from "./NoQuery/NoQuery";
 import SearchContent from "./SearchContent/SearchContent";

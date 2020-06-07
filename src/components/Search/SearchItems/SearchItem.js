@@ -14,6 +14,7 @@ export default function SearchItem({image, title, typeItem, id, setShowSearchedI
             <Link className="input-item__icon" to={link} onClick={()=>setShowSearchedItems(false)}>
                 <img
                     src={image ? IMAGE_URL+CARD_SIZE+image : nullImage}
+                    alt="img"
                 />
             </Link>
 

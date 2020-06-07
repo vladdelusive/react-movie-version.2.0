@@ -3,10 +3,7 @@ import {ACTORS_PAGE_URL, ACTORS} from '../config'
 import {getLocalStorage, setLocalStorage} from '../localStorage/localStorage'
 import Loader from '../Loader/Loader'
 import Cast from '../Cast/Cast'
-import ArrowTop from '../ArrowTop/ArrowTop'
-
 import BtnLoader from '../../hoc/loaderBtn/btnHoc'
-
 import API from '../../API'
 
 export default function Actors() {
@@ -23,10 +20,8 @@ export default function Actors() {
             loading: false
         }
         setLocalStorage(ACTORS, state)
-
         setResults([...results, ...data.results])
         setPage(page + 1)
-
         page === 1 && setLoading(false)
     }
 
@@ -40,6 +35,7 @@ export default function Actors() {
         } else {
             handlerLoading()
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

@@ -6,9 +6,7 @@ import { NEWLY_MOVIES_URL, NEWLY } from '../config'
 import Loader from '../Loader/Loader'
 import ArrowTop from '../ArrowTop/ArrowTop'
 import { setLocalStorage, getLocalStorage } from '../localStorage/localStorage'
-
 import BtnLoader from '../../hoc/loaderBtn/btnHoc'
-
 import API from '../../API'
 
 function MoviesPage() {
@@ -18,7 +16,6 @@ function MoviesPage() {
 
     const handlerLoading = async () => {
         const fetched = await API(NEWLY_MOVIES_URL(page));
-        debugger
         const {data} = fetched
         const state = {
             results: [...results, ...data.results],
@@ -40,6 +37,7 @@ function MoviesPage() {
             handlerLoading()
             setLoading(false)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <>

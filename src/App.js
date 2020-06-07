@@ -1,9 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import Header from "./components/Header/Header";
-import Popular from "./components/Popular/Popular";
-import TopRated from "./components/TopRated/TopRated";
 import Movie from "./components/Movie/Movie";
 import ActorPage from "./components/ActorPage/ActorPage";
 import Actors from "./components/Actors/Actors";
@@ -17,7 +15,6 @@ import MainContainer from "./containers/Main/Main";
 
 import InputPage from "./components/InputPage/InputPage";
 
-import Input from "./components/Input/Input";
 import "./App.css";
 import { useSelector } from "react-redux";
 
