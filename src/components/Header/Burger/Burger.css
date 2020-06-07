@@ -4,10 +4,6 @@
     cursor: pointer;
 }
 
-.burger__icon:hover {
-    
-}
-
 .burger {
     justify-items: center;
     align-items: center;
@@ -20,5 +16,4 @@
         position: absolute;
         right: 0;
     }
-
 }

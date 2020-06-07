@@ -15,6 +15,8 @@
     border-left: 1px solid #e8e8e8;
 }
 
+
+
 .panel-menu__navbar {
     display: flex;
     justify-content: space-evenly;
@@ -34,4 +36,24 @@
 
 .panel-menu--transform {
     transform: translateX(0%);
+}
+
+.close-burger {
+    top: 20px;
+    position: absolute;
+    padding: 0;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+
+.close-burger:hover {
+    transition: all .2s ease;
+    filter: invert(42%) sepia(54%) saturate(7492%) hue-rotate(201deg) brightness(104%) contrast(104%);
+}
+
+.close-burger__icon {
+    height: 35px;
+    width: 35px;
 }
