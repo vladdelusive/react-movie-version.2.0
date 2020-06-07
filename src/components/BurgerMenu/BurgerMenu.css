@@ -1,0 +1,37 @@
+.panel-menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    width: 100px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    transition: 0.5s;
+    transform: translateX(100%);
+    background: #f9fafc;
+    border-left: 1px solid #e8e8e8;
+}
+
+.panel-menu__navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.panel-menu__navbar-item {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.panel-menu--transform {
+    transform: translateX(0%);
+}

@@ -1,0 +1,7 @@
+.layout {
+    transition: 0.5s;
+}
+
+.layout--transform {
+    transform: translateX(-100px);
+}

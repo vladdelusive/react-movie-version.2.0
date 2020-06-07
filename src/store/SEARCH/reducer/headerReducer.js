@@ -7,7 +7,8 @@ import {
   SEARCH_MOVIES_PAGE,
   SEARCH_ACTORS_PAGE,
   SEARCH_RELOAD_PAGE,
-  SEARCH_INPUT_IS_ACTIVE
+  SEARCH_INPUT_IS_ACTIVE,
+  SEARCH_BURGER
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   resultsMovies: null,
   pageActors: 1,
   pageMovies: 1,
+  burgerActive: false,
 };
 
 export default function searchReducer(state = initialState, action) {
@@ -70,6 +72,11 @@ export default function searchReducer(state = initialState, action) {
       return {
         ...state,
         inputOpen: action.payload
+      };
+    case SEARCH_BURGER:
+      return {
+        ...state,
+        burgerActive: !state.burgerActive
       };
     default:
       return state;
