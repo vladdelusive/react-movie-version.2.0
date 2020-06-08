@@ -5,12 +5,21 @@
     flex-wrap: nowrap;
 }
 
-.actor-info__block {
+.button-content {
+    display: block;
+    font-size: large;
+    margin: auto;
+    width: auto;
+}
 
+.actor-info__block {
+    display: block;
+    width: auto;
 }
 
 .actor-info__block--left {
-
+    display: block;
+    width: auto;
 }
 
 .actor-info__block--right {
@@ -51,6 +60,11 @@
     font-size: 1.20em;
 }
 
+.actor-info__photo {
+    display: block;
+    width: auto;
+}
+
 .actor-movies {
     display: flex;
     margin: 50px auto;
@@ -81,9 +95,9 @@
     }
 }
 @media screen and (max-width: 600px) {
-    .actor-info__block--left img {
+    .actor-info__photo img {
         width: 100%;
-    }
+    }   
 }
 @media screen and (max-width: 400px) {
     .actor-movie {

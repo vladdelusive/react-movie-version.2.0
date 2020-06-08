@@ -12,7 +12,7 @@
     margin: 0 10px;
 }
 
-.form-wrapper {
+.search-wrapper {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -37,7 +37,7 @@
     .navbar__item {
         display: none;
     }
-    .form-wrapper {
+    .search-wrapper {
         margin-right: 40px;
     }
 }

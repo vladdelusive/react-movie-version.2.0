@@ -7,9 +7,11 @@ export default function Card({title, overview, poster, pathTo, searching}) {
     const styleImg = searching ? {width: 200} : {width: 350}
     return (
         <div className="card-movie" style={styleCard}>
-            <Link className="card-movie__post" to={pathTo}>
-                <img style={styleImg} src={poster} alt="sorry" />
-            </Link>
+            <div className="card-movie__post">
+                <Link to={pathTo}>
+                    <img style={styleImg} src={poster} alt="sorry" />
+                </Link>
+            </div>
             <div className="card-body">
                 <h5 className="card-body__title">{title}</h5>
                 {

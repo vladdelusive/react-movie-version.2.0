@@ -18,19 +18,19 @@ export default function BurgerMenu() {
       <div className="close-burger" onClick={dispatchAction}>
           <img className="close-burger__icon" src={CloseBurger} alt="close_burger"/>
       </div>
-      <ul className="panel-menu__navbar">
-        <li className="panel-menu__navbar-item" onClick={dispatchAction}>
-          <NavLink exact className="navbar__link" to="/">
+      <ul className="menu-navbar">
+        <li className="menu-navbar__item" onClick={dispatchAction}>
+          <NavLink exact className="menu-navbar__link" to="/">
             Main
           </NavLink>
         </li>
-        <li className="panel-menu__navbar-item" onClick={dispatchAction}>
-          <NavLink className="navbar__link" to="/movies">
+        <li className="menu-navbar__item" onClick={dispatchAction}>
+          <NavLink className="menu-navbar__link" to="/movies">
             Movies
           </NavLink>
         </li>
-        <li className="panel-menu__navbar-item" onClick={dispatchAction}>
-          <NavLink className="navbar__link" to="/actors">
+        <li className="menu-navbar__item" onClick={dispatchAction}>
+          <NavLink className="menu-navbar__link" to="/actors">
             Actors
           </NavLink>
         </li>

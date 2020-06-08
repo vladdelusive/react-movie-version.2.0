@@ -8,7 +8,7 @@ import {SEARCH_CLEAR} from "../../../store/SEARCH/actions/actionTypes";
 export default function Navbar() {
     const dispatch = useDispatch();
     return (
-        <div className="form-wrapper">
+        <div className="search-wrapper">
             <FormSearch/>
             <ul className="navbar">
                 <li className="navbar__item" onClick={() =>{dispatch({type: SEARCH_CLEAR})}}>

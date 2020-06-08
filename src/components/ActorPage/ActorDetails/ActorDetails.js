@@ -19,20 +19,24 @@ export default function ActorDetails({ personInfo, handleClick, isHidden, movies
                             }
                         </h3>
                     </div>
-                    <img
-                        src={`${IMAGE_URL}${CARD_SIZE}${personInfo.profile_path}`}
-                        alt="person_image" />
+                    <div className="actor-info__photo">
+                        <img
+                            src={`${IMAGE_URL}${CARD_SIZE}${personInfo.profile_path}`}
+                            alt="person_image" />
+                    </div>
                 </div>
                 <div className="actor-info__block actor-info__block--right">
                     <p className="actor-info__right--font">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {personInfo.biography}</p>
                 </div>
             </div>
-            <button
-                className="actor-movies"
-                onClick={handleClick}
-                type="button">
-                {isHidden ? "Show movies" : "Hide movies"}
-            </button>
+            <div className="button-content">
+                <button
+                    className="btn actor-movies"
+                    onClick={handleClick}
+                    type="button">
+                    {isHidden ? "Show movies" : "Hide movies"}
+                </button>
+            </div>
             {
                 isHidden ? "" : <ActorMovies cast={moviesInfo} />
             }

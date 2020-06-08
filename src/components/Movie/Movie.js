@@ -111,30 +111,36 @@ function Movie(props) {
 
     return (
         <>
-            <div className="movie movie-info">
+            <div className="movie">
                 {
                     trailer
                         ?
-                        <img
-                            src={results.poster_path
-                                ? `${IMAGE_URL}${EXTEND_SIZE}${results.poster_path}`
-                                : image}
-                            alt="movie-post"
-                            className="movie__post"
-                        />
+                        <div className="movie__post">
+                            <img
+                                src={results.poster_path
+                                    ? `${IMAGE_URL}${EXTEND_SIZE}${results.poster_path}`
+                                    : image}
+                                alt="movie-post"
+                                className="movie__img"
+                            />
+                        </div>
                         : <Loader/>
                 }
                 <div className="movie__description">
-                    <h1 className="movie__title">{results.title}</h1>
+                    <div className="movie__section">
+                        <h1 className="movie__title">{results.title}</h1>
+                    </div>
                     <hr className="line"/>
-                    <strong className="movie-info__type"> Description: </strong>
-                    <p className="movie__description-overview">
-                        {results.overview || "loading.."}
-                    </p>
+                    <div className="movie__section">
+                        <strong className="movie__type"> Description: </strong>
+                        <p className="movie__description-overview">
+                            {results.overview || "loading.."}
+                        </p>
+                    </div>
                     <hr className="line"/>
                     <DragDropContext onDragEnd={onDragEnd}>
                         <div className="generes-wrapper">
-                            <strong className="movie-info__type">Generes: </strong>
+                            <strong className="movie__type">Generes: </strong>
                             {movieBadges.length ? "" : "loading..."}
                             <Droppable
                                 droppableId="droppable"
@@ -153,32 +159,37 @@ function Movie(props) {
                         </div>
                     </DragDropContext>
                     <hr className="line"/>
-                    <div>
-                        <strong className="movie-info__type">Rate: </strong>
-                        <i>{averageRate() || "?"}/10</i>
+                    <div className="movie__section">
+                        <div>
+                            <strong className="movie__type">Rate: </strong>
+                            <i>{averageRate() || "?"}/10</i>
+                        </div>
+                        {setRate()}
                     </div>
-                    {setRate()}
                     <hr className="line"/>
-                    <div className="movie__trailer">
-                        <strong className="movie-info__type"> Trailer: </strong>
-                    </div>
-                    <div className="movie__trailer movie__trailer--youtube-trailer">
-                        {
-                            trailer
-                                ? (<iframe frameBorder="0" allowFullScreen="1"
-                                           title="YouTube video player"
-                                           src={`https://www.youtube.com/embed/${trailer}?controls=1`}/>)
-                                : "loading..."
-                        }
+                    <div className="movie__section">
+                        <div className="movie__trailer">
+                            <strong className="movie__type"> Trailer: </strong>
+                        </div>
+                        <div className="movie__trailer movie__trailer--youtube-trailer">
+                            {
+                                trailer
+                                    ? (<iframe frameBorder="0" allowFullScreen="1"
+                                            title="YouTube video player"
+                                            src={`https://www.youtube.com/embed/${trailer}?controls=1`}/>)
+                                    : "loading..."
+                            }
+                        </div>
                     </div>
                 </div>
-
             </div>
 
             {
                 cast.length
                     ? <div className="cast-wrapper">
-                        <h1 className="cast-title">Credited cast:</h1>
+                        <div className="section__title">
+                            <h1 className="cast-title">Credited cast:</h1>
+                        </div>
                         <Cast cast={cast}/>
                     </div>
                     : <Loader/>

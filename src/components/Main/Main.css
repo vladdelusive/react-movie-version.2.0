@@ -1,4 +1,14 @@
-.main__image {
-    width: 100%;
-    max-width: 1000px;
+.main-page__image {
+    display: block;
+    margin: auto;
+}
+
+.main-page {
+    position: relative;
+}
+
+@media (max-width: 1050px) {
+    .main-page__image {
+        width: 100%;
+    }
 }

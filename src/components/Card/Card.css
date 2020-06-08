@@ -6,7 +6,7 @@
     border-radius: 10px;
 }
 
-.card-movie a {
+.card-movie .card-movie__post {
     display: inline-flex;
 }
 
@@ -26,6 +26,7 @@
 .card-body__title {
     font-size: 22px;
     margin: 12px 0px 0px;
+    font-weight: bold;
 }
 
 .card-body__overview {

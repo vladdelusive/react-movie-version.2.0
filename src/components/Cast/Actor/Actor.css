@@ -5,11 +5,16 @@
     border: 2px solid black;
 }
 
-.actor__photo{
+.actor-photo__img {
     display: block;
 }
 
-.actor__photo img {
+.actor-photo {
+    display: block;
+    width: auto;
+}
+
+.actor-photo__img img {
     width: 350px;
 }
 
@@ -17,6 +22,7 @@
     font-size: 25px;
     margin: auto;
     text-align: center;
+    font-weight: bold;
 }
 
 .actor-name__link {
@@ -26,7 +32,7 @@
 }
 
 @media (max-width: 400px) {
-    .actor__photo img {
+    .actor-photo__img img {
         width: 300px;
     }
 }

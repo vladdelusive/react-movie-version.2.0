@@ -40,6 +40,7 @@ export default function FormSearch() {
 
     return (
         <form className="form" onSubmit={(e) => {e.preventDefault()}}>
+            <div className="form__submit">
             <Link to={`/search?query=${inputValue}`}>
                 <button
                     onClick={()=>{
@@ -50,6 +51,7 @@ export default function FormSearch() {
                     className={`${classes.sendClass} form__btn`}
                 />
             </Link>
+            </div>
             <div className="input-block">
                 <InputSearch 
                     showSearchedItems={showSearchedItems}
@@ -58,8 +60,11 @@ export default function FormSearch() {
                     inputValue={inputValue}
                 />
             </div>
-            <button type="button" className={`${classes.btnClass} form__btn`} onClick={onClickOpenSearch}/>
-            <div className={`${classes.closeClass} close`} onClick={onClickCloseSearch}/>
+            <div className="form__open">
+                <button type="button" className={`${classes.btnClass} form__btn`} onClick={onClickOpenSearch}/>
+            </div>
+            
+            <div className={`form__control ${classes.closeClass} close`} onClick={onClickCloseSearch}/>
         </form>
     );
 }

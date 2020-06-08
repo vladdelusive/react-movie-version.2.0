@@ -5,13 +5,13 @@
 
 }
 
-.logo-wrapper a {
+.logo a {
     display: block;
 }
 
 
 @media screen and (max-width: 500px) {
-    .header__active .logo-wrapper {
+    .header__active .logo {
         display: none;
     }
     .logo__img {

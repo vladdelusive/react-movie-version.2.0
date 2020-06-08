@@ -1,3 +1,7 @@
+.btn {
+    display: block;
+}
+
 .btn-loading {
     text-align: center;
     margin-bottom: 25px;
