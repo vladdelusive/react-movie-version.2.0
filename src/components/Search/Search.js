@@ -8,6 +8,7 @@ import {
   SEARCH_RELOAD_PAGE,
 } from "../../store/SEARCH/actions/actionTypes";
 import { useDispatch } from "react-redux";
+import { ACSearchToggle, ACSearchReloadPage} from '../../store/SEARCH/actions/actionCreators'
 
 export default function Search({
   value,
@@ -22,7 +23,7 @@ export default function Search({
     searchedItemsMovies.push(
       <SearchItem
         setShowSearchedItems={() =>
-          dispatch({ type: SEARCH_TOGGLE, payload: false })
+          dispatch(ACSearchToggle(false))
         }
         key={searchResultMovies[i].id}
         title={searchResultMovies[i].title}
@@ -38,7 +39,7 @@ export default function Search({
     searchedItemsActors.push(
       <SearchItem
         setShowSearchedItems={() =>
-          dispatch({ type: SEARCH_TOGGLE, payload: false })
+          dispatch(ACSearchToggle(false))
         }
         key={searchResultActors[i].id}
         title={searchResultActors[i].name}
@@ -75,8 +76,8 @@ export default function Search({
         className="input-block__link"
         to={`/search?query=${value}`}
         onClick={() => {
-          dispatch({ type: SEARCH_TOGGLE, payload: false });
-          dispatch({ type: SEARCH_RELOAD_PAGE });
+          dispatch(ACSearchToggle(false));
+          dispatch(ACSearchReloadPage);
         }}
       >
         More...

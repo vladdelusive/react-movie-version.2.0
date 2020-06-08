@@ -6,6 +6,8 @@ import './InputSearch.css'
 import {SEARCH_INPUT,SEARCH_TOGGLE, SEARCH_OFFLOAD, SEARCH_UPLOAD} from "../../../../store/SEARCH/actions/actionTypes";
 import {useDispatch, useSelector} from "react-redux";
 
+import { ACSearchToggle, ACSearchReloadPage} from '../../../../store/SEARCH/actions/actionCreators'
+
 const doc = document.getElementById("root")
 
 let timer;
@@ -17,7 +19,7 @@ export default function ({classes}) {
     useEffect(() => {
         const checkerEvents = (e) => {
             if(e.target.closest(".form")) return
-            dispatch({type: SEARCH_TOGGLE, payload: false})
+            dispatch(ACSearchToggle(false))
         }
         doc.addEventListener("click", checkerEvents)
         return ()=>doc.removeEventListener("click", checkerEvents)

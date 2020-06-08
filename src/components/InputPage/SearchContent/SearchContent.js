@@ -7,6 +7,7 @@ import {ACTOR_SEARCH, SEARCH_URL} from "../../config";
 import Loader from "../../Loader/Loader";
 import Cast from "../../Cast/Cast"
 import {SEARCH_MOVIES_PAGE, SEARCH_ACTORS_PAGE} from '../../../store/SEARCH/actions/actionTypes'
+import {ACSearchMoviePage, ACSearchActorPage } from '../../../store/SEARCH/actions/actionCreators'
 
 import NotFound from "../../NotFound/NotFound"
 import Pagination from "../../Pagination/Pagination";
@@ -57,7 +58,7 @@ function SearchContent({query}) {
                                     <Pagination
                                         total_pages={totalPagesMovies}
                                         currentPage={pageMovies}
-                                        setCurrentPage={(page) => dispatch({type: SEARCH_MOVIES_PAGE, payload: page})}
+                                        setCurrentPage={(page) => dispatch(ACSearchMoviePage(page))}
                                     />
                                 </>
                                 : <NotFound/>)
@@ -77,7 +78,7 @@ function SearchContent({query}) {
                                 <Pagination
                                         total_pages={totalPagesActors}
                                         currentPage={pageActors}
-                                        setCurrentPage={(page) => dispatch({type: SEARCH_ACTORS_PAGE, payload: page})}
+                                        setCurrentPage={(page) => dispatch(ACSearchActorPage(page))}
                                     />
                                     </>
                                 : <NotFound/>
