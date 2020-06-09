@@ -6,19 +6,20 @@ import API from "../../../API";
 import {ACTOR_SEARCH, SEARCH_URL} from "../../config";
 import Loader from "../../Loader/Loader";
 import Cast from "../../Cast/Cast";
-import {ACSearchMoviePage, ACSearchActorPage, ACSearchUpload } from '../../../store/SEARCH/actions/actionCreators'
+import {ACSearchMoviePage, ACSearchActorPage } from '../../../store/SEARCH/actions/actionCreators'
 
 import NotFound from "../../NotFound/NotFound"
 import Pagination from "../../Pagination/Pagination";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { useActions } from '../../../decorator'
 
 function SearchContent({query}) {
     const {pageActors, pageMovies} = useSelector(({search})=>search)
-    const dispatch = useDispatch()
-
-    const {ACSearchUpload: dispatchSearchUpload} = useActions({ACSearchUpload})
+    const {
+        ACSearchMoviePage: bindMoviePage,
+        ACSearchActorPage: bindActorPage
+    } = useActions({ACSearchMoviePage, ACSearchActorPage})
 
     const [dataMovies, setDataMovies] = useState(null)
     const [dataActors, setDataActors] = useState(null)
@@ -61,9 +62,9 @@ function SearchContent({query}) {
                                     <Pagination
                                         total_pages={totalPagesMovies}
                                         currentPage={pageMovies}
-                                        setCurrentPage={(page) => dispatchSearchUpload(page) }/>
-                                        {/*dispatch(ACSearchMoviePage(page))*/}
-                                    />
+                                        setCurrentPage={(page) => {
+                                            bindMoviePage(page)
+                                        }}/>
                                 </>
                                 : <NotFound/>)
                     }
@@ -82,7 +83,7 @@ function SearchContent({query}) {
                                 <Pagination
                                         total_pages={totalPagesActors}
                                         currentPage={pageActors}
-                                        setCurrentPage={(page) => dispatch(ACSearchActorPage(page))}
+                                        setCurrentPage={(page) => bindActorPage(page)}
                                     />
                                     </>
                                 : <NotFound/>

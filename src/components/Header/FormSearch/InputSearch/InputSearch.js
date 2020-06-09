@@ -3,32 +3,43 @@ import React, { useEffect} from "react";
 import {FETCH_TIMEOUT, SEARCH_URL, ACTOR_SEARCH} from "../../../config";
 import API from "../../../../API";
 import './InputSearch.css'
-import {useDispatch, useSelector} from "react-redux";
+import { useSelector} from "react-redux";
 
-import { ACSearchToggle, ACSearchUpload, ACSearchInput, ACSearchOffload} from '../../../../store/SEARCH/actions/actionCreators'
+import {
+    ACSearchToggle,
+    ACSearchUpload,
+    ACSearchInput,
+    ACSearchOffload,
+    ACSearchIsActive, ACSearchReloadPage
+} from '../../../../store/SEARCH/actions/actionCreators'
+import {useActions} from "../../../../decorator";
 
 const doc = document.getElementById("root")
 
 let timer;
 export default function ({classes}) {
-    const dispatch = useDispatch();
-
     const {inputValue, resultsActors, showSearchedItems, resultsMovies} = useSelector(({search}) => search);
+    const {
+        ACSearchInput: bindInput,
+        ACSearchToggle: bindToggle,
+        ACSearchOffload : bindOffload,
+        ACSearchUpload: bindUpload
+    } = useActions({ACSearchInput, ACSearchToggle, ACSearchOffload, ACSearchUpload})
 
     useEffect(() => {
         const checkerEvents = (e) => {
             if(e.target.closest(".form")) return
-            dispatch(ACSearchToggle(false))
+            bindToggle(false)
         }
         doc.addEventListener("click", checkerEvents)
         return ()=>doc.removeEventListener("click", checkerEvents)
     })
 
     const valueTarget = ({target}) => {
-        dispatch(ACSearchInput(target.value))
+        bindInput(target.value)
         clearTimeout(timer);
         if (target.value === "") {
-            dispatch(ACSearchOffload())
+            bindOffload()
             return
         }
         timer = setTimeout(doSearch.bind(null, target.value), FETCH_TIMEOUT);
@@ -42,13 +53,13 @@ export default function ({classes}) {
         const [MOVIES, ACTORS] = await Promise.all(fetches).then((res) =>
             Promise.all(res.map((r) => r.data))
         );
-        dispatch(ACSearchUpload(ACTORS.results, MOVIES.results))
+        bindUpload({actors: ACTORS.results, movies: MOVIES.results})
     }
     return (
         <div className="input-block__search">
             <input
                 autoComplete="off"
-                onFocus={() => dispatch(ACSearchToggle(true))}
+                onFocus={() => bindToggle(true)}
                 type="text"
                 name="input"
                 className={`${classes.inputClass} input-block__search-field`}

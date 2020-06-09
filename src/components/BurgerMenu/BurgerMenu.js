@@ -9,7 +9,7 @@ import {ACSearchBurger, ACSearchClear} from '../../store/SEARCH/actions/actionCr
 export default function BurgerMenu() {
   const { burgerActive } = useSelector(({ search }) => search);
   const dispatch = useDispatch()
-  const dispatchAction = () =>{
+  const closeBurgerClearInput = () => {
     dispatch(ACSearchBurger())
     dispatch(ACSearchClear())
   }
@@ -17,21 +17,21 @@ export default function BurgerMenu() {
     <div
       className={`panel-menu ${burgerActive ? "panel-menu--transform" : ""}`}
     >
-      <div className="close-burger" onClick={dispatchAction}>
+      <div className="close-burger" onClick={closeBurgerClearInput}>
           <img className="close-burger__icon" src={CloseBurger} alt="close_burger"/>
       </div>
       <ul className="menu-navbar">
-        <li className="menu-navbar__item" onClick={dispatchAction}>
+        <li className="menu-navbar__item" onClick={closeBurgerClearInput}>
           <NavLink exact className="menu-navbar__link" to="/">
             Main
           </NavLink>
         </li>
-        <li className="menu-navbar__item" onClick={dispatchAction}>
+        <li className="menu-navbar__item" onClick={closeBurgerClearInput}>
           <NavLink className="menu-navbar__link" to="/movies">
             Movies
           </NavLink>
         </li>
-        <li className="menu-navbar__item" onClick={dispatchAction}>
+        <li className="menu-navbar__item" onClick={closeBurgerClearInput}>
           <NavLink className="menu-navbar__link" to="/actors">
             Actors
           </NavLink>

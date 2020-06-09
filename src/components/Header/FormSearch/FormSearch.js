@@ -3,13 +3,23 @@ import "./FormSearch.css";
 
 import InputSearch from "./InputSearch/InputSearch";
 import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
-import { ACSearchIsActive, ACSearchToggle, ACSearchReloadPage } from '../../../store/SEARCH/actions/actionCreators'
+import {
+    ACSearchIsActive,
+    ACSearchToggle,
+    ACSearchReloadPage,
+} from '../../../store/SEARCH/actions/actionCreators'
+import {useActions} from "../../../decorator";
 
 export default function FormSearch() {
     const {inputValue} = useSelector(({search}) => search);
-    const dispatch = useDispatch()
+
+    const {
+        ACSearchIsActive: bindIsActive,
+        ACSearchToggle: bindToggle,
+        ACSearchReloadPage : bindReloadPage
+    } = useActions({ACSearchIsActive, ACSearchToggle, ACSearchReloadPage})
 
     const [classes, setClasses] = useState({
         inputClass: "",
@@ -25,7 +35,7 @@ export default function FormSearch() {
             closeClass: "",
             sendClass: ""
         })
-        dispatch(ACSearchIsActive(true))
+        bindIsActive(true)
     };
 
     const onClickCloseSearch = () => {
@@ -35,8 +45,8 @@ export default function FormSearch() {
             closeClass: "hide",
             sendClass: "hide"
         })
-        dispatch(ACSearchToggle(false))
-        dispatch(ACSearchIsActive(false))
+        bindToggle(false)
+        bindIsActive(false)
     };
 
     return (
@@ -45,8 +55,8 @@ export default function FormSearch() {
             <Link to={`/search?query=${inputValue}`}>
                 <button
                     onClick={()=>{
-                        dispatch(ACSearchToggle(false))
-                        dispatch(ACSearchReloadPage())
+                        bindToggle(false)
+                        bindReloadPage()
                     }}
                     type="submit"
                     className={`${classes.sendClass} form__btn`}
