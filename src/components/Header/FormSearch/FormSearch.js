@@ -6,6 +6,8 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {SEARCH_TOGGLE, SEARCH_RELOAD_PAGE, SEARCH_INPUT_IS_ACTIVE} from "../../../store/SEARCH/actions/actionTypes";
 
+import { ACSearchIsActive, ACSearchToggle, ACSearchReloadPage } from '../../../store/SEARCH/actions/actionCreators'
+
 export default function FormSearch() {
     const {inputValue, showSearchedItems} = useSelector(({search}) => search);
     const dispatch = useDispatch()
@@ -24,7 +26,7 @@ export default function FormSearch() {
             closeClass: "",
             sendClass: ""
         })
-        dispatch({type: SEARCH_INPUT_IS_ACTIVE, payload: true})
+        dispatch(ACSearchIsActive(true))
     };
 
     const onClickCloseSearch = () => {
@@ -34,8 +36,8 @@ export default function FormSearch() {
             closeClass: "hide",
             sendClass: "hide"
         })
-        dispatch({type: SEARCH_TOGGLE, payload: false})
-        dispatch({type: SEARCH_INPUT_IS_ACTIVE, payload: false})
+        dispatch(ACSearchToggle(false))
+        dispatch(ACSearchIsActive(false))
     };
 
     return (
@@ -44,8 +46,8 @@ export default function FormSearch() {
             <Link to={`/search?query=${inputValue}`}>
                 <button
                     onClick={()=>{
-                        dispatch({type: SEARCH_TOGGLE, payload: false}); 
-                        dispatch({type: SEARCH_RELOAD_PAGE})
+                        dispatch(ACSearchToggle(false))
+                        dispatch(ACSearchReloadPage)
                     }}
                     type="submit"
                     className={`${classes.sendClass} form__btn`}
@@ -53,11 +55,8 @@ export default function FormSearch() {
             </Link>
             </div>
             <div className="input-block">
-                <InputSearch 
-                    showSearchedItems={showSearchedItems}
-                    setShowSearchedItems={()=>dispatch({type: SEARCH_TOGGLE, payload: true})}
+                <InputSearch
                     classes={classes}
-                    inputValue={inputValue}
                 />
             </div>
             <div className="form__open">

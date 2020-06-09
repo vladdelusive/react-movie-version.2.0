@@ -6,7 +6,7 @@ import './InputSearch.css'
 import {SEARCH_INPUT,SEARCH_TOGGLE, SEARCH_OFFLOAD, SEARCH_UPLOAD} from "../../../../store/SEARCH/actions/actionTypes";
 import {useDispatch, useSelector} from "react-redux";
 
-import { ACSearchToggle, ACSearchReloadPage} from '../../../../store/SEARCH/actions/actionCreators'
+import { ACSearchToggle, ACSearchUpload, ACSearchInput, ACSearchOffload} from '../../../../store/SEARCH/actions/actionCreators'
 
 const doc = document.getElementById("root")
 
@@ -26,10 +26,10 @@ export default function ({classes}) {
     })
 
     const valueTarget = ({target}) => {
-        dispatch({type: SEARCH_INPUT, payload: target.value})
+        dispatch(ACSearchInput(target.value))
         clearTimeout(timer);
         if (target.value === "") {
-            dispatch({type: SEARCH_OFFLOAD})
+            dispatch(ACSearchOffload)
             return
         }
         timer = setTimeout(doSearch.bind(null, target.value), FETCH_INTERVAL);
@@ -43,13 +43,13 @@ export default function ({classes}) {
         const [MOVIES, ACTORS] = await Promise.all(fetches).then((res) =>
             Promise.all(res.map((r) => r.data))
         );
-        dispatch({type: SEARCH_UPLOAD, actors: ACTORS.results, movies: MOVIES.results})
+        dispatch(ACSearchUpload(ACTORS.results, MOVIES.results))
     }
     return (
         <div className="input-block__search">
             <input
                 autoComplete="off"
-                onFocus={() => dispatch({type: SEARCH_TOGGLE, payload: true})}
+                onFocus={() => dispatch(ACSearchToggle(true))}
                 type="text"
                 name="input"
                 className={`${classes.inputClass} input-block__search-field`}

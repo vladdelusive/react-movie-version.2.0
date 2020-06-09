@@ -6,11 +6,15 @@ import CloseBurger from '../../images/closeBurger.png'
 import { useSelector, useDispatch } from "react-redux";
 
 import {SEARCH_BURGER} from '../../store/SEARCH/actions/actionTypes'
+import {ACSearchBurger, ACSearchClear} from '../../store/SEARCH/actions/actionCreators'
 
 export default function BurgerMenu() {
   const { burgerActive } = useSelector(({ search }) => search);
   const dispatch = useDispatch()
-  const dispatchAction = () => dispatch({type: SEARCH_BURGER})
+  const dispatchAction = () =>{
+    dispatch(ACSearchBurger)
+    dispatch(ACSearchClear)
+  }
   return (
     <div
       className={`panel-menu ${burgerActive ? "panel-menu--transform" : ""}`}
