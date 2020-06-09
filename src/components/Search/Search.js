@@ -3,10 +3,6 @@ import "./Search.css";
 import SearchItem from "./SearchItems/SearchItem";
 import { Link } from "react-router-dom";
 import NoOneFound from "./NoOneFound/NoOneFound";
-import {
-  SEARCH_TOGGLE,
-  SEARCH_RELOAD_PAGE,
-} from "../../store/SEARCH/actions/actionTypes";
 import { useDispatch } from "react-redux";
 import { ACSearchToggle, ACSearchReloadPage} from '../../store/SEARCH/actions/actionCreators'
 
@@ -77,7 +73,7 @@ export default function Search({
         to={`/search?query=${value}`}
         onClick={() => {
           dispatch(ACSearchToggle(false));
-          dispatch(ACSearchReloadPage);
+          dispatch(ACSearchReloadPage());
         }}
       >
         More...

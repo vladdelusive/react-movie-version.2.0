@@ -4,12 +4,11 @@ import "./FormSearch.css";
 import InputSearch from "./InputSearch/InputSearch";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {SEARCH_TOGGLE, SEARCH_RELOAD_PAGE, SEARCH_INPUT_IS_ACTIVE} from "../../../store/SEARCH/actions/actionTypes";
 
 import { ACSearchIsActive, ACSearchToggle, ACSearchReloadPage } from '../../../store/SEARCH/actions/actionCreators'
 
 export default function FormSearch() {
-    const {inputValue, showSearchedItems} = useSelector(({search}) => search);
+    const {inputValue} = useSelector(({search}) => search);
     const dispatch = useDispatch()
 
     const [classes, setClasses] = useState({
@@ -47,7 +46,7 @@ export default function FormSearch() {
                 <button
                     onClick={()=>{
                         dispatch(ACSearchToggle(false))
-                        dispatch(ACSearchReloadPage)
+                        dispatch(ACSearchReloadPage())
                     }}
                     type="submit"
                     className={`${classes.sendClass} form__btn`}

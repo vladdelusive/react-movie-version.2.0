@@ -1,9 +1,8 @@
 import Search from "../../../Search/Search";
 import React, { useEffect} from "react";
-import {FETCH_INTERVAL, SEARCH_URL, ACTOR_SEARCH} from "../../../config";
+import {FETCH_TIMEOUT, SEARCH_URL, ACTOR_SEARCH} from "../../../config";
 import API from "../../../../API";
 import './InputSearch.css'
-import {SEARCH_INPUT,SEARCH_TOGGLE, SEARCH_OFFLOAD, SEARCH_UPLOAD} from "../../../../store/SEARCH/actions/actionTypes";
 import {useDispatch, useSelector} from "react-redux";
 
 import { ACSearchToggle, ACSearchUpload, ACSearchInput, ACSearchOffload} from '../../../../store/SEARCH/actions/actionCreators'
@@ -29,10 +28,10 @@ export default function ({classes}) {
         dispatch(ACSearchInput(target.value))
         clearTimeout(timer);
         if (target.value === "") {
-            dispatch(ACSearchOffload)
+            dispatch(ACSearchOffload())
             return
         }
-        timer = setTimeout(doSearch.bind(null, target.value), FETCH_INTERVAL);
+        timer = setTimeout(doSearch.bind(null, target.value), FETCH_TIMEOUT);
     }
 
     const doSearch = async (value) => {

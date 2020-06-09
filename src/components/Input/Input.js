@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { SEARCH_URL, SEARCH, FETCH_INTERVAL } from '../config'
+import { SEARCH_URL, SEARCH, FETCH_TIMEOUT } from '../config'
 import './Input.css'
 import Content from '../Content/Content'
 import LoaderButton from '../LoaderButton/LoaderButton'
@@ -36,7 +36,7 @@ function Input({location}) {
             localStorage.removeItem(SEARCH);
             return
         }
-        timer = setTimeout(doSearch.bind(null, target.value), FETCH_INTERVAL);
+        timer = setTimeout(doSearch.bind(null, target.value), FETCH_TIMEOUT);
         return
     }
 
