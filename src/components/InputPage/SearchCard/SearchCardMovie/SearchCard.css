@@ -1,0 +1,31 @@
+.search-movie {
+    width: 200px;
+    margin: 10px;
+    border: 2px solid;
+    transition: all .3s ease;
+}
+
+.search-movie:hover {
+    transform: scale(1.05);
+    transition: all .3s ease;
+}
+
+.search-movie__post a {
+    display: block;
+}
+
+.search-movie__post img {
+    width: 200px;
+}
+
+.search-movie__body {
+    padding: 10px;
+}
+
+.search-movie__title {
+    font-size: 22px;
+    margin: 0px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+}

@@ -6,5 +6,7 @@ const handlerGoUp = () => {
 }
 
 export default function ArrowTop() {
-    return <div className="arrow" onClick={handlerGoUp}></div>
+    return <div className="control-slide">
+        <div className="arrow" onClick={handlerGoUp}></div>
+    </div>
 }

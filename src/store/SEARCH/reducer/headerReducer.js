@@ -19,6 +19,7 @@ const initialState = {
   pageActors: 1,
   pageMovies: 1,
   burgerActive: false,
+  inputOpen: false
 };
 
 export default function searchReducer(state = initialState, action) {

@@ -36,8 +36,8 @@ function App() {
             <Route component={NotFoundPage} />
           </Switch>
         </MainContainer>
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 }

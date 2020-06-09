@@ -1,7 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import './Navbar.css'
-import FormSearch from "../FormSearch/FormSearch";
 import {ACSearchClear} from '../../../store/SEARCH/actions/actionCreators'
 import {useActions} from "../../../decorator";
 
@@ -11,8 +10,7 @@ export default function Navbar() {
     } = useActions({ACSearchClear})
     
     return (
-        <div className="search-wrapper">
-            <FormSearch/>
+        <div className="navbar-wrapper">
             <ul className="navbar">
                 <li className="navbar__item" onClick={bindClear}>
                     <NavLink exact className="navbar__link" to="/">Main</NavLink>

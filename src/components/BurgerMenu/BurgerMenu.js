@@ -4,34 +4,31 @@ import "./BurgerMenu.css";
 import CloseBurger from '../../images/closeBurger.png'
 
 import { useSelector, useDispatch } from "react-redux";
-import {ACSearchBurger, ACSearchClear} from '../../store/SEARCH/actions/actionCreators'
+import { ACSearchBurger } from '../../store/SEARCH/actions/actionCreators'
+import {useActions} from "../../decorator";
 
 export default function BurgerMenu() {
   const { burgerActive } = useSelector(({ search }) => search);
-  const dispatch = useDispatch()
-  const closeBurgerClearInput = () => {
-    dispatch(ACSearchBurger())
-    dispatch(ACSearchClear())
-  }
+  const { ACSearchBurger: bindBurger} = useActions({ACSearchBurger})
   return (
     <div
       className={`panel-menu ${burgerActive ? "panel-menu--transform" : ""}`}
     >
-      <div className="close-burger" onClick={closeBurgerClearInput}>
+      <div className="close-burger" onClick={bindBurger}>
           <img className="close-burger__icon" src={CloseBurger} alt="close_burger"/>
       </div>
       <ul className="menu-navbar">
-        <li className="menu-navbar__item" onClick={closeBurgerClearInput}>
+        <li className="menu-navbar__item" onClick={bindBurger}>
           <NavLink exact className="menu-navbar__link" to="/">
             Main
           </NavLink>
         </li>
-        <li className="menu-navbar__item" onClick={closeBurgerClearInput}>
+        <li className="menu-navbar__item" onClick={bindBurger}>
           <NavLink className="menu-navbar__link" to="/movies">
             Movies
           </NavLink>
         </li>
-        <li className="menu-navbar__item" onClick={closeBurgerClearInput}>
+        <li className="menu-navbar__item" onClick={bindBurger}>
           <NavLink className="menu-navbar__link" to="/actors">
             Actors
           </NavLink>

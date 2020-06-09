@@ -18,3 +18,9 @@
         justify-content: flex-end;
     }
 }
+
+.header__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

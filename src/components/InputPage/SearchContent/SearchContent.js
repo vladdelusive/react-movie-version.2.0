@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import './SearchContent.css'
 
-import Content from "../../Content/Content";
+import SearchCardsContentMovies from "../SearchCard/SearchCardsContentMovies";
 import API from "../../../API";
 import {ACTOR_SEARCH, SEARCH_URL} from "../../config";
 import Loader from "../../Loader/Loader";
-import Cast from "../../Cast/Cast";
+import SearchCardsContentActors from "../SearchCard/SearchCardsContentActors";
 import {ACSearchMoviePage, ACSearchActorPage } from '../../../store/SEARCH/actions/actionCreators'
 
 import Pagination from 'rc-pagination';
@@ -55,20 +55,21 @@ function SearchContent({query}) {
             <div className="section__content section__content--movies">
                 <div className="subtitle subtitle__movies">Movies:</div>
                     <div className="pagination">
-                        <Pagination
-                            className="ant-pagination"
-                            current={pageMovies}
-                            total={totalPagesMovies}
-                            onChange={(pageNumber)=>bindMoviePage(pageNumber)}
-                        />
+                        {
+                            (!loading && dataMovies.length) ? <Pagination
+                                className="ant-pagination"
+                                current={pageMovies}
+                                total={totalPagesMovies}
+                                onChange={(pageNumber)=>bindMoviePage(pageNumber)}
+                            /> : ""
+                        }
                     </div>
-
                 <div className="section__content-container">
                     {
                         loading ?
                             <Loader/>
                             :
-                            (dataMovies.length ? <Content results={dataMovies} path="/movies" searching={true}/>
+                            (dataMovies.length ? <SearchCardsContentMovies results={dataMovies} path="/movies"/>
                                 : <NotFound/>)
                     }
                 </div>
@@ -76,19 +77,21 @@ function SearchContent({query}) {
             <div className="section__content section__content--actors">
                 <div className="subtitle subtitle__actors">Actors:</div>
                     <div className="pagination">
-                        <Pagination
-                            className="ant-pagination"
-                            current={pageActors}
-                            total={totalPagesActors}
-                            onChange={(pageNumber)=>bindActorPage(pageNumber)}
-                        />
+                        {
+                            (!loading && dataActors.length) ? <Pagination
+                                className="ant-pagination"
+                                current={pageActors}
+                                total={totalPagesActors}
+                                onChange={(pageNumber)=>bindActorPage(pageNumber)}
+                            /> : ""
+                        }
                     </div>
                 <div className="section__content-container">
                     {
                         loading ?
                             <Loader/>
                             : (dataActors.length ?
-                                <Cast cast={dataActors} searching={true}/>
+                                <SearchCardsContentActors cast={dataActors}/>
                                 : <NotFound/>
                             )
                     }

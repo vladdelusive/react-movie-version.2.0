@@ -5,13 +5,13 @@ import male from './unknown_male.png'
 import female from './unknown_female.png'
 import {Link} from 'react-router-dom'
 
-export default function Actor({path, id, gender, name, searching}) {
+export default function Actor({path, id, gender, name}) {
     const image = path === null ? gender === 2 ? male : female : `${IMAGE_URL}${CARD_SIZE}${path}`
     return (
-        <div className="actor" style={searching ? {width: 220} : {width: 350}}>
+        <div className="actor">
             <div className="actor-photo">
                 <Link className="actor-photo__img" to={`/actors/${id}`}>
-                    <img style={searching ? {width: 220} : {width: 350}} src={image} alt="actor_image"/>
+                    <img src={image} alt="actor_image"/>
                 </Link>
             </div>
             <div className="actor-name">

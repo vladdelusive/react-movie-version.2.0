@@ -4,14 +4,20 @@ import './Header.css'
 import Navbar from './Navbar/Navbar'
 import Logo from "./Logo/Logo";
 import Burger from './Burger/Burger'
+import FormSearch from "./FormSearch/FormSearch";
 
 export default function Header() {
     const {inputOpen} = useSelector(({search}) => search);
     return (
         <header className={`header ${inputOpen ? "header__active" : "header__noActive"}`}>
-            <Logo/>
-            <Navbar />
-            <Burger/>
+            <div className="header__left">
+                <Logo/>
+            </div>
+            <div className="header__right">
+                <FormSearch/>
+                <Navbar />
+                <Burger/>
+            </div>
         </header>
     )
 }

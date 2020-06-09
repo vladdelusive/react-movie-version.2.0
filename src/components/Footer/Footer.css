@@ -1,4 +1,4 @@
-.footer {
+.developer-link {
     display: flex;
     justify-content: flex-end;
     position: fixed;
@@ -7,7 +7,7 @@
     mix-blend-mode: multiply;
 }
 
-.footer__image img {
+.developer-link img {
     width: 130px;
     cursor: pointer;
 }

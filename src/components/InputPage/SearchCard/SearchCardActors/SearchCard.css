@@ -1,0 +1,37 @@
+.search-actor {
+    padding-bottom: 10px;
+    border-radius: 6px;
+    margin: 10px 10px 30px;
+    border: 2px solid black;
+    width: 200px;
+}
+
+.search-actor__name {
+    text-decoration: none;
+    color: #007bff;
+    display: block;
+}
+
+.search-actor__photo-img {
+    display: block;
+}
+
+.search-actor__photo-img img {
+    display: block;
+    width: 200px;
+}
+
+.search-actor__name-link {
+    text-decoration: none;
+    color: #007bff;
+    display: block;
+}
+
+.search-actor__name-text {
+    font-size: 25px;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+}

@@ -1,9 +1,9 @@
 .card-movie {
-    width: 400px;
     transition: all .4s ease;
     margin: 50px 10px;
     background: white;
     border-radius: 10px;
+    width: 350px;
 }
 
 .card-movie .card-movie__post {
@@ -11,7 +11,7 @@
 }
 
 .card-movie__post img {
-    width: 400px;
+    width: 350px;
 }
 
 .card-movie:hover {
