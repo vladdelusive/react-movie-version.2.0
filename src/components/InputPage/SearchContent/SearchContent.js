@@ -8,8 +8,11 @@ import Loader from "../../Loader/Loader";
 import Cast from "../../Cast/Cast";
 import {ACSearchMoviePage, ACSearchActorPage } from '../../../store/SEARCH/actions/actionCreators'
 
+import Pagination from 'rc-pagination';
+import 'rc-pagination/assets/index.css';
+
 import NotFound from "../../NotFound/NotFound"
-import Pagination from "../../Pagination/Pagination";
+//import Pagination from "../../Pagination/Pagination";
 import { useSelector } from 'react-redux';
 
 import { useActions } from '../../../decorator'
@@ -51,41 +54,41 @@ function SearchContent({query}) {
         <>
             <div className="section__content section__content--movies">
                 <div className="subtitle subtitle__movies">Movies:</div>
+                    <div className="pagination">
+                        <Pagination
+                            className="ant-pagination"
+                            current={pageMovies}
+                            total={totalPagesMovies}
+                            onChange={(pageNumber)=>bindMoviePage(pageNumber)}
+                        />
+                    </div>
+
                 <div className="section__content-container">
                     {
                         loading ?
                             <Loader/>
                             :
-                            (dataMovies.length ?
-                                <>
-                                    <Content results={dataMovies} path="/movies" searching={true}/>
-                                    <Pagination
-                                        total_pages={totalPagesMovies}
-                                        currentPage={pageMovies}
-                                        setCurrentPage={(page) => {
-                                            bindMoviePage(page)
-                                        }}/>
-                                </>
+                            (dataMovies.length ? <Content results={dataMovies} path="/movies" searching={true}/>
                                 : <NotFound/>)
                     }
                 </div>
-
             </div>
             <div className="section__content section__content--actors">
                 <div className="subtitle subtitle__actors">Actors:</div>
+                    <div className="pagination">
+                        <Pagination
+                            className="ant-pagination"
+                            current={pageActors}
+                            total={totalPagesActors}
+                            onChange={(pageNumber)=>bindActorPage(pageNumber)}
+                        />
+                    </div>
                 <div className="section__content-container">
                     {
                         loading ?
                             <Loader/>
                             : (dataActors.length ?
-                                <>
                                 <Cast cast={dataActors} searching={true}/>
-                                <Pagination
-                                        total_pages={totalPagesActors}
-                                        currentPage={pageActors}
-                                        setCurrentPage={(page) => bindActorPage(page)}
-                                    />
-                                    </>
                                 : <NotFound/>
                             )
                     }

@@ -14,3 +14,9 @@
 .subtitle__movies {
     color: red;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
