@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 
 import Content from '../Content/Content'
 import './Popular.css'
-import { POPULAR_URL, POPULAR } from '../config'
+import { POPULAR_URL, POPULAR } from '../../config'
 import Loader from '../Loader/Loader'
 import ArrowTop from '../ArrowTop/ArrowTop'
 import { setLocalStorage, getLocalStorage } from '../localStorage/localStorage'
 
-import API from '../../API'
+import API from '../../API/API'
 
 
 function Popular() {

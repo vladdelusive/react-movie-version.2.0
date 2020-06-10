@@ -1,5 +1,5 @@
 import React from 'react'
-import {IMAGE_URL, CARD_SIZE } from '../../../config'
+import {IMAGE_URL, CARD_SIZE } from '../../../../config'
 import './Actor.css'
 
 export default function Actor({path, id, gender, name}) {

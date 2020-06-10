@@ -1,7 +1,7 @@
 import Search from "../../../Search/Search";
 import React, { useEffect} from "react";
-import {FETCH_TIMEOUT, SEARCH_URL, ACTOR_SEARCH} from "../../../config";
-import API from "../../../../API";
+import {FETCH_TIMEOUT, SEARCH_URL, ACTOR_SEARCH} from "../../../../config";
+import API from "../../../../API/API";
 import './InputSearch.css'
 import { useSelector} from "react-redux";
 
@@ -11,7 +11,7 @@ import {
     ACSearchInput,
     ACSearchOffload
 } from '../../../../store/SEARCH/actions/actionCreators'
-import {useActions} from "../../../../decorator";
+import {useActions} from "../../../../store/useActions/decorator";
 
 const doc = document.getElementById("root")
 

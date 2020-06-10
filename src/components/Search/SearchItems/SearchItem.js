@@ -3,7 +3,7 @@ import './SearchItem.css'
 import ActorIcon from './ActorIcon.png'
 
 import MovieIcon from './MovieIcon.png'
-import {IMAGE_URL, CARD_SIZE} from "../../config";
+import {IMAGE_URL, CARD_SIZE} from "../../../config";
 import {Link} from "react-router-dom";
 
 export default function SearchItem({image, title, typeItem, id, setShowSearchedItems}) {

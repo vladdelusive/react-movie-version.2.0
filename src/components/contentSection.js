@@ -2,7 +2,7 @@ import React from 'react'
 
 import './contentSection.css'
 import Content from './Content/Content'
-import { TOP_URL, TOP, POPULAR_URL, POPULAR } from './config'
+import { TOP_URL, TOP, POPULAR_URL, POPULAR } from '../config'
 import Loader from './Loader/Loader'
 import ArrowTop from './ArrowTop/ArrowTop'
 import { useState, useEffect } from 'react'

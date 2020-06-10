@@ -10,7 +10,7 @@ import {
     ACSearchToggle,
     ACSearchReloadPage,
 } from '../../../store/SEARCH/actions/actionCreators'
-import {useActions} from "../../../decorator";
+import {useActions} from "../../../store/useActions/decorator";
 
 export default function FormSearch() {
     const {inputValue} = useSelector(({search}) => search);

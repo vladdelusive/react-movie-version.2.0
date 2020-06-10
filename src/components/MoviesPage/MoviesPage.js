@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 
 import './MoviesPage.css'
 import Content from '../Content/Content'
-import { NEWLY_MOVIES_URL, NEWLY } from '../config'
+import { NEWLY_MOVIES_URL, NEWLY } from '../../config'
 import Loader from '../Loader/Loader'
 import ArrowTop from '../ArrowTop/ArrowTop'
 import { setLocalStorage, getLocalStorage } from '../localStorage/localStorage'
 import BtnLoader from '../hoc/loaderBtn/btnHoc'
-import API from '../../API'
+import API from '../../API/API'
 
 function MoviesPage() {
     const [results, setResults] = useState([])

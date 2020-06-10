@@ -1,7 +1,7 @@
 import React from 'react'
 import './Content.css'
 import Card from '../Card/Card'
-import { IMAGE_URL, CARD_SIZE } from '../config'
+import { IMAGE_URL, CARD_SIZE } from '../../config'
 import image from '../Card/image.jpg'
 import overviewEditor  from './overviewEditor'
 

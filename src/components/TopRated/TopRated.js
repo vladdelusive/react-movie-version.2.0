@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 
 import './TopRated.css'
 import Content from '..//Content/Content'
-import { TOP_URL, TOP } from '../config'
+import { TOP_URL, TOP } from '../../config'
 import Loader from '../Loader/Loader'
 import ArrowTop from '../ArrowTop/ArrowTop'
 import { setLocalStorage, getLocalStorage } from '../localStorage/localStorage'
 
-import API from '../../API'
+import API from '../../API/API'
 
 function TopRated() {
     const [results, setResults] = useState([])

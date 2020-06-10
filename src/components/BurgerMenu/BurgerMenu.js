@@ -5,7 +5,7 @@ import CloseBurger from "../../assets/images/closeBurger.png";
 
 import { useSelector } from "react-redux";
 import { ACSearchBurger } from "../../store/SEARCH/actions/actionCreators";
-import { useActions } from "../../decorator";
+import { useActions } from "../../store/useActions/decorator";
 import Overlay from '../Overlay/Overlay'
 
 import {DeveloperLink} from '../Footer/Footer'

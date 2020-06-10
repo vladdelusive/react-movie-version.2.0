@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './Movie.css'
 import image from './image.jpg'
-import {API_KEY, IMAGE_URL, EXTEND_SIZE, YOUTUBE_URL, DEFAULT_TRAILER} from '../config'
+import {API_KEY, IMAGE_URL, EXTEND_SIZE, YOUTUBE_URL, DEFAULT_TRAILER} from '../../config'
 import {setLocalStorage, getLocalStorage} from '../localStorage/localStorage'
 import Loader from '../Loader/Loader'
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
@@ -9,7 +9,7 @@ import Cast from '../Cast/Cast'
 
 import {badges} from './badges'
 
-import API from '../../API'
+import API from '../../API/API'
 
 function Movie(props) {
 

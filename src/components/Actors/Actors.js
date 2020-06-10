@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import {ACTORS_PAGE_URL, ACTORS} from '../config'
+import {ACTORS_PAGE_URL, ACTORS} from '../../config'
 import {getLocalStorage, setLocalStorage} from '../localStorage/localStorage'
 import Loader from '../Loader/Loader'
 import Cast from '../Cast/Cast'
 import BtnLoader from '../hoc/loaderBtn/btnHoc'
-import API from '../../API'
+import API from '../../API/API'
 
 export default function Actors() {
     const [results, setResults] = useState([])

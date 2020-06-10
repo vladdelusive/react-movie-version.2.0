@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { SEARCH_URL, SEARCH, FETCH_TIMEOUT } from '../config'
+import { SEARCH_URL, SEARCH, FETCH_TIMEOUT } from '../../config'
 import './Input.css'
 import Content from '../Content/Content'
 import LoaderButton from '../LoaderButton/LoaderButton'
 import { setLocalStorage, getLocalStorage } from '../localStorage/localStorage'
 import NotFound from '../NotFound/NotFound'
 
-import API from '../../API'
+import API from '../../API/API'
 
 let timer;
 

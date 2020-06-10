@@ -1,5 +1,5 @@
 import React from 'react'
-import {IMAGE_URL, CARD_SIZE,} from '../../../config'
+import {IMAGE_URL, CARD_SIZE,} from '../../../../config'
 import {Link} from 'react-router-dom'
 import image from './image.jpg'
 import './Movie.css'

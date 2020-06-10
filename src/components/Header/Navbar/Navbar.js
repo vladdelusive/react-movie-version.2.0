@@ -2,7 +2,7 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import './Navbar.css'
 import {ACSearchClear} from '../../../store/SEARCH/actions/actionCreators'
-import {useActions} from "../../../decorator";
+import {useActions} from "../../../store/useActions/decorator";
 
 export default function Navbar() {
     const {

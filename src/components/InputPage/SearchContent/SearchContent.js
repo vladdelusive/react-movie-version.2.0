@@ -2,8 +2,8 @@ import React, {useState, useEffect, createRef} from 'react'
 import './SearchContent.css'
 
 import SearchCardsContentMovies from "../SearchCard/SearchCardsContentMovies";
-import API from "../../../API";
-import {ACTOR_SEARCH, SEARCH_URL} from "../../config";
+import API from "../../../API/API";
+import {ACTOR_SEARCH, SEARCH_URL} from "../../../config";
 import Loader from "../../Loader/Loader";
 import SearchCardsContentActors from "../SearchCard/SearchCardsContentActors";
 import {ACSearchMoviePage, ACSearchActorPage } from '../../../store/SEARCH/actions/actionCreators'
@@ -13,7 +13,7 @@ import 'rc-pagination/assets/index.css';
 import NotFound from "../../NotFound/NotFound"
 import { useSelector } from 'react-redux';
 
-import { useActions } from '../../../decorator'
+import { useActions } from '../../../store/useActions/decorator'
 
 function SearchContent({query}) {
     const {pageActors, pageMovies} = useSelector(({search})=>search)

@@ -1,5 +1,5 @@
 import React from 'react'
-import {IMAGE_URL, CARD_SIZE} from '../../../config'
+import {IMAGE_URL, CARD_SIZE} from '../../../../config'
 import './SearchCard.css'
 import male from '../../../Cast/Actor/unknown_male.png'
 import female from '../../../Cast/Actor/unknown_female.png'
