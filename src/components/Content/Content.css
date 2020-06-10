@@ -1,5 +1,4 @@
 .section__content {
-    background-color: #f8f9fa;
     padding-top: 25px;
     margin-top: 30px;
     background: linear-gradient(#e7dff3, #effafd);
@@ -11,6 +10,6 @@
     justify-items: center;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 0px 5%;
     align-items: flex-start;
+    padding: 0px 10px;
 }

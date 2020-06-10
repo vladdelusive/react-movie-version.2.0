@@ -1,6 +1,6 @@
 import React from "react";
 import "./EasterEgg.css";
-import pashalka from "../../markup/pashalka.jpg";
+import pashalka from "../../assets/images/pashalka.jpg";
 
 export default function EasterEgg() {
   return (

@@ -3,7 +3,7 @@ import {ACTORS_PAGE_URL, ACTORS} from '../config'
 import {getLocalStorage, setLocalStorage} from '../localStorage/localStorage'
 import Loader from '../Loader/Loader'
 import Cast from '../Cast/Cast'
-import BtnLoader from '../../hoc/loaderBtn/btnHoc'
+import BtnLoader from '../hoc/loaderBtn/btnHoc'
 import API from '../../API'
 
 export default function Actors() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import BurgerIcon from '../../../images/openBurger.png'
+import BurgerIcon from '../../../assets/images/openBurger.png'
 import './Burger.css'
 import {SEARCH_BURGER} from '../../../store/SEARCH/actions/actionTypes'
 

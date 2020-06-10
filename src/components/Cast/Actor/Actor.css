@@ -1,4 +1,4 @@
-.actor {
+.card-actor {
     padding-bottom: 10px;
     border-radius: 6px;
     margin: 10px 10px 30px;
@@ -6,37 +6,37 @@
     width: 350px;
 }
 
-.actor-photo__img {
-    display: block;
-}
-
-.actor-photo {
+.card-actor__photo {
     display: block;
     width: auto;
 }
 
-.actor-photo__img img {
+.card-actor__photo-img {
+    display: block;
+}
+
+.card-actor__photo-img img {
     width: 350px;
 }
 
-.actor-name__link--text {
+.card-actor__name-link--text {
     font-size: 25px;
     margin: auto;
     text-align: center;
     font-weight: bold;
 }
 
-.actor-name__link {
+.card-actor__name-link {
     text-decoration: none;
     color: #007bff;
     display: block;
 }
 
 @media (max-width: 400px) {
-    .actor-photo__img img {
+    .card-actor__photo-img img {
         width: 300px;
     }
-    .actor {
+    .card-actor {
         width: 300px;
     }
 }

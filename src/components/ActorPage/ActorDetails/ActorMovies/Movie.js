@@ -6,20 +6,19 @@ import './Movie.css'
 
 export default function Movie({id, img, title}) {
     return (
-        <div className="card actor-movie">
-            <div className="card__body">
+        <div className="card">
+            <div className="card__header">
                 <Link to={`/movies/${id}`} title={title}>
                     <img
-                        className="actor-movie"
                         src={img === null
                             ? image
                             : `${IMAGE_URL}${CARD_SIZE}${img}`}
                         alt="movie_image"/>
                 </Link>
             </div>
-            <div className="card__title">
-                <Link className="card__title card__title--underline" to={`/movies/${id}`} title={title}>
-                    <h5 className="card__title card__title--link">{title}</h5>
+            <div className="card__body">
+                <Link className="card__title" to={`/movies/${id}`} title={title}>
+                    <h5 className="card__title">{title}</h5>
                 </Link>
             </div>
         </div>

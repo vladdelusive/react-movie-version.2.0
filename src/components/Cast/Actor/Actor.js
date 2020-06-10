@@ -8,15 +8,15 @@ import {Link} from 'react-router-dom'
 export default function Actor({path, id, gender, name}) {
     const image = path === null ? gender === 2 ? male : female : `${IMAGE_URL}${CARD_SIZE}${path}`
     return (
-        <div className="actor">
-            <div className="actor-photo">
-                <Link className="actor-photo__img" to={`/actors/${id}`}>
+        <div className="card-actor">
+            <div className="card-actor__photo">
+                <Link className="card-actor__photo-img" to={`/actors/${id}`}>
                     <img src={image} alt="actor_image"/>
                 </Link>
             </div>
-            <div className="actor-name">
-                <Link className="actor-name__link" to={`/actors/${id}`}>
-                    <h5 className="actor-name__link actor-name__link--text">{name}</h5>
+            <div className="card-actor__name">
+                <Link className="card-actor__name-link" to={`/actors/${id}`}>
+                    <h5 className="card-actor__name-link card-actor__name-link--text">{name}</h5>
                 </Link>
             </div>
         </div>

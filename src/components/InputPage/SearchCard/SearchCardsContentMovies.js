@@ -5,6 +5,8 @@ import overviewEditor from "../../Content/overviewEditor";
 
 import SearchCard from "./SearchCardMovie/SearchCard";
 
+import Card from "../../SearchCard/Card";
+
 
 export default React.memo(function SearchCardsContentMovies({ results, path }) {
     const identityId = []
@@ -19,7 +21,7 @@ export default React.memo(function SearchCardsContentMovies({ results, path }) {
         const overview = movie.overview.length > 150 ? overviewEditor(movie.overview) : movie.overview
 
         return (
-            <SearchCard
+            <Card
                 title={movie.title}
                 key={movie.id}
                 overview={overview}

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, createRef} from 'react'
 import './SearchContent.css'
 
 import SearchCardsContentMovies from "../SearchCard/SearchCardsContentMovies";
@@ -10,9 +10,7 @@ import {ACSearchMoviePage, ACSearchActorPage } from '../../../store/SEARCH/actio
 
 import Pagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
-
 import NotFound from "../../NotFound/NotFound"
-//import Pagination from "../../Pagination/Pagination";
 import { useSelector } from 'react-redux';
 
 import { useActions } from '../../../decorator'
@@ -24,12 +22,25 @@ function SearchContent({query}) {
         ACSearchActorPage: bindActorPage
     } = useActions({ACSearchMoviePage, ACSearchActorPage})
 
+    const moviesElementTitle = createRef()
+    const actorsElementTitle = createRef()
+
     const [dataMovies, setDataMovies] = useState(null)
     const [dataActors, setDataActors] = useState(null)
     const [loading, setLoading] = useState(true)
 
     const [totalPagesMovies, setTotalPagesMovies] = useState(null)
     const [totalPagesActors, setTotalPagesActors] = useState(null)
+
+    const onClickPageMovies = (pageNumber) => {
+        moviesElementTitle.current.scrollIntoView({block: "start"});
+        bindMoviePage(pageNumber)
+    }
+
+    const onClickPageActors = (pageNumber) => {
+        actorsElementTitle.current.scrollIntoView({block: "start"});
+        bindActorPage(pageNumber)
+    }
 
     useEffect(() => {
         const fetch = async () => {
@@ -48,16 +59,15 @@ function SearchContent({query}) {
             setTotalPagesMovies(MOVIES.total_pages)
             setTotalPagesActors(ACTORS.total_pages)
         }
-        fetch()
+        fetch().catch(()=>console.log("something went wrong"))
     }, [query, pageActors, pageMovies])
     return (
         <>
             <div className="section__content section__content--movies">
-                <div className="subtitle subtitle__movies">Movies:</div>
+                <div ref={moviesElementTitle} className="subtitle subtitle__movies">Movies:</div>
                     <div className="pagination">
                         {
                             (!loading && dataMovies.length) ? <Pagination
-                                className="ant-pagination"
                                 current={pageMovies}
                                 total={totalPagesMovies}
                                 onChange={(pageNumber)=>bindMoviePage(pageNumber)}
@@ -72,14 +82,20 @@ function SearchContent({query}) {
                             (dataMovies.length ? <SearchCardsContentMovies results={dataMovies} path="/movies"/>
                                 : <NotFound/>)
                     }
+                    {
+                        (!loading && dataMovies.length) ? <Pagination
+                        current={pageMovies}
+                        total={totalPagesMovies}
+                        onChange={(pageNumber) => onClickPageMovies(pageNumber)}
+                        /> : ""
+                    }
                 </div>
             </div>
             <div className="section__content section__content--actors">
-                <div className="subtitle subtitle__actors">Actors:</div>
+                <div ref={actorsElementTitle}  className="subtitle subtitle__actors">Actors:</div>
                     <div className="pagination">
                         {
                             (!loading && dataActors.length) ? <Pagination
-                                className="ant-pagination"
                                 current={pageActors}
                                 total={totalPagesActors}
                                 onChange={(pageNumber)=>bindActorPage(pageNumber)}
@@ -94,6 +110,13 @@ function SearchContent({query}) {
                                 <SearchCardsContentActors cast={dataActors}/>
                                 : <NotFound/>
                             )
+                    }
+                    {
+                        (!loading && dataActors.length) ? <Pagination
+                            current={pageActors}
+                            total={totalPagesActors}
+                            onChange={(pageNumber)=>onClickPageActors(pageNumber)}
+                        /> : ""
                     }
                 </div>
             </div>

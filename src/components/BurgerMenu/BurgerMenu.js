@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./BurgerMenu.css";
-import CloseBurger from "../../images/closeBurger.png";
+import CloseBurger from "../../assets/images/closeBurger.png";
 
 import { useSelector } from "react-redux";
 import { ACSearchBurger } from "../../store/SEARCH/actions/actionCreators";

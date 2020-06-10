@@ -1,9 +1,10 @@
 .search-actor {
-    padding-bottom: 10px;
-    border-radius: 6px;
+    padding-bottom: 3px;
+    border-radius: 5px;
     margin: 10px 10px 30px;
     border: 2px solid black;
-    width: 200px;
+    box-sizing: border-box;
+    width: calc(16% - 20px);
 }
 
 .search-actor__name {
@@ -18,13 +19,10 @@
 
 .search-actor__photo-img img {
     display: block;
-    width: 200px;
-}
-
-.search-actor__name-link {
-    text-decoration: none;
-    color: #007bff;
-    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .search-actor__name-text {
@@ -34,4 +32,22 @@
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
+}
+
+@media screen and (max-width: 1000px) {
+    .search-actor {
+        width: calc(24% - 20px);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .search-actor {
+        width: calc(50% - 20px) !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .search-actor {
+        width: calc(100% - 20px) !important;
+    }
 }

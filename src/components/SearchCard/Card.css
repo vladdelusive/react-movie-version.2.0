@@ -1,4 +1,4 @@
-.search-movie {
+.card {
     box-sizing: border-box;
     width: calc(25% - 20px);
     margin: 10px;
@@ -6,48 +6,53 @@
     transition: all .3s ease;
 }
 
-.search-movie:hover {
+.card:hover {
     transform: scale(1.05);
     transition: all .3s ease;
 }
 
-.search-movie__post a {
+.card__header a {
     display: block;
 }
 
-.search-movie__post img {
+.card__header img {
     height: 300px;
     width: 100%;
     object-fit: cover;
     object-position: center;
 }
 
-.search-movie__body {
+.card__body {
     padding: 10px;
 }
 
-.search-movie__title {
+.card__body a {
+    display: block;
+}
+
+.card__title {
     font-size: 22px;
     margin: 0px;
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
+    text-decoration: none;
+}
+
+.card__body--actor a {
+    text-decoration: none;
+    color: #007bff;
+    display: block;
 }
 
 @media screen and (max-width: 1100px) {
-    .search-movie {
-        width: calc(33% - 20px);
-    }
-}
-
-@media screen and (max-width: 700px) {
-    .search-movie {
+    .card {
         width: calc(50% - 20px);
     }
 }
 
 @media screen and (max-width: 500px) {
-    .search-movie {
+    .card {
         width: calc(100% - 20px);
     }
 }
