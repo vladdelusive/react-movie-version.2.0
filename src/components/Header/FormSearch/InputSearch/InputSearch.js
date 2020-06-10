@@ -9,8 +9,7 @@ import {
     ACSearchToggle,
     ACSearchUpload,
     ACSearchInput,
-    ACSearchOffload,
-    ACSearchIsActive, ACSearchReloadPage
+    ACSearchOffload
 } from '../../../../store/SEARCH/actions/actionCreators'
 import {useActions} from "../../../../decorator";
 

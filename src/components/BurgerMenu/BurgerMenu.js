@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./BurgerMenu.css";
 import CloseBurger from '../../images/closeBurger.png'
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { ACSearchBurger } from '../../store/SEARCH/actions/actionCreators'
 import {useActions} from "../../decorator";
 
