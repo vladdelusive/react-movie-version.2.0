@@ -6,7 +6,7 @@ import Movie from "./components/Movie/Movie";
 import ActorPage from "./components/ActorPage/ActorPage";
 import Actors from "./components/Actors/Actors";
 import Main from "./components/Main/Main";
-import { Footer } from "./components/Footer/Footer";
+import { DeveloperLink } from "./components/Footer/Footer";
 import NotFoundPage from "./components/WrongPath/WrongPath";
 import MoviesPage from "./components/MoviesPage/MoviesPage";
 import BurgerMenu from "./components/BurgerMenu/BurgerMenu";
@@ -37,7 +37,7 @@ function App() {
           </Switch>
         </MainContainer>
       </div>
-      <Footer />
+      <DeveloperLink />
     </>
   );
 }

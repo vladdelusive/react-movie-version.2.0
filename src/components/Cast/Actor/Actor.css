@@ -36,4 +36,7 @@
     .actor-photo__img img {
         width: 300px;
     }
+    .actor {
+        width: 300px;
+    }
 }

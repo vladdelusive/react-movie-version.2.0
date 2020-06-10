@@ -1,11 +1,13 @@
 .layout {
-    transition: 0.5s;
+  transition: 0.5s;
 }
 
 .layout--transform .burger {
-    display: none;
+  display: none;
 }
 
 .layout--transform {
-    transform: translateX(-100px);
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll;
 }
