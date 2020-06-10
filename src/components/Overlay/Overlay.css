@@ -4,4 +4,5 @@
     background: #000;
     opacity: 0.5;
     position: absolute;
+    z-index: 5;
 }

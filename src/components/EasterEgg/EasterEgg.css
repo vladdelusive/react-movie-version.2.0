@@ -1,0 +1,28 @@
+.easter-egg {
+    display: grid;
+    justify-content: center;
+}
+
+.easter-egg__img img{
+    width: 700px;
+}
+
+.easter-egg__name {
+    display: block;
+}
+
+.easter-egg__name-text {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+    padding: 20px;
+    display: block;
+}
+
+
+@media (max-width: 700px) {
+    .easter-egg__img img {
+        width: 100%;
+    }
+}
