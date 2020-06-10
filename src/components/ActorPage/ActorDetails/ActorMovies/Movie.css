@@ -22,6 +22,8 @@
     font-size: 25px;
     margin: 10px auto;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .card__title--underline {
