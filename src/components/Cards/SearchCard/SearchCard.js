@@ -1,7 +1,7 @@
 import React from 'react'
-import {IMAGE_URL, CARD_SIZE} from '../../config'
-import male from '../../assets/images/unknown_male.png'
-import female from '../../assets/images/unknown_female.png'
+import {IMAGE_URL, CARD_SIZE} from '../../../config'
+import male from '../../../assets/images/unknown_male.png'
+import female from '../../../assets/images/unknown_female.png'
 
 import {Link} from 'react-router-dom'
 

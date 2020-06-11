@@ -1,5 +1,5 @@
 import React from "react";
-import './btnHoc.css'
+import './btn.css'
 
 export default function ({handlerLoading, children}) {
     return (

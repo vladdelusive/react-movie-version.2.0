@@ -10,7 +10,7 @@ import { ACSearchMoviePage, ACSearchActorPage } from '../../../store/SEARCH/acti
 
 import Pagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
-import NotFound from "../../NotFound/NotFound"
+import NotFound from "../NotFound/NotFound"
 import { useSelector } from 'react-redux';
 
 import { useActions } from '../../../store/useActions/decorator'

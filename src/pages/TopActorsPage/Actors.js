@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import {ACTORS_PAGE_URL, ACTORS} from '../../config'
 import {getLocalStorage, setLocalStorage} from '../../helpers/localStorage/localStorage'
 import Loader from '../../components/Loader/Loader'
-import Cast from '../../components/Cast/Cast'
-import BtnLoader from '../../components/hoc/loaderBtn/btnHoc'
+import Cast from '../../components/ActorsCast/Cast'
+import BtnLoader from '../../components/hoc/loaderBtn/btn'
 import API from '../../API/API'
 
 export default function Actors() {

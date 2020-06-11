@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react'
-import '../../components/Movie/Movie.css'
-import image from '../../components/Movie/image.jpg'
+import './Movie.css'
+import image from '../../assets/images/image.jpg'
 import {API_KEY, IMAGE_URL, EXTEND_SIZE, YOUTUBE_URL, DEFAULT_TRAILER} from '../../config'
 import {setLocalStorage, getLocalStorage} from "../../helpers/localStorage/localStorage";
 import Loader from "../../components/Loader/Loader";
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
-import Cast from "../../components/Cast/Cast";
+import Cast from "../../components/ActorsCast/Cast";
 
-import {badges} from "../../components/Movie/badges";
+import {badges} from "../../helpers/badges";
 
 import API from '../../API/API'
 

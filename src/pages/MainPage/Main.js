@@ -1,6 +1,6 @@
 import React from 'react'
-import Image from '../../components/Main/mainImage.png'
-import '../../components/Main/Main.css'
+import Image from '../../assets/images/mainImage.png'
+import './Main.css'
 
 export default function Main() {
     return <div className="main-page">

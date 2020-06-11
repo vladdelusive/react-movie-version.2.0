@@ -1,9 +1,9 @@
 import React from 'react'
 import './Content.css'
-import Card from '../../CardMovie/Card'
-import { IMAGE_URL, CARD_SIZE } from '../../../config'
-import image from '../../../assets/images/image.jpg'
-import overviewEditor  from '../../../helpers/overviewEditor'
+import Card from '../Cards/CardMovie/Card'
+import { IMAGE_URL, CARD_SIZE } from '../../config'
+import image from '../../assets/images/image.jpg'
+import overviewEditor  from '../../helpers/overviewEditor'
 
 export default React.memo(function Content({ results, path }) {
     const identityId = []
