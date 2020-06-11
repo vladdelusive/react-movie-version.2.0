@@ -1,0 +1,16 @@
+.section {
+  display: inherit;
+  justify-content: center;
+  margin-bottom: 60px;
+  margin-top: 20px;
+}
+
+.layout--transform .burger {
+  display: none;
+}
+
+.layout--transform {
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll;
+}

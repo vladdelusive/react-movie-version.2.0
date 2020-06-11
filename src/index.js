@@ -5,10 +5,10 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 
-import rootReducer from "store/rootReducer";
+import {rootReducer} from "store/root-reducer";
 
 import "./index.css";
-import App from "./App";
+import App from "app";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

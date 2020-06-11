@@ -1,0 +1,22 @@
+import React from "react";
+import "pages/search/style.css";
+import {NoQuery} from "components/search-page/no-query";
+import {SearchContent} from "components/search-page/search-content";
+import {EasterEgg} from "components/easter-egg";
+
+export function InputPage({ location }) {
+  if (!location.search) return <NoQuery />;
+  const text = decodeURI(location.search.slice(7)).replace(/\s+/g, " ").trim();
+  if (!text) return <NoQuery />;
+  if (text.toLowerCase() === "товсточуб" || text.toLowerCase() === "tovstochub")
+    return <EasterEgg />;
+
+  return (
+    <div className="section__search">
+      <div className="section__title">
+        Your search is "<span className="search-text">{text}</span>"
+      </div>
+      <SearchContent query={text} />
+    </div>
+  );
+}
