@@ -1,0 +1,30 @@
+.btn {
+    display: block;
+}
+
+.btn-loading {
+    text-align: center;
+    margin-bottom: 25px;
+    justify-content: center;
+    display: flex;
+}
+
+.btn-loading button {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #117a8b;
+    padding: 10px 15px;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.btn-loading button:hover {
+    color: #fff;
+    background-color: #138496;
+    border-color: #117a8b;
+}

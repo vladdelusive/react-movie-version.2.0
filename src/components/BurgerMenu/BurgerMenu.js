@@ -8,7 +8,7 @@ import { ACSearchBurger } from "../../store/SEARCH/actions/actionCreators";
 import { useActions } from "../../store/useActions/decorator";
 import Overlay from '../Overlay/Overlay'
 
-import {DeveloperLink} from '../Footer/Footer'
+import {DeveloperLink} from '../DeveloperLink/Footer'
 
 export default function BurgerMenu() {
   const { burgerActive } = useSelector(({ search }) => search);

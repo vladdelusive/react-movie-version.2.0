@@ -1,4 +1,4 @@
-import image from "../movie-logo.jpg";
+import image from "../../../assets/images/movie-logo.jpg";
 import React from "react";
 import "./Logo.css"
 

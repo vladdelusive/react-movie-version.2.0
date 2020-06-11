@@ -1,6 +1,5 @@
 import React from 'react'
 import Actor from './Actor/Actor'
-import './Cast.css'
 import ArrowTop from '../ArrowTop/ArrowTop'
 
 export default React.memo(function Cast({cast}) {

@@ -1,8 +1,8 @@
 import React from 'react'
 import {IMAGE_URL, CARD_SIZE} from '../../../config'
 import './Actor.css'
-import male from './unknown_male.png'
-import female from './unknown_female.png'
+import male from '../../../assets/images/unknown_male.png'
+import female from '../../../assets/images/unknown_female.png'
 import {Link} from 'react-router-dom'
 
 export default function Actor({path, id, gender, name}) {

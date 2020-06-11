@@ -20,7 +20,6 @@
     display: block;
 }
 
-
 @media (max-width: 700px) {
     .easter-egg__img img {
         width: 100%;

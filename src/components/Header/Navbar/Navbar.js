@@ -6,19 +6,19 @@ import {useActions} from "../../../store/useActions/decorator";
 
 export default function Navbar() {
     const {
-        ACSearchClear: bindClear,
+        ACSearchClear: clearSearch,
     } = useActions({ACSearchClear})
     
     return (
         <div className="navbar-wrapper">
             <ul className="navbar">
-                <li className="navbar__item" onClick={bindClear}>
+                <li className="navbar__item" onClick={clearSearch}>
                     <NavLink exact className="navbar__link" to="/">Main</NavLink>
                 </li>
-                <li className="navbar__item" onClick={bindClear}>
+                <li className="navbar__item" onClick={clearSearch}>
                     <NavLink className="navbar__link" to="/movies">Movies</NavLink>
                 </li>
-                <li className="navbar__item" onClick={bindClear}>
+                <li className="navbar__item" onClick={clearSearch}>
                     <NavLink className="navbar__link" to="/actors">Actors</NavLink>
                 </li>
             </ul>

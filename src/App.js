@@ -2,18 +2,18 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Header from "./components/Header/Header";
-import Movie from "./components/Movie/Movie";
-import ActorPage from "./components/ActorPage/ActorPage";
-import Actors from "./components/Actors/Actors";
-import Main from "./components/Main/Main";
-import { DeveloperLink } from "./components/Footer/Footer";
-import NotFoundPage from "./components/WrongPath/WrongPath";
-import MoviesPage from "./components/MoviesPage/MoviesPage";
+import Movie from "./pages/MoviePage/Movie";
+import ActorPage from "./pages/ActorPage/ActorPage";
+import Actors from "./pages/TopActorsPage/Actors";
+import Main from "./pages/MainPage/Main";
+import { DeveloperLink } from "./components/DeveloperLink/Footer";
+import NotFoundPage from "./pages/NotFoundPage/WrongPath";
+import MoviesPage from "./pages/NewMoviesPage/MoviesPage";
 import BurgerMenu from "./components/BurgerMenu/BurgerMenu";
 
 import MainContainer from "./containers/Main/Main";
 
-import InputPage from "./components/InputPage/InputPage";
+import InputPage from "./pages/SearchPage/InputPage";
 
 import "./App.css";
 import { useSelector } from "react-redux";

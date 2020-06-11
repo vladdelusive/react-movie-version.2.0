@@ -1,4 +1,4 @@
-import Search from "../../../Search/Search";
+import Search from "./Search/Search";
 import React, { useEffect} from "react";
 import {FETCH_TIMEOUT, SEARCH_URL, ACTOR_SEARCH} from "../../../../config";
 import API from "../../../../API/API";

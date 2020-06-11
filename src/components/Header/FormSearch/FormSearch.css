@@ -16,9 +16,8 @@
     border-radius: 50%;
     border: none;
     outline: none;
-    background: url("./search_img.png");
+    background: url("../../../assets/images/search_img.png");
     background-size: contain;
-    background-repeat: no-repeat;
     transform: scale(0.9);
     transition: all .4s ease;
     min-width: 50px;
