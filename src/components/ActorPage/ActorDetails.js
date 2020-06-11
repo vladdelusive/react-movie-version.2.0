@@ -1,7 +1,9 @@
 import React from 'react'
-import { IMAGE_URL, CARD_SIZE, } from '../../config'
+import { IMAGE_URL, CARD_SIZE, } from 'config'
+
 import './ActorDetails.css'
-import convertAge from '../../helpers/ageConverter'
+
+import convertAge from 'helpers/ageConverter'
 import ActorMovies from "./ActorMovies/ActorMovies";
 
 export default function ActorDetails({ personInfo, handleClick, isHidden, moviesInfo }) {

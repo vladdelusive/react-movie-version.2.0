@@ -1,9 +1,11 @@
-import Search from "./Search/Search";
 import React, { useEffect} from "react";
-import {FETCH_TIMEOUT, SEARCH_URL, ACTOR_SEARCH} from "../../../../config";
-import API from "../../../../API/API";
-import './InputSearch.css'
 import { useSelector} from "react-redux";
+
+import API from "API/API";
+import {FETCH_TIMEOUT, SEARCH_URL, ACTOR_SEARCH} from "config";
+
+import Search from "./Search/Search";
+import './InputSearch.css'
 
 import {
     ACSearchToggle,

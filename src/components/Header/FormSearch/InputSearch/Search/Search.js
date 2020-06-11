@@ -1,13 +1,15 @@
 import React from "react";
-import "./Search.css";
-import SearchItem from "./SearchItems/SearchItem";
 import { Link } from "react-router-dom";
-import NoOneFound from "./NoOneFound/NoOneFound";
 import { useDispatch } from "react-redux";
+
+import SearchItem from "./SearchItems/SearchItem";
+import NoOneFound from "./NoOneFound/NoOneFound";
+import "./Search.css";
+
 import {
   ACSearchToggle,
   ACSearchReloadPage,
-} from "../../../../../store/SEARCH/actions/actionCreators";
+} from "store/SEARCH/actions/actionCreators";
 
 export default function Search({
   value,

@@ -1,9 +1,9 @@
-import React from 'react'
-import { IMAGE_URL, CARD_SIZE } from '../../../config'
-import image from '../../../assets/images/image.jpg'
-import overviewEditor from "../../../helpers/overviewEditor";
+import React from 'react';
+import { IMAGE_URL, CARD_SIZE } from 'config';
+import overviewEditor from "helpers/overviewEditor";
 
-import Card from "../../Cards/Card";
+import image from 'assets/images/image.jpg';
+import Card from "components/Cards/Card";
 
 export default React.memo(function SearchCardsContentMovies({ results, path }) {
     const identityId = []

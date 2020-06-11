@@ -1,10 +1,11 @@
 import React from 'react'
-import './SearchItem.css'
-import ActorIcon from '../../../../../../assets/images/ActorIcon.png'
-
-import MovieIcon from '../../../../../../assets/images/MovieIcon.png'
-import {IMAGE_URL, CARD_SIZE} from "../../../../../../config";
 import {Link} from "react-router-dom";
+
+import ActorIcon from 'assets/images/ActorIcon.png'
+import MovieIcon from 'assets/images/MovieIcon.png'
+import {IMAGE_URL, CARD_SIZE} from "config";
+
+import './SearchItem.css'
 
 export default function SearchItem({image, title, typeItem, id, setShowSearchedItems}) {
     const link = (typeItem === "movie" ? "/movies/" : "/actors/") + id

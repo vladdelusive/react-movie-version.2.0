@@ -1,7 +1,6 @@
 import React, { useState} from "react";
 import "./FormSearch.css";
 
-import InputSearch from "./InputSearch/InputSearch";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 
@@ -9,8 +8,9 @@ import {
     ACSearchIsActive,
     ACSearchToggle,
     ACSearchReloadPage,
-} from '../../../store/SEARCH/actions/actionCreators'
-import {useActions} from "../../../store/useActions/decorator";
+} from 'store/SEARCH/actions/actionCreators.js'
+import {useActions} from "store/useActions/decorator.js";
+import InputSearch from "./InputSearch/InputSearch";
 
 export default function FormSearch() {
     const {inputValue} = useSelector(({search}) => search);
