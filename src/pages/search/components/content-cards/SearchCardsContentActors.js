@@ -1,5 +1,5 @@
 import React from "react";
-import {SearchCard} from "components/cards/search-actor";
+import {SearchCard} from "components";
 
 export const SearchCardsContentActors = React.memo(function SearchCardsContentActors({ cast }) {
   const identityId = [];

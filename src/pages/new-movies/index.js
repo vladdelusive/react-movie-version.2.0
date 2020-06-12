@@ -3,10 +3,10 @@ import { NEWLY_MOVIES_URL } from "api/config";
 
 import API from "http/index";
 import "./style.css";
-import {Loader} from "components/loader";
-import {ArrowTop} from "components/arrow-top";
-import {BtnLoader} from "components/loader-btn";
-import {Content} from "pages/new-movies/components";
+import {Loader} from "components";
+import {ArrowTop} from "components";
+import {BtnLoader} from "components";
+import {Content} from "./content";
 
 export function MoviesPage() {
   const [results, setResults] = useState([]);

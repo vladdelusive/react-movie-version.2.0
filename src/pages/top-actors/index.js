@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { TRENDY_ACTORS_URL } from "api/config";
 
-import {Loader} from "components/loader";
-import {Cast} from "components/actor-cast/cast";
-import {BtnLoader} from "components/loader-btn";
+import {Loader} from "components";
+import {Cast} from "components";
+import {BtnLoader} from "components";
 import API from "http/index";
 
 export function Actors() {

@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { badges } from "constants/constants";
-import API from "http/index";
-
 import "./style.css";
-import image from "assets/images/image.jpg";
+
+import { badges, DEFAULT_TRAILER } from "constants/constants";
 import { EXTEND_SIZE} from "constants/cards";
-
-import { DEFAULT_TRAILER } from "constants/constants"
-
+import API from "http/index";
+import image from "assets/images/image.jpg";
 import {API_KEY, YOUTUBE_URL} from "api/config";
-
-import { makeImgUrl} from "helpers/make-img-url";
+import { makeImgUrl } from "helpers/make-img-url";
 import { getLocalStorage } from "helpers/local-storage";
-
-import {Loader} from "components/loader";
-import {Cast} from "components/actor-cast/cast";
+import {Loader, Cast} from "components";
 
 function PageMovie(props) {
   const [results, setResults] = useState([]);
@@ -92,7 +86,8 @@ function PageMovie(props) {
         <span
           key={i}
           className={`fa fa-star${i < movieRate ? " checked" : ""}`}
-        ></span>
+        >
+        </span>
       );
     }
     return stars;

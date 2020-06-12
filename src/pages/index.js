@@ -1,9 +1,7 @@
-import {Main} from "./main";
-import {PageMovie as MoviePage} from "./movie";
-import {Actors} from "./top-actors";
-import {ActorPage} from "./actor";
-import {InputPage} from "./search";
-import {WrongPath as NotFoundPage} from "./not-found";
-import {MoviesPage} from "./new-movies";
-
-export { Main, MoviePage, Actors, ActorPage, InputPage, NotFoundPage, MoviesPage }
+export {Main} from "./main";
+export {PageMovie as MoviePage} from "./movie";
+export {Actors} from "./top-actors";
+export {ActorPage} from "./actor";
+export {InputPage} from "./search";
+export {WrongPath as NotFoundPage} from "./not-found";
+export {MoviesPage} from "./new-movies";

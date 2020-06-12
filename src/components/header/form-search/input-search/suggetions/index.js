@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import {SearchItem} from "components/header/form-search/input-search/search/search-items";
-import {NoOneFound} from "components/header/form-search/input-search/search/no-found";
-import "components/header/form-search/input-search/search/style.css";
+import {SearchItem} from "./search-items";
+import {NoOneFound} from "./no-found";
+import "./style.css";
 
 import {
   ACSearchToggle,
@@ -54,7 +54,7 @@ export function Search({
     65 * (searchedItemsMovies.length + searchedItemsActors.length) +
     22 * categoriesCount +
     35;
-  // (h.search-movie*n.search-movie)+(categ*n.categ)+h.more
+  // (h.suggetions-movie*n.suggetions-movie)+(categ*n.categ)+h.more
   return (
     <div className="input-block__items" style={{ height: pixels }}>
       {searchedItemsMovies.length ? (

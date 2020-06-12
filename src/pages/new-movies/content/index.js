@@ -1,8 +1,9 @@
 import React from "react";
-import "pages/new-movies/components/style.css";
-import {Card} from "components/cards/newly-movie";
-import { makeImgUrl} from "helpers/make-img-url";
-import { CARD_SIZE } from 'constants/cards'
+import "./style.css";
+
+import {Card} from "components";
+import {makeImgUrl} from "helpers/make-img-url";
+import {CARD_SIZE} from 'constants/cards'
 import image from "assets/images/image.jpg";
 import {overviewEditor} from "helpers/overview-editor";
 

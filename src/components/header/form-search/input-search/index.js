@@ -6,7 +6,7 @@ import { SEARCH_MOVIE_PARAM_URL, SEARCH_ACTOR_PARAM_URL} from "api/config";
 
 import { FETCH_TIMEOUT } from 'constants/constants'
 
-import {Search} from "components/header/form-search/input-search/search";
+import {Search} from "components/header/form-search/input-search/suggetions";
 import 'components/header/form-search/input-search/style.css'
 
 import {

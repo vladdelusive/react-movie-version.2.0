@@ -1,26 +1,28 @@
 import React from 'react'
-import { makeImgUrl} from "helpers/make-img-url";
+import {makeImgUrl} from "helpers/make-img-url";
+import './style.css'
 
-import { CARD_SIZE} from "constants/cards";
-
-import 'pages/actor/components/actor-details/style.css'
-
+import {CARD_SIZE} from "constants/cards";
+import {ActorMovies} from "../actor-movies";
 import {convertAge} from 'helpers/age-converter'
-import {ActorMovies} from "pages/actor/components/actor-movies";
 
 export function ActorDetails({ personInfo, handleClick, isHidden, moviesInfo }) {
-    console.log(CARD_SIZE)
     return (
         <>
             <div className="actor-info">
                 <div className="actor-info__block actor-info__block--left">
                     <div className="actor-info__header">
-                        <h1 className="actor-info__text actor-info__text--name">{personInfo.name}</h1>
-                        <h3 className="actor-info__text actor-info__text--birth">{personInfo.place_of_birth}</h3>
+                        <h1 className="actor-info__text actor-info__text--name">
+                            {personInfo.name}
+                        </h1>
+                        <h3 className="actor-info__text actor-info__text--birth">
+                            {personInfo.place_of_birth}
+                        </h3>
                         <h3 className="actor-info__text actor-info__text--deathday">
                             {personInfo.deathday === null
                                 ? convertAge(personInfo.birthday)
-                                : <>from {personInfo.birthday && personInfo.birthday.slice(0, 4)} to {personInfo.deathday.slice(0, 4)}</>
+                                : <>from {personInfo.birthday && personInfo.birthday.slice(0, 4)}
+                                to {personInfo.deathday.slice(0, 4)}</>
                             }
                         </h3>
                     </div>

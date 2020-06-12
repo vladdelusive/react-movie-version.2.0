@@ -1,5 +1,5 @@
 import React from "react";
-import "components/header/form-search/input-search/search/no-found/style.css";
+import "components/header/form-search/input-search/suggetions/no-found/style.css";
 
 export function NoOneFound() {
   return (

@@ -14,20 +14,17 @@ import {InputSearch} from "components/header/form-search/input-search";
 
 export function FormSearch() {
     const {inputValue} = useSelector(({search}) => search);
-
     const {
         ACSearchIsActive: bindIsActive,
         ACSearchToggle: bindToggle,
         ACSearchReloadPage : bindReloadPage
     } = useActions({ACSearchIsActive, ACSearchToggle, ACSearchReloadPage})
-
     const [classes, setClasses] = useState({
         inputClass: "",
         btnClass: "",
         closeClass: "hide",
         sendClass: "hide"
     });
-
     const onClickOpenSearch = () => {
         setClasses({
             inputClass: "show",
@@ -37,7 +34,6 @@ export function FormSearch() {
         })
         bindIsActive(true)
     };
-
     const onClickCloseSearch = () => {
         setClasses({
             inputClass: "",
@@ -71,7 +67,6 @@ export function FormSearch() {
             <div className="form__open">
                 <button type="button" className={`${classes.btnClass} form__btn`} onClick={onClickOpenSearch}/>
             </div>
-            
             <div className={`form__control ${classes.closeClass} close`} onClick={onClickCloseSearch}/>
         </form>
     );

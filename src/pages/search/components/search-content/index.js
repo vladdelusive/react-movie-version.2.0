@@ -2,11 +2,11 @@ import Pagination from 'rc-pagination';
 import { useSelector } from 'react-redux';
 import React, {useState, useEffect, createRef} from 'react'
 
-import {SearchCardsContentActors, SearchCardsContentMovies} from "pages/search/components/content-cards";
-import {Loader} from "components/loader";
-import {NotFound} from "pages/search/components/not-found"
+import {SearchCardsContentActors, SearchCardsContentMovies} from "../content-cards";
+import {Loader} from "components";
+import {NotFound} from "../not-found"
 
-import 'pages/search/components/search-content/style.css'
+import './style.css'
 import 'rc-pagination/assets/index.css';
 
 import {SEARCH_ACTOR_PARAM_URL, SEARCH_MOVIE_PARAM_URL} from "api/config";

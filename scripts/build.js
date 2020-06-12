@@ -58,7 +58,7 @@ measureFileSizesBeforeBuild(paths.appBuild)
         console.log(chalk.yellow('Compiled with warnings.\n'));
         console.log(warnings.join('\n\n'));
         console.log(
-          '\nsearch for the ' +
+          '\nsuggetions for the ' +
             chalk.underline(chalk.yellow('keywords')) +
             ' to learn more about each warning.'
         );

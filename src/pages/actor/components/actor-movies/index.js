@@ -1,6 +1,6 @@
 import React, { memo } from "react";
-import {Movie} from "pages/actor/components/actor-movies/movie";
-import {ArrowTop} from "components/arrow-top";
+import {Movie} from "./movie";
+import {ArrowTop} from "components";
 
 export const ActorMovies = memo(function({ cast }) {
   const identityId = [];

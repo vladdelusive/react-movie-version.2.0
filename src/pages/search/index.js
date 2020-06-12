@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 import {NoQuery} from "./components/no-query";
 import {SearchContent} from "./components/search-content";
-import {EasterEgg} from "components/easter-egg";
+import {EasterEgg} from "components";
 
 export function InputPage({ location }) {
   if (!location.search) return <NoQuery />;

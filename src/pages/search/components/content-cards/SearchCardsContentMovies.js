@@ -4,7 +4,7 @@ import { CARD_SIZE } from 'constants/cards'
 import {overviewEditor} from "helpers/overview-editor";
 
 import image from 'assets/images/image.jpg';
-import {Card} from "components/cards/search-movie";
+import {SearchMovie as Card} from "components";
 
 export const SearchCardsContentMovies = React.memo(({ results, path }) => {
     const identityId = []
