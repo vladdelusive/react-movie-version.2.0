@@ -1,5 +1,5 @@
 import React from "react";
-import "components/movies-page/style.css";
+import "./style.css";
 import {Card} from "components/cards/card-movie";
 import { IMAGE_URL } from "api/config";
 import { CARD_SIZE } from 'constants/constants'

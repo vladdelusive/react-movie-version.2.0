@@ -6,7 +6,7 @@ import { CARD_SIZE } from 'constants/constants'
 import male from 'assets/images/unknown_male.png'
 import female from 'assets/images/unknown_female.png'
 
-export function SearchCard({path, id, gender, name}) {
+export const SearchCard = ({path, id, gender, name}) => {
     const image = path === null ? gender === 2 ? male : female : `${IMAGE_URL}${CARD_SIZE}${path}`
     return (
         <div className="card">

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "components/cards/card-movie/style.css";
+import "./style.css";
 
-export function Card({ title, overview, poster, pathTo }) {
+export const Card = ({ title, overview, poster, pathTo }) => {
   return (
     <div className="card-movie">
       <div className="card-movie__post">

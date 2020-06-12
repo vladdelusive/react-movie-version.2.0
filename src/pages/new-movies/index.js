@@ -18,11 +18,11 @@ export function MoviesPage() {
     const { data } = fetched;
     setResults([...results, ...data.results]);
     setPage(page + 1);
+    page === 1 && setLoading(false);
   };
 
   useEffect(() => {
       handlerLoading();
-      setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -38,9 +38,9 @@ export function MoviesPage() {
             <div className="section__content-container">
               <Content results={results} path="/movies" />
             </div>
-            <BtnLoader handlerLoading={handlerLoading}>
-              Load more movies...
-            </BtnLoader>
+              <BtnLoader handlerLoading={handlerLoading}>
+                  Load more movies...
+              </BtnLoader>
           </div>
           <div className="section__footer">
             <ArrowTop />
