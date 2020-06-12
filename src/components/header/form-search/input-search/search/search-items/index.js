@@ -3,11 +3,11 @@ import {Link} from "react-router-dom";
 
 import ActorIcon from 'assets/images/ActorIcon.png'
 import MovieIcon from 'assets/images/MovieIcon.png'
-import { IMAGE_URL } from "api/config";
+import { makeImgUrl} from "helpers/make-img-url";
 
-import { CARD_SIZE } from 'constants/constants'
+import { CARD_SIZE } from 'constants/cards'
 
-import 'components/header/form-search/input-search/search/search-items/style.css'
+import './style.css'
 
 export function SearchItem({image, title, typeItem, id, setShowSearchedItems}) {
     const link = (typeItem === "movie" ? "/movies/" : "/actors/") + id
@@ -16,7 +16,7 @@ export function SearchItem({image, title, typeItem, id, setShowSearchedItems}) {
         <div className="input-item">
             <Link className="input-item__icon" to={link} onClick={()=>setShowSearchedItems(false)}>
                 <img
-                    src={image ? IMAGE_URL+CARD_SIZE+image : nullImage}
+                    src={image ? makeImgUrl(image, CARD_SIZE) : nullImage}
                     alt="img"
                 />
             </Link>

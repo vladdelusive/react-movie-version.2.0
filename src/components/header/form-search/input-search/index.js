@@ -1,7 +1,7 @@
 import React, { useEffect} from "react";
 import { useSelector} from "react-redux";
 
-import API from "http/axios";
+import API from "http/index";
 import { SEARCH_MOVIE_PARAM_URL, SEARCH_ACTOR_PARAM_URL} from "api/config";
 
 import { FETCH_TIMEOUT } from 'constants/constants'
@@ -69,10 +69,10 @@ export const InputSearch = ({classes}) => {
                 value={inputValue}
                 onChange={valueTarget}/>
             {showSearchedItems && (resultsActors !== null || resultsMovies !== null) &&
-            <Search
-                searchResultActors={resultsActors}
-                searchResultMovies={resultsMovies}
-                value={inputValue.replace(/\s+/g,' ').trim()}
-            />}
+                <Search
+                    searchResultActors={resultsActors}
+                    searchResultMovies={resultsMovies}
+                    value={inputValue.replace(/\s+/g,' ').trim()}
+                />}
         </div>)
 }

@@ -4,7 +4,7 @@ import { TRENDY_ACTORS_URL } from "api/config";
 import {Loader} from "components/loader";
 import {Cast} from "components/actor-cast/cast";
 import {BtnLoader} from "components/loader-btn";
-import API from "http/axios";
+import API from "http/index";
 
 export function Actors() {
   const [results, setResults] = useState([]);

@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import "components/header/form-search/style.css";
+import "./style.css";
 
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
@@ -8,8 +8,8 @@ import {
     ACSearchIsActive,
     ACSearchToggle,
     ACSearchReloadPage,
-} from 'store/search/actions.js'
-import {useActions} from "hooks/use-actions.js";
+} from 'store/search/actions'
+import {useActions} from "hooks/use-actions";
 import {InputSearch} from "components/header/form-search/input-search";
 
 export function FormSearch() {
@@ -52,16 +52,16 @@ export function FormSearch() {
     return (
         <form className="form" onSubmit={(e) => {e.preventDefault()}}>
             <div className="form__submit">
-            <Link to={`/search?query=${inputValue}`}>
-                <button
-                    onClick={()=>{
-                        bindToggle(false)
-                        bindReloadPage()
-                    }}
-                    type="submit"
-                    className={`${classes.sendClass} form__btn`}
-                />
-            </Link>
+                <Link to={`/search?query=${inputValue}`}>
+                    <button
+                        onClick={()=>{
+                            bindToggle(false)
+                            bindReloadPage()
+                        }}
+                        type="submit"
+                        className={`${classes.sendClass} form__btn`}
+                    />
+                </Link>
             </div>
             <div className="input-block">
                 <InputSearch

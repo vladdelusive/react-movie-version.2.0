@@ -1,5 +1,5 @@
 import React from "react";
-import "components/arrow-top/style.css";
+import "./style.css";
 
 const handlerGoUp = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });

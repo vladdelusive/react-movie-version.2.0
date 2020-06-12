@@ -1,5 +1,5 @@
 import React from "react";
-import "components/search-page/no-query/style.css";
+import "pages/search/components/no-query/style.css";
 
 function NoQuery() {
   return (

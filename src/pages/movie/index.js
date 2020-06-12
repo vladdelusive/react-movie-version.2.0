@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { badges } from "constants/constants";
-import API from "http/axios";
+import API from "http/index";
 
 import "./style.css";
 import image from "assets/images/image.jpg";
+import { EXTEND_SIZE} from "constants/cards";
 
-import { DEFAULT_TRAILER, EXTEND_SIZE } from "constants/constants"
+import { DEFAULT_TRAILER } from "constants/constants"
 
-import {
-  API_KEY,
-  IMAGE_URL,
-  YOUTUBE_URL,
-} from "api/config";
+import {API_KEY, YOUTUBE_URL} from "api/config";
+
+import { makeImgUrl} from "helpers/make-img-url";
 import { getLocalStorage } from "helpers/local-storage";
 
 import {Loader} from "components/loader";
@@ -117,7 +116,7 @@ function PageMovie(props) {
             <img
               src={
                 results.poster_path
-                  ? `${IMAGE_URL}${EXTEND_SIZE}${results.poster_path}`
+                  ? makeImgUrl(results.poster_path, EXTEND_SIZE)
                   : image
               }
               alt="movie-post"

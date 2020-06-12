@@ -2,17 +2,17 @@ import Pagination from 'rc-pagination';
 import { useSelector } from 'react-redux';
 import React, {useState, useEffect, createRef} from 'react'
 
-import {SearchCardsContentActors, SearchCardsContentMovies} from "../content-cards/index";
+import {SearchCardsContentActors, SearchCardsContentMovies} from "pages/search/components/content-cards";
 import {Loader} from "components/loader";
-import {NotFound} from "components/search-page/not-found"
+import {NotFound} from "pages/search/components/not-found"
 
-import './style.css'
+import 'pages/search/components/search-content/style.css'
 import 'rc-pagination/assets/index.css';
 
 import {SEARCH_ACTOR_PARAM_URL, SEARCH_MOVIE_PARAM_URL} from "api/config";
 import { ACSearchMoviePage, ACSearchActorPage } from 'store/search/actions'
 import { useActions } from 'hooks/use-actions'
-import API from "http/axios";
+import API from "http/index";
 
 
 function SearchContent({query}) {

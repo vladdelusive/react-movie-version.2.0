@@ -1,14 +1,15 @@
 import React from 'react'
-import { IMAGE_URL } from 'api/config'
+import { makeImgUrl} from "helpers/make-img-url";
 
-import { CARD_SIZE } from 'constants/constants'
+import { CARD_SIZE} from "constants/cards";
 
-import './style.css'
+import 'pages/actor/components/actor-details/style.css'
 
 import {convertAge} from 'helpers/age-converter'
-import {ActorMovies} from "components/actor-page/actor-movies";
+import {ActorMovies} from "pages/actor/components/actor-movies";
 
 export function ActorDetails({ personInfo, handleClick, isHidden, moviesInfo }) {
+    console.log(CARD_SIZE)
     return (
         <>
             <div className="actor-info">
@@ -25,12 +26,15 @@ export function ActorDetails({ personInfo, handleClick, isHidden, moviesInfo }) 
                     </div>
                     <div className="actor-info__photo">
                         <img
-                            src={`${IMAGE_URL}${CARD_SIZE}${personInfo.profile_path}`}
+                            src={makeImgUrl(personInfo.profile_path, CARD_SIZE, personInfo.gender )}
                             alt="person_image" />
                     </div>
                 </div>
                 <div className="actor-info__block actor-info__block--right">
-                    <p className="actor-info__right--font">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {personInfo.biography}</p>
+                    <p className="actor-info__right--font">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {personInfo.biography}
+                    </p>
                 </div>
             </div>
             <div className="button-content">

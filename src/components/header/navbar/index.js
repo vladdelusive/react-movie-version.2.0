@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { ACSearchClear } from "store/search/actions";
 import { useActions } from "hooks/use-actions";
-import "components/header/navbar/style.css";
+import "./style.css";
 
 export function Navbar() {
   const { ACSearchClear: clearSearch } = useActions({ ACSearchClear });

@@ -10,11 +10,11 @@ export const badges = [
 
 export const DEFAULT_TRAILER = "7R1N-8SoqcM"
 
-export const EXTEND_SIZE = 'w780';
-export const CARD_SIZE = 'w500';
-
+// for local storage
 export const SEARCH = "SEARCH";
 export const TOP = "TOP";
 export const POPULAR = "POPULAR";
 export const ACTORS = "ACTORS";
+
+// debouncing timeout
 export const FETCH_TIMEOUT = 500;

@@ -1,8 +1,8 @@
 import React from "react";
-import "./style.css";
-import {Card} from "components/cards/card-movie";
-import { IMAGE_URL } from "api/config";
-import { CARD_SIZE } from 'constants/constants'
+import "pages/new-movies/components/style.css";
+import {Card} from "components/cards/newly-movie";
+import { makeImgUrl} from "helpers/make-img-url";
+import { CARD_SIZE } from 'constants/cards'
 import image from "assets/images/image.jpg";
 import {overviewEditor} from "helpers/overview-editor";
 
@@ -14,7 +14,7 @@ export const Content = React.memo(({ results, path }) => {
     }
     identityId.push(movie.id);
     const poster = movie.poster_path
-      ? `${IMAGE_URL}${CARD_SIZE}${movie.poster_path}`
+      ? makeImgUrl(movie.poster_path, CARD_SIZE)
       : image;
     const overview =
       movie.overview.length > 150

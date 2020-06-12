@@ -11,5 +11,4 @@ export const ACTOR_DETAILS = (id) => `person/${id}?api_key=${API_KEY}&language=e
 
 export const YOUTUBE_URL = (movie) => `movie/${movie}/videos?api_key=${API_KEY}`
 
-export const IMAGE_URL = 'https://image.tmdb.org/t/p/';
 

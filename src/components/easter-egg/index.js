@@ -1,5 +1,5 @@
 import React from "react";
-import "components/easter-egg/style.css";
+import "./style.css";
 import pashalka from "assets/images/pashalka.jpg";
 
 export function EasterEgg() {

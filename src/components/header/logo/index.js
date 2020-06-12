@@ -1,6 +1,6 @@
 import React from "react";
-import "components/header/logo/style.css";
-import image from "../../../assets/images/movie-logo.jpg";
+import "./style.css";
+import image from "assets/images/movie-logo.jpg";
 
 export function Logo() {
   return (

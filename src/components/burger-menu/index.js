@@ -5,10 +5,11 @@ import { NavLink } from "react-router-dom";
 import { useActions } from "hooks/use-actions";
 import { ACSearchBurger } from "store/search/actions";
 import CloseBurger from "assets/images/closeBurger.png";
-import {Overlay} from "components/burger-menu/overlay";
-import { DeveloperLink } from "components/developer-link";
 
-import "components/burger-menu/style.css";
+import {Overlay} from "./overlay";
+import { DeveloperLink } from "components";
+
+import "./style.css";
 
 export function BurgerMenu() {
   const { burgerActive } = useSelector(({ search }) => search);

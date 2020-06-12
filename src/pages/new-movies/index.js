@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { NEWLY_MOVIES_URL } from "api/config";
 
-import API from "http/axios";
+import API from "http/index";
 import "./style.css";
 import {Loader} from "components/loader";
 import {ArrowTop} from "components/arrow-top";
 import {BtnLoader} from "components/loader-btn";
-import {Content} from "components/movies-page";
+import {Content} from "pages/new-movies/components";
 
 export function MoviesPage() {
   const [results, setResults] = useState([]);

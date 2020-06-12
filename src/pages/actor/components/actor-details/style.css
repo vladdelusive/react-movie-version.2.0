@@ -65,6 +65,10 @@
     width: auto;
 }
 
+.actor-info__photo img {
+    max-width: 500px;
+}
+
 .actor-movies {
     display: flex;
     margin: 50px auto;

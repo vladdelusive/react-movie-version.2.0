@@ -1,5 +1,5 @@
 import React from "react";
-import "components/loader-btn/style.css";
+import "./style.css";
 
 export const BtnLoader = ({ handlerLoading, children }) => {
   return (

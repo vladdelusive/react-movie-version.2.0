@@ -1,11 +1,11 @@
 import React from 'react'
 import  {useSelector} from "react-redux"
 
-import 'components/header/style.css'
-import {Navbar} from 'components/header/navbar'
-import {Logo} from "components/header/logo";
-import {Burger} from 'components/header/burger'
-import {FormSearch} from "components/header/form-search";
+import './style.css'
+import {Navbar} from './navbar'
+import {Logo} from "./logo";
+import {Burger} from './burger'
+import {FormSearch} from "./form-search";
 
 export function Header() {
     const {inputOpen} = useSelector(({search}) => search);

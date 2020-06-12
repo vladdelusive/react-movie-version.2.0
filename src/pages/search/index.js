@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
-import {NoQuery} from "components/search-page/no-query";
-import {SearchContent} from "components/search-page/search-content";
+import {NoQuery} from "./components/no-query";
+import {SearchContent} from "./components/search-content";
 import {EasterEgg} from "components/easter-egg";
 
 export function InputPage({ location }) {

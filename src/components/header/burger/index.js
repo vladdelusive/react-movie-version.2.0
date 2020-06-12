@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import "components/header/burger/style.css";
+import "./style.css";
 import BurgerIcon from "assets/images/openBurger.png";
 import { SEARCH_BURGER } from "store/search/actions";
 

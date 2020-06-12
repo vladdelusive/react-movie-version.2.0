@@ -54,7 +54,7 @@ export function Search({
     65 * (searchedItemsMovies.length + searchedItemsActors.length) +
     22 * categoriesCount +
     35;
-  // (h.card*n.card)+(categ*n.categ)+h.more
+  // (h.search-movie*n.search-movie)+(categ*n.categ)+h.more
   return (
     <div className="input-block__items" style={{ height: pixels }}>
       {searchedItemsMovies.length ? (

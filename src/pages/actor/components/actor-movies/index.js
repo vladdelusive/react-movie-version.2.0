@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import {Movie} from "components/actor-page/actor-movies/movie";
+import {Movie} from "pages/actor/components/actor-movies/movie";
 import {ArrowTop} from "components/arrow-top";
 
 export const ActorMovies = memo(function({ cast }) {

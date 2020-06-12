@@ -1,6 +1,6 @@
 import React from "react";
 import mainImage from "assets/images/githubImage.png";
-import "components/developer-link/style.css";
+import "./style.css";
 
 export const DeveloperLink = () => {
   return (

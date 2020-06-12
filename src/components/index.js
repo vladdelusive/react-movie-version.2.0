@@ -1,5 +1,6 @@
-import {Header} from "./header";
-import {BurgerMenu} from "./burger-menu";
-import {DeveloperLink} from "./developer-link";
-
-export { Header, BurgerMenu, DeveloperLink }
+export {Header} from "./header";
+export {BurgerMenu} from "./burger-menu";
+export {DeveloperLink} from "./developer-link";
+export {Actor} from "./actor-cast/actor";
+export {ArrowTop} from "./arrow-top";
+export {Loader} from "./loader";
