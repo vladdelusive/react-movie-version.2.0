@@ -19,7 +19,7 @@ div.arrow::before {
     border-width: .8vmin .8vmin 0 0;
     border-style: solid;
     border-color: #67adfd;
-    transition: .2s ease;
+    transition: transform .2s ease;
     display: block;
     transform-origin: 100% 0;
 }

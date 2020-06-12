@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.5s;
+    transition: transform 0.5s;
     transform: translateY(-100%);
     background: linear-gradient(#edcafb, #ccf6ff);
     border-left: 1px solid #e8e8e8;
@@ -47,11 +47,11 @@
     height: 35px;
     width: 35px;
     cursor: pointer;
-    transition: all .4s ease;
+    transition: transform .4s ease;
 }
 
 .close-burger:hover {
-    transition: all .2s ease;
+    transition: transform .2s ease;
     filter: invert(42%) sepia(54%) saturate(7492%) hue-rotate(201deg) brightness(104%) contrast(104%);
 }
 

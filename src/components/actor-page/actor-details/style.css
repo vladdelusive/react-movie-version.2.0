@@ -75,11 +75,11 @@
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
-    transition: all .4s ease;
+    transition: transform .4s ease;
 }
 
 .actor-movies:active {
-    transition: all .4s ease;
+    transition: transform .4s ease;
     opacity: 0.3;
 }
 

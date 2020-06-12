@@ -16,7 +16,7 @@
     text-decoration: none;
     color: #9347da;
     opacity: 0.6;
-    transition: all .4s ease;
+    transition: transform .4s ease;
 }
 
 .input-block__link:hover {

@@ -1,19 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-
 import "app.css";
 
-import {Header} from "components/header";
-import {BurgerMenu} from "components/burger-menu";
-import {DeveloperLink} from "components/developer-link";
-import {Main} from "pages/main";
-import {PageMovie as MoviePage} from "pages/movie";
-import {Actors} from "pages/top-actors";
-import {ActorPage} from "pages/actor";
-import {InputPage} from "pages/search";
-import {WrongPath as NotFoundPage} from "pages/not-found";
-import {MoviesPage} from "pages/new-movies";
+import {Header, BurgerMenu, DeveloperLink} from "components";
+import {Main, MoviePage, Actors, ActorPage, InputPage, NotFoundPage, MoviesPage, } from "pages";
 
 function App() {
   const { burgerActive } = useSelector(({ search }) => search);

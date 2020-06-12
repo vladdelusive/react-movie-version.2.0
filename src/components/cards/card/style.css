@@ -8,7 +8,7 @@
 
 .card:hover {
     transform: scale(1.05);
-    transition: all .3s ease;
+    transition: transform .3s ease;
 }
 
 .card__header a {

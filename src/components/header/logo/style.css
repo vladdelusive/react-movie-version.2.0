@@ -1,7 +1,7 @@
 .logo__img {
     width: 130px;
     mix-blend-mode: multiply;
-    transition: all .4s ease;
+    transition: transform .4s ease;
 
 }
 

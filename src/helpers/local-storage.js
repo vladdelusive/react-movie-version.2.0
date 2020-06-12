@@ -1,9 +1,10 @@
 export function getLocalStorage(name) {
+  let data;
   try {
-    let data = JSON.parse(localStorage.getItem(name));
+    data = JSON.parse(localStorage.getItem(name));
     if (data === null) return null;
-    return data;
-  } catch(e) {
-    console.log(e)
+  } catch {
+    data = false
   }
+  return data;
 }
