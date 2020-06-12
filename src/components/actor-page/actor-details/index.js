@@ -3,10 +3,10 @@ import { IMAGE_URL } from 'api/config'
 
 import { CARD_SIZE } from 'constants/constants'
 
-import 'components/actor-page/actor-details/style.css'
+import './style.css'
 
 import {convertAge} from 'helpers/age-converter'
-import ActorMovies from "components/actor-page/actor-movies/style";
+import {ActorMovies} from "components/actor-page/actor-movies";
 
 export function ActorDetails({ personInfo, handleClick, isHidden, moviesInfo }) {
     return (

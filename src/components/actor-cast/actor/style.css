@@ -16,7 +16,9 @@
 }
 
 .card-actor__photo-img img {
-    width: 350px;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
 }
 
 .card-actor__name-link--text {

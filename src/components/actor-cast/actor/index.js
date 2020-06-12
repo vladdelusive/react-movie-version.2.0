@@ -1,7 +1,7 @@
 import React from 'react'
 import { IMAGE_URL } from 'api/config'
 import { CARD_SIZE } from 'constants/constants'
-import 'components/actor-cast/actor/style.css'
+import './style.css'
 import male from 'assets/images/unknown_male.png'
 import female from 'assets/images/unknown_female.png'
 import {Link} from 'react-router-dom'

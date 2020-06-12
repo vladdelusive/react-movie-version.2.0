@@ -13,7 +13,7 @@ import {
   IMAGE_URL,
   YOUTUBE_URL,
 } from "api/config";
-import { setLocalStorage, getLocalStorage } from "helpers/local-storage";
+import { getLocalStorage } from "helpers/local-storage";
 
 import {Loader} from "components/loader";
 import {Cast} from "components/actor-cast/cast";
@@ -35,7 +35,7 @@ function PageMovie(props) {
       );
       const trailer = TRA.results[0] ? TRA.results[0].key : DEFAULT_TRAILER;
 
-      setLocalStorage(movieId, { results: INFO, trailer, cast: CAST.cast });
+      localStorage.setItem(movieId, JSON.stringify({ results: INFO, trailer, cast: CAST.cast }));
       setResults(INFO);
       setTrailer(trailer);
       setCast(CAST.cast);

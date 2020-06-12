@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TRENDY_ACTORS_URL } from "api/config";
 
-import { ACTORS } from 'constants/constants'
-import { getLocalStorage, setLocalStorage } from "helpers/local-storage";
 import {Loader} from "components/loader";
 import {Cast} from "components/actor-cast/cast";
 import {BtnLoader} from "components/loader-btn";
@@ -14,29 +12,16 @@ export function Actors() {
   const [loading, setLoading] = useState(true);
 
   const handlerLoading = async () => {
-    const fetched = await API(TRENDY_ACTORS_URL(page));
+    const fetched = await API.get(TRENDY_ACTORS_URL(page));
     const { data } = fetched;
-    const state = {
-      results: [...results, ...data.results],
-      page: page + 1,
-      loading: false,
-    };
-    setLocalStorage(ACTORS, state);
+
     setResults([...results, ...data.results]);
     setPage(page + 1);
     page === 1 && setLoading(false);
   };
 
   useEffect(() => {
-    if (getLocalStorage(ACTORS)) {
-      const localState = getLocalStorage(ACTORS);
-
-      setResults(localState.results);
-      setPage(localState.page);
-      setLoading(false);
-    } else {
       handlerLoading();
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

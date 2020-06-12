@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ACTOR_DETAILS, ACTOR_MOVIES } from 'api/config'
-import { getLocalStorage, setLocalStorage } from 'helpers/local-storage'
+import { getLocalStorage } from 'helpers/local-storage'
 import {Loader} from 'components/loader'
 import {ActorDetails} from 'components/actor-page/actor-details'
 
@@ -15,7 +15,7 @@ export function ActorPage(props) {
 
     const handleClick = () => {
         const personId = props.match.params.actor;
-        setLocalStorage(`hidden-${personId}`, !hidden)
+        localStorage.setItem(`hidden-${personId}`, JSON.stringify(!hidden))
         setHidden(!hidden)
     }
 
@@ -30,10 +30,10 @@ export function ActorPage(props) {
         Promise.all(res.map((r) => r.data))
       );
 
-      setLocalStorage(`person-${personId}`, {
+      localStorage.setItem(`person-${personId}`, JSON.stringify({
         personData: AC_DET,
         personMovies: AC_MOV.cast,
-      });
+      }));
 
       setMoviesInfo(AC_MOV.cast);
       setPersonInfo(AC_DET);
