@@ -1,5 +1,5 @@
 import React from "react";
-import "pages/search/style.css";
+import "./style.css";
 import {NoQuery} from "components/search-page/no-query";
 import {SearchContent} from "components/search-page/search-content";
 import {EasterEgg} from "components/easter-egg";

@@ -17,5 +17,4 @@ export const SEARCH = "SEARCH";
 export const TOP = "TOP";
 export const POPULAR = "POPULAR";
 export const ACTORS = "ACTORS";
-export const NEWLY = "NEWLY";
 export const FETCH_TIMEOUT = 500;

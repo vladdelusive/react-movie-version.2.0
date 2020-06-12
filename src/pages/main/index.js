@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "assets/images/mainImage.png";
-import "pages/main/style.css";
+import "./style.css";
 
 export function Main() {
   return (
