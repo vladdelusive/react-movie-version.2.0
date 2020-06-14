@@ -1,29 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
-import {SearchItem} from "./search-items";
-import {NoOneFound} from "./no-found";
+import { SearchItem } from "./search-items";
+import { NoOneFound } from "./no-found";
 import "./style.css";
 
 import {
   ACSearchToggle,
   ACSearchReloadPage,
-} from "store/search/actions";
+} from 'store/search/actions'
+import {useActions} from "hooks/use-actions";
 
-export function Search({
-  value,
-  searchResultActors,
-  searchResultMovies,
-}) {
-  const dispatch = useDispatch();
+export function Search({ value, searchResultActors, searchResultMovies }) {
+  const {ACSearchToggle: bindToggle, ACSearchReloadPage : bindReloadPage } = useActions({ACSearchToggle, ACSearchReloadPage })
+
   if (!searchResultMovies || !searchResultActors) return null;
   const searchedItemsMovies = [];
   const toM = searchResultMovies.length > 2 ? 2 : searchResultMovies.length;
   for (let i = 0; i < toM; i++) {
     searchedItemsMovies.push(
       <SearchItem
-        setShowSearchedItems={() => dispatch(ACSearchToggle(false))}
+        setShowSearchedItems={() => bindToggle(false)}
         key={searchResultMovies[i].id}
         title={searchResultMovies[i].title}
         image={searchResultMovies[i].poster_path}
@@ -37,7 +34,7 @@ export function Search({
   for (let i = 0; i < toA; i++) {
     searchedItemsActors.push(
       <SearchItem
-        setShowSearchedItems={() => dispatch(ACSearchToggle(false))}
+        setShowSearchedItems={() => bindToggle(false)}
         key={searchResultActors[i].id}
         title={searchResultActors[i].name}
         image={searchResultActors[i].profile_path}
@@ -47,14 +44,10 @@ export function Search({
     );
   }
 
-  const categoriesCount =
-    !!searchedItemsMovies.length + !!searchedItemsActors.length;
+  const categoriesCount = !!searchedItemsMovies.length + !!searchedItemsActors.length;
   if (!categoriesCount) return <NoOneFound />;
-  const pixels =
-    65 * (searchedItemsMovies.length + searchedItemsActors.length) +
-    22 * categoriesCount +
-    35;
-  // (h.suggetions-movie*n.suggetions-movie)+(categ*n.categ)+h.more
+  const pixels = 65 * (searchedItemsMovies.length + searchedItemsActors.length) + 22 * categoriesCount + 35;
+  // (h.suggestions-movie*n.suggestions-actors)+(categHeight*n.categ)+heightMargingsPadding
   return (
     <div className="input-block__items" style={{ height: pixels }}>
       {searchedItemsMovies.length ? (
@@ -73,8 +66,8 @@ export function Search({
         className="input-block__link"
         to={`/search?query=${value}`}
         onClick={() => {
-          dispatch(ACSearchToggle(false));
-          dispatch(ACSearchReloadPage());
+          bindToggle(false)
+          bindReloadPage();
         }}
       >
         More...

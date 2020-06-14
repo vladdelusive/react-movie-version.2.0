@@ -18,9 +18,5 @@ export const SearchCardsContentActors = React.memo(function SearchCardsContentAc
       />
     );
   });
-  return (
-    <div className="section__content">
-      <div className="section__content-container">{actors}</div>
-    </div>
-  );
+  return actors
 });
