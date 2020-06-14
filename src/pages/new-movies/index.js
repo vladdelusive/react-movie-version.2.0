@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { NEWLY_MOVIES_URL } from "api/config";
+import { NEWLY_MOVIES_URL } from "services/api/config";
 
-import API from "http/index";
+import API from "services/http/index";
 import "./style.css";
 import {Loader} from "components";
 import {ArrowTop} from "components";

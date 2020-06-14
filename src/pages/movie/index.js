@@ -4,9 +4,9 @@ import "./style.css";
 
 import { badges, DEFAULT_TRAILER } from "constants/constants";
 import { EXTEND_SIZE} from "constants/cards";
-import API from "http/index";
+import API from "services/http/index";
 import image from "assets/images/image.jpg";
-import {API_KEY, YOUTUBE_URL} from "api/config";
+import {API_KEY, YOUTUBE_URL} from "services/api/config";
 import { makeImgUrl } from "helpers/make-img-url";
 import { getLocalStorage } from "helpers/local-storage";
 import {Loader, Cast} from "components";

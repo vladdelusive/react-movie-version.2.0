@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { ACTOR_DETAILS, ACTOR_MOVIES } from 'api/config'
+import { ACTOR_DETAILS, ACTOR_MOVIES } from 'services/api/config'
 import { getLocalStorage } from 'helpers/local-storage'
 import {Loader} from 'components'
 import {ActorDetails} from './components/actor-details'
 
-import API from 'http/index'
+import API from 'services/http/index'
 
 export function ActorPage(props) {
     const [personInfo, setPersonInfo] = useState({})

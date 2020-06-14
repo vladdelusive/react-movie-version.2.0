@@ -1,5 +1,5 @@
-import API from "http/index";
-import { SEARCH_MOVIE_PARAM_URL, SEARCH_ACTOR_PARAM_URL} from "api/config";
+import API from "services/http/index";
+import { SEARCH_MOVIE_PARAM_URL, SEARCH_ACTOR_PARAM_URL} from "services/api/config";
 
 export const SEARCH_UPLOAD = "SEARCH_UPLOAD";
 export const SEARCH_OFFLOAD_DATA = "SEARCH_OFFLOAD_DATA";

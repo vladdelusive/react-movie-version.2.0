@@ -9,10 +9,10 @@ import {NotFound} from "../not-found"
 import './style.css'
 import 'rc-pagination/assets/index.css';
 
-import {SEARCH_ACTOR_PARAM_URL, SEARCH_MOVIE_PARAM_URL} from "api/config";
+import {SEARCH_ACTOR_PARAM_URL, SEARCH_MOVIE_PARAM_URL} from "services/api/config";
 import { ACSearchMoviePage, ACSearchActorPage } from 'store/search/actions'
 import { useActions } from 'hooks/use-actions'
-import API from "http/index";
+import API from "services/http/index";
 
 
 function SearchContent({query}) {
