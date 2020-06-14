@@ -3,9 +3,7 @@ import { NEWLY_MOVIES_URL } from "services/api/config";
 
 import API from "services/http/index";
 import "./style.css";
-import {Loader} from "components";
-import {ArrowTop} from "components";
-import {BtnLoader} from "components";
+import {Loader, BtnLoader, ArrowTop} from "components";
 import {Content} from "./content";
 
 export function MoviesPage() {

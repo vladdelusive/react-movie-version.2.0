@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import "components/root/app.css";
+import "./app.css";
 
 import {Header, BurgerMenu, DeveloperLink} from "components";
 import {Main, MoviePage, Actors, ActorPage, InputPage, NotFoundPage, MoviesPage, } from "pages";
