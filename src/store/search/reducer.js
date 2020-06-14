@@ -9,7 +9,7 @@ import {
   SEARCH_RELOAD_PAGE,
   SEARCH_INPUT_IS_ACTIVE,
   SEARCH_BURGER_TOGGLE,
-} from "./actions"; 
+} from "./actions";
 
 const initialState = {
   inputValue: "",
@@ -84,4 +84,4 @@ function reducer(state = initialState, action) {
   }
 }
 
-export { reducer }
+export { reducer };

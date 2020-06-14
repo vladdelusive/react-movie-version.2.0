@@ -22,7 +22,7 @@ export function ActorDetails({ personInfo, handleClick, isHidden, moviesInfo }) 
                             {personInfo.deathday === null
                                 ? convertAge(personInfo.birthday)
                                 : <>from {personInfo.birthday && personInfo.birthday.slice(0, 4)}
-                                to {personInfo.deathday.slice(0, 4)}</>
+                                &nbsp;to&nbsp;{personInfo.deathday.slice(0, 4)}</>
                             }
                         </h3>
                     </div>
@@ -34,7 +34,6 @@ export function ActorDetails({ personInfo, handleClick, isHidden, moviesInfo }) 
                 </div>
                 <div className="actor-info__block actor-info__block--right">
                     <p className="actor-info__right--font">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {personInfo.biography}
                     </p>
                 </div>
