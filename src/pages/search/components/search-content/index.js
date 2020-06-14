@@ -43,7 +43,7 @@ function SearchContent({query}) {
     }
 
     useEffect(() => {
-        const fetch = async () => {
+        const fetchData = async () => {
             const fetches = [
                 API(SEARCH_MOVIE_PARAM_URL(query, pageMovies)),
                 API(SEARCH_ACTOR_PARAM_URL(query, pageActors))
@@ -59,7 +59,7 @@ function SearchContent({query}) {
             setTotalPagesMovies(MOVIES.total_pages)
             setTotalPagesActors(ACTORS.total_pages)
         }
-        fetch().catch(()=>console.log("something went wrong"))
+        fetchData().catch(()=>console.log("something went wrong"))
     }, [query, pageActors, pageMovies])
     return (
         <>

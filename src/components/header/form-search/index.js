@@ -55,7 +55,7 @@ export function FormSearch() {
     }
 
     useEffect(() => {
-        const checkerEvents = ({e}) => {
+        const checkerEvents = (e) => {
             if(e.target.closest(".form")) return
             toggleSuggestions(false)
         }

@@ -1,20 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { SearchItem } from "./search-items";
+import { SearchItem } from "./items";
 import { NoOneFound } from "./no-found";
 import "./style.css";
 
-import {
-  ACSearchToggleSuggestions,
-  ACSearchReloadPage,
-} from 'store/search/actions'
+import { ACSearchToggleSuggestions, ACSearchReloadPage } from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
 
 export function Search({ value, searchResultActors, searchResultMovies }) {
   const {ACSearchToggleSuggestions: toggleSuggestions, ACSearchReloadPage : doReloadPage } = useActions({ACSearchToggleSuggestions, ACSearchReloadPage })
 
   if (!searchResultMovies || !searchResultActors) return null;
+
   const searchedItemsMovies = [];
   const toM = searchResultMovies.length > 2 ? 2 : searchResultMovies.length;
   for (let i = 0; i < toM; i++) {
@@ -65,10 +63,7 @@ export function Search({ value, searchResultActors, searchResultMovies }) {
       <Link
         className="input-block__link"
         to={`/search?query=${value}`}
-        onClick={() => {
-          toggleSuggestions(false)
-          doReloadPage();
-        }}
+        onClick={() => {toggleSuggestions(false); doReloadPage()}}
       >
         More...
       </Link>

@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <BurgerMenu />
-      <div className={`layout ${burgerActive ? "layout--transform" : ""}`}>
+      <div className={`layout${burgerActive ? " layout--transform" : ""}`}>
         <Header />
           <main className="section">
               <Switch>
