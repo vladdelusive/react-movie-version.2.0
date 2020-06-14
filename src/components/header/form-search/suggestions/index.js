@@ -6,13 +6,13 @@ import { NoOneFound } from "./no-found";
 import "./style.css";
 
 import {
-  ACSearchToggle,
+  ACSearchToggleSuggestions,
   ACSearchReloadPage,
 } from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
 
 export function Search({ value, searchResultActors, searchResultMovies }) {
-  const {ACSearchToggle: bindToggle, ACSearchReloadPage : bindReloadPage } = useActions({ACSearchToggle, ACSearchReloadPage })
+  const {ACSearchToggleSuggestions: toggleSuggestions, ACSearchReloadPage : doReloadPage } = useActions({ACSearchToggleSuggestions, ACSearchReloadPage })
 
   if (!searchResultMovies || !searchResultActors) return null;
   const searchedItemsMovies = [];
@@ -20,7 +20,7 @@ export function Search({ value, searchResultActors, searchResultMovies }) {
   for (let i = 0; i < toM; i++) {
     searchedItemsMovies.push(
       <SearchItem
-        setShowSearchedItems={() => bindToggle(false)}
+        setShowSearchedItems={() => toggleSuggestions(false)}
         key={searchResultMovies[i].id}
         title={searchResultMovies[i].title}
         image={searchResultMovies[i].poster_path}
@@ -34,7 +34,7 @@ export function Search({ value, searchResultActors, searchResultMovies }) {
   for (let i = 0; i < toA; i++) {
     searchedItemsActors.push(
       <SearchItem
-        setShowSearchedItems={() => bindToggle(false)}
+        setShowSearchedItems={() => toggleSuggestions(false)}
         key={searchResultActors[i].id}
         title={searchResultActors[i].name}
         image={searchResultActors[i].profile_path}
@@ -66,8 +66,8 @@ export function Search({ value, searchResultActors, searchResultMovies }) {
         className="input-block__link"
         to={`/search?query=${value}`}
         onClick={() => {
-          bindToggle(false)
-          bindReloadPage();
+          toggleSuggestions(false)
+          doReloadPage();
         }}
       >
         More...

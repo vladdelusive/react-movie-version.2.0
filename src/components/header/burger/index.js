@@ -1,14 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 
 import "./style.css";
 import BurgerIcon from "assets/images/openBurger.png";
-import { SEARCH_BURGER } from "store/search/actions";
+import { ACSearchBurgerToggle } from "store/search/actions";
+import {useActions} from "hooks/use-actions";
 
 export function Burger() {
-  const dispatch = useDispatch();
+  const {ACSearchBurgerToggle: toggleBurger } = useActions({ACSearchBurgerToggle })
   return (
-    <div className="burger" onClick={() => dispatch({ type: SEARCH_BURGER })}>
+    <div className="burger" onClick={toggleBurger}>
       <img className="burger__icon" src={BurgerIcon} alt="burger" />
     </div>
   );

@@ -8,10 +8,10 @@ import {Search} from "./suggestions";
 
 import {
     ACSearchIsActive,
-    ACSearchToggle,
+    ACSearchToggleSuggestions,
     ACSearchReloadPage,
-    ACSearchInput,
-    ACSearchOffload,
+    ACSearchSetInput,
+    ACSearchOffloadData,
     ACSearchFetchInputValue
 } from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
@@ -21,15 +21,15 @@ let fetchTimer;
 export function FormSearch() {
     const {inputValue, resultsActors, showSearchedItems, resultsMovies} = useSelector(({search}) => search);
     const {
-        ACSearchIsActive: bindIsActive,
-        ACSearchToggle: bindToggle,
-        ACSearchReloadPage : bindReloadPage,
-        ACSearchInput: bindInput,
-        ACSearchOffload : bindOffload,
-        ACSearchFetchInputValue: bindFetch
+        ACSearchIsActive: changeIsActive,
+        ACSearchToggleSuggestions: toggleSuggestions,
+        ACSearchReloadPage : doReloadPage,
+        ACSearchSetInput: setInput,
+        ACSearchOffloadData : doOffloadData,
+        ACSearchFetchInputValue: doFetch
     } = useActions({
-        ACSearchIsActive, ACSearchToggle, ACSearchReloadPage, 
-        ACSearchInput, ACSearchOffload, ACSearchFetchInputValue
+        ACSearchIsActive, ACSearchToggleSuggestions, ACSearchReloadPage, 
+        ACSearchSetInput, ACSearchOffloadData, ACSearchFetchInputValue
     })
 
     const [classes, setClasses] = useState({ inputClass: "", btnClass: "",
@@ -37,27 +37,27 @@ export function FormSearch() {
 
     const onClickOpenSearch = () => {
         setClasses({inputClass: "show", btnClass: "hide",closeClass: "", sendClass: ""})
-        bindIsActive(true)
+        changeIsActive(true)
     };
     const onClickCloseSearch = () => {
         setClasses({inputClass: "", btnClass: "", closeClass: "hide", sendClass: "hide"})
-        bindToggle(false); bindIsActive(false)
+        toggleSuggestions(false); changeIsActive(false)
     };
 
     const valueTarget = ({target}) => {
-        bindInput(target.value)
+        setInput(target.value)
         clearTimeout(fetchTimer);
         if (target.value === "") {
-            bindOffload()
+            doOffloadData()
             return
         }
-        fetchTimer = setTimeout(() => bindFetch(target.value), FETCH_TIMEOUT);
+        fetchTimer = setTimeout(() => doFetch(target.value), FETCH_TIMEOUT);
     }
 
     useEffect(() => {
-        const checkerEvents = (e) => {
+        const checkerEvents = ({e}) => {
             if(e.target.closest(".form")) return
-            bindToggle(false)
+            toggleSuggestions(false)
         }
         document.getElementById("root").addEventListener("click", checkerEvents)
         return ()=>document.getElementById("root").removeEventListener("click", checkerEvents)
@@ -69,8 +69,8 @@ export function FormSearch() {
                 <Link to={`/search?query=${inputValue}`}>
                     <button
                         onClick={()=>{
-                            bindToggle(false)
-                            bindReloadPage()
+                            toggleSuggestions(false)
+                            doReloadPage()
                         }}
                         type="submit"
                         className={`${classes.sendClass} form__btn`}
@@ -81,7 +81,7 @@ export function FormSearch() {
                 <div className="input-block__search">
                     <input
                         autoComplete="off"
-                        onFocus={() => bindToggle(true)}
+                        onFocus={() => toggleSuggestions(true)}
                         type="text"
                         name="input"
                         className={`${classes.inputClass} input-block__search-field`}

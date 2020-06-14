@@ -1,15 +1,15 @@
 import {
   SEARCH_UPLOAD,
-  SEARCH_OFFLOAD,
-  SEARCH_TOGGLE,
+  SEARCH_OFFLOAD_DATA,
+  SEARCH_TOGGLE_SUGGESTIONS,
   SEARCH_CLEAR,
-  SEARCH_INPUT,
+  SEARCH_SET_INPUT,
   SEARCH_MOVIES_PAGE,
   SEARCH_ACTORS_PAGE,
   SEARCH_RELOAD_PAGE,
   SEARCH_INPUT_IS_ACTIVE,
-  SEARCH_BURGER,
-} from "./actions";
+  SEARCH_BURGER_TOGGLE,
+} from "./actions"; 
 
 const initialState = {
   inputValue: "",
@@ -30,18 +30,18 @@ function reducer(state = initialState, action) {
         resultsActors: action.actors,
         resultsMovies: action.movies,
       };
-    case SEARCH_OFFLOAD:
+    case SEARCH_OFFLOAD_DATA:
       return {
         ...state,
         resultsActors: null,
         resultsMovies: null,
       };
-    case SEARCH_TOGGLE:
+    case SEARCH_TOGGLE_SUGGESTIONS:
       return {
         ...state,
         showSearchedItems: action.payload,
       };
-    case SEARCH_INPUT:
+    case SEARCH_SET_INPUT:
       return {
         ...state,
         inputValue: action.payload,
@@ -74,7 +74,7 @@ function reducer(state = initialState, action) {
         ...state,
         inputOpen: action.payload,
       };
-    case SEARCH_BURGER:
+    case SEARCH_BURGER_TOGGLE:
       return {
         ...state,
         burgerActive: !state.burgerActive,

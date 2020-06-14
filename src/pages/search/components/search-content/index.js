@@ -18,8 +18,8 @@ import API from "http/index";
 function SearchContent({query}) {
     const {pageActors, pageMovies} = useSelector(({search})=>search)
     const {
-        ACSearchMoviePage: bindMoviePage,
-        ACSearchActorPage: bindActorPage
+        ACSearchMoviePage: changeMoviePage,
+        ACSearchActorPage: changeActorPage
     } = useActions({ACSearchMoviePage, ACSearchActorPage})
 
     const moviesElementTitle = createRef()
@@ -34,12 +34,12 @@ function SearchContent({query}) {
 
     const onClickPageMovies = (pageNumber) => {
         moviesElementTitle.current.scrollIntoView({block: "start"});
-        bindMoviePage(pageNumber)
+        changeMoviePage(pageNumber)
     }
 
     const onClickPageActors = (pageNumber) => {
         actorsElementTitle.current.scrollIntoView({block: "start"});
-        bindActorPage(pageNumber)
+        changeActorPage(pageNumber)
     }
 
     useEffect(() => {
@@ -70,7 +70,7 @@ function SearchContent({query}) {
                             (!loading && dataMovies.length) ? <Pagination
                                 current={pageMovies}
                                 total={totalPagesMovies}
-                                onChange={(pageNumber)=>bindMoviePage(pageNumber)}
+                                onChange={changeMoviePage}
                             /> : ""
                         }
                     </div>
@@ -86,7 +86,7 @@ function SearchContent({query}) {
                         (!loading && dataMovies.length) ? <Pagination
                         current={pageMovies}
                         total={totalPagesMovies}
-                        onChange={(pageNumber) => onClickPageMovies(pageNumber)}
+                        onChange={onClickPageMovies}
                         /> : ""
                     }
                 </div>
@@ -98,7 +98,7 @@ function SearchContent({query}) {
                             (!loading && dataActors.length) ? <Pagination
                                 current={pageActors}
                                 total={totalPagesActors}
-                                onChange={(pageNumber)=>bindActorPage(pageNumber)}
+                                onChange={changeActorPage}
                             /> : ""
                         }
                     </div>
@@ -115,7 +115,7 @@ function SearchContent({query}) {
                         (!loading && dataActors.length) ? <Pagination
                             current={pageActors}
                             total={totalPagesActors}
-                            onChange={(pageNumber)=>onClickPageActors(pageNumber)}
+                            onChange={onClickPageActors}
                         /> : ""
                     }
                 </div>
