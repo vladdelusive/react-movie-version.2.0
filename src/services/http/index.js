@@ -10,5 +10,9 @@ if(process.env.NODE_ENV === "development" ) {
   window.http = http
 }
 
+http.interceptors.request.use((res)=>{
+  res.url = res.url.replace("?api_key=", `?api_key=${API_KEY}`)
+  return res
+})
 
 export {http}
