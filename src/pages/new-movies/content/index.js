@@ -3,7 +3,6 @@ import "./style.css";
 
 import {Card} from "components";
 import {makeImgUrl} from "helpers/make-img-url";
-import {CARD_SIZE} from 'constants/cards'
 import image from "assets/images/image.jpg";
 import {overviewEditor} from "helpers/overview-editor";
 
@@ -15,7 +14,7 @@ export const Content = React.memo(({ results, path }) => {
     }
     identityId.push(movie.id);
     const poster = movie.poster_path
-      ? makeImgUrl(movie.poster_path, CARD_SIZE)
+      ? makeImgUrl(movie.poster_path, {})
       : image;
     const overview =
       movie.overview.length > 150

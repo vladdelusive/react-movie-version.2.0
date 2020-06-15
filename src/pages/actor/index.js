@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { ACTOR_DETAILS, ACTOR_MOVIES } from 'services/api/config'
+import { API } from 'services/api'
 import { getLocalStorage } from 'helpers/local-storage'
 import {Loader} from 'components'
 import {ActorDetails} from './components/actor-details'
 
-import API from 'services/http/index'
+import axios from 'services/http/index'
 
 export function ActorPage(props) {
     const [personInfo, setPersonInfo] = useState({})
@@ -22,8 +22,8 @@ export function ActorPage(props) {
     useEffect(() => {
         async function setFetchData() {
             const fetches = [
-                API(ACTOR_DETAILS(personId)),
-                API(ACTOR_MOVIES(personId)),
+                axios(API.ACTOR_DETAILS(personId)),
+                axios(API.ACTOR_MOVIES(personId)),
             ];
             const [AC_DET, AC_MOV] = await Promise.all(fetches).then((res) =>
               Promise.all(res.map((r) => r.data))

@@ -6,30 +6,20 @@ import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {Search} from "./suggestions";
 
-import {
-    ACSearchIsActive,
-    ACSearchToggleSuggestions,
-    ACSearchReloadPage,
-    ACSearchSetInput,
-    ACSearchOffloadData,
-    ACSearchFetchInputValue
-} from 'store/search/actions'
+import {actions} from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
 
 let fetchTimer;
 
 export function FormSearch() {
     const {inputValue, resultsActors, showSearchedItems, resultsMovies} = useSelector(({search}) => search);
-    const {
-        ACSearchIsActive: changeIsActive,
-        ACSearchToggleSuggestions: toggleSuggestions,
-        ACSearchReloadPage : doReloadPage,
-        ACSearchSetInput: setInput,
-        ACSearchOffloadData : doOffloadData,
-        ACSearchFetchInputValue: doFetch
-    } = useActions({
-        ACSearchIsActive, ACSearchToggleSuggestions, ACSearchReloadPage, 
-        ACSearchSetInput, ACSearchOffloadData, ACSearchFetchInputValue
+    const {ACInputIsActive, ACReloadPage,ACToggleSuggestions, ACSetInput, ACOffloadData, ACFetchInputValue } = useActions({
+        ACInputIsActive: actions.ACInputIsActive,
+        ACToggleSuggestions: actions.ACToggleSuggestions,
+        ACReloadPage: actions.ACReloadPage,
+        ACSetInput: actions.ACSetInput,
+        ACOffloadData: actions.ACOffloadData,
+        ACFetchInputValue: actions.ACFetchInputValue
     })
 
     const [classes, setClasses] = useState({ inputClass: "", btnClass: "",
@@ -37,27 +27,27 @@ export function FormSearch() {
 
     const onClickOpenSearch = () => {
         setClasses({inputClass: "show", btnClass: "hide",closeClass: "", sendClass: ""})
-        changeIsActive(true)
+        ACInputIsActive(true)
     };
     const onClickCloseSearch = () => {
         setClasses({inputClass: "", btnClass: "", closeClass: "hide", sendClass: "hide"})
-        toggleSuggestions(false); changeIsActive(false)
+        ACToggleSuggestions(false); ACInputIsActive(false)
     };
 
     const valueTarget = ({target}) => {
-        setInput(target.value)
+        ACSetInput(target.value)
         clearTimeout(fetchTimer);
         if (target.value === "") {
-            doOffloadData()
+            ACOffloadData()
             return
         }
-        fetchTimer = setTimeout(() => doFetch(target.value), FETCH_TIMEOUT);
+        fetchTimer = setTimeout(() => ACFetchInputValue(target.value), FETCH_TIMEOUT);
     }
 
     useEffect(() => {
         const checkerEvents = (e) => {
             if(e.target.closest(".form")) return
-            toggleSuggestions(false)
+            ACToggleSuggestions(false)
         }
         document.getElementById("root").addEventListener("click", checkerEvents)
         return ()=>document.getElementById("root").removeEventListener("click", checkerEvents)
@@ -69,8 +59,8 @@ export function FormSearch() {
                 <Link to={`/search?query=${inputValue}`}>
                     <button
                         onClick={()=>{
-                            toggleSuggestions(false)
-                            doReloadPage()
+                            ACToggleSuggestions(false)
+                            ACReloadPage()
                         }}
                         type="submit"
                         className={`${classes.sendClass} form__btn`}
@@ -81,7 +71,7 @@ export function FormSearch() {
                 <div className="input-block__search">
                     <input
                         autoComplete="off"
-                        onFocus={() => toggleSuggestions(true)}
+                        onFocus={() => ACToggleSuggestions(true)}
                         type="text"
                         name="input"
                         className={`${classes.inputClass} input-block__search-field`}

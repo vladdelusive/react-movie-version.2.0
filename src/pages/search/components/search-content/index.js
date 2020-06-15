@@ -9,18 +9,21 @@ import {NotFound} from "../not-found"
 import './style.css'
 import 'rc-pagination/assets/index.css';
 
-import {SEARCH_ACTOR_PARAM_URL, SEARCH_MOVIE_PARAM_URL} from "services/api/config";
-import { ACSearchMoviePage, ACSearchActorPage } from 'store/search/actions'
+import {API} from "services/api";
+import { actions } from 'store/search/actions'
 import { useActions } from 'hooks/use-actions'
-import API from "services/http/index";
+import axios from "services/http/index";
 
 
 function SearchContent({query}) {
     const {pageActors, pageMovies} = useSelector(({search})=>search)
     const {
-        ACSearchMoviePage: changeMoviePage,
-        ACSearchActorPage: changeActorPage
-    } = useActions({ACSearchMoviePage, ACSearchActorPage})
+        ACChangeMoviePage,
+        ACChangeActorPage,
+    } = useActions({
+        ACChangeMoviePage: actions.ACChangeMoviePage,
+        ACChangeActorPage: actions.ACChangeActorPage
+    })
 
     const moviesElementTitle = createRef()
     const actorsElementTitle = createRef()
@@ -34,19 +37,19 @@ function SearchContent({query}) {
 
     const onClickPageMovies = (pageNumber) => {
         moviesElementTitle.current.scrollIntoView({block: "start"});
-        changeMoviePage(pageNumber)
+        ACChangeMoviePage(pageNumber)
     }
 
     const onClickPageActors = (pageNumber) => {
         actorsElementTitle.current.scrollIntoView({block: "start"});
-        changeActorPage(pageNumber)
+        ACChangeActorPage(pageNumber)
     }
 
     useEffect(() => {
         const fetchData = async () => {
             const fetches = [
-                API(SEARCH_MOVIE_PARAM_URL(query, pageMovies)),
-                API(SEARCH_ACTOR_PARAM_URL(query, pageActors))
+                axios(API.SEARCH_MOVIE_PARAM_URL(query, pageMovies)),
+                axios(API.SEARCH_ACTOR_PARAM_URL(query, pageActors))
             ];
             const [MOVIES, ACTORS] = await Promise.all(fetches).then((res) =>
                 Promise.all(res.map((r) => r.data))
@@ -70,7 +73,7 @@ function SearchContent({query}) {
                             (!loading && dataMovies.length) ? <Pagination
                                 current={pageMovies}
                                 total={totalPagesMovies}
-                                onChange={changeMoviePage}
+                                onChange={ACChangeMoviePage}
                             /> : ""
                         }
                     </div>
@@ -98,7 +101,7 @@ function SearchContent({query}) {
                             (!loading && dataActors.length) ? <Pagination
                                 current={pageActors}
                                 total={totalPagesActors}
-                                onChange={changeActorPage}
+                                onChange={ACChangeActorPage}
                             /> : ""
                         }
                     </div>

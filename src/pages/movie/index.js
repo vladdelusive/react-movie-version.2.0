@@ -3,10 +3,9 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./style.css";
 
 import { badges, DEFAULT_TRAILER } from "constants/constants";
-import { EXTEND_SIZE} from "constants/cards";
-import API from "services/http/index";
+import axios from "services/http/index";
 import image from "assets/images/image.jpg";
-import {API_KEY, YOUTUBE_URL} from "services/api/config";
+import {API} from "services/api";
 import { makeImgUrl } from "helpers/make-img-url";
 import { getLocalStorage } from "helpers/local-storage";
 import {Loader, Cast} from "components";
@@ -19,10 +18,7 @@ function PageMovie(props) {
 
   useEffect(() => {
     async function setFetchData() {
-      const urlData = `movie/${movieId}?api_key=${API_KEY}`;
-      const urlCast = `movie/${movieId}/credits?api_key=${API_KEY}`;
-
-      const fetches = [API(urlData), API(YOUTUBE_URL(movieId)), API(urlCast)];
+      const fetches = [axios(API.MOVIE_DETAILS(movieId)), axios(API.YOUTUBE_URL(movieId)), axios(API.MOVIE_CAST(movieId))];
       const [INFO, TRA, CAST] = await Promise.all(fetches).then((res) =>
         Promise.all(res.map((r) => r.data))
       );
@@ -111,7 +107,7 @@ function PageMovie(props) {
             <img
               src={
                 results.poster_path
-                  ? makeImgUrl(results.poster_path, EXTEND_SIZE)
+                  ? makeImgUrl(results.poster_path, {size: "large"})
                   : image
               }
               alt="movie-post"

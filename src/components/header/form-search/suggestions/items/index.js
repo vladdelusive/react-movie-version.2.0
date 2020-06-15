@@ -16,7 +16,7 @@ export function SearchItem({image, title, typeItem, id, setShowSearchedItems}) {
         <div className="input-item">
             <Link className="input-item__icon" to={link} onClick={()=>setShowSearchedItems(false)}>
                 <img
-                    src={image ? makeImgUrl(image, CARD_SIZE) : nullImage}
+                    src={image ? makeImgUrl(image, {}) : nullImage}
                     alt="img"
                 />
             </Link>

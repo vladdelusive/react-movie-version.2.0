@@ -2,10 +2,9 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import { makeImgUrl } from 'helpers/make-img-url'
-import { CARD_SIZE } from "constants/cards";
 
 export const SearchCard = ({path, id, gender, name}) => {
-    const image = makeImgUrl(path, CARD_SIZE , gender)
+    const image = makeImgUrl(path, {placeholder: gender === 2 ? "male" : "female"})
     return (
         <div className="card">
             <div className="card__header">

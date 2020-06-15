@@ -1,6 +1,6 @@
 import React from "react";
-import { makeImgUrl} from "helpers/make-img-url";
-import { CARD_SIZE } from 'constants/cards'
+import { makeImgUrl } from "helpers/make-img-url";
+
 import { Link } from "react-router-dom";
 import image from "assets/images/image.jpg";
 
@@ -10,7 +10,7 @@ export function Movie({ id, img, title }) {
       <div className="card__header">
         <Link to={`/movies/${id}`} title={title}>
           <img
-            src={img === null ? image : makeImgUrl(img, CARD_SIZE)}
+            src={img === null ? image : makeImgUrl(img, {})}
             alt="movie_image"
           />
         </Link>

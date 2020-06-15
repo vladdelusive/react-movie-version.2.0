@@ -2,7 +2,6 @@ import React from 'react'
 import {makeImgUrl} from "helpers/make-img-url";
 import './style.css'
 
-import {CARD_SIZE} from "constants/cards";
 import {ActorMovies} from "../actor-movies";
 import {convertAge} from 'helpers/age-converter'
 
@@ -28,7 +27,9 @@ export function ActorDetails({ personInfo, handleClick, isHidden, moviesInfo }) 
                     </div>
                     <div className="actor-info__photo">
                         <img
-                            src={makeImgUrl(personInfo.profile_path, CARD_SIZE, personInfo.gender )}
+                            src={makeImgUrl(personInfo.profile_path, {
+                                placeholder: personInfo.gender === 2 ? "male" : "female"
+                            })}
                             alt="person_image" />
                     </div>
                 </div>

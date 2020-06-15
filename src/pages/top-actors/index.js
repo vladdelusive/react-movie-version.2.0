@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { TRENDY_ACTORS_URL } from "services/api/config";
+import { API } from "services/api";
 
 import {Loader, Cast, BtnLoader} from "components";
-import API from "services/http/index";
+import axios from "services/http/index";
 
 export function Actors() {
   const [results, setResults] = useState([]);
@@ -10,7 +10,7 @@ export function Actors() {
   const [loading, setLoading] = useState(true);
 
   const handlerLoading = async () => {
-    const fetched = await API.get(TRENDY_ACTORS_URL(page));
+    const fetched = await axios.get(API.TRENDY_ACTORS_URL(page));
     const { data } = fetched;
 
     setResults([...results, ...data.results]);
