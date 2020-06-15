@@ -10,7 +10,7 @@ export function Movie({ id, img, title }) {
       <div className="card__header">
         <Link to={`/movies/${id}`} title={title}>
           <img
-            src={img === null ? image : makeImgUrl(img, {})}
+            src={img === null ? image : makeImgUrl(img)}
             alt="movie_image"
           />
         </Link>

@@ -13,13 +13,13 @@ let fetchTimer;
 
 export function FormSearch() {
     const {inputValue, resultsActors, showSearchedItems, resultsMovies} = useSelector(({search}) => search);
-    const {ACInputIsActive, ACReloadPage,ACToggleSuggestions, ACSetInput, ACOffloadData, ACFetchInputValue } = useActions({
-        ACInputIsActive: actions.ACInputIsActive,
-        ACToggleSuggestions: actions.ACToggleSuggestions,
-        ACReloadPage: actions.ACReloadPage,
-        ACSetInput: actions.ACSetInput,
-        ACOffloadData: actions.ACOffloadData,
-        ACFetchInputValue: actions.ACFetchInputValue
+    const {inputIsActive, reloadPage,toggleSuggestions, setInput, offloadData, fetchInputValue } = useActions({
+        inputIsActive: actions.inputIsActive,
+        toggleSuggestions: actions.toggleSuggestions,
+        reloadPage: actions.reloadPage,
+        setInput: actions.setInput,
+        offloadData: actions.offloadData,
+        fetchInputValue: actions.fetchInputValue
     })
 
     const [classes, setClasses] = useState({ inputClass: "", btnClass: "",
@@ -27,27 +27,27 @@ export function FormSearch() {
 
     const onClickOpenSearch = () => {
         setClasses({inputClass: "show", btnClass: "hide",closeClass: "", sendClass: ""})
-        ACInputIsActive(true)
+        inputIsActive(true)
     };
     const onClickCloseSearch = () => {
         setClasses({inputClass: "", btnClass: "", closeClass: "hide", sendClass: "hide"})
-        ACToggleSuggestions(false); ACInputIsActive(false)
+        toggleSuggestions(false); inputIsActive(false)
     };
 
     const valueTarget = ({target}) => {
-        ACSetInput(target.value)
+        setInput(target.value)
         clearTimeout(fetchTimer);
         if (target.value === "") {
-            ACOffloadData()
+            offloadData()
             return
         }
-        fetchTimer = setTimeout(() => ACFetchInputValue(target.value), FETCH_TIMEOUT);
+        fetchTimer = setTimeout(() => fetchInputValue(target.value), FETCH_TIMEOUT);
     }
 
     useEffect(() => {
         const checkerEvents = (e) => {
             if(e.target.closest(".form")) return
-            ACToggleSuggestions(false)
+            toggleSuggestions(false)
         }
         document.getElementById("root").addEventListener("click", checkerEvents)
         return ()=>document.getElementById("root").removeEventListener("click", checkerEvents)
@@ -59,8 +59,8 @@ export function FormSearch() {
                 <Link to={`/search?query=${inputValue}`}>
                     <button
                         onClick={()=>{
-                            ACToggleSuggestions(false)
-                            ACReloadPage()
+                            toggleSuggestions(false)
+                            reloadPage()
                         }}
                         type="submit"
                         className={`${classes.sendClass} form__btn`}
@@ -71,7 +71,7 @@ export function FormSearch() {
                 <div className="input-block__search">
                     <input
                         autoComplete="off"
-                        onFocus={() => ACToggleSuggestions(true)}
+                        onFocus={() => toggleSuggestions(true)}
                         type="text"
                         name="input"
                         className={`${classes.inputClass} input-block__search-field`}

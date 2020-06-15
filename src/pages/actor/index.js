@@ -4,7 +4,7 @@ import { getLocalStorage } from 'helpers/local-storage'
 import {Loader} from 'components'
 import {ActorDetails} from './components/actor-details'
 
-import axios from 'services/http/index'
+import {http} from 'services/http'
 
 export function ActorPage(props) {
     const [personInfo, setPersonInfo] = useState({})
@@ -22,8 +22,8 @@ export function ActorPage(props) {
     useEffect(() => {
         async function setFetchData() {
             const fetches = [
-                axios(API.ACTOR_DETAILS(personId)),
-                axios(API.ACTOR_MOVIES(personId)),
+                http.get(API.ACTOR_DETAILS(personId)),
+                http.get(API.ACTOR_MOVIES(personId)),
             ];
             const [AC_DET, AC_MOV] = await Promise.all(fetches).then((res) =>
               Promise.all(res.map((r) => r.data))

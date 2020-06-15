@@ -13,8 +13,8 @@ import "./style.css";
  
 export function BurgerMenu() {
   const { burgerActive } = useSelector(({ search }) => search);
-  const { ACBurgerToggle } = useActions({
-    ACBurgerToggle: actions.ACBurgerToggle,
+  const { burgerToggle } = useActions({
+    burgerToggle: actions.burgerToggle,
   });
   return (
     <>
@@ -23,7 +23,7 @@ export function BurgerMenu() {
         className={`panel-menu ${burgerActive ? "panel-menu--transform" : ""}`}
       >
         <DeveloperLink />
-        <div className="close-burger" onClick={ACBurgerToggle}>
+        <div className="close-burger" onClick={burgerToggle}>
           <img
             className="close-burger__icon"
             src={CloseBurger}
@@ -31,17 +31,17 @@ export function BurgerMenu() {
           />
         </div>
         <ul className="menu-navbar">
-          <li className="menu-navbar__item" onClick={ACBurgerToggle}>
+          <li className="menu-navbar__item" onClick={burgerToggle}>
             <NavLink exact className="menu-navbar__link" to="/">
               Main
             </NavLink>
           </li>
-          <li className="menu-navbar__item" onClick={ACBurgerToggle}>
+          <li className="menu-navbar__item" onClick={burgerToggle}>
             <NavLink className="menu-navbar__link" to="/movies">
               Movies
             </NavLink>
           </li>
-          <li className="menu-navbar__item" onClick={ACBurgerToggle}>
+          <li className="menu-navbar__item" onClick={burgerToggle}>
             <NavLink className="menu-navbar__link" to="/actors">
               Actors
             </NavLink>

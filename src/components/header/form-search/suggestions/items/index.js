@@ -5,8 +5,6 @@ import ActorIcon from 'assets/images/ActorIcon.png'
 import MovieIcon from 'assets/images/MovieIcon.png'
 import { makeImgUrl} from "helpers/make-img-url";
 
-import { CARD_SIZE } from 'constants/cards'
-
 import './style.css'
 
 export function SearchItem({image, title, typeItem, id, setShowSearchedItems}) {
@@ -16,7 +14,7 @@ export function SearchItem({image, title, typeItem, id, setShowSearchedItems}) {
         <div className="input-item">
             <Link className="input-item__icon" to={link} onClick={()=>setShowSearchedItems(false)}>
                 <img
-                    src={image ? makeImgUrl(image, {}) : nullImage}
+                    src={image ? makeImgUrl(image) : nullImage}
                     alt="img"
                 />
             </Link>

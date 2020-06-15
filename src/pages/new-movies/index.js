@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API } from "services/api";
 
-import axios from "services/http/index";
+import {http} from "services/http/index";
 import "./style.css";
 import {Loader, BtnLoader, ArrowTop} from "components";
 import {Content} from "./content";
@@ -12,7 +12,7 @@ export function MoviesPage() {
   const [loading, setLoading] = useState(true);
 
   const handlerLoading = async () => {
-    const fetched = await axios.get(API.NEWLY_MOVIES_URL(page));
+    const fetched = await http.get(API.NEWLY_MOVIES_URL(page));
     const { data } = fetched;
     setResults([...results, ...data.results]);
     setPage(page + 1);

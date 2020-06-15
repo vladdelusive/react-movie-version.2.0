@@ -3,7 +3,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./style.css";
 
 import { badges, DEFAULT_TRAILER } from "constants/constants";
-import axios from "services/http/index";
+import {http} from "services/http/index";
 import image from "assets/images/image.jpg";
 import {API} from "services/api";
 import { makeImgUrl } from "helpers/make-img-url";
@@ -18,7 +18,7 @@ function PageMovie(props) {
 
   useEffect(() => {
     async function setFetchData() {
-      const fetches = [axios(API.MOVIE_DETAILS(movieId)), axios(API.YOUTUBE_URL(movieId)), axios(API.MOVIE_CAST(movieId))];
+      const fetches = [http.get(API.MOVIE_DETAILS(movieId)), http.get(API.YOUTUBE_URL(movieId)), http.get(API.MOVIE_CAST(movieId))];
       const [INFO, TRA, CAST] = await Promise.all(fetches).then((res) =>
         Promise.all(res.map((r) => r.data))
       );

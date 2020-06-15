@@ -6,11 +6,11 @@ import { actions } from "store/search/actions";
 import {useActions} from "hooks/use-actions";
 
 export function Burger() {
-  const {ACBurgerToggle } = useActions({
-      ACBurgerToggle: actions.ACBurgerToggle
+  const {burgerToggle } = useActions({
+      burgerToggle: actions.burgerToggle
   })
   return (
-    <div className="burger" onClick={ACBurgerToggle}>
+    <div className="burger" onClick={burgerToggle}>
       <img className="burger__icon" src={BurgerIcon} alt="burger" />
     </div>
   );

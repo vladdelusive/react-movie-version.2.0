@@ -13,7 +13,7 @@ export const SearchCardsContentMovies = React.memo(({ results, path }) => {
         }
         identityId.push(movie.id)
         const poster = movie.poster_path
-            ? makeImgUrl(movie.poster_path, {})
+            ? makeImgUrl(movie.poster_path)
             : image;
         const overview = movie.overview.length > 150 ? overviewEditor(movie.overview) : movie.overview
 

@@ -14,7 +14,7 @@ export const Content = React.memo(({ results, path }) => {
     }
     identityId.push(movie.id);
     const poster = movie.poster_path
-      ? makeImgUrl(movie.poster_path, {})
+      ? makeImgUrl(movie.poster_path)
       : image;
     const overview =
       movie.overview.length > 150

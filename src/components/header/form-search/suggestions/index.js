@@ -9,8 +9,8 @@ import { actions } from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
 
 export function Search({ value, searchResultActors, searchResultMovies }) {
-  const {ACToggleSuggestions, ACReloadPage } =
-      useActions({ACToggleSuggestions: actions.ACToggleSuggestions, ACReloadPage: actions.ACReloadPage })
+  const {toggleSuggestions, reloadPage } =
+      useActions({toggleSuggestions: actions.toggleSuggestions, reloadPage: actions.reloadPage })
 
   if (!searchResultMovies || !searchResultActors) return null;
 
@@ -19,7 +19,7 @@ export function Search({ value, searchResultActors, searchResultMovies }) {
   for (let i = 0; i < toM; i++) {
     searchedItemsMovies.push(
       <SearchItem
-        setShowSearchedItems={() => ACToggleSuggestions(false)}
+        setShowSearchedItems={() => toggleSuggestions(false)}
         key={searchResultMovies[i].id}
         title={searchResultMovies[i].title}
         image={searchResultMovies[i].poster_path}
@@ -33,7 +33,7 @@ export function Search({ value, searchResultActors, searchResultMovies }) {
   for (let i = 0; i < toA; i++) {
     searchedItemsActors.push(
       <SearchItem
-        setShowSearchedItems={() => ACToggleSuggestions(false)}
+        setShowSearchedItems={() => toggleSuggestions(false)}
         key={searchResultActors[i].id}
         title={searchResultActors[i].name}
         image={searchResultActors[i].profile_path}
@@ -64,7 +64,7 @@ export function Search({ value, searchResultActors, searchResultMovies }) {
       <Link
         className="input-block__link"
         to={`/search?query=${value}`}
-        onClick={() => {ACToggleSuggestions(false); ACReloadPage()}}
+        onClick={() => {toggleSuggestions(false); reloadPage()}}
       >
         More...
       </Link>
