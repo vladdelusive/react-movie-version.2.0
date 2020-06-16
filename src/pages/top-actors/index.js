@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from "react";
 import {Loader, Cast, BtnLoader} from "components";
-import {API} from "services/api";
+import {useSelector} from "react-redux";
+import {useActions} from "hooks/use-actions";
+import {actions} from "store/top-actors/actions";
 
 export function Actors() {
-  const [results, setResults] = useState([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
-
-  const handlerLoading = async () => {
-    const fetched = await API.TRENDY_ACTORS({page});
-    const { data } = fetched;
-
-    setResults([...results, ...data.results]);
-    setPage(page + 1);
-    page === 1 && setLoading(false);
-  };
-
+  const {actors, loading} = useSelector(({actors})=>actors)
+  const {fetchActors} = useActions({
+    fetchActors: actions.fetchActors,
+  })
   useEffect(() => {
-      handlerLoading();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchActors()
   }, []);
 
   return (
@@ -30,9 +22,9 @@ export function Actors() {
         <Loader />
       ) : (
         <>
-          <Cast cast={results} />
+          <Cast cast={actors} />
           <div className="section__footer">
-            <BtnLoader handlerLoading={handlerLoading}>
+            <BtnLoader handlerLoading={fetchActors}>
               Load more actors...
             </BtnLoader>
           </div>
