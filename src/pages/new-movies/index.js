@@ -1,26 +1,20 @@
-import React, { useState, useEffect } from "react";
-import {API} from "services/api";
+import React, { useEffect } from "react";
 import "./style.css";
 import {Loader, BtnLoader, ArrowTop} from "components";
 import {Content} from "./content";
+import {useSelector} from "react-redux";
+import {useActions} from "hooks/use-actions";
+import {actions} from "store/new-movies/actions";
 
 export function MoviesPage() {
-  const [results, setResults] = useState([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
-
-  const handlerLoading = async () => {
-    const fetched = await API.NEWLY_MOVIES({page});
-    const { data } = fetched;
-    setResults([...results, ...data.results]);
-    setPage(page + 1);
-    page === 1 && setLoading(false);
-  };
-
+  const {movies, loading} = useSelector(({movies})=>movies)
+  const {fetchMovies} = useActions({
+    fetchMovies: actions.fetchMovies,
+  })
   useEffect(() => {
-      handlerLoading();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchMovies()
   }, []);
+
   return (
     <>
       <div className="section__head">
@@ -32,9 +26,9 @@ export function MoviesPage() {
         <>
           <div className="section__content">
             <div className="section__content-container">
-              <Content results={results} path="/movies" />
+              <Content results={movies} path="/movies" />
             </div>
-              <BtnLoader handlerLoading={handlerLoading}>
+              <BtnLoader handlerLoading={fetchMovies}>
                   Load more movies...
               </BtnLoader>
           </div>
