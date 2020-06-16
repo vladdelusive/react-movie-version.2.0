@@ -11,6 +11,9 @@ export const types = {
     RELOAD_PAGE: "RELOAD_PAGE",
     INPUT_IS_ACTIVE: "INPUT_IS_ACTIVE",
     BURGER_TOGGLE: "BURGER_TOGGLE",
+
+    SEARCH_ACTORS: "SEARCH_ACTORS",
+    SEARCH_MOVIES: "SEARCH_MOVIES",
 }
 
 export const actions = {
@@ -29,6 +32,16 @@ export const actions = {
             Promise.all(res.map((r) => r.data))
         );
         return dispatch({type: types.UPLOAD, actors: ACTORS.results, movies: MOVIES.results})
+    },
+    fetchSearchActors: (query, page) => async (dispatch) => {
+        const fetched = await API.SEARCH_ACTOR({query, page})
+        const actors = fetched.data;
+        return dispatch({type: types.SEARCH_ACTORS, actors})
+    },
+    fetchSearchMovies: (query, page) => async (dispatch) => {
+        const fetched = await API.SEARCH_MOVIE({query, page})
+        const movies = fetched.data;
+        return dispatch({type: types.SEARCH_MOVIES, movies})
     },
 }
 

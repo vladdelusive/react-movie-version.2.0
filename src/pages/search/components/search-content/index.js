@@ -15,21 +15,16 @@ import { useActions } from 'hooks/use-actions'
 
 
 function SearchContent({query}) {
-    const {pageActors, pageMovies} = useSelector(({search})=>search)
-    const {changeMoviePage, changeActorPage } = useActions({
+    const {pageActors, pageMovies, searchedMovies, searchedActors, loading, totalPagesMovies, totalPagesActors} =
+        useSelector(({search})=>search)
+    const {changeMoviePage, changeActorPage, fetchSearchActors, fetchSearchMovies } = useActions({
         changeMoviePage: actions.changeMoviePage,
-        changeActorPage: actions.changeActorPage
+        changeActorPage: actions.changeActorPage,
+        fetchSearchActors: actions.fetchSearchActors,
+        fetchSearchMovies: actions.fetchSearchMovies,
     })
-
     const moviesElementTitle = createRef()
     const actorsElementTitle = createRef()
-
-    const [dataMovies, setDataMovies] = useState(null)
-    const [dataActors, setDataActors] = useState(null)
-    const [loading, setLoading] = useState(true)
-
-    const [totalPagesMovies, setTotalPagesMovies] = useState(null)
-    const [totalPagesActors, setTotalPagesActors] = useState(null)
 
     const onClickPageMovies = (pageNumber) => {
         moviesElementTitle.current.scrollIntoView({block: "start"});
@@ -42,31 +37,25 @@ function SearchContent({query}) {
     }
 
     useEffect(() => {
-        const fetchData = async () => {
-            const fetches = [
-                API.SEARCH_MOVIE({query, page: pageMovies}),
-                API.SEARCH_ACTOR({query, page: pageActors}),
-            ];
-            const [MOVIES, ACTORS] = await Promise.all(fetches).then((res) =>
-                Promise.all(res.map((r) => r.data))
-            );
+        fetchSearchMovies(query, pageMovies);
+        fetchSearchActors(query, pageActors);
+    }, [query]);
 
-            setDataActors(ACTORS.results)
-            setDataMovies(MOVIES.results)
-            setLoading(false)
+    useEffect(() => {
+        fetchSearchMovies(query, pageMovies);
+    }, [pageMovies]);
 
-            setTotalPagesMovies(MOVIES.total_pages)
-            setTotalPagesActors(ACTORS.total_pages)
-        }
-        fetchData().catch(()=>console.log("something went wrong"))
-    }, [query, pageActors, pageMovies])
+    useEffect(() => {
+        fetchSearchActors(query, pageActors);
+    }, [pageActors]);
+
     return (
         <>
             <div className="section__content section__content--movies">
                 <div ref={moviesElementTitle} className="subtitle subtitle__movies">Movies:</div>
                     <div className="pagination">
                         {
-                            (!loading && dataMovies.length) ? <Pagination
+                            (!loading && searchedMovies.length) ? <Pagination
                                 current={pageMovies}
                                 total={totalPagesMovies}
                                 onChange={changeMoviePage}
@@ -78,11 +67,11 @@ function SearchContent({query}) {
                         loading ?
                             <Loader/>
                             :
-                            (dataMovies.length ? <SearchCardsContentMovies results={dataMovies} path="/movies"/>
+                            (searchedMovies.length ? <SearchCardsContentMovies results={searchedMovies} path="/movies"/>
                                 : <NotFound/>)
                     }
                     {
-                        (!loading && dataMovies.length) ? <Pagination
+                        (!loading && searchedMovies.length) ? <Pagination
                         current={pageMovies}
                         total={totalPagesMovies}
                         onChange={onClickPageMovies}
@@ -94,7 +83,7 @@ function SearchContent({query}) {
                 <div ref={actorsElementTitle}  className="subtitle subtitle__actors">Actors:</div>
                     <div className="pagination">
                         {
-                            (!loading && dataActors.length) ? <Pagination
+                            (!loading && searchedActors.length) ? <Pagination
                                 current={pageActors}
                                 total={totalPagesActors}
                                 onChange={changeActorPage}
@@ -105,13 +94,13 @@ function SearchContent({query}) {
                     {
                         loading ?
                             <Loader/>
-                            : (dataActors.length ?
-                                <SearchCardsContentActors cast={dataActors}/>
+                            : (searchedActors.length ?
+                                <SearchCardsContentActors cast={searchedActors}/>
                                 : <NotFound/>
                             )
                     }
                     {
-                        (!loading && dataActors.length) ? <Pagination
+                        (!loading && searchedActors.length) ? <Pagination
                             current={pageActors}
                             total={totalPagesActors}
                             onChange={onClickPageActors}

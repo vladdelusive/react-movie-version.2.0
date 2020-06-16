@@ -2,7 +2,9 @@ import {endpoints} from "services/api/endpoints";
 import {http} from "services/http";
 
 export const API = {
-    SEARCH_MOVIE: (payload) => http.get(endpoints.SEARCH_MOVIE(payload)),
+    SEARCH_MOVIE: (payload) => {
+        return http.get(endpoints.SEARCH_MOVIE(payload))
+    },
     SEARCH_ACTOR: (payload) => {
         return http.get(endpoints.SEARCH_ACTOR(payload))
     },

@@ -5,10 +5,16 @@ const initialState = {
   showSearchedItems: false,
   resultsActors: null,
   resultsMovies: null,
-  pageActors: 1,
-  pageMovies: 1,
   burgerActive: false,
   inputOpen: false,
+
+  pageActors: 1,
+  pageMovies: 1,
+  searchedMovies: [],
+  searchedActors: [],
+  loading: true,
+  totalPagesMovies: 0,
+  totalPagesActors: 0
 };
 
 function reducer(state = initialState, action) {
@@ -67,6 +73,20 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         burgerActive: !state.burgerActive,
+      };
+    case types.SEARCH_ACTORS:
+      return {
+        ...state,
+        searchedActors: action.actors.results,
+        totalPagesActors: action.actors.total_pages,
+        loading: false
+    };
+    case types.SEARCH_MOVIES:
+      return {
+        ...state,
+        searchedMovies: action.movies.results,
+        totalPagesMovies: action.movies.total_pages,
+        loading: false
       };
     default:
       return state;
