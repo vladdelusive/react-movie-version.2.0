@@ -11,8 +11,11 @@ if(process.env.NODE_ENV === "development" ) {
 }
 
 http.interceptors.request.use((res) => {
-  res.url = res.url.replace("?api_key=", `?api_key=${API_KEY}`)
-  return res
+  const fullUrl = res.baseURL + res.url;
+  const url = new URL(fullUrl);
+  url.searchParams.set("api_key", API_KEY);
+  res.url = url.toString();
+  return res;
 })
 
 export {http}
