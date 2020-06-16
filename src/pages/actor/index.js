@@ -1,58 +1,20 @@
-import React, { useState, useEffect } from 'react'
-import {API} from "services/api";
-import { getLocalStorage } from 'helpers/local-storage'
+import React, { useEffect } from 'react'
 import {Loader} from 'components'
 import {ActorDetails} from './components/actor-details'
-
-
+import {useSelector} from "react-redux";
+import {useActions} from "hooks/use-actions";
+import {actions} from "store/actor/actions";
 
 export function ActorPage(props) {
-    const [personInfo, setPersonInfo] = useState({})
-    const [loading, setLoading] = useState(true)
-
-    const [moviesInfo, setMoviesInfo] = useState([])
-    const [hidden, setHidden] = useState(true)
-
-    const handleClick = () => {
-        const personId = props.match.params.actor;
-        localStorage.setItem(`hidden-${personId}`, JSON.stringify(!hidden))
-        setHidden(!hidden)
-    }
-
+    const {personInfo, moviesInfo, loading, hideMovies} = useSelector(({actor})=>actor)
+    const {fetchData, moviesInfoTrigger, clearData} = useActions({
+        fetchData: actions.fetchData,
+        moviesInfoTrigger: actions.moviesInfoTrigger,
+        clearData: actions.clearData,
+    })
     useEffect(() => {
-        async function setFetchData() {
-            const fetches = [
-                API.ACTOR_DETAILS({personId}),
-                API.ACTOR_MOVIES({personId}),
-            ];
-            const [AC_DET, AC_MOV] = await Promise.all(fetches).then((res) =>
-              Promise.all(res.map((r) => r.data))
-            );
-
-            localStorage.setItem(`person-${personId}`, JSON.stringify({
-              personData: AC_DET,
-              personMovies: AC_MOV.cast,
-            }));
-
-            setMoviesInfo(AC_MOV.cast);
-            setPersonInfo(AC_DET);
-            setLoading(false);
-        }
-
-        const personId = props.match.params.actor;
-        const actorLocalState = getLocalStorage(`person-${personId}`);
-
-        if (actorLocalState) {
-            setPersonInfo(actorLocalState.personData);
-            setMoviesInfo(actorLocalState.personMovies);
-            setLoading(false);
-        } else {
-            setFetchData();
-        }
-        const localStateBtn = getLocalStorage(`hidden-${personId}`);
-        if (localStateBtn === false || localStateBtn === true) {
-            setHidden(localStateBtn);
-        }
+        fetchData(props.match.params.actor);
+        return clearData
     }, [props.match.params.actor]);
 
     return (<>
@@ -60,8 +22,8 @@ export function ActorPage(props) {
             ? <Loader />
             : <ActorDetails
                 personInfo={personInfo}
-                handleClick={handleClick}
-                isHidden={hidden}
+                handleClick={moviesInfoTrigger}
+                isHidden={hideMovies}
                 moviesInfo={moviesInfo}
             />
         }
