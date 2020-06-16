@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API } from "services/api";
 
-import {http} from "services/http/index";
+import {http} from "services/http";
 import "./style.css";
 import {Loader, BtnLoader, ArrowTop} from "components";
 import {Content} from "./content";

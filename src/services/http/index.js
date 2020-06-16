@@ -11,10 +11,10 @@ if(process.env.NODE_ENV === "development" ) {
 }
 
 http.interceptors.request.use((res) => {
-  const fullUrl = res.baseURL + res.url;
-  const url = new URL(fullUrl);
+  const url = new URL(res.baseURL + res.url);
+  url.searchParams.delete("api_key");
   url.searchParams.set("api_key", API_KEY);
-  res.url = url.toString();
+  res.url = res.url.split("?")[0] + url.search;
   return res;
 })
 
