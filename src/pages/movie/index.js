@@ -1,45 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./style.css";
 
-import { badges, DEFAULT_TRAILER } from "constants/constants";
-import {API} from "services/api";
+import { badges } from "constants/constants";
 import image from "assets/images/image.jpg";
 
 import { makeImgUrl } from "helpers/make-img-url";
-import { getLocalStorage } from "helpers/local-storage";
 import {Loader, Cast} from "components";
+import {useSelector} from "react-redux";
+import {useActions} from "hooks/use-actions";
+import {actions} from "store/movie/actions";
+import {setRate} from "helpers/set-rate";
 
 function PageMovie(props) {
-  const [results, setResults] = useState([]);
-  const [trailer, setTrailer] = useState("");
-  const [movieBadges, setMovieBadges] = useState([]);
-  const [cast, setCast] = useState([]);
-
+  const {results = [], trailer = "", movieBadges = [], cast = []} = useSelector(({movie})=>movie)
+  const {fetchData, clearData, setBadges} = useActions({
+    fetchData: actions.fetchData,
+    clearData: actions.clearData,
+    setBadges: actions.setBadges,
+  })
   useEffect(() => {
-    async function setFetchData() {
-      const fetches = [API.MOVIE_DETAILS({movieId}), API.YOUTUBE_URL({movieId}), API.MOVIE_CAST({movieId})];
-      const [INFO, TRA, CAST] = await Promise.all(fetches).then((res) =>
-        Promise.all(res.map((r) => r.data))
-      );
-      const trailer = TRA.results[0] ? TRA.results[0].key : DEFAULT_TRAILER;
-
-      localStorage.setItem(movieId, JSON.stringify({ results: INFO, trailer, cast: CAST.cast }));
-      setResults(INFO);
-      setTrailer(trailer);
-      setCast(CAST.cast);
-    }
-
-    const movieId = props.match.params.movie;
-    const movieLocalState = getLocalStorage(movieId);
-
-    if (movieLocalState) {
-      setResults(movieLocalState.results);
-      setTrailer(movieLocalState.trailer);
-      setCast(movieLocalState.cast);
-    } else {
-      setFetchData();
-    }
+    fetchData(props.match.params.movie)
+    return clearData
   }, [props.match.params.movie]);
 
   useEffect(() => {
@@ -67,27 +49,8 @@ function PageMovie(props) {
         )}
       </Draggable>
     ));
-    setMovieBadges(badgesList);
+    setBadges(badgesList);
   }, [results]);
-
-  const averageRate = () => {
-    return Math.round(results.vote_average);
-  };
-
-  const setRate = () => {
-    const movieRate = averageRate() || 0;
-    const stars = [];
-    for (let i = 0; i < 10; i++) {
-      stars[i] = (
-        <span
-          key={i}
-          className={`fa fa-star${i < movieRate ? " checked" : ""}`}
-        >
-        </span>
-      );
-    }
-    return stars;
-  };
 
   const onDragEnd = ({ destination, source }) => {
     if (!destination) return;
@@ -96,9 +59,8 @@ function PageMovie(props) {
     const replacedItemFrom = newStateBadges[source.index];
     newStateBadges.splice(source.index, 1);
     newStateBadges.splice(destination.index, 0, replacedItemFrom);
-    setMovieBadges(newStateBadges);
+    setBadges(newStateBadges);
   };
-
   return (
     <>
       <div className="movie">
@@ -151,9 +113,9 @@ function PageMovie(props) {
           <div className="movie__section">
             <div>
               <strong className="movie__type">Rate: </strong>
-              <i>{averageRate() || "?"}/10</i>
+              <i>{Math.round(results.vote_average) || "?"}/10</i>
             </div>
-            {setRate()}
+            {setRate(results)}
           </div>
           <hr className="line" />
           <div className="movie__section">

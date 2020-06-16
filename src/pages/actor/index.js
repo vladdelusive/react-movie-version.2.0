@@ -6,7 +6,7 @@ import {useActions} from "hooks/use-actions";
 import {actions} from "store/actor/actions";
 
 export function ActorPage(props) {
-    const {personInfo, moviesInfo, loading, hideMovies} = useSelector(({actor})=>actor)
+    const {personInfo = [], moviesInfo = [], loading = true, hideMovies = true} = useSelector(({actor})=>actor)
     const {fetchData, moviesInfoTrigger, clearData} = useActions({
         fetchData: actions.fetchData,
         moviesInfoTrigger: actions.moviesInfoTrigger,
