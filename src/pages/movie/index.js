@@ -3,9 +3,9 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./style.css";
 
 import { badges, DEFAULT_TRAILER } from "constants/constants";
-import {http} from "services/http/index";
-import image from "assets/images/image.jpg";
 import {API} from "services/api";
+import image from "assets/images/image.jpg";
+
 import { makeImgUrl } from "helpers/make-img-url";
 import { getLocalStorage } from "helpers/local-storage";
 import {Loader, Cast} from "components";
@@ -18,7 +18,7 @@ function PageMovie(props) {
 
   useEffect(() => {
     async function setFetchData() {
-      const fetches = [http.get(API.MOVIE_DETAILS(movieId)), http.get(API.YOUTUBE_URL(movieId)), http.get(API.MOVIE_CAST(movieId))];
+      const fetches = [API.MOVIE_DETAILS({movieId}), API.YOUTUBE_URL({movieId}), API.MOVIE_CAST({movieId})];
       const [INFO, TRA, CAST] = await Promise.all(fetches).then((res) =>
         Promise.all(res.map((r) => r.data))
       );

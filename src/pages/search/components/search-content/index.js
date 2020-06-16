@@ -1,18 +1,17 @@
 import Pagination from 'rc-pagination';
 import { useSelector } from 'react-redux';
-import React, {useState, useEffect, createRef} from 'react'
+import {API} from "services/api";
 
+import React, {useState, useEffect, createRef} from 'react'
 import {SearchCardsContentActors, SearchCardsContentMovies} from "../content-cards";
 import {Loader} from "components";
+
 import {NotFound} from "../not-found"
-
 import './style.css'
-import 'rc-pagination/assets/index.css';
 
-import {API} from "services/api";
+import 'rc-pagination/assets/index.css';
 import { actions } from 'store/search/actions'
 import { useActions } from 'hooks/use-actions'
-import {http} from "services/http/index";
 
 
 function SearchContent({query}) {
@@ -45,8 +44,8 @@ function SearchContent({query}) {
     useEffect(() => {
         const fetchData = async () => {
             const fetches = [
-                http.get(API.SEARCH_MOVIE_PARAM_URL(query, pageMovies)),
-                http.get(API.SEARCH_ACTOR_PARAM_URL(query, pageActors))
+                API.SEARCH_MOVIE({query, page: pageMovies}),
+                API.SEARCH_ACTOR({query, page: pageActors}),
             ];
             const [MOVIES, ACTORS] = await Promise.all(fetches).then((res) =>
                 Promise.all(res.map((r) => r.data))

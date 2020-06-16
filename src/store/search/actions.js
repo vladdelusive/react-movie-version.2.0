@@ -1,4 +1,3 @@
-import {http} from "services/http";
 import {API} from "services/api";
 
 export const types = {
@@ -24,8 +23,8 @@ export const actions = {
     changeActorPage: (payload) => ({type: types.ACTORS_PAGE, payload }),
     setInput: (payload) => ({type: types.SET_INPUT, payload}),
     inputIsActive: (payload) => ({type: types.INPUT_IS_ACTIVE, payload}),
-    fetchInputValue: value => async (dispatch) => {
-        const fetches = [http.get(API.SEARCH_MOVIE_PARAM_URL(value)), http.get(API.SEARCH_ACTOR_PARAM_URL(value))];
+    fetchInputValue: query => async (dispatch) => {
+        const fetches = [API.SEARCH_MOVIE({query}), API.SEARCH_ACTOR({query})];
         const [MOVIES, ACTORS] = await Promise.all(fetches).then((res) =>
             Promise.all(res.map((r) => r.data))
         );

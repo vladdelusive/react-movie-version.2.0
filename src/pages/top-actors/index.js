@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { API } from "services/api";
-
 import {Loader, Cast, BtnLoader} from "components";
-import {http} from "services/http/index";
+import {API} from "services/api";
 
 export function Actors() {
   const [results, setResults] = useState([]);
@@ -10,7 +8,7 @@ export function Actors() {
   const [loading, setLoading] = useState(true);
 
   const handlerLoading = async () => {
-    const fetched = await http.get(API.TRENDY_ACTORS_URL(page));
+    const fetched = await API.TRENDY_ACTORS({page});
     const { data } = fetched;
 
     setResults([...results, ...data.results]);

@@ -1,24 +1,30 @@
+import {endpoints} from "services/api/endpoints";
 import {http} from "services/http";
 
 export const API = {
-    SEARCH_MOVIE_PARAM_URL: (searchParam, page = 1) => `search/movie?query=${searchParam}&page=${page}`,
-    SEARCH_ACTOR_PARAM_URL: (searchParam, page = 1) => `search/person?query=${searchParam}&page=${page}`,
-    NEWLY_MOVIES_URL: (page = 1) =>`movie/upcoming?page=${page}`,
-    TRENDY_ACTORS_URL: (page = 1) => `trending/person/week?language=en-US&page=${page}`,
-    ACTOR_MOVIES: (id) => `person/${id}/movie_credits?language=en-US`,
-    ACTOR_DETAILS: (id) => `person/${id}?&language=en-US`,
-    YOUTUBE_URL: (movie) => `movie/${movie}/videos`,
-    MOVIE_DETAILS: (movie) => `movie/${movie}`,
-    MOVIE_CAST: (movie) => `movie/${movie}/credits`,
+    SEARCH_MOVIE: (payload) => http.get(endpoints.SEARCH_MOVIE(payload)),
+    SEARCH_ACTOR: (payload) => {
+        return http.get(endpoints.SEARCH_ACTOR(payload))
+    },
+    NEWLY_MOVIES: (payload) => {
+        return http.get(endpoints.NEWLY_MOVIES(payload))
+    },
+    TRENDY_ACTORS: (payload) => {
+        return http.get(endpoints.TRENDY_ACTORS(payload))
+    },
+    ACTOR_MOVIES: (payload) => {
+        return http.get(endpoints.ACTOR_MOVIES(payload))
+    },
+    ACTOR_DETAILS: (payload) => {
+        return http.get(endpoints.ACTOR_DETAILS(payload))
+    },
+    YOUTUBE_URL: (payload) => {
+        return http.get(endpoints.YOUTUBE_URL(payload))
+    },
+    MOVIE_DETAILS: (payload) => {
+        return http.get(endpoints.MOVIE_DETAILS(payload))
+    },
+    MOVIE_CAST: (payload) => {
+        return http.get(endpoints.MOVIE_CAST(payload))
+    },
 }
-
-// const endpoint = {
-//     fetchData: '/fetch/data',
-//     fetchDataId: (id) => '/fetch/data/'+id,
-// }
-//
-// const api2 = {
-//     fetchDataId: (payload) => {
-//         return http.get(endpoint.fetchDataId(payload.id))
-//     }
-// }
