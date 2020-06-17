@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 import pashalka from "assets/images/pashalka.jpg";
 
-export function EasterEgg() {
+export const EasterEgg = React.memo(()=> {
   return (
     <div className="easter-egg">
       <div className="easter-egg__name">
@@ -13,4 +13,4 @@ export function EasterEgg() {
       </div>
     </div>
   );
-}
+})

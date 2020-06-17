@@ -4,7 +4,7 @@ import {NoQuery} from "./components/no-query";
 import {SearchContent} from "./components/search-content";
 import {EasterEgg} from "components";
 
-export function InputPage({ location }) {
+export const InputPage = React.memo(({ location })=> {
   if (!location.search) return <NoQuery />;
   const text = decodeURI(location.search.slice(7)).replace(/\s+/g, " ").trim();
   if (!text) return <NoQuery />;
@@ -19,4 +19,4 @@ export function InputPage({ location }) {
       <SearchContent query={text} />
     </div>
   );
-}
+})

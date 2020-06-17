@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 import {useActions} from "hooks/use-actions";
 import {actions} from "store/actor/actions";
 
-export function ActorPage(props) {
+export const ActorPage = React.memo((props) => {
     const {personInfo, moviesInfo, loading, hideMovies} = useSelector(({actor})=>actor)
     const {fetchData, clearData} = useActions({
         fetchData: actions.fetchData,
@@ -27,4 +27,4 @@ export function ActorPage(props) {
         }
     </>
     )
-}
+})

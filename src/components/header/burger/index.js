@@ -5,7 +5,7 @@ import BurgerIcon from "assets/images/openBurger.png";
 import { actions } from "store/search/actions";
 import {useActions} from "hooks/use-actions";
 
-export function Burger() {
+export const Burger = React.memo(() => {
   const {burgerToggle } = useActions({
       burgerToggle: actions.burgerToggle
   })
@@ -14,4 +14,4 @@ export function Burger() {
       <img className="burger__icon" src={BurgerIcon} alt="burger" />
     </div>
   );
-}
+})

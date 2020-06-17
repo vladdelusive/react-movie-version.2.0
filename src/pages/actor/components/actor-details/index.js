@@ -5,7 +5,7 @@ import './style.css'
 import {ActorMovies} from "../actor-movies";
 import {convertAge} from 'helpers/age-converter'
 
-export function ActorDetails({ personInfo, isHidden, moviesInfo }) {
+export const ActorDetails = React.memo(({ personInfo, isHidden, moviesInfo })=> {
     const [classesMovie, setClassesMovie] = useState("moviesIsShow");
     const showMovies = () => {
         setClassesMovie(classesMovie ? "" : "moviesIsShow")
@@ -56,4 +56,4 @@ export function ActorDetails({ personInfo, isHidden, moviesInfo }) {
             </div>
         </>
     )
-}
+})

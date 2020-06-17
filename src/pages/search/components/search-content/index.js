@@ -1,8 +1,6 @@
 import Pagination from 'rc-pagination';
 import { useSelector } from 'react-redux';
-import {API} from "services/api";
-
-import React, {useState, useEffect, createRef} from 'react'
+import React, {useEffect, createRef} from 'react'
 import {SearchCardsContentActors, SearchCardsContentMovies} from "../content-cards";
 import {Loader} from "components";
 
@@ -14,7 +12,7 @@ import { actions } from 'store/search/actions'
 import { useActions } from 'hooks/use-actions'
 
 
-function SearchContent({query}) {
+export const SearchContent = React.memo(({query})=> {
     const {pageActors, pageMovies, searchedMovies, searchedActors, loading, totalPagesMovies, totalPagesActors} =
         useSelector(({search})=>search)
     const {changeMoviePage, changeActorPage, fetchSearchActors, fetchSearchMovies } = useActions({
@@ -110,6 +108,4 @@ function SearchContent({query}) {
             </div>
         </>
     )
-}
-
-export {SearchContent}
+})

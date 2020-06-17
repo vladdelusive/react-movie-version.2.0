@@ -11,7 +11,7 @@ import {useActions} from "hooks/use-actions";
 
 let fetchTimer;
 
-export function FormSearch() {
+export const FormSearch = React.memo(() => {
     const {inputValue, resultsActors, showSearchedItems, resultsMovies, inputOpen} = useSelector(({search}) => search);
     const {inputIsActive, reloadPage,toggleSuggestions, setInput, offloadData, fetchInputValue } = useActions({
         inputIsActive: actions.inputIsActive,
@@ -98,4 +98,4 @@ export function FormSearch() {
             <div className={`form__control ${classes.closeClass} close`} onClick={onClickCloseSearch}/>
         </form>
     );
-}
+})

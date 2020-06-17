@@ -8,7 +8,7 @@ import "./style.css";
 import { actions } from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
 
-export function Search({ value, searchResultActors, searchResultMovies }) {
+export const Search = React.memo(function({ value, searchResultActors, searchResultMovies }) {
   const {toggleSuggestions, reloadPage } =
       useActions({toggleSuggestions: actions.toggleSuggestions, reloadPage: actions.reloadPage })
 
@@ -70,4 +70,4 @@ export function Search({ value, searchResultActors, searchResultMovies }) {
       </Link>
     </div>
   );
-}
+})

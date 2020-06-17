@@ -5,9 +5,8 @@ import { actions } from "store/search/actions";
 import { useActions } from "hooks/use-actions";
 import "./style.css";
 
-export function Navbar() {
+export const Navbar = React.memo(() => {
   const { clearInput} = useActions({ clearInput: actions.clearInput });
-
   return (
     <div className="navbar-wrapper">
       <ul className="navbar">
@@ -29,4 +28,4 @@ export function Navbar() {
       </ul>
     </div>
   );
-}
+})

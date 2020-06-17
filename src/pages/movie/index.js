@@ -12,7 +12,7 @@ import {useActions} from "hooks/use-actions";
 import {actions} from "store/movie/actions";
 import {setRate} from "helpers/set-rate";
 
-function PageMovie(props) {
+export const PageMovie = React.memo((props) =>{
   const {results, trailer, movieBadges, cast} = useSelector(({movie})=>movie)
   const {fetchData, clearData, setBadges} = useActions({
     fetchData: actions.fetchData,
@@ -150,6 +150,4 @@ function PageMovie(props) {
       )}
     </>
   );
-}
-
-export { PageMovie };
+})
