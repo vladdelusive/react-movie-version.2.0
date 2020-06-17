@@ -9,6 +9,6 @@ export const rootReducer = combineReducers({
   search: searchReducer,
   movies: moviesReducer,
   actors: actorsReducer,
-  actor: actorReducer,
-  movie: movieReducer,
+  actorInfo: actorReducer,
+  movieInfo: movieReducer,
 });

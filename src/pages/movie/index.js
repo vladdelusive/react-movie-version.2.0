@@ -13,7 +13,7 @@ import {actions} from "store/movie/actions";
 import {setRate} from "helpers/set-rate";
 
 export const PageMovie = React.memo((props) =>{
-  const {movies, loading} = useSelector(({movie})=>movie)
+  const {movies, loading} = useSelector(({movieInfo})=>movieInfo)
   const {fetchData, setBadges, changeLoadingTo} = useActions({
     fetchData: actions.fetchData,
     setBadges: actions.setBadges,

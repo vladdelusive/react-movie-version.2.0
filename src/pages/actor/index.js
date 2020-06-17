@@ -6,7 +6,7 @@ import {useActions} from "hooks/use-actions";
 import {actions} from "store/actor/actions";
 
 export const ActorPage = React.memo((props) => {
-    const {actors, loading} = useSelector(({actor})=>actor)
+    const {actors, loading} = useSelector(({actorInfo})=>actorInfo)
     const {fetchData, changeLoadingTo} = useActions({
         fetchData: actions.fetchData,
         changeLoadingTo: actions.changeLoading,
