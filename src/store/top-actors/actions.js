@@ -1,7 +1,7 @@
 import {API} from "services/api";
 
 export const types = {
-    LOAD_ACTORS: "LOAD_ACTORS"
+    LOAD_ACTORS: "@top-actors/LOAD_ACTORS"
 }
 
 export const actions = {

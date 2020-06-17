@@ -2,9 +2,9 @@ import {API} from "services/api";
 import {DEFAULT_TRAILER} from "constants/constants";
 
 export const types = {
-    FETCH_DATA: "FETCH_DATA",
-    CLEAR_DATA: "CLEAR_DATA",
-    SET_BADGES: "SET_BADGES",
+    FETCH_DATA: "@movie/FETCH_DATA",
+    CLEAR_DATA: "@movie/CLEAR_DATA",
+    SET_BADGES: "@movie/SET_BADGES",
 }
 
 export const actions = {

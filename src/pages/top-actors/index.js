@@ -12,7 +12,6 @@ export function Actors() {
   useEffect(() => {
     fetchActors()
   }, []);
-
   return (
     <>
       <div className="section__head">

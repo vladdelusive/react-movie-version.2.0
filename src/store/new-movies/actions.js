@@ -1,7 +1,7 @@
 import {API} from "services/api";
 
 export const types = {
-    LOAD_MOVIES: "LOAD_MOVIES"
+    LOAD_MOVIES: "@new-movies/LOAD_MOVIES"
 }
 
 export const actions = {

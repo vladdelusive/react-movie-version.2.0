@@ -12,7 +12,7 @@ import {useActions} from "hooks/use-actions";
 let fetchTimer;
 
 export function FormSearch() {
-    const {inputValue, resultsActors, showSearchedItems, resultsMovies} = useSelector(({search}) => search);
+    const {inputValue, resultsActors, showSearchedItems, resultsMovies, inputOpen} = useSelector(({search}) => search);
     const {inputIsActive, reloadPage,toggleSuggestions, setInput, offloadData, fetchInputValue } = useActions({
         inputIsActive: actions.inputIsActive,
         toggleSuggestions: actions.toggleSuggestions,
@@ -49,8 +49,12 @@ export function FormSearch() {
             if(e.target.closest(".form")) return
             toggleSuggestions(false)
         }
-        document.getElementById("root").addEventListener("click", checkerEvents)
-        return ()=>document.getElementById("root").removeEventListener("click", checkerEvents)
+        if(inputOpen) {
+            document.getElementById("root").addEventListener("click", checkerEvents)
+        }
+        return ()=>{
+            document.getElementById("root").removeEventListener("click", checkerEvents)
+        }
     })
 
     return (
@@ -76,7 +80,8 @@ export function FormSearch() {
                         name="input"
                         className={`${classes.inputClass} input-block__search-field`}
                         value={inputValue}
-                        onChange={valueTarget}/>
+                        onChange={valueTarget}
+                    />
                             {showSearchedItems &&
                                 (resultsActors !== null || resultsMovies !== null) &&
                                     <Search

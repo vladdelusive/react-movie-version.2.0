@@ -1,9 +1,9 @@
 import {API} from "services/api";
 
 export const types = {
-    HIDE_MOVIES: "HIDE_MOVIES",
-    FETCH_DATA: "FETCH_DATA",
-    CLEAR_DATA: "CLEAR_DATA",
+    HIDE_MOVIES: "@movie/HIDE_MOVIES",
+    FETCH_DATA: "@movie/FETCH_DATA",
+    CLEAR_DATA: "@movie/CLEAR_DATA",
 }
 
 export const actions = {
@@ -17,6 +17,7 @@ export const actions = {
         );
         return dispatch({type: types.FETCH_DATA, person: actorDetails, movies: actorMovies.cast})
     },
+
     moviesInfoTrigger: () => ({type: types.HIDE_MOVIES}),
     clearData: () => ({type: types.CLEAR_DATA}),
 }
