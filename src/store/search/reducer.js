@@ -19,7 +19,7 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case types.UPLOAD:
+    case types.UPLOAD_ACTORS_MOVIES:
       return {
         ...state,
         resultsActors: action.actors,
@@ -43,6 +43,7 @@ function reducer(state = initialState, action) {
       };
     case types.CLEAR_ALL:
       return {
+        ...state,
         inputValue: "",
         resultsActors: null,
         resultsMovies: null,
@@ -74,14 +75,14 @@ function reducer(state = initialState, action) {
         ...state,
         burgerActive: !state.burgerActive,
       };
-    case types.SEARCH_ACTORS:
+    case types.SET_SEARCH_ACTORS:
       return {
         ...state,
         searchedActors: action.actors.results,
         totalPagesActors: action.actors.total_pages,
         loading: false
     };
-    case types.SEARCH_MOVIES:
+    case types.SET_SEARCH_MOVIES:
       return {
         ...state,
         searchedMovies: action.movies.results,

@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {makeImgUrl} from "helpers/make-img-url";
 import './style.css'
 
 import {ActorMovies} from "../actor-movies";
 import {convertAge} from 'helpers/age-converter'
 
-export function ActorDetails({ personInfo, handleClick, isHidden, moviesInfo }) {
+export function ActorDetails({ personInfo, isHidden, moviesInfo }) {
+    const [classesMovie, setClassesMovie] = useState("moviesIsShow");
+    const showMovies = () => {
+        setClassesMovie(classesMovie ? "" : "moviesIsShow")
+    }
     return (
         <>
             <div className="actor-info">
@@ -42,14 +46,14 @@ export function ActorDetails({ personInfo, handleClick, isHidden, moviesInfo }) 
             <div className="button-content">
                 <button
                     className="btn actor-movies"
-                    onClick={handleClick}
+                    onClick={showMovies}
                     type="button">
                     {isHidden ? "Show movies" : "Hide movies"}
                 </button>
             </div>
-            {
-                isHidden ? "" : <ActorMovies cast={moviesInfo} />
-            }
+            <div className={classesMovie}>
+                <ActorMovies cast={moviesInfo} />
+            </div>
         </>
     )
 }

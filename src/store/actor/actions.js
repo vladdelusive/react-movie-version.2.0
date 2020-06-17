@@ -1,9 +1,8 @@
 import {API} from "services/api";
 
 export const types = {
-    HIDE_MOVIES: "@movie/HIDE_MOVIES",
-    FETCH_DATA: "@movie/FETCH_DATA",
-    CLEAR_DATA: "@movie/CLEAR_DATA",
+    SET_DATA: "@actor/SET_DATA",
+    CLEAR_DATA: "@actor/CLEAR_DATA",
 }
 
 export const actions = {
@@ -15,10 +14,9 @@ export const actions = {
         const [actorDetails, actorMovies] = await Promise.all(fetches).then((res) =>
             Promise.all(res.map((r) => r.data))
         );
-        return dispatch({type: types.FETCH_DATA, person: actorDetails, movies: actorMovies.cast})
+        return dispatch(actions.setActorIdData({person: actorDetails, movies: actorMovies.cast}))
     },
-
-    moviesInfoTrigger: () => ({type: types.HIDE_MOVIES}),
+    setActorIdData: ({person, movies}) => ({type: types.SET_DATA, person, movies}),
     clearData: () => ({type: types.CLEAR_DATA}),
 }
 

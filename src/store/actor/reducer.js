@@ -4,30 +4,19 @@ const initialState = {
   personInfo: {},
   loading: true,
   moviesInfo: {},
-  hideMovies: true,
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case types.FETCH_DATA:
+    case types.SET_DATA:
       return {
         ...state,
         moviesInfo: action.movies,
         personInfo: action.person,
         loading: false
       };
-    case types.HIDE_MOVIES:
-      return {
-        ...state,
-        hideMovies: !state.hideMovies
-      };
     case types.CLEAR_DATA:
-      return {
-        hideMovies: true,
-        loading: true,
-        personInfo: {},
-        moviesInfo: {},
-      };
+      return initialState
     default:
       return state;
   }

@@ -15,8 +15,9 @@ export const actions = {
             Promise.all(res.map((r) => r.data))
         );
         const trailer = TRA.results[0] ? TRA.results[0].key : DEFAULT_TRAILER;
-        return dispatch({type: types.FETCH_DATA, results, trailer, cast: CAST.cast })
+        return dispatch(actions.setMovieIdData({results, trailer, cast: CAST.cast}))
     },
+    setMovieIdData: ({results, trailer, cast}) => ({type: types.FETCH_DATA, results, trailer, cast}),
     setBadges: (payload) => ({type: types.SET_BADGES, payload}),
     clearData: () => ({type: types.CLEAR_DATA}),
 }

@@ -9,8 +9,9 @@ export const actions = {
         const {page} = getState().movies
         const fetched = await API.NEWLY_MOVIES({page});
         const {results} = fetched.data;
-        return dispatch({type: types.LOAD_MOVIES, payload: results})
+        return dispatch(actions.saveMovies(results))
     },
+    saveMovies: (payload) => ({type: types.LOAD_MOVIES, payload})
 }
 
 

@@ -7,9 +7,8 @@ import {actions} from "store/actor/actions";
 
 export function ActorPage(props) {
     const {personInfo, moviesInfo, loading, hideMovies} = useSelector(({actor})=>actor)
-    const {fetchData, moviesInfoTrigger, clearData} = useActions({
+    const {fetchData, clearData} = useActions({
         fetchData: actions.fetchData,
-        moviesInfoTrigger: actions.moviesInfoTrigger,
         clearData: actions.clearData,
     })
 
@@ -22,7 +21,6 @@ export function ActorPage(props) {
             ? <Loader />
             : <ActorDetails
                 personInfo={personInfo}
-                handleClick={moviesInfoTrigger}
                 isHidden={hideMovies}
                 moviesInfo={moviesInfo}
             />

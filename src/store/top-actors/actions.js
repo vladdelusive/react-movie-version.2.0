@@ -9,8 +9,9 @@ export const actions = {
         const {page} = getState().actors
         const fetched = await API.TRENDY_ACTORS({page});
         const {results} = fetched.data;
-        return dispatch({type: types.LOAD_ACTORS, payload: results})
+        return dispatch(actions.saveActors(results))
     },
+    saveActors: (payload) => ({type: types.LOAD_ACTORS, payload})
 }
 
 
