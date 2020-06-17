@@ -10,6 +10,11 @@ if(process.env.NODE_ENV === "development" ) {
   window.http = http
 }
 
+/*
+** Do delete and set correct (api key)
+** cuz anyway - exist or no the key will be deleted and changed
+ */
+
 http.interceptors.request.use((res) => {
   const url = new URL(res.baseURL + res.url);
   url.searchParams.delete("api_key");

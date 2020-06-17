@@ -13,7 +13,10 @@ import {actions} from "store/movie/actions";
 import {setRate} from "helpers/set-rate";
 
 function PageMovie(props) {
-  const {results = [], trailer = "", movieBadges = [], cast = []} = useSelector(({movie})=>movie)
+  const {results, trailer, movieBadges, cast} = useSelector(({movie})=>{
+    if(movie.results === undefined) return {results: [], trailer: "", movieBadges: [], cast: []}
+    return movie
+  })
   const {fetchData, clearData, setBadges} = useActions({
     fetchData: actions.fetchData,
     clearData: actions.clearData,

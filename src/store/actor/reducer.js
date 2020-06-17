@@ -3,7 +3,7 @@ import {types} from "./actions";
 const initialState = {
   personInfo: {},
   loading: true,
-  moviesInfo: [],
+  moviesInfo: {},
   hideMovies: true,
 };
 
@@ -23,10 +23,10 @@ function reducer(state = initialState, action) {
       };
     case types.CLEAR_DATA:
       return {
-        personInfo: {},
-        moviesInfo: [],
         hideMovies: true,
         loading: true,
+        personInfo: {},
+        moviesInfo: {},
       };
     default:
       return state;
