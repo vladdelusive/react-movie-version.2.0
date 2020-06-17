@@ -1,22 +1,33 @@
 import {types} from "./actions";
 
 const initialState = {
-  personInfo: {},
+  actors: {},
   loading: true,
-  moviesInfo: {},
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
     case types.SET_DATA:
       return {
-        ...state,
-        moviesInfo: action.movies,
-        personInfo: action.person,
+        actors: {
+          ...state.actors,
+          [action.id]: {
+            moviesInfo: action.movies,
+            personInfo: action.person,
+          }
+        },
         loading: false
-      };
+      }
     case types.CLEAR_DATA:
-      return initialState
+      return {
+        ...state,
+        loading: true
+      }
+    case types.TOGGLE_LOADING:
+      return {
+        ...state,
+        loading: action.payload
+      }
     default:
       return state;
   }

@@ -5,7 +5,7 @@ import './style.css'
 import {ActorMovies} from "../actor-movies";
 import {convertAge} from 'helpers/age-converter'
 
-export const ActorDetails = React.memo(({ personInfo, isHidden, moviesInfo })=> {
+export const ActorDetails = React.memo(({ personInfo, moviesInfo })=> {
     const [classesMovie, setClassesMovie] = useState("moviesIsShow");
     const showMovies = () => {
         setClassesMovie(classesMovie ? "" : "moviesIsShow")
@@ -43,17 +43,19 @@ export const ActorDetails = React.memo(({ personInfo, isHidden, moviesInfo })=> 
                     </p>
                 </div>
             </div>
-            <div className="button-content">
-                <button
-                    className="btn actor-movies"
-                    onClick={showMovies}
-                    type="button">
-                    {isHidden ? "Show movies" : "Hide movies"}
-                </button>
-            </div>
-            <div className={classesMovie}>
-                <ActorMovies cast={moviesInfo} />
-            </div>
+            {moviesInfo.length ? <>
+                <div className="button-content">
+                    <button
+                        className="btn actor-movies"
+                        onClick={showMovies}
+                        type="button">
+                        {classesMovie ? "Show movies" : "Hide movies"}
+                    </button>
+                </div>
+                <div className={classesMovie}>
+                    <ActorMovies cast={moviesInfo}/>
+                </div>
+            </> : ""}
         </>
     )
 })

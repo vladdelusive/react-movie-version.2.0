@@ -6,23 +6,26 @@ import {useActions} from "hooks/use-actions";
 import {actions} from "store/actor/actions";
 
 export const ActorPage = React.memo((props) => {
-    const {personInfo, moviesInfo, loading, hideMovies} = useSelector(({actor})=>actor)
-    const {fetchData, clearData} = useActions({
+    const {actors, loading} = useSelector(({actor})=>actor)
+    const {fetchData, clearData, changeLoadingTo} = useActions({
         fetchData: actions.fetchData,
         clearData: actions.clearData,
+        changeLoadingTo: actions.changeLoading,
     })
-
     useEffect(() => {
-        fetchData(props.match.params.actor);
+        if(!actors[props.match.params.actor]){
+            fetchData(props.match.params.actor);
+        } else {
+            changeLoadingTo(false)
+        }
         return clearData
     }, [props.match.params.actor]);
     return (<>
         {loading
             ? <Loader />
             : <ActorDetails
-                personInfo={personInfo}
-                isHidden={hideMovies}
-                moviesInfo={moviesInfo}
+                personInfo={actors[props.match.params.actor].personInfo}
+                moviesInfo={actors[props.match.params.actor].moviesInfo}
             />
         }
     </>
