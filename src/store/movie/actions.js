@@ -2,9 +2,9 @@ import {API} from "services/api";
 import {DEFAULT_TRAILER} from "constants/constants";
 
 export const types = {
-    FETCH_DATA: "@movie/FETCH_DATA",
-    CLEAR_DATA: "@movie/CLEAR_DATA",
+    SET_DATA: "@movie/SET_DATA",
     SET_BADGES: "@movie/SET_BADGES",
+    TOGGLE_LOADING: "@movie/TOGGLE_LOADING",
 }
 
 export const actions = {
@@ -15,11 +15,11 @@ export const actions = {
             Promise.all(res.map((r) => r.data))
         );
         const trailer = TRA.results[0] ? TRA.results[0].key : DEFAULT_TRAILER;
-        return dispatch(actions.setMovieIdData({results, trailer, cast: CAST.cast}))
+        return dispatch(actions.setMovieIdData({results, trailer, cast: CAST.cast, id: movieId}))
     },
-    setMovieIdData: ({results, trailer, cast}) => ({type: types.FETCH_DATA, results, trailer, cast}),
-    setBadges: (payload) => ({type: types.SET_BADGES, payload}),
-    clearData: () => ({type: types.CLEAR_DATA}),
+    setMovieIdData: ({results, trailer, cast, id}) => ({type: types.SET_DATA, results, trailer, cast, id}),
+    setBadges: (payload, id) => ({type: types.SET_BADGES, payload, id}),
+    changeLoading: (payload) => ({type: types.TOGGLE_LOADING, payload}),
 }
 
 

@@ -13,28 +13,34 @@ import {actions} from "store/movie/actions";
 import {setRate} from "helpers/set-rate";
 
 export const PageMovie = React.memo((props) =>{
-  const {results, trailer, movieBadges, cast} = useSelector(({movie})=>movie)
-  const {fetchData, clearData, setBadges} = useActions({
+  const {movies, loading} = useSelector(({movie})=>movie)
+  const {fetchData, setBadges, changeLoadingTo} = useActions({
     fetchData: actions.fetchData,
-    clearData: actions.clearData,
     setBadges: actions.setBadges,
+    changeLoadingTo: actions.changeLoading,
   })
+  const thisMovie = movies[props.match.params.movie]
   useEffect(() => {
-    fetchData(props.match.params.movie)
-    return clearData
+    if(!thisMovie){
+      fetchData(props.match.params.movie);
+    } else {
+      changeLoadingTo(false)
+    }
+    console.log(changeLoadingTo)
+    return () => changeLoadingTo(true)
   }, [props.match.params.movie]);
 
   useEffect(() => {
     let badgesId = [];
-    if (!results.genres) return;
-    for (let i = 0; i < results.genres.length; i++) {
+    if (!thisMovie?.results?.genres) return;
+    for (let i = 0; i < thisMovie.results.genres.length; i++) {
       let currentBadge = Math.round(Math.random() * 6);
       badgesId.some((badge) => currentBadge === badge)
         ? i--
         : badgesId.push(currentBadge);
     }
 
-    const badgesList = results.genres.map((genre, id) => (
+    const badgesList = thisMovie.results.genres.map((genre, id) => (
       <Draggable draggableId={id + genre.name} index={id} key={id}>
         {(provided) => (
           <span
@@ -49,27 +55,29 @@ export const PageMovie = React.memo((props) =>{
         )}
       </Draggable>
     ));
-    setBadges(badgesList);
-  }, [results]);
+    setBadges(badgesList, props.match.params.movie);
+  }, [thisMovie?.results]);
 
   const onDragEnd = ({ destination, source }) => {
     if (!destination) return;
     if (destination.index === source.index) return;
-    const newStateBadges = [...movieBadges];
+    const newStateBadges = [...thisMovie.movieBadges];
     const replacedItemFrom = newStateBadges[source.index];
     newStateBadges.splice(source.index, 1);
     newStateBadges.splice(destination.index, 0, replacedItemFrom);
-    setBadges(newStateBadges);
+    setBadges(newStateBadges, props.match.params.movie);
   };
+
+  if(loading) return <Loader/>
   return (
     <>
       <div className="movie">
-        {trailer ? (
+        {thisMovie.trailer ? (
           <div className="movie__post">
             <img
               src={
-                results.poster_path
-                  ? makeImgUrl(results.poster_path, {size: "large"})
+                thisMovie.results.poster_path
+                  ? makeImgUrl(thisMovie.results.poster_path, {size: "large"})
                   : image
               }
               alt="movie-post"
@@ -81,20 +89,19 @@ export const PageMovie = React.memo((props) =>{
         )}
         <div className="movie__description">
           <div className="movie__section">
-            <h1 className="movie__title">{results.title}</h1>
+            <h1 className="movie__title">{thisMovie.results.title}</h1>
           </div>
           <hr className="line" />
           <div className="movie__section">
             <strong className="movie__type"> Description: </strong>
             <p className="movie__description-overview">
-              {results.overview || "loading.."}
+              {thisMovie.results.overview || "not found...."}
             </p>
           </div>
           <hr className="line" />
           <DragDropContext onDragEnd={onDragEnd}>
             <div className="generes-wrapper">
               <strong className="movie__type">Generes: </strong>
-              {movieBadges.length ? "" : "loading..."}
               <Droppable droppableId="droppable" direction="horizontal">
                 {(provided) => (
                   <span
@@ -102,7 +109,7 @@ export const PageMovie = React.memo((props) =>{
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                   >
-                    {movieBadges}
+                    {thisMovie.movieBadges}
                     {provided.placeholder}
                   </span>
                 )}
@@ -113,9 +120,9 @@ export const PageMovie = React.memo((props) =>{
           <div className="movie__section">
             <div>
               <strong className="movie__type">Rate: </strong>
-              <i>{Math.round(results.vote_average) || "?"}/10</i>
+              <i>{Math.round(thisMovie.results.vote_average) || "not found..."}/10</i>
             </div>
-            {setRate(results)}
+            {setRate(thisMovie.results)}
           </div>
           <hr className="line" />
           <div className="movie__section">
@@ -123,27 +130,27 @@ export const PageMovie = React.memo((props) =>{
               <strong className="movie__type"> Trailer: </strong>
             </div>
             <div className="movie__trailer movie__trailer--youtube-trailer">
-              {trailer ? (
+              {thisMovie.trailer ? (
                 <iframe
                   frameBorder="0"
                   allowFullScreen="1"
                   title="YouTube video player"
-                  src={`https://www.youtube.com/embed/${trailer}?controls=1`}
+                  src={`https://www.youtube.com/embed/${thisMovie.trailer}?controls=1`}
                 />
               ) : (
-                "loading..."
+                "not found..."
               )}
             </div>
           </div>
         </div>
       </div>
 
-      {cast.length ? (
+      {thisMovie.cast.length ? (
         <div className="cast-wrapper">
           <div className="section__title">
             <h1 className="cast-title">Credited cast:</h1>
           </div>
-          <Cast cast={cast} />
+          <Cast cast={thisMovie.cast} />
         </div>
       ) : (
         <Loader />

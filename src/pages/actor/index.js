@@ -7,9 +7,8 @@ import {actions} from "store/actor/actions";
 
 export const ActorPage = React.memo((props) => {
     const {actors, loading} = useSelector(({actor})=>actor)
-    const {fetchData, clearData, changeLoadingTo} = useActions({
+    const {fetchData, changeLoadingTo} = useActions({
         fetchData: actions.fetchData,
-        clearData: actions.clearData,
         changeLoadingTo: actions.changeLoading,
     })
     useEffect(() => {
@@ -18,7 +17,7 @@ export const ActorPage = React.memo((props) => {
         } else {
             changeLoadingTo(false)
         }
-        return clearData
+        return () => {changeLoadingTo(true)}
     }, [props.match.params.actor]);
     return (<>
         {loading

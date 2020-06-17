@@ -18,11 +18,6 @@ function reducer(state = initialState, action) {
         },
         loading: false
       }
-    case types.CLEAR_DATA:
-      return {
-        ...state,
-        loading: true
-      }
     case types.TOGGLE_LOADING:
       return {
         ...state,

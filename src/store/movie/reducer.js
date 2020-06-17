@@ -1,34 +1,38 @@
 import {types} from "./actions";
 
 const initialState = {
-  results: [],
-  trailer: "",
-  movieBadges: [],
-  cast: [],
+  movies: {},
+  loading: true,
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case types.FETCH_DATA:
+    case types.SET_DATA:
       return {
-        ...state,
-        results: action.results,
-        trailer: action.trailer,
-        cast: action.cast
-      };
-    case types.CLEAR_DATA:
-      return {
-        results: [],
-        trailer: "",
-        movieBadges: [],
-        cast: [],
+        movies: {
+          ...state.movies,
+          [action.id]: {
+            results: action.results,
+            trailer: action.trailer,
+            cast: action.cast,
+          }
+        }
       };
     case types.SET_BADGES:
       return {
-        ...state,
-        movieBadges: action.payload,
+        movies: {
+          ...state.movies,
+          [action.id]: {
+            ...state.movies[action.id],
+            movieBadges: action.payload,
+          }
+        }
       };
-
+    case types.TOGGLE_LOADING:
+      return {
+        ...state,
+        loading: action.payload
+      }
     default:
       return state;
   }
