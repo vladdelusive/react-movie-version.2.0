@@ -4,6 +4,7 @@ import "./style.css";
 
 import { badges } from "constants/constants";
 import image from "assets/images/image.jpg";
+import {Reviews} from './components/index'
 
 import { makeImgUrl } from "helpers/make-img-url";
 import {Loader, Cast} from "components";
@@ -64,12 +65,11 @@ export const PageMovie = React.memo((props) =>{
     newStateBadges.splice(destination.index, 0, replacedItemFrom);
     setBadges(newStateBadges, props.match.params.movie);
   };
-
-  if(loading) return <Loader/>
+  
+  if(loading) return <Loader/>  
   return (
     <>
       <div className="movie">
-        {thisMovie.trailer ? (
           <div className="movie__post">
             <img
               src={
@@ -81,9 +81,6 @@ export const PageMovie = React.memo((props) =>{
               className="movie__img"
             />
           </div>
-        ) : (
-          <Loader />
-        )}
         <div className="movie__description">
           <div className="movie__section">
             <h1 className="movie__title">{thisMovie.results.title}</h1>
@@ -141,7 +138,9 @@ export const PageMovie = React.memo((props) =>{
           </div>
         </div>
       </div>
-
+      {
+        thisMovie.reviews.length && <Reviews reviews={thisMovie.reviews}/>
+      }
       {thisMovie.cast.length ? (
         <div className="cast-wrapper">
           <div className="section__title">

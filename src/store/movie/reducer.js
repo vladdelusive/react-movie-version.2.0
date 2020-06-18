@@ -15,6 +15,7 @@ function reducer(state = initialState, action) {
             results: action.results,
             trailer: action.trailer,
             cast: action.cast,
+            reviews: action.reviews,
           }
         }
       };

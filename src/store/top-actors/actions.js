@@ -6,9 +6,8 @@ export const types = {
 
 export const actions = {
     fetchActors: () => async (dispatch, getState) => {
-        const {page} = getState().actors
-        const fetched = await API.TRENDY_ACTORS({page});
-        const {results} = fetched.data;
+        const {page} = getState().actors 
+        const results = await API.TRENDY_ACTORS({page});
         return dispatch(actions.saveActors(results))
     },
     saveActors: (payload) => ({type: types.LOAD_ACTORS, payload})

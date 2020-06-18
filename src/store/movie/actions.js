@@ -9,15 +9,19 @@ export const types = {
 
 export const actions = {
     fetchData: movieId => async (dispatch) => {
-        const fetches = [API.MOVIE_DETAILS({movieId}),
-            API.YOUTUBE_URL({movieId}), API.MOVIE_CAST({movieId})];
-        const [results, TRA, CAST] = await Promise.all(fetches).then((res) =>
+        const fetches = [
+            API.MOVIE_DETAILS({movieId}),
+            API.YOUTUBE_URL({movieId}), 
+            API.MOVIE_CAST({movieId}),
+            API.MOVIE_REVIEWS({movieId})
+        ];
+        const [results, TRA, CAST, REVIEWS] = await Promise.all(fetches).then((res) =>
             Promise.all(res.map((r) => r.data))
         );
         const trailer = TRA.results[0] ? TRA.results[0].key : DEFAULT_TRAILER;
-        return dispatch(actions.setMovieIdData({results, trailer, cast: CAST.cast, id: movieId}))
+        return dispatch(actions.setMovieIdData({results, trailer, cast: CAST.cast, id: movieId, reviews: REVIEWS.results}))
     },
-    setMovieIdData: ({results, trailer, cast, id}) => ({type: types.SET_DATA, results, trailer, cast, id}),
+    setMovieIdData: ({results, trailer, cast, id, reviews}) => ({type: types.SET_DATA, results, trailer, cast, id, reviews}),
     setBadges: (payload, id) => ({type: types.SET_BADGES, payload, id}),
     changeLoading: (payload) => ({type: types.TOGGLE_LOADING, payload}),
 }

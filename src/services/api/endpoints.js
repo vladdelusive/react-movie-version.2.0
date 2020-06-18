@@ -7,5 +7,6 @@ export const endpoints = {
     ACTOR_DETAILS: ({personId}) => `person/${personId}?&language=en-US`,
     YOUTUBE_URL: ({movieId}) => `movie/${movieId}/videos`,
     MOVIE_DETAILS: ({movieId}) => `movie/${movieId}`,
-    MOVIE_CAST: ({movieId}) => `movie/${movieId}/credits`,
+    MOVIE_CAST: ({movieId}) => `movie/${movieId}/credits`, 
+    MOVIE_REVIEWS: ({movieId}) => `movie/${movieId}/reviews`
 }
