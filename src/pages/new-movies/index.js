@@ -8,11 +8,10 @@ import {actions} from "store/new-movies/actions";
 
 export function MoviesPage() {
   const {movies, loading} = useSelector(({movies})=>movies)
-  const {fetchMovies} = useActions({
-    fetchMovies: actions.fetchMovies,
-  })
+  const {fetchMovies} = useActions(actions)
   useEffect(() => {
     fetchMovies()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

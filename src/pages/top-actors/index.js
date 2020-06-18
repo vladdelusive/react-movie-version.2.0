@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {Loader, Cast, BtnLoader} from "components";
 import {useSelector} from "react-redux";
 import {useActions} from "hooks/use-actions";
@@ -6,11 +6,10 @@ import {actions} from "store/top-actors/actions";
 
 export function Actors() {
   const {actors, loading} = useSelector(({actors})=>actors)
-  const {fetchActors} = useActions({
-    fetchActors: actions.fetchActors,
-  })
+  const {fetchActors} = useActions(actions)
   useEffect(() => {
     fetchActors()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>

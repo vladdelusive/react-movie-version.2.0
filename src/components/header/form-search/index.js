@@ -13,14 +13,7 @@ let fetchTimer;
 
 export const FormSearch = React.memo(() => {
     const {inputValue, resultsActors, showSearchedItems, resultsMovies, inputOpen} = useSelector(({search}) => search);
-    const {inputIsActive, reloadPage,toggleSuggestions, setInput, offloadData, fetchInputValue } = useActions({
-        inputIsActive: actions.inputIsActive,
-        toggleSuggestions: actions.toggleSuggestions,
-        reloadPage: actions.reloadPage,
-        setInput: actions.setInput,
-        offloadData: actions.offloadData,
-        fetchInputValue: actions.fetchInputValue
-    })
+    const {inputIsActive, reloadPage,toggleSuggestions, setInput, offloadData, fetchInputValue } = useActions(actions)
 
     const [classes, setClasses] = useState({ inputClass: "", btnClass: "",
         closeClass: "hide", sendClass: "hide"});

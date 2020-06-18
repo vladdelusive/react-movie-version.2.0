@@ -13,9 +13,7 @@ import "./style.css";
  
 export function BurgerMenu() {
   const { burgerActive } = useSelector(({ search }) => search);
-  const { burgerToggle } = useActions({
-    burgerToggle: actions.burgerToggle,
-  });
+  const { burgerToggle } = useActions(actions);
   return (
     <>
       {burgerActive && <Overlay />}

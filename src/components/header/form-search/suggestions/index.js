@@ -9,8 +9,7 @@ import { actions } from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
 
 export const Search = React.memo(function({ value, searchResultActors, searchResultMovies }) {
-  const {toggleSuggestions, reloadPage } =
-      useActions({toggleSuggestions: actions.toggleSuggestions, reloadPage: actions.reloadPage })
+  const {toggleSuggestions, reloadPage } = useActions(actions)
 
   if (!searchResultMovies || !searchResultActors) return null;
 

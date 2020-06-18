@@ -13,14 +13,10 @@ import { useActions } from 'hooks/use-actions'
 
 
 export const SearchContent = React.memo(({query})=> {
+    console.log("h")
     const {pageActors, pageMovies, searchedMovies, searchedActors, loading, totalPagesMovies, totalPagesActors} =
         useSelector(({search})=>search)
-    const {changeMoviePage, changeActorPage, fetchSearchActors, fetchSearchMovies } = useActions({
-        changeMoviePage: actions.changeMoviePage,
-        changeActorPage: actions.changeActorPage,
-        fetchSearchActors: actions.fetchSearchActors,
-        fetchSearchMovies: actions.fetchSearchMovies,
-    })
+    const {changeMoviePage, changeActorPage, fetchSearchActors, fetchSearchMovies } = useActions(actions)
     const moviesElementTitle = createRef()
     const actorsElementTitle = createRef()
 
@@ -37,14 +33,17 @@ export const SearchContent = React.memo(({query})=> {
     useEffect(() => {
         fetchSearchMovies(query, pageMovies);
         fetchSearchActors(query, pageActors);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query]);
 
     useEffect(() => {
         fetchSearchMovies(query, pageMovies);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pageMovies]);
 
     useEffect(() => {
         fetchSearchActors(query, pageActors);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pageActors]);
 
     return (

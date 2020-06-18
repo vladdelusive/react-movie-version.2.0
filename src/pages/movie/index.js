@@ -14,20 +14,16 @@ import {setRate} from "helpers/set-rate";
 
 export const PageMovie = React.memo((props) =>{
   const {movies, loading} = useSelector(({movieInfo})=>movieInfo)
-  const {fetchData, setBadges, changeLoadingTo} = useActions({
-    fetchData: actions.fetchData,
-    setBadges: actions.setBadges,
-    changeLoadingTo: actions.changeLoading,
-  })
+  const {fetchData, setBadges, changeLoading} = useActions(actions)
   const thisMovie = movies[props.match.params.movie]
   useEffect(() => {
     if(!thisMovie){
       fetchData(props.match.params.movie);
     } else {
-      changeLoadingTo(false)
+      changeLoading(false)
     }
-    console.log(changeLoadingTo)
-    return () => changeLoadingTo(true)
+    return () => changeLoading(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.match.params.movie]);
 
   useEffect(() => {
@@ -56,6 +52,7 @@ export const PageMovie = React.memo((props) =>{
       </Draggable>
     ));
     setBadges(badgesList, props.match.params.movie);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [thisMovie?.results]);
 
   const onDragEnd = ({ destination, source }) => {

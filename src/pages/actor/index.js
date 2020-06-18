@@ -7,17 +7,15 @@ import {actions} from "store/actor/actions";
 
 export const ActorPage = React.memo((props) => {
     const {actors, loading} = useSelector(({actorInfo})=>actorInfo)
-    const {fetchData, changeLoadingTo} = useActions({
-        fetchData: actions.fetchData,
-        changeLoadingTo: actions.changeLoading,
-    })
+    const {fetchData, changeLoading} = useActions(actions)
     useEffect(() => {
         if(!actors[props.match.params.actor]){
             fetchData(props.match.params.actor);
         } else {
-            changeLoadingTo(false)
+            changeLoading(false)
         }
-        return () => {changeLoadingTo(true)}
+        return () => {changeLoading(true)}
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.match.params.actor]);
     return (<>
         {loading

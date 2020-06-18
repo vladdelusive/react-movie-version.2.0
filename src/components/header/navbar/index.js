@@ -6,7 +6,7 @@ import { useActions } from "hooks/use-actions";
 import "./style.css";
 
 export const Navbar = React.memo(() => {
-  const { clearInput} = useActions({ clearInput: actions.clearInput });
+  const { clearInput} = useActions(actions);
   return (
     <div className="navbar-wrapper">
       <ul className="navbar">
