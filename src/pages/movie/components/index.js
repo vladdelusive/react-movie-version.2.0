@@ -9,7 +9,7 @@ export const Reviews = React.memo(({ reviews }) => {
   return (
     <div className="reviews">
       <div className="section__title">
-        <h1 className="review__title">REVIEWS</h1>
+        <h1 className="review__title">Reviews:</h1>
       </div>
       <div className="reviews__container">{comments}</div>
     </div>

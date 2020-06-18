@@ -6,17 +6,31 @@
     margin: 20px 10px;
     width: 32%;
     min-width: 300px;
-    overflow: auto;
+    overflow: hidden;
+    position: relative;
 }
 
-.review__side {
+.review__side-left {
+    position: absolute;
     border-right: 4px solid #f5a85a;
     background: linear-gradient(#ffffff, #e7dff3);
+    left: 0px;
+    height: 100%;
+}
+.review__side-right {
+    margin-left: 50px;
 }
 
 .review__side-icon {
     width: 40px;
     margin: 10px 2px auto 5px;
+    cursor: pointer;
+    transition: transform .4s ease;
+}
+
+.review__side-icon:hover {
+    transform: scale(1.1);
+    transition: transform .4s ease;
 }
 
 .review-author {
@@ -35,6 +49,7 @@
 
 .review-comment {
     padding: 10px 5px;
+    overflow: auto;
 }
 
 .review-comment__text {
@@ -42,7 +57,6 @@
     text-overflow: ellipsis;
     font-size: 1.1em;
     height: calc(1.35 * 36px * 4);
-    overflow: hidden;
     font-family: cursive;
 }
 
