@@ -138,9 +138,11 @@ export const PageMovie = React.memo((props) =>{
           </div>
         </div>
       </div>
-      {
-        thisMovie.reviews.length && <Reviews reviews={thisMovie.reviews}/>
-      }
+      <Reviews 
+        movieName={thisMovie.results.title} 
+        reviews={thisMovie.reviews}
+      />
+      
       {thisMovie.cast.length ? (
         <div className="cast-wrapper">
           <div className="section__title">
