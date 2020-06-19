@@ -15,7 +15,7 @@ import {setRate} from "helpers/set-rate";
 
 export const PageMovie = React.memo((props) =>{
   const {movies, loading} = useSelector(({movieInfo})=>movieInfo)
-  const {fetchData, setBadges, changeLoading} = useActions(actions)
+  const {fetchData, setBadges, changeLoading, addReview} = useActions(actions)
   const thisMovie = movies[props.match.params.movie]
   useEffect(() => {
     if(!thisMovie){
@@ -138,9 +138,10 @@ export const PageMovie = React.memo((props) =>{
           </div>
         </div>
       </div>
-      <Reviews 
-        movieName={thisMovie.results.title} 
-        reviews={thisMovie.reviews}
+      <Reviews  
+        movieId={props.match.params.movie}
+        addReview={addReview}
+        movieInfo={thisMovie} 
       />
       
       {thisMovie.cast.length ? (

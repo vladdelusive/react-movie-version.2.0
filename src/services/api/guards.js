@@ -17,7 +17,7 @@ export const guards = {
         }
     },
     actorDetails: (request) => {
-        if(request.data instanceof Object){
+        if(request.data instanceof Object ){
             return request.data
         } else {
             console.log("REQUEST data is not found in our DB")
@@ -38,7 +38,12 @@ export const guards = {
                 return data
             }
             console.log("REQUEST data is not found in our DB")
-            return null
+            return {
+                page: 1,
+                total_results: 0, 
+                total_pages: 0, 
+                results: []
+            }
         } else {
             console.log("REQUEST data is not found in our DB")
             return {

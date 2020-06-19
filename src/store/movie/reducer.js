@@ -34,6 +34,18 @@ function reducer(state = initialState, action) {
         ...state,
         loading: action.payload
       }
+    case types.ADD_REVIEW:
+      return {
+        ...state,
+        movies: {
+          ...state.movies,
+          [action.movieId]: {
+            ...state.movies[action.movieId],
+            reviews: [...state.movies[action.movieId].reviews, { ...action.review }],
+          }
+        }
+      }
+
     default:
       return state;
   }
