@@ -78,3 +78,8 @@
     padding: 0;
     margin: 0;
 }
+
+.validation {
+    color: red;
+    font-weight: 700;
+}

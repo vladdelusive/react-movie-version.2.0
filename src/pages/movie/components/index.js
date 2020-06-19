@@ -3,17 +3,27 @@ import "./style.css";
 import { Review } from "components";
 
 export const Reviews = React.memo(({ movieInfo, addReview, movieId }) => {
+  const [postIsAdd, setPostIsAdd] = useState(false)
   const { reviews, results: { title } } = movieInfo
   const [reviewForm, setReviewForm] = useState("")
   const [nameForm, setNameForm] = useState("")
 
+  const [validation, setValidation] = useState({name: false, comment: false})  
   const addPost = (e) => {
     e.preventDefault()
+
+    if(reviewForm.length < 5 || nameForm.length < 3) {
+      reviewForm.length < 5 && setValidation((prev)=>({...prev, comment: true}))
+      nameForm.length < 3 && setValidation((prev)=>({...prev, name: true}))
+      return 
+    }
+
     const id = new Date().valueOf() + nameForm;
     const review = {content: reviewForm, author: nameForm, id }
     addReview({movieId, review})
     setReviewForm("")
     setNameForm("")
+    setPostIsAdd(true)
   }
 
   const textTitle = reviews.length 
@@ -35,24 +45,45 @@ export const Reviews = React.memo(({ movieInfo, addReview, movieId }) => {
       }
 
       <div className="review-field">
-        <div className="review-tip">
-          <p className="review-tip__text">{textTitle}</p>
-        </div>
-        <form className="review-form" onSubmit={addPost}>
-          <label className="review-form__label" htmlFor="name">Your name:</label>
-          <input value={nameForm} onChange={({target})=>setNameForm(target.value)} className="review-form__input" type="text" name="name" id="name" />
+      { postIsAdd ? "" :
+        <>
+          <div className="review-tip">
+            <p className="review-tip__text">{textTitle}</p>
+          </div>
+            <form className="review-form" onSubmit={addPost}>
+              <label className="review-form__label" htmlFor="name">Your name:</label>
+              {validation.name && <span className="validation">Should be type more than 3 letters!</span>}
+              <input 
+                onFocus={()=>setValidation({...validation, name: false})}
+                value={nameForm} 
+                onChange={({target})=>{
+                    setValidation({...validation, name: false})
+                    setNameForm(target.value)
+                  }} 
+                className="review-form__input" 
+                type="text" 
+                name="name" 
+                id="name" 
+              />
 
-          <label className="review-form__label" htmlFor="comment">Review:</label>
-          <textarea 
-            value={reviewForm} 
-            onChange={e=>setReviewForm(e.target.value)} 
-            className="review-form__textarea" 
-            name="comment" 
-            id="comment">
-          </textarea>
+              <label className="review-form__label" htmlFor="comment">Review:</label>
+              {validation.comment && <span className="validation">Should be type more than 5 letters!</span>}
+              <textarea 
+                onFocus={()=>setValidation({...validation, comment: false})}
+                value={reviewForm} 
+                onChange={e=>{
+                  setValidation({...validation, comment: false})
+                  setReviewForm(e.target.value)
+                }} 
+                className="review-form__textarea" 
+                name="comment" 
+                id="comment">
+              </textarea>
 
-          <button className="review-form__submit" type="submit">Publish</button>
-        </form>
+              <button className="review-form__submit" type="submit">Publish</button>
+            </form>
+          </>
+        }
       </div>
     </div>
   );
