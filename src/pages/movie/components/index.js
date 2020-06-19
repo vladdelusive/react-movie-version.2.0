@@ -26,10 +26,10 @@ export const Reviews = React.memo(({ reviews, movieName }) => {
           <p className="review-tip__text">{textTitle}</p>
         </div>
         <form className="review-form" onSubmit={e=>e.preventDefault()}>
-          <label className="review-form__label" for="name">Your name:</label>
+          <label className="review-form__label" htmlFor="name">Your name:</label>
           <input className="review-form__input" type="text" name="name" id="name" />
 
-          <label className="review-form__label" for="comment">Review:</label>
+          <label className="review-form__label" htmlFor="comment">Review:</label>
           <textarea className="review-form__textarea" name="comment" id="comment"></textarea>
 
           <button className="review-form__submit" type="submit">Publish</button>

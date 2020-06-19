@@ -1,13 +1,12 @@
 import {endpoints} from "services/api/endpoints";
 import {http} from "services/http";
-import {guards} from './guards'
 
 export const API = {
     NEWLY_MOVIES: (payload) => {
-        return guards.movActData(http.get(endpoints.NEWLY_MOVIES(payload)))
+        return http.get(endpoints.NEWLY_MOVIES(payload)) 
     },
     TRENDY_ACTORS: (payload) => {
-        return guards.movActData(http.get(endpoints.TRENDY_ACTORS(payload)))
+        return http.get(endpoints.TRENDY_ACTORS(payload))
     },
     ACTOR_MOVIES: (payload) => {
         return http.get(endpoints.ACTOR_MOVIES(payload))

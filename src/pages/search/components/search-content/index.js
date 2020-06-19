@@ -13,7 +13,6 @@ import { useActions } from 'hooks/use-actions'
 
 
 export const SearchContent = React.memo(({query})=> {
-    console.log("h")
     const {pageActors, pageMovies, searchedMovies, searchedActors, loading, totalPagesMovies, totalPagesActors} =
         useSelector(({search})=>search)
     const {changeMoviePage, changeActorPage, fetchSearchActors, fetchSearchMovies } = useActions(actions)

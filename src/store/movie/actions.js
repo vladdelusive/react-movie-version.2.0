@@ -1,5 +1,6 @@
 import {API} from "services/api";
 import {DEFAULT_TRAILER} from "constants/constants";
+import {guards} from 'services/api/guards'
 
 export const types = {
     SET_DATA: "@movie/SET_DATA",
@@ -15,11 +16,11 @@ export const actions = {
             API.MOVIE_CAST({movieId}),
             API.MOVIE_REVIEWS({movieId})
         ];
-        const [results, TRA, CAST, REVIEWS] = await Promise.all(fetches).then((res) =>
-            Promise.all(res.map((r) => r.data))
-        );
-        const trailer = TRA.results[0] ? TRA.results[0].key : DEFAULT_TRAILER;
-        return dispatch(actions.setMovieIdData({results, trailer, cast: CAST.cast, id: movieId, reviews: REVIEWS.results}))
+        const [results, TRA, CAST, REVIEWS] = await Promise.all(fetches).then(([res, trail, cast, rev])=> {
+            return [guards.actorDetails(res), guards.movieResults(trail), guards.actorMovies(cast), guards.movieResults(rev)];
+        })
+        const trailer = TRA[0] ? TRA[0].key : DEFAULT_TRAILER;
+        return dispatch(actions.setMovieIdData({results, trailer, cast: CAST, id: movieId, reviews: REVIEWS}))
     },
     setMovieIdData: ({results, trailer, cast, id, reviews}) => ({type: types.SET_DATA, results, trailer, cast, id, reviews}),
     setBadges: (payload, id) => ({type: types.SET_BADGES, payload, id}),

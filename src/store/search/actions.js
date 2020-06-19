@@ -1,4 +1,5 @@
 import {API} from "services/api";
+import {guards} from 'services/api/guards'
 
 export const types = {
     UPLOAD_ACTORS_MOVIES: "@search/UPLOAD_ACTORS_MOVIES",
@@ -30,20 +31,16 @@ export const actions = {
     setMovies: ({movies}) => ({type: types.SET_SEARCH_MOVIES, movies}),
     fetchInputValue: query => async (dispatch) => {
         const fetches = [API.SEARCH_MOVIE({query}), API.SEARCH_ACTOR({query})];
-        const [MOVIES, ACTORS] = await Promise.all(fetches).then((res) =>
-            Promise.all(res.map((r) => r.data))
-        );
-        return dispatch(actions.setActorsAndMovies({actors: ACTORS.results, movies: MOVIES.results}))
+        const [MOVIES, ACTORS] = await Promise.all(fetches).then(([mov, act]) => [guards.movieResults(mov), guards.movieResults(act)]);
+        return dispatch(actions.setActorsAndMovies({actors: ACTORS, movies: MOVIES}))
     },
     fetchSearchActors: (query, page) => async (dispatch) => {
         const fetched = await API.SEARCH_ACTOR({query, page})
-        const actors = fetched.data;
-        return dispatch(actions.setActors({actors}))
+        return dispatch(actions.setActors({actors: guards.searchData(fetched)}))
     },
     fetchSearchMovies: (query, page) => async (dispatch) => {
         const fetched = await API.SEARCH_MOVIE({query, page})
-        const movies = fetched.data;
-        return dispatch(actions.setMovies({movies}))
+        return dispatch(actions.setMovies({movies: guards.searchData(fetched)}))
     }
 }
 
