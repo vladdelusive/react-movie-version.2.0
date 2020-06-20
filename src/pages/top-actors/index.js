@@ -8,7 +8,9 @@ export function Actors() {
   const {actors, loading} = useSelector(({actors})=>actors)
   const {fetchActors} = useActions(actions)
   useEffect(() => {
-    fetchActors()
+    if(!actors.length){
+      fetchActors()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

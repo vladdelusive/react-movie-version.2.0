@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import "./style.css";
 import { Review } from "components";
 
@@ -25,6 +25,11 @@ export const Reviews = React.memo(({ movieInfo, addReview, movieId }) => {
     setNameForm("")
     setPostIsAdd(true)
   }
+
+  useEffect(() => {
+    setReviewForm("")
+    setNameForm("")
+  }, [movieId])
 
   const textTitle = reviews.length 
     ? `Write your review to "${title}" movie!`

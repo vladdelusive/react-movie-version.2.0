@@ -10,7 +10,9 @@ export function MoviesPage() {
   const {movies, loading} = useSelector(({movies})=>movies)
   const {fetchMovies} = useActions(actions)
   useEffect(() => {
-    fetchMovies()
+    if(!movies.length){
+      fetchMovies()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
