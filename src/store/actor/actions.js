@@ -15,7 +15,6 @@ export const actions = {
         return dispatch(actions.setActorIdData({person: actorDetails, movies: actorMovies, id: personId}))
     },
     setActorIdData: ({person, movies, id}) => ({type: types.SET_DATA, person, movies, id}),
-    changeLoading: (payload) => ({type: types.TOGGLE_LOADING, payload}),
 }
 
 

@@ -14,16 +14,14 @@ import {actions} from "store/movie/actions";
 import {setRate} from "helpers/set-rate";
 
 export const PageMovie = React.memo((props) =>{
-  const {movies, loading} = useSelector(({movieInfo})=>movieInfo)
-  const {fetchData, setBadges, changeLoading, addReview} = useActions(actions)
+  const {movies} = useSelector(({movieInfo})=> movieInfo)
+  const {fetchData, setBadges, addReview} = useActions(actions)
   const thisMovie = movies[props.match.params.movie]
+
   useEffect(() => {
     if(!thisMovie){
       fetchData(props.match.params.movie);
-    } else {
-      changeLoading(false)
     }
-    return () => changeLoading(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.match.params.movie]);
 
@@ -56,6 +54,8 @@ export const PageMovie = React.memo((props) =>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [thisMovie?.results]);
 
+  if(!thisMovie) return <Loader/> 
+
   const onDragEnd = ({ destination, source }) => {
     if (!destination) return;
     if (destination.index === source.index) return;
@@ -64,9 +64,7 @@ export const PageMovie = React.memo((props) =>{
     newStateBadges.splice(source.index, 1);
     newStateBadges.splice(destination.index, 0, replacedItemFrom);
     setBadges(newStateBadges, props.match.params.movie);
-  };
-  
-  if(loading) return <Loader/>  
+  }; 
   return (
     <>
       <div className="movie">

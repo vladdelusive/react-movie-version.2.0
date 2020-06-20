@@ -2,12 +2,11 @@ import {types} from "./actions";
 
 const initialState = {
   movies: {},
-  loading: true,
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case types.SET_DATA:
+    case types.SET_DATA: 
       return {
         movies: {
           ...state.movies,
@@ -29,14 +28,8 @@ function reducer(state = initialState, action) {
           }
         }
       };
-    case types.TOGGLE_LOADING:
-      return {
-        ...state,
-        loading: action.payload
-      }
     case types.ADD_REVIEW:
       return {
-        ...state,
         movies: {
           ...state.movies,
           [action.movieId]: {
@@ -45,7 +38,6 @@ function reducer(state = initialState, action) {
           }
         }
       }
-
     default:
       return state;
   }
