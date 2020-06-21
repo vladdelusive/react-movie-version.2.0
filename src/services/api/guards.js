@@ -25,24 +25,18 @@ export const guards = {
         }
     },
     searchData: ({data}) => {
+        const defaultData = {
+            page: 1,
+            total_results: 0, 
+            total_pages: 0, 
+            results: []
+        }
         if(Array.isArray(data.results) && data.results.length !== 0){
             if(typeof data.total_results === 'number' && typeof data.total_pages === 'number' && typeof data.page === 'number') {
                 return data
             }
-            return {
-                page: 1,
-                total_results: 0, 
-                total_pages: 0, 
-                results: []
-            }
-        } else {
-            return {
-                page: 1,
-                total_results: 0, 
-                total_pages: 0, 
-                results: []
-            }
         }
+        return defaultData
     },
 }
 
