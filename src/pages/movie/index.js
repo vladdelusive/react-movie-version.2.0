@@ -150,7 +150,7 @@ export const PageMovie = React.memo((props) =>{
           <Cast cast={thisMovie.cast} />
         </div>
       ) : (
-        <Loader />
+        ""
       )}
     </>
   );
