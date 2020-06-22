@@ -14,9 +14,23 @@ export const guards = {
             return []
         }
     },
-    actorDetails: (request) => {
-        console.log(request)
-        return request.data
+    detailsMov: ({data}) => {
+        if(typeof data.backdrop_path !== "string") data.backdrop_path = null
+        if(typeof data.overview !== "string") data.overview = null
+        if(typeof data.poster_path !== "string") data.poster_path = null
+        if(typeof data.title !== "string") data.title = null
+        if(typeof data.release_date !== "string") data.release_date = null
+        if(typeof data.vote_average !== "number") data.vote_average = null
+        if(!Array.isArray(data.genres)) data.genres = null
+        return data
+    },
+    detailsAct: ({data}) => {
+        if(typeof data.biography !== "string") data.biography = null
+        if(typeof data.birthday !== "string") data.birthday = null
+        if(typeof data.name !== "string") data.name = null
+        if(typeof data.place_of_birth !== "string") data.place_of_birth = null
+        if(typeof data.profile_path !== "string") data.profile_path = null
+        return data
     },
     movieResults: (request) => {
         if(Array.isArray(request.data.results) && request.data.results.length !== 0){
@@ -32,10 +46,13 @@ export const guards = {
             total_pages: 0, 
             results: []
         }
-        if(Array.isArray(data.results) && data.results.length !== 0){
-            if(typeof data.total_results === 'number' && typeof data.total_pages === 'number' && typeof data.page === 'number') {
-                return data
-            }
+        if( Array.isArray(data.results)
+            && data.results.length !== 0
+            && typeof data.total_results === 'number'
+            && typeof data.total_pages === 'number'
+            && typeof data.page === 'number')
+        {
+            return data
         }
         return defaultData
     },

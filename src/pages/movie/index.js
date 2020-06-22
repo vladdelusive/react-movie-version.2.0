@@ -36,13 +36,13 @@ export const PageMovie = React.memo((props) =>{
     }
 
     const badgesList = thisMovie.results.genres.map((genre, id) => (
-      <Draggable draggableId={id + genre.name} index={id} key={id}>
+      <Draggable draggableId={genre.name + genre.id} index={id} key={genre.id}>
         {(provided) => (
           <span
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
-            key={id}
+            key={genre.id}
             className={`${badges[badgesId[id]]} badge__pill`}
           >
             {genre.name}
@@ -64,7 +64,7 @@ export const PageMovie = React.memo((props) =>{
     newStateBadges.splice(source.index, 1);
     newStateBadges.splice(destination.index, 0, replacedItemFrom);
     setBadges(newStateBadges, props.match.params.movie);
-  };
+  }
   return (
     <>
       <div className="movie">

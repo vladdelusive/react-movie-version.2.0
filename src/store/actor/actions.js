@@ -11,7 +11,7 @@ export const actions = {
             API.ACTOR_DETAILS({personId}),
             API.ACTOR_MOVIES({personId}),
         ];
-        const [actorDetails, actorMovies] = await Promise.all(fetches).then(([details, movies])=>[guards.actorDetails(details), guards.actorMovies(movies)]);
+        const [actorDetails, actorMovies] = await Promise.all(fetches).then(([details, movies])=>[guards.detailsAct(details), guards.actorMovies(movies)]);
         return dispatch(actions.setActorIdData({person: actorDetails, movies: actorMovies, id: personId}))
     },
     setActorIdData: ({person, movies, id}) => ({type: types.SET_DATA, person, movies, id}),

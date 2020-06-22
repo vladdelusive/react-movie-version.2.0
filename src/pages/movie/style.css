@@ -83,6 +83,8 @@
     margin-top: 0.8em;
     color: black;
     font-size: 1.1em;
+    overflow: hidden;
+    max-height: 280px;
 }
 
 iframe {
@@ -157,7 +159,6 @@ iframe {
 .dark {
     background: #721c24;
 }
-
 .badge__pill {
     padding-right: .6em;
     padding-left: .6em;

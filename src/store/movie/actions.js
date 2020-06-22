@@ -18,7 +18,7 @@ export const actions = {
             API.MOVIE_REVIEWS({movieId})
         ];
         const [results, TRA, CAST, REVIEWS] = await Promise.all(fetches).then(([res, trail, cast, rev])=> {
-            return [guards.actorDetails(res), guards.movieResults(trail), guards.actorMovies(cast), guards.movieResults(rev)];
+            return [guards.detailsMov(res), guards.movieResults(trail), guards.actorMovies(cast), guards.movieResults(rev)];
         })
         const trailer = TRA[0] ? TRA[0].key : DEFAULT_TRAILER;
         return dispatch(actions.setMovieIdData({results, trailer, cast: CAST, id: movieId, reviews: REVIEWS}))
