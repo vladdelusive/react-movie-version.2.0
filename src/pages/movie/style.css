@@ -40,7 +40,7 @@
 }
 
 .movie__img {
-    width: 450px;
+    width: 500px;
 }
 
 .movie__post {
@@ -172,4 +172,21 @@ iframe {
     font-size: 40px;
     font-weight: bold;
     display: block;
+}
+
+.movie__type-runtime {
+    font-size: 18px;
+    margin: auto;
+    padding: 0;
+    display: inline;
+}
+
+.release {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.release__text {
+    font-size: 15px;
+    font-style: italic;
 }

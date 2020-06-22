@@ -1,42 +1,34 @@
 import {types} from "./actions";
 
-const initialState = {
-  movies: {},
-};
+const initialState = {};
 
 function reducer(state = initialState, action) {
   switch (action.type) {
     case types.SET_DATA: 
       return {
-        movies: {
-          ...state.movies,
-          [action.id]: {
+        ...state,
+        [action.id]: {
             results: action.results,
             trailer: action.trailer,
             cast: action.cast,
             reviews: action.reviews,
-          }
         }
       };
     case types.SET_BADGES:
       return {
-        movies: {
-          ...state.movies,
+          ...state,
           [action.id]: {
-            ...state.movies[action.id],
+            ...state[action.id],
             movieBadges: action.payload,
           }
-        }
       };
     case types.ADD_REVIEW:
       return {
-        movies: {
-          ...state.movies,
+          ...state,
           [action.movieId]: {
-            ...state.movies[action.movieId],
-            reviews: [...state.movies[action.movieId].reviews, { ...action.review }],
+            ...state[action.movieId],
+            reviews: [...state[action.movieId].reviews, { ...action.review }],
           }
-        }
       }
     default:
       return state;

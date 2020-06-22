@@ -15,6 +15,7 @@ export const guards = {
         }
     },
     actorDetails: (request) => {
+        console.log(request)
         return request.data
     },
     movieResults: (request) => {

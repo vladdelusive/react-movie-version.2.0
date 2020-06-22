@@ -14,9 +14,9 @@ import {actions} from "store/movie/actions";
 import {setRate} from "helpers/set-rate";
 
 export const PageMovie = React.memo((props) =>{
-  const {movies} = useSelector(({movieInfo})=> movieInfo)
+  const movieInfo = useSelector(({movieInfo})=> movieInfo)
   const {fetchData, setBadges, addReview} = useActions(actions)
-  const thisMovie = movies[props.match.params.movie]
+  const thisMovie = movieInfo[props.match.params.movie]
 
   useEffect(() => {
     if(!thisMovie){
@@ -26,8 +26,8 @@ export const PageMovie = React.memo((props) =>{
   }, [props.match.params.movie]);
 
   useEffect(() => {
-    let badgesId = [];
     if (!thisMovie?.results?.genres) return;
+    let badgesId = [];
     for (let i = 0; i < thisMovie.results.genres.length; i++) {
       let currentBadge = Math.round(Math.random() * 6);
       badgesId.some((badge) => currentBadge === badge)
@@ -64,7 +64,7 @@ export const PageMovie = React.memo((props) =>{
     newStateBadges.splice(source.index, 1);
     newStateBadges.splice(destination.index, 0, replacedItemFrom);
     setBadges(newStateBadges, props.match.params.movie);
-  }; 
+  };
   return (
     <>
       <div className="movie">
@@ -82,6 +82,13 @@ export const PageMovie = React.memo((props) =>{
         <div className="movie__description">
           <div className="movie__section">
             <h1 className="movie__title">{thisMovie.results.title}</h1>
+          </div>
+          <div className="movie__section">
+            <div className="release">
+              <span className="release__text">{"Released date: "}
+                {thisMovie.results.release_date ? thisMovie.results.release_date : "unknown"}
+              </span>
+            </div>
           </div>
           <hr className="line" />
           <div className="movie__section">
@@ -115,6 +122,13 @@ export const PageMovie = React.memo((props) =>{
               <i>{Math.round(thisMovie.results.vote_average) || "not found..."}/10</i>
             </div>
             {setRate(thisMovie.results)}
+          </div>
+          <hr className="line" />
+          <div className="movie__section">
+            <div>
+              <strong className="movie__type">Runtime: </strong>
+              <span className="movie__type-runtime">{thisMovie.results.runtime} min</span>
+            </div>
           </div>
           <hr className="line" />
           <div className="movie__section">
