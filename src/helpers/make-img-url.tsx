@@ -1,18 +1,18 @@
 import male from 'assets/images/unknown_male.png'
 import female from 'assets/images/unknown_female.png'
 
-const imgSizes = {
+const imgSizes: any = {
     default: "w500",
     large: "w780",
 }
 
-const imgPlaceholders = {
+const imgPlaceholders: any = {
     male,
     female,
     picture: "https://image.shutterstock.com/image-vector/no-image-available-icon-template-600w-1036735678.jpg"
 }
 
-export const makeImgUrl = (path, options) => {
+export const makeImgUrl = (path: string, options: Options): string => {
     const { size = "default", placeholder = "picture" } = options || {};
     if(!path){
         return imgPlaceholders[placeholder]

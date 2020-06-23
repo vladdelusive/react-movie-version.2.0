@@ -1,4 +1,4 @@
-export {Main} from "./main";
+export {Main} from "pages/main";
 export {PageMovie as MoviePage} from "./movie";
 export {Actors} from "./top-actors";
 export {ActorPage} from "./actor";
