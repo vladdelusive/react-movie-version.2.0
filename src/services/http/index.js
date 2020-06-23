@@ -1,6 +1,12 @@
 import axios from "axios";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
+// declare global {
+//   interface Window {
+//     http: typeof http
+//   }
+// }
+
 const http = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
   transformRequest: [],
