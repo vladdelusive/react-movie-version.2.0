@@ -50,6 +50,7 @@
 
 .review-form__textarea {
     min-height: 100px;
+    max-height: 250px;
 }
 
 .review-form__submit {

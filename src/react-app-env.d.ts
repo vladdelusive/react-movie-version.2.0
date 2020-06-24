@@ -1,10 +1,18 @@
 /// <reference types="react-scripts" />
-
-interface Options {
-    size: string,
-    placeholder: string
+export interface ICastActors {
+    cast_id: number,
+    character: string,
+    credit_id: string,
+    gender: number,
+    id: number,
+    name: string,
+    order: number,
+    profile_path: string,
 }
 
-interface ISetRate {
-    vote_average: number
+export interface ICard {
+    path: string,
+    id: number,
+    gender: number,
+    name: string,
 }

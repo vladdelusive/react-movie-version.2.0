@@ -2,7 +2,12 @@ import React from "react";
 import "./style.css";
 import icon from "assets/images/comment-icon.png";
 
-export function Review({ content, author }) {
+interface IReview {
+    content: string,
+    author: string
+}
+
+export function Review({ content, author }: IReview) {
     return (
         <div className="review">
         <div className="review__side-left">

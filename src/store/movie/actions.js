@@ -6,7 +6,7 @@ export const types = {
     SET_DATA: "@movie/SET_DATA",
     SET_BADGES: "@movie/SET_BADGES",
     TOGGLE_LOADING: "@movie/TOGGLE_LOADING",
-    ADD_REVIEW: "@movie/ADD_REVIEW", 
+    ADD_REVIEW: "@movie/ADD_REVIEW",
 }
 
 export const actions = {
@@ -25,7 +25,12 @@ export const actions = {
     },
     setMovieIdData: ({results, trailer, cast, id, reviews}) => ({type: types.SET_DATA, results, trailer, cast, id, reviews}),
     setBadges: (payload, id) => ({type: types.SET_BADGES, payload, id}),
-    addReview: ({movieId, review}) => ({type: types.ADD_REVIEW, movieId, review})
+    addReview: ({movieId, review}) => (dispatch) => {
+        setTimeout(()=> {
+            dispatch({type: types.ADD_REVIEW, movieId, review})
+            console.table(review)
+        },500)
+    }
 }
 
 

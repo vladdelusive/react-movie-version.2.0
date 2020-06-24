@@ -1,3 +1,5 @@
+import {ICastActors} from "../../react-app-env";
+
 interface IDetailsMovies {
     backdrop_path: string,
     release_date: string,
@@ -69,17 +71,6 @@ interface ICastMovies {
     video: boolean,
     vote_average: number,
     vote_count: number
-}
-
-interface ICastActors {
-    cast_id: number,
-    character: string,
-    credit_id: string,
-    gender: number,
-    id: number,
-    name: string,
-    order: number,
-    profile_path: string | null,
 }
 
 export const guards = {

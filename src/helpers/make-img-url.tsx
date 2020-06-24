@@ -1,6 +1,11 @@
 import male from 'assets/images/unknown_male.png'
 import female from 'assets/images/unknown_female.png'
 
+interface Options {
+    size?: string,
+    placeholder: string
+}
+
 const imgSizes: any = {
     default: "w500",
     large: "w780",

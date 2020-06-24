@@ -1,13 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import "./app.css";
 
 import {Header, BurgerMenu, DeveloperLink} from "components/index";
 import {Main, MoviePage, Actors, ActorPage, InputPage, NotFoundPage, MoviesPage, } from "pages";
 
+interface RootState {
+    burgerActive: boolean
+}
+
 function App() {
-  const { burgerActive } = useSelector(({ search }) => search);
+  const burgerActive = useSelector(({ search }: { search: RootState }) => search.burgerActive);
   return (
     <>
       <BurgerMenu />

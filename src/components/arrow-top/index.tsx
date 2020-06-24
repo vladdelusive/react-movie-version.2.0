@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-const handlerGoUp = () => {
+const handlerGoUp = (): void => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 

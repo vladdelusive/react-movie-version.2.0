@@ -2,7 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-export const Card = ({ title, poster, pathTo }) => {
+interface ICard {
+    title: string,
+    poster: string,
+    pathTo: string,
+}
+
+export const Card = ({ title, poster, pathTo }: ICard) => {
   return (
     <div className="card search-card">
       <div className="card__header search-card__header">

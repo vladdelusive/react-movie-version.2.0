@@ -1,10 +1,11 @@
 import React from "react";
 import {Actor, ArrowTop} from "components/index";
+import {ICastActors} from "react-app-env";
 
-export const Cast = React.memo(function({ cast }) {
-  const identityId = [];
+export const Cast = React.memo(function({ cast }: {cast: ICastActors[]}) {
+  const identityId: number[] = [];
   const actors = cast.map((actor) => {
-    if (identityId.find((el) => el === actor.id)) {
+    if (identityId.find((el: number) => el === actor.id)) {
       return "";
     }
     identityId.push(actor.id);

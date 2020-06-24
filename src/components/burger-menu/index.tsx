@@ -1,18 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-
-import { useActions } from "hooks/use-actions";
+import { useSelector } from "react-redux";
 import { actions } from "store/search/actions";
-import CloseBurger from "assets/images/closeBurger.png";
-
+import { useActions } from "hooks/use-actions";
 import {Overlay} from "./overlay";
 import { DeveloperLink } from "components/index";
-
+import CloseBurger from "assets/images/closeBurger.png";
 import "./style.css";
+
+interface RootState {
+  burgerActive: boolean
+}
  
 export function BurgerMenu() {
-  const { burgerActive } = useSelector(({ search }) => search);
+  const burgerActive = useSelector(({ search }: { search: RootState }) => search.burgerActive);
   const { burgerToggle } = useActions(actions);
   return (
     <>

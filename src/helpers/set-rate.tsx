@@ -1,5 +1,9 @@
 import React from "react";
 
+interface ISetRate {
+    vote_average: number
+}
+
 export const setRate = (results: ISetRate) => {
     const movieRate = Math.round(results.vote_average) || 0;
     const stars = [];

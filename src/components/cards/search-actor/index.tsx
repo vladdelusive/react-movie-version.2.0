@@ -2,8 +2,9 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import { makeImgUrl } from 'helpers/make-img-url'
+import { ICard} from "react-app-env";
 
-export const SearchCard = ({path, id, gender, name}) => {
+export const SearchCard = ({path, id, gender, name}: ICard) => {
     const image = makeImgUrl(path, {placeholder: gender === 2 ? "male" : "female"})
     return (
         <div className="card">

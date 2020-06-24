@@ -2,8 +2,9 @@ import React from 'react'
 import { makeImgUrl} from "helpers/make-img-url";
 import './style.css'
 import {Link} from 'react-router-dom'
+import { ICard } from "react-app-env";
 
-export function Actor({path, id, gender, name}) {
+export function Actor({path, id, gender, name}: ICard) {
     const image = makeImgUrl(path, {placeholder: gender === 2 ? "male" : "female"})
     return (
         <div className="card-actor">

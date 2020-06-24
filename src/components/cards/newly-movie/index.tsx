@@ -2,7 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-export const Card = ({ title, overview, poster, pathTo }) => {
+interface ICard {
+    title: string,
+    overview: string,
+    poster: string,
+    pathTo: string,
+}
+
+export const Card = ({ title, overview, poster, pathTo }: ICard) => {
   return (
     <div className="card-movie">
       <div className="card-movie__post">

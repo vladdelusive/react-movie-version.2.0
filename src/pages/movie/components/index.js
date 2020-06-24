@@ -3,19 +3,19 @@ import "./style.css";
 import { Review } from "components";
 
 export const Reviews = React.memo(({ movieInfo, addReview, movieId }) => {
-  const [postIsAdd, setPostIsAdd] = useState(false)
   const { reviews, results: { title } } = movieInfo
+  const [postIsAdd, setPostIsAdd] = useState(false)
   const [reviewForm, setReviewForm] = useState("")
   const [nameForm, setNameForm] = useState("")
 
-  const [validation, setValidation] = useState({name: false, comment: false})  
+  const [validation, setValidation] = useState({name: false, comment: false})
   const addPost = (e) => {
     e.preventDefault()
 
-    if(reviewForm.length < 5 || nameForm.length < 3) {
+    if(reviewForm.trim().length < 5 || nameForm.trim().length < 3) {
       reviewForm.length < 5 && setValidation((prev)=>({...prev, comment: true}))
       nameForm.length < 3 && setValidation((prev)=>({...prev, name: true}))
-      return 
+      return
     }
 
     const id = new Date().valueOf() + nameForm;
