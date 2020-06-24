@@ -1,5 +1,5 @@
 import React from "react";
-import {Actor, ArrowTop} from "components";
+import {Actor, ArrowTop} from "components/index";
 
 export const Cast = React.memo(function({ cast }) {
   const identityId = [];

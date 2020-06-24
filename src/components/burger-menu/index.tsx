@@ -7,7 +7,7 @@ import { actions } from "store/search/actions";
 import CloseBurger from "assets/images/closeBurger.png";
 
 import {Overlay} from "./overlay";
-import { DeveloperLink } from "components";
+import { DeveloperLink } from "components/index";
 
 import "./style.css";
  

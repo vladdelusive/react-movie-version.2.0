@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import "./app.css";
 
-import {Header, BurgerMenu, DeveloperLink} from "components";
+import {Header, BurgerMenu, DeveloperLink} from "components/index";
 import {Main, MoviePage, Actors, ActorPage, InputPage, NotFoundPage, MoviesPage, } from "pages";
 
 function App() {
