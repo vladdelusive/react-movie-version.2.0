@@ -8,7 +8,16 @@ import "./style.css";
 import { actions } from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
 
-export const Search = React.memo(function({ value, searchResultActors, searchResultMovies }) {
+import { ITopActors, IMoviesNewly } from "react-app-env";
+
+
+interface ISearch {
+  value: string,
+  searchResultActors: ITopActors[],
+  searchResultMovies: IMoviesNewly[],
+}
+
+export const Search = React.memo(function({ value, searchResultActors, searchResultMovies }: ISearch) {
   const {toggleSuggestions, reloadPage } = useActions(actions)
 
   if (!searchResultMovies || !searchResultActors) return null;
@@ -42,7 +51,7 @@ export const Search = React.memo(function({ value, searchResultActors, searchRes
     );
   }
 
-  const categoriesCount = !!searchedItemsMovies.length + !!searchedItemsActors.length;
+  const categoriesCount: number = +!!searchedItemsMovies.length + +!!searchedItemsActors.length;
   if (!categoriesCount) return <NoOneFound />;
   const pixels = 65 * (searchedItemsMovies.length + searchedItemsActors.length) + 22 * categoriesCount + 35;
   // (h.suggestions-movie*n.suggestions-actors)+(categHeight*n.categ)+heightMargingsPadding

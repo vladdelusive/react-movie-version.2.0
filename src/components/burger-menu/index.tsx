@@ -8,12 +8,12 @@ import { DeveloperLink } from "components/index";
 import CloseBurger from "assets/images/closeBurger.png";
 import "./style.css";
 
-interface RootState {
+interface RootStateBurger {
   burgerActive: boolean
 }
  
 export function BurgerMenu() {
-  const burgerActive = useSelector(({ search }: { search: RootState }) => search.burgerActive);
+  const burgerActive = useSelector(({ search }: { search: RootStateBurger }) => search.burgerActive);
   const { burgerToggle } = useActions(actions);
   return (
     <>

@@ -7,7 +7,15 @@ import { makeImgUrl} from "helpers/make-img-url";
 
 import './style.css'
 
-export function SearchItem({image, title, typeItem, id, setShowSearchedItems}) {
+interface ISearchItem {
+    image: string | null,
+    title: string,
+    typeItem: string,
+    id: number,
+    setShowSearchedItems(bool: boolean): void
+}
+
+export function SearchItem({image, title, typeItem, id, setShowSearchedItems}: ISearchItem) {
     const link = (typeItem === "movie" ? "/movies/" : "/actors/") + id
     const nullImage = typeItem === "movie" ? MovieIcon : ActorIcon
     return (

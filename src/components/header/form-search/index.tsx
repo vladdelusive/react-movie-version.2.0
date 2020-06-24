@@ -9,10 +9,25 @@ import {Search} from "./suggestions";
 import {actions} from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
 
-let fetchTimer;
+import { ITopActors, IMoviesNewly } from "react-app-env";
+
+let fetchTimer: ReturnType<typeof setTimeout>
+const rootElement: HTMLElement | null = document.getElementById('root');
+
+interface RootState {
+    inputValue: string,
+    resultsActors: ITopActors[],
+    showSearchedItems: boolean,
+    resultsMovies: IMoviesNewly[],
+    inputOpen: boolean,
+}
+
+interface ITarget {
+    target: HTMLInputElement;
+}
 
 export const FormSearch = React.memo(() => {
-    const {inputValue, resultsActors, showSearchedItems, resultsMovies, inputOpen} = useSelector(({search}) => search);
+    const {inputValue, resultsActors, showSearchedItems, resultsMovies, inputOpen} = useSelector(({search}: { search: RootState}) => search);
     const {inputIsActive, reloadPage,toggleSuggestions, setInput, offloadData, fetchInputValue } = useActions(actions)
 
     const [classes, setClasses] = useState({ inputClass: "", btnClass: "",
@@ -27,7 +42,7 @@ export const FormSearch = React.memo(() => {
         toggleSuggestions(false); inputIsActive(false)
     };
 
-    const valueTarget = ({target}) => {
+    const valueTarget = ({target}: ITarget) => {
         setInput(target.value)
         clearTimeout(fetchTimer);
         if (target.value === "") {
@@ -38,15 +53,16 @@ export const FormSearch = React.memo(() => {
     }
 
     useEffect(() => {
-        const checkerEvents = (e) => {
-            if(e.target.closest(".form")) return
+        const checkerEvents = ({target}:any): void => {
+            if(target.closest(".form")) return
             toggleSuggestions(false)
+            return
         }
         if(inputOpen) {
-            document.getElementById("root").addEventListener("click", checkerEvents)
+            rootElement?.addEventListener("click", checkerEvents)
         }
         return ()=>{
-            document.getElementById("root").removeEventListener("click", checkerEvents)
+            rootElement?.removeEventListener("click", checkerEvents)
         }
     })
 
@@ -78,9 +94,9 @@ export const FormSearch = React.memo(() => {
                             {showSearchedItems &&
                                 (resultsActors !== null || resultsMovies !== null) &&
                                     <Search
-                                        searchResultActors={resultsActors}
-                                        searchResultMovies={resultsMovies}
                                         value={inputValue.replace(/\s+/g,' ').trim()}
+                                        searchResultMovies={resultsMovies}
+                                        searchResultActors={resultsActors}
                                     />
                             }
                 </div>
