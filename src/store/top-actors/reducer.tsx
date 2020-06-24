@@ -1,12 +1,14 @@
 import {types} from "./actions";
+import {ITopActors, IActionActors} from './types'
 
-const initialState = {
+
+const initialState: ITopActors = {
   actors: [],
   page: 1,
   loading: true
 };
 
-function reducer(state = initialState, action) {
+const reducer = (state = initialState, action: IActionActors) => {
   switch (action.type) {
     case types.LOAD_ACTORS:
       return {
