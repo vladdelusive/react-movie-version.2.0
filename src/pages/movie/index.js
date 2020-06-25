@@ -14,7 +14,8 @@ import {actions} from "store/movie/actions";
 import {setRate} from "helpers/set-rate";
 
 export const PageMovie = React.memo((props) =>{
-  const movieInfo = useSelector(({movieInfo})=> movieInfo)
+  const movieInfo = useSelector(({movieInfo})=>{
+    console.log(movieInfo);return movieInfo})
   const {fetchData, setBadges, addReview} = useActions(actions)
   const thisMovie = movieInfo[props.match.params.movie]
 

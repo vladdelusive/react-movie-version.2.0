@@ -10,8 +10,15 @@ export interface ICastActors {
     profile_path: string,
 }
 
+export interface ICast {
+    id: number,
+    name: string,
+    profile_path: string,
+    gender: number,
+}
+
 export interface ICard {
-    path: string,
+    path?: string,
     id: number,
     gender: number,
     name: string,
@@ -26,7 +33,7 @@ export interface ITopActors {
     media_type: string,
     name: string,
     popularity: number,
-    profile_path: string | null,
+    profile_path: string,
 }
 
 export interface IMoviesNewly {

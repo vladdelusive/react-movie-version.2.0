@@ -3,9 +3,15 @@ import {Loader, Cast, BtnLoader} from "components";
 import {useSelector} from "react-redux";
 import {useActions} from "hooks/use-actions";
 import {actions} from "store/top-actors/actions";
+import {ITopActors} from "../../react-app-env";
+
+interface RootState {
+  actors: ITopActors[],
+  loading: boolean
+}
 
 export function Actors() {
-  const {actors, loading} = useSelector(({actors})=>actors)
+  const {actors, loading} = useSelector(({actors}: {actors: RootState})=>actors)
   const {fetchActors} = useActions(actions)
   useEffect(() => {
     if(!actors.length){

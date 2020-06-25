@@ -1,9 +1,10 @@
 import React from "react";
 import {SearchCard} from "components";
+import {ICast} from "react-app-env";
 
-export const SearchCardsContentActors = React.memo(function SearchCardsContentActors({ cast }) {
-  const identityId = [];
-  const actors = cast.map((actor) => {
+export const SearchCardsContentActors = React.memo( ({ cast }: {cast: ICast[]}): any => {
+  const identityId: number[] = [];
+  const actors = cast.map((actor: any) => {
     if (identityId.find((el) => el === actor.id)) {
       return "";
     }
@@ -20,3 +21,4 @@ export const SearchCardsContentActors = React.memo(function SearchCardsContentAc
   });
   return actors
 });
+

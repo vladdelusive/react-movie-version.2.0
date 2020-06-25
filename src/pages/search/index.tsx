@@ -4,9 +4,16 @@ import {NoQuery} from "./components/no-query";
 import {SearchContent} from "./components/search-content";
 import {EasterEgg} from "components";
 
-export const InputPage = React.memo(({ location })=> {
+interface ISearch{
+    hash: string,
+    kry: string,
+    pathname: string,
+    search: string,
+}
+
+export const InputPage = React.memo(({ location }: {location: ISearch})=> {
   if (!location.search) return <NoQuery />;
-  const text = decodeURI(location.search.slice(7)).replace(/\s+/g, " ").trim();
+  const text: string = decodeURI(location.search.slice(7)).replace(/\s+/g, " ").trim();
   if (!text) return <NoQuery />;
   if (text.toLowerCase() === "товсточуб" || text.toLowerCase() === "tovstochub")
     return <EasterEgg />;

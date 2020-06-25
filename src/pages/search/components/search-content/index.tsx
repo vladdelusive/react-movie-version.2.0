@@ -10,22 +10,23 @@ import './style.css'
 import 'rc-pagination/assets/index.css';
 import { actions } from 'store/search/actions'
 import { useActions } from 'hooks/use-actions'
+import {ISearch} from "../../types";
 
 
-export const SearchContent = React.memo(({query})=> {
+export const SearchContent = React.memo(({query}: {query: string})=> {
     const {pageActors, pageMovies, searchedMovies, searchedActors, loading, totalPagesMovies, totalPagesActors} =
-        useSelector(({search})=>search)
+        useSelector(({search}: { search: ISearch })=> search)
     const {changeMoviePage, changeActorPage, fetchSearchActors, fetchSearchMovies } = useActions(actions)
-    const moviesElementTitle = createRef()
-    const actorsElementTitle = createRef()
+    const moviesElementTitle = createRef<HTMLDivElement>()
+    const actorsElementTitle = createRef<HTMLDivElement>()
 
-    const onClickPageMovies = (pageNumber) => {
-        moviesElementTitle.current.scrollIntoView({block: "start"});
+    const onClickPageMovies = (pageNumber: number) => {
+        moviesElementTitle.current!.scrollIntoView({block: "start"});
         changeMoviePage(pageNumber)
     }
 
-    const onClickPageActors = (pageNumber) => {
-        actorsElementTitle.current.scrollIntoView({block: "start"});
+    const onClickPageActors = (pageNumber: number) => {
+        actorsElementTitle.current!.scrollIntoView({block: "start"});
         changeActorPage(pageNumber)
     }
 

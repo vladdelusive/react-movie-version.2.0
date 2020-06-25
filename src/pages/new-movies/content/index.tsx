@@ -5,10 +5,16 @@ import {Card} from "components";
 import {makeImgUrl} from "helpers/make-img-url";
 import image from "assets/images/image.jpg";
 import {overviewEditor} from "helpers/overview-editor";
+import {IMoviesNewly} from "../../../react-app-env";
 
-export const Content = React.memo(({ results, path }) => {
-  const identityId = [];
-  const cards = results.map((movie) => {
+interface IContent {
+  results: IMoviesNewly[] | any,
+  path: string
+}
+
+export const Content = React.memo(({ results, path }: IContent) => {
+  const identityId: number[] = [];
+  return results.map((movie: IMoviesNewly) => {
     if (identityId.find((el) => el === movie.id)) {
       return "";
     }
@@ -31,6 +37,4 @@ export const Content = React.memo(({ results, path }) => {
       />
     );
   });
-
-  return cards;
 });

@@ -17,7 +17,7 @@ const imgPlaceholders: any = {
     picture: "https://image.shutterstock.com/image-vector/no-image-available-icon-template-600w-1036735678.jpg"
 }
 
-export const makeImgUrl = (path: string, options?: Options): string => {
+export const makeImgUrl = (path: string | undefined, options?: Options): string => {
     const { size = "default", placeholder = "picture" } = options || {};
     if(!path){
         return imgPlaceholders[placeholder]

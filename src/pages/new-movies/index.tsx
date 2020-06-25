@@ -5,9 +5,15 @@ import {Content} from "./content";
 import {useSelector} from "react-redux";
 import {useActions} from "hooks/use-actions";
 import {actions} from "store/new-movies/actions";
+import {IMoviesNewly} from "../../react-app-env";
+
+interface IMoviesPage {
+  movies: IMoviesNewly[],
+  loading: boolean,
+}
 
 export function MoviesPage() {
-  const {movies, loading} = useSelector(({movies})=>movies)
+  const {movies, loading} = useSelector(({movies}: {movies: IMoviesPage })=>movies)
   const {fetchMovies} = useActions(actions)
   useEffect(() => {
     if(!movies.length){
