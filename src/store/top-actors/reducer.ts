@@ -1,7 +1,6 @@
 import {types} from "./actions";
 import {ITopActors, IActionActors} from './types'
 
-
 const initialState: ITopActors = {
   actors: [],
   page: 1,

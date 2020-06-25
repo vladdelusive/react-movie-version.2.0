@@ -5,16 +5,16 @@ import {Card} from "components";
 import {makeImgUrl} from "helpers/make-img-url";
 import image from "assets/images/image.jpg";
 import {overviewEditor} from "helpers/overview-editor";
-import {IMoviesNewly} from "../../../react-app-env";
+import {IMovies} from "../../../react-app-env";
 
 interface IContent {
-  results: IMoviesNewly[] | any,
+  results: IMovies[] | any,
   path: string
 }
 
 export const Content = React.memo(({ results, path }: IContent) => {
   const identityId: number[] = [];
-  return results.map((movie: IMoviesNewly) => {
+  return results.map((movie: IMovies) => {
     if (identityId.find((el) => el === movie.id)) {
       return "";
     }

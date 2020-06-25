@@ -1,13 +1,13 @@
 import {types} from "./actions";
+import {IActionSearch, ISearch} from "./types";
 
-const initialState = {
+const initialState: ISearch = {
   inputValue: "",
   showSearchedItems: false,
   resultsActors: null,
   resultsMovies: null,
   burgerActive: false,
   inputOpen: false,
-
   pageActors: 1,
   pageMovies: 1,
   searchedMovies: [],
@@ -17,7 +17,7 @@ const initialState = {
   totalPagesActors: 0
 };
 
-function reducer(state = initialState, action) {
+export const reducer = (state = initialState, action: IActionSearch) => {
   switch (action.type) {
     case types.UPLOAD_ACTORS_MOVIES:
       return {
@@ -78,20 +78,18 @@ function reducer(state = initialState, action) {
     case types.SET_SEARCH_ACTORS:
       return {
         ...state,
-        searchedActors: action.actors.results,
-        totalPagesActors: action.actors.total_pages,
+        searchedActors: action.actors!.results,
+        totalPagesActors: action.actors!.total_pages,
         loading: false
     };
     case types.SET_SEARCH_MOVIES:
       return {
         ...state,
-        searchedMovies: action.movies.results,
-        totalPagesMovies: action.movies.total_pages,
+        searchedMovies: action.movies!.results,
+        totalPagesMovies: action.movies!.total_pages,
         loading: false
       };
     default:
       return state;
   }
 }
-
-export { reducer };

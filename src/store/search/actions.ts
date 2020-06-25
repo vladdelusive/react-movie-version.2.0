@@ -1,5 +1,6 @@
 import {API} from "services/api";
 import {guards} from 'services/api/guards'
+import {IActionSearch} from "./types";
 
 export const types = {
     UPLOAD_ACTORS_MOVIES: "@search/UPLOAD_ACTORS_MOVIES",
@@ -21,24 +22,24 @@ export const actions = {
     clearInput: () => ({type: types.CLEAR_ALL}),
     burgerToggle: () => ({type: types.BURGER_TOGGLE}),
     offloadData: () => ({type: types.OFFLOAD_DATA}),
-    toggleSuggestions: (payload) => ({type: types.TOGGLE_SUGGESTIONS, payload }),
-    changeMoviePage: (payload) => ({type: types.MOVIES_PAGE, payload}),
-    changeActorPage: (payload) => ({type: types.ACTORS_PAGE, payload }),
-    setInput: (payload) => ({type: types.SET_INPUT, payload}),
-    inputIsActive: (payload) => ({type: types.INPUT_IS_ACTIVE, payload}),
-    setActorsAndMovies: ({actors, movies}) => ({type: types.UPLOAD_ACTORS_MOVIES, actors, movies}),
-    setActors: ({actors}) => ({type: types.SET_SEARCH_ACTORS, actors}),
-    setMovies: ({movies}) => ({type: types.SET_SEARCH_MOVIES, movies}),
-    fetchInputValue: query => async (dispatch) => {
+    toggleSuggestions: (payload: IActionSearch) => ({type: types.TOGGLE_SUGGESTIONS, payload }),
+    changeMoviePage: (payload: IActionSearch) => ({type: types.MOVIES_PAGE, payload}),
+    changeActorPage: (payload: IActionSearch) => ({type: types.ACTORS_PAGE, payload }),
+    setInput: (payload: IActionSearch) => ({type: types.SET_INPUT, payload}),
+    inputIsActive: (payload: IActionSearch) => ({type: types.INPUT_IS_ACTIVE, payload}),
+    setActorsAndMovies: ({actors, movies}: IActionSearch) => ({type: types.UPLOAD_ACTORS_MOVIES, actors, movies}),
+    setActors: ({actors}: IActionSearch) => ({type: types.SET_SEARCH_ACTORS, actors}),
+    setMovies: ({movies}: IActionSearch) => ({type: types.SET_SEARCH_MOVIES, movies}),
+    fetchInputValue: (query: string) => async (dispatch: any) => {
         const fetches = [API.SEARCH_MOVIE({query}), API.SEARCH_ACTOR({query})];
         const [MOVIES, ACTORS] = await Promise.all(fetches).then(([mov, act]) => [guards.movieResults(mov), guards.movieResults(act)]);
         return dispatch(actions.setActorsAndMovies({actors: ACTORS, movies: MOVIES}))
     },
-    fetchSearchActors: (query, page) => async (dispatch) => {
+    fetchSearchActors: (query: string, page: number) => async (dispatch: any) => {
         const fetched = await API.SEARCH_ACTOR({query, page})
         return dispatch(actions.setActors({actors: guards.searchData(fetched)}))
     },
-    fetchSearchMovies: (query, page) => async (dispatch) => {
+    fetchSearchMovies: (query: string, page: number) => async (dispatch: any) => {
         const fetched = await API.SEARCH_MOVIE({query, page})
         return dispatch(actions.setMovies({movies: guards.searchData(fetched)}))
     }

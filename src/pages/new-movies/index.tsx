@@ -5,10 +5,10 @@ import {Content} from "./content";
 import {useSelector} from "react-redux";
 import {useActions} from "hooks/use-actions";
 import {actions} from "store/new-movies/actions";
-import {IMoviesNewly} from "../../react-app-env";
+import {IMovies} from "../../react-app-env";
 
 interface IMoviesPage {
-  movies: IMoviesNewly[],
+  movies: IMovies[],
   loading: boolean,
 }
 

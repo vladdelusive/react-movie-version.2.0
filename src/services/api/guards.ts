@@ -1,4 +1,4 @@
-import {ICastActors, ITopActors, IMoviesNewly} from "../../react-app-env";
+import {ICastActors, ITopActors, IMovies} from "../../react-app-env";
 
 interface IDetailsMovies {
     backdrop_path: string,
@@ -19,7 +19,7 @@ interface IDetailsActors {
 }
 
 interface IActorsMovies {
-    results: IMoviesNewly[] | ITopActors[],
+    results: IMovies[] | ITopActors[],
     page: number,
     total_pages: number,
     total_results: number,

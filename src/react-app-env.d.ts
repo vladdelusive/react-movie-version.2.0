@@ -30,13 +30,13 @@ export interface ITopActors {
     id: number,
     known_for: [],
     known_for_department: [],
-    media_type: string,
+    media_type?: string,
     name: string,
     popularity: number,
     profile_path: string,
 }
 
-export interface IMoviesNewly {
+export interface IMovies {
     adult: boolean,
     backdrop_path: string,
     genre_ids: number[],

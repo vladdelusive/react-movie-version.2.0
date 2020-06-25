@@ -3,7 +3,7 @@ import {http} from "services/http";
 
 export interface IParamsSearch {
     query?: string,
-    page: number,
+    page?: number,
 }
 
 export const API = {

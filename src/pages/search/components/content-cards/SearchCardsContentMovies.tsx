@@ -3,17 +3,17 @@ import { makeImgUrl} from "helpers/make-img-url";
 
 import image from 'assets/images/image.jpg';
 import {SearchMovie as Card} from "components";
-import {IMoviesNewly} from "react-app-env";
+import {IMovies} from "react-app-env";
 
 interface Interface {
-    results: IMoviesNewly[] | any,
+    results: IMovies[] | any,
     path: string,
 }
 
 export const SearchCardsContentMovies = React.memo<Interface>(({ results, path }) => {
     console.log(results)
     const identityId: number[] = []
-    return results.map((movie: IMoviesNewly) => {
+    return results.map((movie: IMovies) => {
         if(identityId.find((el)=>el===movie.id)){
             return ""
         }

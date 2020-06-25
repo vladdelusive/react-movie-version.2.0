@@ -9,7 +9,7 @@ import {Search} from "./suggestions";
 import {actions} from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
 
-import { ITopActors, IMoviesNewly } from "react-app-env";
+import { ITopActors, IMovies } from "react-app-env";
 
 let fetchTimer: ReturnType<typeof setTimeout>
 const rootElement: HTMLElement | null = document.getElementById('root');
@@ -18,7 +18,7 @@ interface RootState {
     inputValue: string,
     resultsActors: ITopActors[],
     showSearchedItems: boolean,
-    resultsMovies: IMoviesNewly[],
+    resultsMovies: IMovies[],
     inputOpen: boolean,
 }
 

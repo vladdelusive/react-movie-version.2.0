@@ -8,13 +8,13 @@ import "./style.css";
 import { actions } from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
 
-import { ITopActors, IMoviesNewly } from "react-app-env";
+import { ITopActors, IMovies } from "react-app-env";
 
 
 interface ISearch {
   value: string,
   searchResultActors: ITopActors[],
-  searchResultMovies: IMoviesNewly[],
+  searchResultMovies: IMovies[],
 }
 
 export const Search = React.memo(function({ value, searchResultActors, searchResultMovies }: ISearch) {
