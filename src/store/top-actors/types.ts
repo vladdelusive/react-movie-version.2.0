@@ -8,12 +8,12 @@ export interface IActorsResult {
     name: string,
     popularity: number,
     profile_path: string,
-}
+} 
 
 export interface ITopActors {
-    readonly actors: IActorsResult[],
-    readonly page: 1,
-    readonly loading: true
+    actors: IActorsResult[],
+    page: number,
+    loading: boolean
 }
 
 export interface IActionActors {

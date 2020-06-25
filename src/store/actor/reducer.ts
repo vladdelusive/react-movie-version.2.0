@@ -1,8 +1,8 @@
 import {types} from "./actions";
 
-const initialState = {};
+const initialState: any = {};
 
-function reducer(state = initialState, action) {
+function reducer(state = initialState, action: any) {
   switch (action.type) {
     case types.SET_DATA:
       return {

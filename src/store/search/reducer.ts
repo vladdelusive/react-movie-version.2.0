@@ -1,5 +1,5 @@
 import {types} from "./actions";
-import {IActionSearch, ISearch} from "./types";
+import {ISearch} from "./types";
 
 const initialState: ISearch = {
   inputValue: "",
@@ -17,7 +17,7 @@ const initialState: ISearch = {
   totalPagesActors: 0
 };
 
-export const reducer = (state = initialState, action: IActionSearch) => {
+export const reducer = (state = initialState, action: any): ISearch => {
   switch (action.type) {
     case types.UPLOAD_ACTORS_MOVIES:
       return {

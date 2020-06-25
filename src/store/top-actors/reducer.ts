@@ -6,8 +6,8 @@ const initialState: ITopActors = {
   page: 1,
   loading: true
 };
-
-const reducer = (state = initialState, action: IActionActors) => {
+ 
+const reducer = (state = initialState, action: IActionActors): ITopActors => {
   switch (action.type) {
     case types.LOAD_ACTORS:
       return {

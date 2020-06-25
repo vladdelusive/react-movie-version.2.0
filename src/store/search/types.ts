@@ -1,4 +1,4 @@
-import { IMovies,} from "../../react-app-env";
+import { IMovies} from "react-app-env";
 
 export interface ISearchActors {
     adult: boolean,
@@ -28,7 +28,7 @@ export interface ISearch {
 }
 
 export interface IActionSearch {
-    type?: string,
+    type: string,
     payload?: any,
     actors?: IActorsMovies<IActors>,
     movies?: IActorsMovies<IMovies>

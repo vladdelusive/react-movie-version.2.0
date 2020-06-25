@@ -10,7 +10,7 @@ export const types = {
 }
 
 export const actions = {
-    fetchData: movieId => async (dispatch) => {
+    fetchData: (movieId: number) => async (dispatch: any) => {
         const fetches = [
             API.MOVIE_DETAILS({movieId}),
             API.YOUTUBE_URL({movieId}), 
@@ -23,9 +23,9 @@ export const actions = {
         const trailer = TRA[0] ? TRA[0].key : DEFAULT_TRAILER;
         return dispatch(actions.setMovieIdData({results, trailer, cast: CAST, id: movieId, reviews: REVIEWS}))
     },
-    setMovieIdData: ({results, trailer, cast, id, reviews}) => ({type: types.SET_DATA, results, trailer, cast, id, reviews}),
-    setBadges: (payload, id) => ({type: types.SET_BADGES, payload, id}),
-    addReview: ({movieId, review}) => (dispatch) => {
+    setMovieIdData: ({results, trailer, cast, id, reviews}: any) => ({type: types.SET_DATA, results, trailer, cast, id, reviews}),
+    setBadges: (payload: any, id: number) => ({type: types.SET_BADGES, payload, id}),
+    addReview: ({movieId, review}: {movieId: number, review: string}) => (dispatch: any) => {
         setTimeout(()=> {
             dispatch({type: types.ADD_REVIEW, movieId, review})
             console.table(review)

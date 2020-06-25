@@ -6,7 +6,7 @@ export const types = {
 }
 
 export const actions = {
-    fetchData: personId => async (dispatch) => {
+    fetchData: (personId: number) => async (dispatch: any) => {
         const fetches = [
             API.ACTOR_DETAILS({personId}),
             API.ACTOR_MOVIES({personId}),
@@ -14,7 +14,7 @@ export const actions = {
         const [actorDetails, actorMovies] = await Promise.all(fetches).then(([details, movies])=>[guards.detailsAct(details), guards.actorMovies(movies)]);
         return dispatch(actions.setActorIdData({person: actorDetails, movies: actorMovies, id: personId}))
     },
-    setActorIdData: ({person, movies, id}) => ({type: types.SET_DATA, person, movies, id}),
+    setActorIdData: ({person, movies, id}: any) => ({type: types.SET_DATA, person, movies, id}),
 }
 
 

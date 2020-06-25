@@ -1,12 +1,15 @@
-import {types} from "./actions";
+import { types } from "./actions";
+import { IMovies } from "react-app-env";
 
 const initialState = {
-  movies: [],
+  movies: [] as Array<IMovies>,
   page: 1,
-  loading: true
+  loading: true,
 };
 
-function reducer(state = initialState, action) {
+type IInitialStateNewMovies = typeof initialState;
+
+function reducer(state = initialState, action: any): IInitialStateNewMovies {
   switch (action.type) {
     case types.LOAD_MOVIES:
       return {

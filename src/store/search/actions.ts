@@ -27,21 +27,21 @@ export const actions = {
     changeActorPage: (payload: IActionSearch) => ({type: types.ACTORS_PAGE, payload }),
     setInput: (payload: IActionSearch) => ({type: types.SET_INPUT, payload}),
     inputIsActive: (payload: IActionSearch) => ({type: types.INPUT_IS_ACTIVE, payload}),
-    setActorsAndMovies: ({actors, movies}: IActionSearch) => ({type: types.UPLOAD_ACTORS_MOVIES, actors, movies}),
-    setActors: ({actors}: IActionSearch) => ({type: types.SET_SEARCH_ACTORS, actors}),
-    setMovies: ({movies}: IActionSearch) => ({type: types.SET_SEARCH_MOVIES, movies}),
+    setActorsAndMovies: ({actors, movies}: any) => ({type: types.UPLOAD_ACTORS_MOVIES, actors, movies}),
+    setActors: ({actors}: any) => ({type: types.SET_SEARCH_ACTORS, actors}),
+    setMovies: ({movies}: any) => ({type: types.SET_SEARCH_MOVIES, movies}),
     fetchInputValue: (query: string) => async (dispatch: any) => {
         const fetches = [API.SEARCH_MOVIE({query}), API.SEARCH_ACTOR({query})];
         const [MOVIES, ACTORS] = await Promise.all(fetches).then(([mov, act]) => [guards.movieResults(mov), guards.movieResults(act)]);
-        return dispatch(actions.setActorsAndMovies({actors: ACTORS, movies: MOVIES}))
+        dispatch(actions.setActorsAndMovies({actors: ACTORS, movies: MOVIES}))
     },
     fetchSearchActors: (query: string, page: number) => async (dispatch: any) => {
         const fetched = await API.SEARCH_ACTOR({query, page})
-        return dispatch(actions.setActors({actors: guards.searchData(fetched)}))
+        dispatch(actions.setActors({actors: guards.searchData(fetched)}))
     },
     fetchSearchMovies: (query: string, page: number) => async (dispatch: any) => {
         const fetched = await API.SEARCH_MOVIE({query, page})
-        return dispatch(actions.setMovies({movies: guards.searchData(fetched)}))
+        dispatch(actions.setMovies({movies: guards.searchData(fetched)}))
     }
 }
 

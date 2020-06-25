@@ -5,12 +5,12 @@ export const types = {
 }
 
 export const actions = {
-    fetchMovies: () => async (dispatch, getState) => {
+    fetchMovies: () => async (dispatch: any, getState: any) => {
         const {page} = getState().movies 
         const results = await API.NEWLY_MOVIES({page});
         return dispatch(actions.saveMovies(guards.movActData(results)))
     },
-    saveMovies: (payload) => ({type: types.LOAD_MOVIES, payload})
+    saveMovies: (payload: any) => ({type: types.LOAD_MOVIES, payload})
 }
 
 
