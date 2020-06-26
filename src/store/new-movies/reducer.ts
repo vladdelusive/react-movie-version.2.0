@@ -1,5 +1,6 @@
 import { types } from "./actions";
 import { IMovies } from "react-app-env";
+import {IAction} from "./actions";
 
 const initialState = {
   movies: [] as Array<IMovies>,
@@ -7,9 +8,9 @@ const initialState = {
   loading: true,
 };
 
-type IInitialStateNewMovies = typeof initialState;
+export type IInitialStateNewMovies = typeof initialState;
 
-function reducer(state = initialState, action: any): IInitialStateNewMovies {
+function reducer(state = initialState, action: IAction<IMovies[]>): IInitialStateNewMovies {
   switch (action.type) {
     case types.LOAD_MOVIES:
       return {

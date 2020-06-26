@@ -1,51 +1,25 @@
-import {ICastActors, ITopActors, IMovies} from "../../react-app-env";
+import {
+    ICastActors,
+    IActorsMovies,
+    ICastMovies,
+    IDetailsMovies,
+    IDetailsActors,
+    IMovies,
+    ITopActors
+} from "react-app-env";
 
-interface IDetailsMovies {
-    backdrop_path: string,
-    release_date: string,
-    poster_path: string,
-    overview: string,
-    genres: string,
-    title: string,
-    vote_average: number,
-}
-
-interface IDetailsActors {
-    biography: string,
-    birthday: string,
-    name: string,
-    place_of_birth: string,
-    profile_path: string,
-}
-
-interface IActorsMovies {
-    results: IMovies[] | ITopActors[],
-    page: number,
-    total_pages: number,
-    total_results: number,
-}
-
-interface ICastMovies {
-    adult: boolean,
-    backdrop_path: string,
-    character: string,
-    credit_id: string,
-    genre_ids: number[],
-    id: number,
-    original_language: string,
-    original_title: string,
-    overview: string,
-    popularity: number,
-    poster_path: string,
-    release_date: string,
-    title: string,
-    video: boolean,
-    vote_average: number,
-    vote_count: number
-}
 
 export const guards = {
-    movActData: ({data}: { data: IActorsMovies }) => {
+    movData: ({data}: { data: IActorsMovies<IMovies[]> }) => {
+        // console.log("h")
+        // if(Array.isArray(request.data.results)){
+        //     return request.data.results
+        // } else {
+        //     return []
+        // }
+        return data.results
+    },
+    actData: ({data}: { data:  IActorsMovies<ITopActors[]> }) => {
         // console.log("h")
         // if(Array.isArray(request.data.results)){
         //     return request.data.results

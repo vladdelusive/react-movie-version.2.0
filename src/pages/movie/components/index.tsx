@@ -2,14 +2,26 @@ import React, { useState, useEffect} from "react";
 import "./style.css";
 import { Review } from "components";
 
-export const Reviews = React.memo(({ movieInfo, addReview, movieId }) => {
+interface Props {
+  movieInfo: string,
+  addReview: string,
+  movieId: string
+}
+
+interface IReview {
+  content: string,
+  author: string,
+  id: number,
+}
+
+export const Reviews = React.memo(({ movieInfo, addReview, movieId }: any) => {
   const { reviews, results: { title } } = movieInfo
   const [postIsAdd, setPostIsAdd] = useState(false)
   const [reviewForm, setReviewForm] = useState("")
   const [nameForm, setNameForm] = useState("")
 
   const [validation, setValidation] = useState({name: false, comment: false})
-  const addPost = (e) => {
+  const addPost = (e: any) => {
     e.preventDefault()
 
     if(reviewForm.trim().length < 5 || nameForm.trim().length < 3) {
@@ -34,7 +46,7 @@ export const Reviews = React.memo(({ movieInfo, addReview, movieId }) => {
   const textTitle = reviews.length 
     ? `Write your review to "${title}" movie!`
     : `Write first review to "${title}" movie!` 
-  const comments = reviews.map(({ author, id, content }) => {
+  const comments = reviews.map(({ author, id, content }: IReview ) => {
     return <Review key={id} content={content} author={author} />;
   });
   return (

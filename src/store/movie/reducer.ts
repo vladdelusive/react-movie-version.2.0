@@ -1,8 +1,20 @@
-import {types} from "./actions";
+import {IActionPayloadBadges, IActionPayloadData, IActionPayloadReviews, types} from "./actions";
+import {ICastActors, IMoviesState, IReviewsMovies} from "../../react-app-env";
 
-const initialState: any = {};
+interface IMovieState {
+    [key: number]: {
+        results: IMoviesState,
+        trailer: string,
+        cast: Array<ICastActors>,
+        reviews: [] | IReviewsMovies[],
+        movieBadges: []
+    }
+}
 
-function reducer(state = initialState, action: any) {
+type IActionTypes = IActionPayloadBadges & IActionPayloadData & IActionPayloadReviews
+const initialState: IMovieState = {};
+
+function reducer(state = initialState, action: IActionTypes) {
   switch (action.type) {
     case types.SET_DATA: 
       return {

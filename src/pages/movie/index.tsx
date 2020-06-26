@@ -4,8 +4,8 @@ import "./style.css";
 
 import { badges } from "constants/constants";
 import image from "assets/images/image.jpg";
-import {Reviews} from './components/index'
-
+import {Reviews} from './components'
+import * as H from 'history';
 import { makeImgUrl } from "helpers/make-img-url";
 import {Loader, Cast} from "components";
 import {useSelector} from "react-redux";
@@ -13,9 +13,30 @@ import {useActions} from "hooks/use-actions";
 import {actions} from "store/movie/actions";
 import {setRate} from "helpers/set-rate";
 
-export const PageMovie = React.memo((props) =>{
-  const movieInfo = useSelector(({movieInfo})=>{
-    console.log(movieInfo);return movieInfo})
+interface MatchParams {
+  movie: string;
+}
+
+interface Props extends RouteComponentProps<MatchParams> {}
+
+export interface RouteComponentProps<P> {
+  match: match<P>;
+  location: H.Location;
+  history: H.History;
+  staticContext?: any;
+}
+
+export interface match<P> {
+  params: P;
+  isExact: boolean;
+  path: string;
+  url: string;
+}
+
+export const PageMovie: React.FC<Props> = React.memo((props) =>{
+  const movieInfo = useSelector(({movieInfo}: { movieInfo: any } )=>{
+    console.log(movieInfo)
+    return movieInfo})
   const {fetchData, setBadges, addReview} = useActions(actions)
   const thisMovie = movieInfo[props.match.params.movie]
 
@@ -28,7 +49,7 @@ export const PageMovie = React.memo((props) =>{
 
   useEffect(() => {
     if (!thisMovie?.results?.genres) return;
-    let badgesId = [];
+    let badgesId: Array<number> = [];
     for (let i = 0; i < thisMovie.results.genres.length; i++) {
       let currentBadge = Math.round(Math.random() * 6);
       badgesId.some((badge) => currentBadge === badge)
@@ -36,7 +57,7 @@ export const PageMovie = React.memo((props) =>{
         : badgesId.push(currentBadge);
     }
 
-    const badgesList = thisMovie.results.genres.map((genre, id) => (
+    const badgesList = thisMovie.results.genres.map((genre: any, id: number) => (
       <Draggable draggableId={genre.name + genre.id} index={id} key={genre.id}>
         {(provided) => (
           <span
@@ -57,7 +78,7 @@ export const PageMovie = React.memo((props) =>{
 
   if(!thisMovie) return <Loader/> 
 
-  const onDragEnd = ({ destination, source }) => {
+  const onDragEnd = ({ destination, source }: any) => {
     if (!destination) return;
     if (destination.index === source.index) return;
     const newStateBadges = [...thisMovie.movieBadges];
@@ -73,7 +94,7 @@ export const PageMovie = React.memo((props) =>{
             <img
               src={
                 thisMovie.results.poster_path
-                  ? makeImgUrl(thisMovie.results.poster_path, {size: "large"})
+                  ? makeImgUrl!(thisMovie.results.poster_path, {size: "large"})
                   : image
               }
               alt="movie-post"
@@ -140,7 +161,6 @@ export const PageMovie = React.memo((props) =>{
               {thisMovie.trailer ? (
                 <iframe
                   frameBorder="0"
-                  allowFullScreen="1"
                   title="YouTube video player"
                   src={`https://www.youtube.com/embed/${thisMovie.trailer}?controls=1`}
                 />
@@ -151,12 +171,12 @@ export const PageMovie = React.memo((props) =>{
           </div>
         </div>
       </div>
-      <Reviews  
+      <Reviews
         movieId={props.match.params.movie}
         addReview={addReview}
-        movieInfo={thisMovie} 
+        movieInfo={thisMovie}
       />
-      
+
       {thisMovie.cast.length ? (
         <div className="cast-wrapper">
           <div className="section__title">

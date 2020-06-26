@@ -1,4 +1,8 @@
 /// <reference types="react-scripts" />
+import {ISearch} from "./store/search/types";
+import {IInitialStateNewMovies} from "./store/new-movies/reducer";
+import {ITopActorsState} from "./store/top-actors/types";
+
 export interface ICastActors {
     cast_id: number,
     character: string,
@@ -52,3 +56,130 @@ export interface IMovies {
     vote_average: number,
     vote_count: number
 }
+
+export interface IActorsMovies<T> {
+    results: T,
+    page: number,
+    total_pages: number,
+    total_results: number,
+}
+
+export interface ICastMovies {
+    adult: boolean,
+    backdrop_path: string,
+    character: string,
+    credit_id: string,
+    genre_ids: number[],
+    id: number,
+    original_language: string,
+    original_title: string,
+    overview: string,
+    popularity: number,
+    poster_path: string,
+    release_date: string,
+    title: string,
+    video: boolean,
+    vote_average: number,
+    vote_count: number
+}
+
+export interface IDetailsMovies {
+    backdrop_path: string,
+    release_date: string,
+    poster_path: string,
+    overview: string,
+    genres: Array<{id: number, name: string}>,
+    title: string,
+    vote_average: number,
+}
+
+export interface IDetailsActors {
+    biography: string,
+    birthday: string,
+    name: string,
+    place_of_birth: string,
+    profile_path: string,
+}
+
+interface IPersonInfo {
+    adult: boolean,
+    gender: number,
+    id: number,
+    deathday: null | string,
+    known_for_department: [],
+    media_type?: string,
+    popularity: number,
+    biography: string,
+    birthday: string,
+    name: string,
+    place_of_birth: string,
+    profile_path: string,
+    also_known_as: [] | null,
+    homepage: null | string
+}
+
+export interface IStore {
+    search: ISearch,
+    movies: IInitialStateNewMovies,
+    actors: ITopActorsState,
+    actorInfo: {
+        [key: number]: {
+            moviesInfo: ICastMovies[],
+            personInfo: (IDetailsActors & IPersonInfo)
+        }
+    },
+    movieInfo: {
+        [key: number]: {
+            results: IMoviesState,
+            trailer: string,
+            cast: Array<ICastActors>,
+            reviews: [] | IReviewsMovies[],
+            movieBadges: []
+        }
+    },
+}
+
+interface ISpokenLanguages {
+    iso_639_1: string,
+    name: string
+}
+
+interface IGenre {
+    id: number,
+    name: string
+}
+
+export interface IMoviesState {
+    adult: boolean,
+    backdrop_path: string,
+    belongs_to_collection: null | object
+    budget: number,
+    genres: IGenre[],
+    homepage: string | null,
+    id: number,
+    imdb_id: string | null,
+    original_language: string,
+    original_title: string,
+    overview: string | null,
+    popularity: number,
+    poster_path: string | null,
+    release_date: string,
+    revenue: number,
+    runtime: number | null,
+    spoken_languages: ISpokenLanguages[],
+    status: string,
+    tagline: string | null,
+    title: string,
+    video: boolean,
+    vote_average: number,
+    vote_count: number
+}
+
+interface IReviewsMovies {
+    author: string,
+    content: string,
+    id: string,
+    url: string,
+}
+
+

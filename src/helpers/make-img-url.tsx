@@ -3,7 +3,7 @@ import female from 'assets/images/unknown_female.png'
 
 interface Options {
     size?: string,
-    placeholder: string
+    placeholder?: string
 }
 
 const imgSizes: any = {
