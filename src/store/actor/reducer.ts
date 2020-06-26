@@ -1,8 +1,16 @@
-import {types} from "./actions";
+import {IAction, types} from "./actions";
+import {ICastMovies, IDetailsActors, IPersonInfo} from "../../react-app-env";
 
-const initialState: any = {};
+interface IActorState {
+    [key: number]: {
+        moviesInfo: ICastMovies[],
+        personInfo: (IDetailsActors & IPersonInfo)
+    }
+}
 
-function reducer(state = initialState, action: any) {
+const initialState: IActorState = {};
+
+function reducer(state = initialState, action: IAction) {
   switch (action.type) {
     case types.SET_DATA:
       return {
