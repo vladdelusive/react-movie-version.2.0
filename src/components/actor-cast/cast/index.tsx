@@ -1,6 +1,6 @@
 import React from "react";
 import {Actor, ArrowTop} from "components/index";
-import {ICast, ITopActors} from "react-app-env";
+import {ITopActors} from "react-app-env";
 
 export const Cast = React.memo(function({ cast }: {cast: ITopActors[]}) {
   const identityId: number[] = [];

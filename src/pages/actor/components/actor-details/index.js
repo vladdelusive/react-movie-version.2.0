@@ -43,19 +43,19 @@ export const ActorDetails = React.memo(({ personInfo, moviesInfo })=> {
                     </p>
                 </div>
             </div>
-            {moviesInfo.length ? <>
-                <div className="button-content">
-                    <button
-                        className="btn actor-movies"
-                        onClick={showMovies}
-                        type="button">
-                        {classesMovie ? "Show movies" : "Hide movies"}
-                    </button>
-                </div>
-                <div className={classesMovie}>
-                    <ActorMovies cast={moviesInfo}/>
-                </div>
-            </> : ""}
+                {moviesInfo.length ? <>
+                    <div className="button-content">
+                        <button
+                            className="btn actor-movies"
+                            onClick={showMovies}
+                            type="button">
+                            {classesMovie ? "Show movies" : "Hide movies"}
+                        </button>
+                    </div>
+                    <div className={classesMovie}>
+                        <ActorMovies cast={moviesInfo}/>
+                    </div>
+                </> : ""}
         </>
     )
 })

@@ -1,7 +1,8 @@
 /// <reference types="react-scripts" />
 import {ISearch} from "./store/search/types";
 import {IInitialStateNewMovies} from "./store/new-movies/reducer";
-import {ITopActorsState} from "./store/top-actors/types";
+
+import { IActorsState } from 'store/actors/types'
 
 export interface ICastActors {
     cast_id: number,
@@ -121,13 +122,7 @@ interface IPersonInfo {
 export interface IStore {
     search: ISearch,
     movies: IInitialStateNewMovies,
-    actors: ITopActorsState,
-    actorInfo: {
-        [key: number]: {
-            moviesInfo: ICastMovies[],
-            personInfo: (IDetailsActors & IPersonInfo)
-        }
-    },
+    actors: IActorsState,
     movieInfo: {
         [key: number]: {
             results: IMoviesState,

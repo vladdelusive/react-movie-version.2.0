@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import {Loader, Cast, BtnLoader} from "components";
 import {useSelector} from "react-redux";
 import {useActions} from "hooks/use-actions";
-import {actions} from "store/top-actors/actions";
-import {ITopActors} from "../../react-app-env";
+import {actions} from "store/actors/actions";
+import {ITopActors} from "react-app-env";
 
 interface RootState {
   actors: ITopActors[],
@@ -11,7 +11,7 @@ interface RootState {
 }
 
 export function Actors() {
-  const {actors, loading} = useSelector(({actors}: {actors: RootState})=>actors)
+  const {actors, loading} = useSelector(({actors}: {actors: {topActors: RootState}})=>actors.topActors) 
   const {fetchActors} = useActions(actions)
   useEffect(() => {
     if(!actors.length){
