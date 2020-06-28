@@ -4,8 +4,8 @@ import {Loader, BtnLoader, ArrowTop} from "components";
 import {Content} from "./content";
 import {useSelector} from "react-redux";
 import {useActions} from "hooks/use-actions";
-import {actions} from "store/new-movies/actions";
-import {IMovies} from "../../react-app-env";
+import {actions} from "store/movies/actions";
+import {IMovies} from "react-app-env";
 
 interface IMoviesPage {
   movies: IMovies[],
@@ -13,7 +13,7 @@ interface IMoviesPage {
 }
 
 export function MoviesPage() {
-  const {movies, loading} = useSelector(({movies}: {movies: IMoviesPage })=>movies)
+  const {movies, loading} = useSelector(({movies}: {movies: {topMovies: IMoviesPage} })=>movies.topMovies)
   const {fetchMovies} = useActions(actions)
   useEffect(() => {
     if(!movies.length){

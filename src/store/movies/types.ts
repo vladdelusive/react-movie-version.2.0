@@ -1,49 +1,38 @@
-import {ICastMovies, IDetailsActors, IPersonInfo} from "../../react-app-env";
-
-export interface IActorsResult {
-    adult: boolean,
-    gender: number,
-    id: number,
-    known_for: [],
-    known_for_department: [],
-    media_type?: string,
-    name: string,
-    popularity: number,
-    profile_path: string,
-} 
-
-export interface ITopActorsState {
-    actors: IActorsResult[],
-    page: number,
-    loading: boolean
-}
-
-export interface IActorsState{
-    topActors: ITopActorsState,
-    actorsInfo: {
+import { IMovieState, ICastActors, IReviewsMovies, IMovies } from 'react-app-env'
+import { types } from './actions'
+export interface IMoviesState {
+    topMovies: {
+        movies: Array<IMovies>,
+        page: number,
+        loading: boolean,
+    },
+    moviesInfo: {
         [key: number]: {
-            moviesInfo: ICastMovies[],
-            personInfo: (IDetailsActors & IPersonInfo)
-        }
+            results: IMovieState,
+            trailer: string,
+            cast: Array<ICastActors>,
+            reviews: [] | IReviewsMovies[],
+            movieBadges: [] 
+        }  
     }
 }
 
-export interface IActionTopActors<T = Record<any, any>> {
+export interface IAction<T = Record<any, any>> {
     type: string,
     payload: T
 }
 
-export interface IAction {
-    type: string,
+export type IActionPayloadData = {type: typeof types.SET_DATA_INFO} & IActionPayload
+export type IActionPayloadBadges = {type: typeof types.SET_BADGES_INFO, payload: [], id: number}
+export type IActionPayloadReviews = {type: typeof types.ADD_REVIEW_INFO, movieId: number, review: IReviewsMovies}
+
+export type IActionPayload = {
     id: number,
-    movies: ICastMovies[],
-    person: (IDetailsActors & IPersonInfo)
+    results: IMovieState,
+    trailer: string,
+    cast: Array<ICastActors>,
+    reviews: [] | IReviewsMovies[],
 }
 
-export interface IActorIdData {
-    id: number,
-    movies: ICastMovies[],
-    person: (IDetailsActors & IPersonInfo)
-}
+export type IActionTypes = IActionPayloadBadges & IActionPayloadData & IActionPayloadReviews 
 
-export type IActionTypes = IActionTopActors<IActorsResult[]> & IActorIdData

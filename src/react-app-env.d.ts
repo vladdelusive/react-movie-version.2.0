@@ -1,7 +1,6 @@
 /// <reference types="react-scripts" />
 import {ISearch} from "./store/search/types";
-import {IInitialStateNewMovies} from "./store/new-movies/reducer";
-
+import { IMoviesState } from 'store/movies/types'
 import { IActorsState } from 'store/actors/types'
 
 export interface ICastActors {
@@ -121,17 +120,8 @@ interface IPersonInfo {
 
 export interface IStore {
     search: ISearch,
-    movies: IInitialStateNewMovies,
+    movies: IMoviesState, 
     actors: IActorsState,
-    movieInfo: {
-        [key: number]: {
-            results: IMoviesState,
-            trailer: string,
-            cast: Array<ICastActors>,
-            reviews: [] | IReviewsMovies[],
-            movieBadges: []
-        }
-    },
 }
 
 interface ISpokenLanguages {
@@ -144,7 +134,7 @@ interface IGenre {
     name: string
 }
 
-export interface IMoviesState {
+export interface IMovieState {
     adult: boolean,
     backdrop_path: string,
     belongs_to_collection: null | object
