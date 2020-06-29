@@ -1,6 +1,16 @@
 import {API} from "services/api";
 import {guards} from 'services/api/guards'
-import {IActionSearch} from "./types";
+import {
+    IActionSearch,
+    IActionSetPayloadActorsAndMovies,
+    IActionSetPayloadActors,
+    IActionSetPayloadMovies,
+    IActionPayloadActorsSearch,
+    IActionPayloadMoviesSearch,
+    IActors
+} from "./types";
+import {ThunkAction} from "redux-thunk";
+import {ICastMovies} from "react-app-env";
 
 export const types = {
     UPLOAD_ACTORS_MOVIES: "@search/UPLOAD_ACTORS_MOVIES",
@@ -27,19 +37,22 @@ export const actions = {
     changeActorPage: (payload: IActionSearch) => ({type: types.ACTORS_PAGE, payload }),
     setInput: (payload: IActionSearch) => ({type: types.SET_INPUT, payload}),
     inputIsActive: (payload: IActionSearch) => ({type: types.INPUT_IS_ACTIVE, payload}),
-    setActorsAndMovies: ({actors, movies}: any) => ({type: types.UPLOAD_ACTORS_MOVIES, actors, movies}),
-    setActors: ({actors}: any) => ({type: types.SET_SEARCH_ACTORS, actors}),
-    setMovies: ({movies}: any) => ({type: types.SET_SEARCH_MOVIES, movies}),
-    fetchInputValue: (query: string) => async (dispatch: any) => {
+    setActorsAndMovies: ({actors, movies}: { actors: IActors[], movies: ICastMovies[] })  => ({type: types.UPLOAD_ACTORS_MOVIES, actors, movies}),
+    setActors: ({actors}: IActionPayloadActorsSearch) => ({type: types.SET_SEARCH_ACTORS, actors}),
+    setMovies: ({movies}: IActionPayloadMoviesSearch) => ({type: types.SET_SEARCH_MOVIES, movies}),
+
+    fetchInputValue: (query: string): ThunkAction<Promise<void>, unknown, unknown, IActionSetPayloadActorsAndMovies> => async (dispatch) => {
         const fetches = [API.SEARCH_MOVIE({query}), API.SEARCH_ACTOR({query})];
-        const [MOVIES, ACTORS] = await Promise.all(fetches).then(([mov, act]) => [guards.movieResults(mov), guards.movieResults(act)]);
-        dispatch(actions.setActorsAndMovies({actors: ACTORS, movies: MOVIES}))
+        const [movies, actors] = await Promise.all(fetches).then(([mov, act]) => [guards.movieResults(mov), guards.movieResults(act)]);
+        dispatch(actions.setActorsAndMovies({actors, movies}))
     },
-    fetchSearchActors: (query: string, page: number) => async (dispatch: any) => {
+
+    fetchSearchActors: (query: string, page: number): ThunkAction<Promise<void>, unknown, unknown, IActionSetPayloadActors> => async (dispatch) => {
         const fetched = await API.SEARCH_ACTOR({query, page})
         dispatch(actions.setActors({actors: guards.searchData(fetched)}))
     },
-    fetchSearchMovies: (query: string, page: number) => async (dispatch: any) => {
+
+    fetchSearchMovies: (query: string, page: number): ThunkAction<Promise<void>, unknown, unknown, IActionSetPayloadMovies>  => async (dispatch) => {
         const fetched = await API.SEARCH_MOVIE({query, page})
         dispatch(actions.setMovies({movies: guards.searchData(fetched)}))
     }

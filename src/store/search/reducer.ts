@@ -1,5 +1,5 @@
 import {types} from "./actions";
-import {ISearch} from "./types";
+import {ActionTypes, ISearch} from "./types";
 
 const initialState: ISearch = {
   inputValue: "",
@@ -17,13 +17,27 @@ const initialState: ISearch = {
   totalPagesActors: 0
 };
 
-export const reducer = (state = initialState, action: any): ISearch => {
+export const reducer = (state = initialState, action: ActionTypes): ISearch => {
   switch (action.type) {
     case types.UPLOAD_ACTORS_MOVIES:
       return {
         ...state,
         resultsActors: action.actors,
         resultsMovies: action.movies,
+      };
+    case types.SET_SEARCH_ACTORS:
+      return {
+        ...state,
+        searchedActors: action.actors.results,
+        totalPagesActors: action.actors.total_pages,
+        loading: false
+      };
+    case types.SET_SEARCH_MOVIES:
+      return {
+        ...state,
+        searchedMovies: action.movies.results,
+        totalPagesMovies: action.movies.total_pages,
+        loading: false
       };
     case types.OFFLOAD_DATA:
       return {
@@ -74,20 +88,6 @@ export const reducer = (state = initialState, action: any): ISearch => {
       return {
         ...state,
         burgerActive: !state.burgerActive,
-      };
-    case types.SET_SEARCH_ACTORS:
-      return {
-        ...state,
-        searchedActors: action.actors!.results,
-        totalPagesActors: action.actors!.total_pages,
-        loading: false
-    };
-    case types.SET_SEARCH_MOVIES:
-      return {
-        ...state,
-        searchedMovies: action.movies!.results,
-        totalPagesMovies: action.movies!.total_pages,
-        loading: false
       };
     default:
       return state;

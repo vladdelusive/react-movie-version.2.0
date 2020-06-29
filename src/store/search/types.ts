@@ -1,4 +1,4 @@
-import { IMovies} from "react-app-env";
+import {ICastMovies, IMovies} from "react-app-env";
 
 export interface ISearchActors {
     adult: boolean,
@@ -15,13 +15,13 @@ export interface ISearch {
     inputValue: string,
     showSearchedItems: boolean,
     resultsActors: null | IActors[],
-    resultsMovies: null | IMovies[],
+    resultsMovies: null | ICastMovies[],
     burgerActive: boolean,
     inputOpen: boolean,
     pageActors: number,
     pageMovies: number,
-    searchedMovies: IMovies[],
-    searchedActors: IActors[],
+    searchedMovies: null | ICastMovies[],
+    searchedActors: null | IActors[],
     loading: boolean,
     totalPagesMovies: number,
     totalPagesActors: number,
@@ -29,12 +29,10 @@ export interface ISearch {
 
 export interface IActionSearch {
     type: string,
-    payload?: any,
-    actors?: IActorsMovies<IActors>,
-    movies?: IActorsMovies<IMovies>
+    payload: any,
 }
 
-interface IActors {
+export interface IActors {
     adult: boolean,
     gender: number,
     id: number,
@@ -51,4 +49,14 @@ interface IActorsMovies<T> {
     total_pages: number,
     total_results: number,
 }
+
+export type IActionSetPayloadActorsAndMovies = { actors: IActors[], movies: ICastMovies[], type: string }
+
+export type IActionSetPayloadActors = IActionPayloadActorsSearch & {type: string}
+export type IActionSetPayloadMovies = IActionPayloadMoviesSearch & {type: string}
+
+export type IActionPayloadActorsSearch = {actors: IActorsMovies<IActors>}
+export type IActionPayloadMoviesSearch = {movies: IActorsMovies<ICastMovies>}
+
+export type ActionTypes = (IActionSetPayloadActorsAndMovies & IActionSetPayloadActors & IActionSetPayloadMovies & IActionSearch)
 
