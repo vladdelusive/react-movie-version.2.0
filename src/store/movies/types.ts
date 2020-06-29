@@ -7,14 +7,16 @@ export interface IMoviesState {
         loading: boolean,
     },
     moviesInfo: {
-        [key: number]: {
-            results: IMovieState,
-            trailer: string,
-            cast: Array<ICastActors>,
-            reviews: [] | IReviewsMovies[],
-            movieBadges: [] 
-        }  
+        [key: number]: IMovieInfo
     }
+}
+
+export interface IMovieInfo {
+    results: IMovieState,
+    trailer: string,
+    cast: Array<ICastActors>,
+    reviews: IReviewsMovies[],
+    movieBadges: []
 }
 
 export interface IAction<T = Record<any, any>> {

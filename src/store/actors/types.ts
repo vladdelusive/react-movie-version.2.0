@@ -21,11 +21,13 @@ export interface ITopActorsState {
 export interface IActorsState{
     topActors: ITopActorsState,
     actorsInfo: {
-        [key: number]: {
-            moviesInfo: ICastMovies[],
-            personInfo: (IDetailsActors & IPersonInfo)
-        }
+        [key: number]: IActorInfo
     }
+}
+
+export interface IActorInfo {
+    moviesInfo: ICastMovies[],
+    personInfo: (IDetailsActors & IPersonInfo)
 }
 
 export interface IActionTopActors<T = Record<any, any>> {

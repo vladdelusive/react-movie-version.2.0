@@ -13,8 +13,10 @@ import {useActions} from "hooks/use-actions";
 import {actions} from "store/movies/actions";
 import {setRate} from "helpers/set-rate";
 
+import { IStore } from "react-app-env";
+
 interface MatchParams {
-  movie: string;
+  movie: number;
 }
 
 interface Props extends RouteComponentProps<MatchParams> {}
@@ -34,7 +36,7 @@ export interface match<P> {
 }
 
 export const PageMovie: React.FC<Props> = React.memo((props) =>{
-  const movieInfo = useSelector(({movies}: { movies: any } )=> movies.moviesInfo)
+  const movieInfo = useSelector(({movies}: IStore )=> movies.moviesInfo)
   const {fetchData, setBadges, addReview} = useActions(actions)
   const thisMovie = movieInfo[props.match.params.movie]
 

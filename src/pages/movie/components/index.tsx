@@ -1,20 +1,16 @@
 import React, { useState, useEffect} from "react";
 import "./style.css";
 import { Review } from "components";
+import {IMovieInfo} from "../../../store/movies/types";
+import {IReviewsMovies} from "react-app-env";
 
 interface Props {
-  movieInfo: string,
-  addReview: string,
-  movieId: string
+  movieInfo: IMovieInfo,
+  addReview: ({movieId, review}:{movieId: number, review: IReviewsMovies}) => void,
+  movieId: number
 }
 
-interface IReview {
-  content: string,
-  author: string,
-  id: number,
-}
-
-export const Reviews = React.memo(({ movieInfo, addReview, movieId }: any) => {
+export const Reviews = React.memo(({ movieInfo, addReview, movieId }: Props) => {
   const { reviews, results: { title } } = movieInfo
   const [postIsAdd, setPostIsAdd] = useState(false)
   const [reviewForm, setReviewForm] = useState("")
@@ -46,7 +42,7 @@ export const Reviews = React.memo(({ movieInfo, addReview, movieId }: any) => {
   const textTitle = reviews.length 
     ? `Write your review to "${title}" movie!`
     : `Write first review to "${title}" movie!` 
-  const comments = reviews.map(({ author, id, content }: IReview ) => {
+  const comments = reviews.map(({ author, id, content }: IReviewsMovies ): JSX.Element => {
     return <Review key={id} content={content} author={author} />;
   });
   return (

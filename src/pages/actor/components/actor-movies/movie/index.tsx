@@ -4,7 +4,13 @@ import { makeImgUrl } from "helpers/make-img-url";
 import { Link } from "react-router-dom";
 import image from "assets/images/image.jpg";
 
-export function Movie({ id, img, title }) {
+interface IPropsMovie {
+    id: number,
+    title: string,
+    img: string
+}
+
+export function Movie({ id, img, title }: IPropsMovie) {
   return (
     <div className="card">
       <div className="card__header">

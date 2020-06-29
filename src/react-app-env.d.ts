@@ -160,11 +160,11 @@ export interface IMovieState {
     vote_count: number
 }
 
-interface IReviewsMovies {
+export interface IReviewsMovies {
     author: string,
     content: string,
     id: string,
-    url: string,
+    url?: string,
 }
 
 
