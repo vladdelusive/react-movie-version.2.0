@@ -2,7 +2,7 @@ import {API} from "services/api";
 import {guards} from 'services/api/guards'
 import {IActorsResult, IActionTopActors, IAction, IActorIdData } from "./types";
 import {ThunkAction} from "redux-thunk";
-import {IStore} from "../../react-app-env";
+import {IStore} from "react-app-env";
 
 export const types = {
     LOAD_TOP_ACTORS: "@actors/top_actors/LOAD_TOP_ACTORS",

@@ -53,7 +53,7 @@ export const FormSearch = React.memo(() => {
     }
 
     useEffect(() => {
-        const checkerEvents = ({target}:any): void => {
+        const checkerEvents = ({target}: any): void => {
             if(target.closest(".form")) return
             toggleSuggestions(false)
             return

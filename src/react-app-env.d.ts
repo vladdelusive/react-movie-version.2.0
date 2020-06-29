@@ -2,6 +2,7 @@
 import {ISearch} from "./store/search/types";
 import { IMoviesState } from 'store/movies/types'
 import { IActorsState } from 'store/actors/types'
+import * as H from "history";
 
 export interface ICastActors {
     cast_id: number,
@@ -12,13 +13,6 @@ export interface ICastActors {
     name: string,
     order: number,
     profile_path: string,
-}
-
-export interface ICast {
-    id: number,
-    name: string,
-    profile_path: string,
-    gender: number,
 }
 
 export interface ICard {
@@ -168,3 +162,16 @@ export interface IReviewsMovies {
 }
 
 
+export interface RouteComponentProps<P> {
+    match: match<P>;
+    location: H.Location;
+    history: H.History;
+    staticContext?: any;
+}
+
+export interface match<P> {
+    params: P;
+    isExact: boolean;
+    path: string;
+    url: string;
+}

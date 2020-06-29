@@ -6,7 +6,6 @@ import {ActorMovies} from "../actor-movies";
 import {convertAge} from 'helpers/age-converter'
 import {IActorInfo} from "store/actors/types";
 
-
 export const ActorDetails: React.FC<IActorInfo> = React.memo(({ personInfo, moviesInfo })=> {
     const [classesMovie, setClassesMovie] = useState("moviesIsShow");
     const showMovies = () => {

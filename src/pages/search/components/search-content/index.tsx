@@ -10,7 +10,7 @@ import './style.css'
 import 'rc-pagination/assets/index.css';
 import { actions } from 'store/search/actions'
 import { useActions } from 'hooks/use-actions'
-import {ISearch} from "../../types";
+import {ISearch} from "store/search/types";
 
 
 export const SearchContent = React.memo(({query}: {query: string})=> {
@@ -52,7 +52,7 @@ export const SearchContent = React.memo(({query}: {query: string})=> {
                 <div ref={moviesElementTitle} className="subtitle subtitle__movies">Movies:</div>
                     <div className="pagination">
                         {
-                            (!loading && searchedMovies.length) ? <Pagination
+                            (!loading && searchedMovies?.length) ? <Pagination
                                 current={pageMovies}
                                 total={totalPagesMovies}
                                 onChange={changeMoviePage}
@@ -64,11 +64,11 @@ export const SearchContent = React.memo(({query}: {query: string})=> {
                         loading ?
                             <Loader/>
                             :
-                            (searchedMovies.length ? <SearchCardsContentMovies results={searchedMovies} path="/movies"/>
+                            (searchedMovies?.length ? <SearchCardsContentMovies results={searchedMovies} path="/movies"/>
                                 : <NotFound/>)
                     }
                     {
-                        (!loading && searchedMovies.length) ? <Pagination
+                        (!loading && searchedMovies?.length) ? <Pagination
                         current={pageMovies}
                         total={totalPagesMovies}
                         onChange={onClickPageMovies}
@@ -80,7 +80,7 @@ export const SearchContent = React.memo(({query}: {query: string})=> {
                 <div ref={actorsElementTitle}  className="subtitle subtitle__actors">Actors:</div>
                     <div className="pagination">
                         {
-                            (!loading && searchedActors.length) ? <Pagination
+                            (!loading && searchedActors?.length) ? <Pagination
                                 current={pageActors}
                                 total={totalPagesActors}
                                 onChange={changeActorPage}
@@ -91,13 +91,13 @@ export const SearchContent = React.memo(({query}: {query: string})=> {
                     {
                         loading ?
                             <Loader/>
-                            : (searchedActors.length ?
+                            : (searchedActors?.length ?
                                 <SearchCardsContentActors cast={searchedActors}/>
                                 : <NotFound/>
                             )
                     }
                     {
-                        (!loading && searchedActors.length) ? <Pagination
+                        (!loading && searchedActors?.length) ? <Pagination
                             current={pageActors}
                             total={totalPagesActors}
                             onChange={onClickPageActors}

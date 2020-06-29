@@ -17,4 +17,4 @@ export const POPULAR: string  = "POPULAR";
 export const ACTORS: string  = "ACTORS";
 
 // debouncing timeout
-export const FETCH_TIMEOUT: number  = 500;
+export const FETCH_TIMEOUT: number  = 300;

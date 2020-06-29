@@ -1,6 +1,5 @@
 import {IParamsSearch} from "./index";
 
-
 export const endpoints = {
     SEARCH_MOVIE: ({query, page = 1}: IParamsSearch): string => `search/movie?query=${query}&page=${page}`,
     SEARCH_ACTOR: ({query, page = 1}: IParamsSearch): string => `search/person?query=${query}&page=${page}`,

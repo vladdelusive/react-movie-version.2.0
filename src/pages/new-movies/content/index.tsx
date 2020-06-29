@@ -12,7 +12,7 @@ interface IContent {
   path: string
 }
 
-export const Content = React.memo(({ results, path }: IContent) => {
+export const Content: React.FC<IContent> = React.memo(({ results, path }) => {
   const identityId: number[] = [];
   return results.map((movie: IMovies) => {
     if (identityId.find((el) => el === movie.id)) {

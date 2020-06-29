@@ -18,7 +18,7 @@ interface ISearch {
 }
 
 export const Search = React.memo(function({ value, searchResultActors, searchResultMovies }: ISearch) {
-  const {toggleSuggestions, reloadPage } = useActions(actions)
+  const {toggleSuggestions, reloadPage} = useActions(actions)
 
   if (!searchResultMovies || !searchResultActors) return null;
 

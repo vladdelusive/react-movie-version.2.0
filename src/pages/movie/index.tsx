@@ -5,7 +5,6 @@ import "./style.css";
 import { badges } from "constants/constants";
 import image from "assets/images/image.jpg";
 import {Reviews} from './components'
-import * as H from 'history';
 import { makeImgUrl } from "helpers/make-img-url";
 import {Loader, Cast} from "components";
 import {useSelector} from "react-redux";
@@ -13,27 +12,13 @@ import {useActions} from "hooks/use-actions";
 import {actions} from "store/movies/actions";
 import {setRate} from "helpers/set-rate";
 
-import { IStore } from "react-app-env";
+import {IStore, RouteComponentProps} from "react-app-env";
 
 interface MatchParams {
   movie: number;
 }
 
 interface Props extends RouteComponentProps<MatchParams> {}
-
-export interface RouteComponentProps<P> {
-  match: match<P>;
-  location: H.Location;
-  history: H.History;
-  staticContext?: any;
-}
-
-export interface match<P> {
-  params: P;
-  isExact: boolean;
-  path: string;
-  url: string;
-}
 
 export const PageMovie: React.FC<Props> = React.memo((props) =>{
   const movieInfo = useSelector(({movies}: IStore )=> movies.moviesInfo)

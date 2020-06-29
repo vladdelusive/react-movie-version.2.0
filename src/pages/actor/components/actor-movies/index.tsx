@@ -5,7 +5,7 @@ import {ICastMovies} from "react-app-env";
 
 export const ActorMovies: React.FC<{cast: ICastMovies[]}> = memo(function({ cast }) {
   const identityId: number[] = [];
-  const movies = cast.map((movie) => {
+  const movies = cast.map((movie: ICastMovies) => {
     if (identityId.find((el) => el === movie.id)) {
       return "";
     }

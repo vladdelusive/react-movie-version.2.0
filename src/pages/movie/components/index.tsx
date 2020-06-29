@@ -1,7 +1,7 @@
-import React, { useState, useEffect} from "react";
+import React, {useState, useEffect, FormEvent} from "react";
 import "./style.css";
 import { Review } from "components";
-import {IMovieInfo} from "../../../store/movies/types";
+import {IMovieInfo} from "store/movies/types";
 import {IReviewsMovies} from "react-app-env";
 
 interface Props {
@@ -17,8 +17,8 @@ export const Reviews = React.memo(({ movieInfo, addReview, movieId }: Props) => 
   const [nameForm, setNameForm] = useState("")
 
   const [validation, setValidation] = useState({name: false, comment: false})
-  const addPost = (e: any) => {
-    e.preventDefault()
+  const addPost = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault()
 
     if(reviewForm.trim().length < 5 || nameForm.trim().length < 3) {
       reviewForm.length < 5 && setValidation((prev)=>({...prev, comment: true}))

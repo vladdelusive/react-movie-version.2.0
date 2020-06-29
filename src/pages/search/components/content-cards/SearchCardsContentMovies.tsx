@@ -11,7 +11,6 @@ interface Interface {
 }
 
 export const SearchCardsContentMovies = React.memo<Interface>(({ results, path }) => {
-    console.log(results)
     const identityId: number[] = []
     return results.map((movie: IMovies) => {
         if(identityId.find((el)=>el===movie.id)){

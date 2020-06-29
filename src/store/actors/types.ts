@@ -1,4 +1,4 @@
-import {ICastMovies, IDetailsActors, IPersonInfo} from "../../react-app-env";
+import {ICastMovies, IDetailsActors, IPersonInfo} from "react-app-env";
 
 export interface IActorsResult {
     adult: boolean,
