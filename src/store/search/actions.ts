@@ -49,12 +49,12 @@ export const actions = {
 
     fetchSearchActors: (query: string, page: number): ThunkAction<Promise<void>, unknown, unknown, IActionSetPayloadActors> => async (dispatch) => {
         const fetched = await API.SEARCH_ACTOR({query, page})
-        dispatch(actions.setActors({actors: guards.searchData(fetched)}))
+        dispatch(actions.setActors({actors: guards.searchData<IActors>(fetched)}))
     },
 
     fetchSearchMovies: (query: string, page: number): ThunkAction<Promise<void>, unknown, unknown, IActionSetPayloadMovies>  => async (dispatch) => {
         const fetched = await API.SEARCH_MOVIE({query, page})
-        dispatch(actions.setMovies({movies: guards.searchData(fetched)}))
+        dispatch(actions.setMovies({movies: guards.searchData<ICastMovies>(fetched)}))
     }
 }
 

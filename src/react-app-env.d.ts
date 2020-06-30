@@ -52,7 +52,7 @@ export interface IMovies {
 }
 
 export interface IActorsMovies<T> {
-    results: T,
+    results: T[],
     page: number,
     total_pages: number,
     total_results: number,
@@ -160,7 +160,6 @@ export interface IReviewsMovies {
     id: string,
     url?: string,
 }
-
 
 export interface RouteComponentProps<P> {
     match: match<P>;

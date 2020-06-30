@@ -1,11 +1,11 @@
-import {ICastMovies} from "react-app-env";
+import {ICastMovies, IActorsMovies} from "react-app-env";
 
 export interface ISearch {
     inputValue: string,
     showSearchedItems: boolean,
     resultsActors: null | IActors[],
     resultsMovies: null | ICastMovies[],
-    burgerActive: boolean,
+    burgerIsActive: boolean,
     inputOpen: boolean,
     pageActors: number,
     pageMovies: number,
@@ -30,13 +30,6 @@ export interface IActors {
     name: string,
     popularity: number,
     profile_path: string,
-}
-
-interface IActorsMovies<T> {
-    results: T[]
-    page: number,
-    total_pages: number,
-    total_results: number,
 }
 
 export type IActionSetPayloadActorsAndMovies = { actors: IActors[], movies: ICastMovies[], type: string }

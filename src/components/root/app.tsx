@@ -3,19 +3,19 @@ import {useSelector} from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import "./app.css";
 
-import {Header, BurgerMenu, DeveloperLink} from "components/index";
+import {Header, BurgerMenu, DeveloperLink} from "components";
 import {Main, MoviePage, Actors, ActorPage, InputPage, NotFoundPage, MoviesPage, } from "pages";
 
 interface RootState {
-    burgerActive: boolean
+    burgerIsActive: boolean
 }
 
 function App() {
-  const burgerActive = useSelector(({ search }: { search: RootState }) => search.burgerActive);
+  const burgerIsActive = useSelector(({ search }: { search: RootState }) => search.burgerIsActive);
   return (
     <>
       <BurgerMenu />
-      <div className={`layout${burgerActive ? " layout--transform" : ""}`}>
+      <div className={`layout${burgerIsActive ? " layout--transform" : ""}`}>
         <Header />
           <main className="section">
               <Switch>

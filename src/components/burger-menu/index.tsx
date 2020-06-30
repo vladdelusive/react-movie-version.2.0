@@ -4,22 +4,22 @@ import { useSelector } from "react-redux";
 import { actions } from "store/search/actions";
 import { useActions } from "hooks/use-actions";
 import {Overlay} from "./overlay";
-import { DeveloperLink } from "components/index";
+import { DeveloperLink } from "components";
 import CloseBurger from "assets/images/closeBurger.png";
 import "./style.css";
 
 interface RootStateBurger {
-  burgerActive: boolean
+  burgerIsActive: boolean
 }
  
 export function BurgerMenu() {
-  const burgerActive = useSelector(({ search }: { search: RootStateBurger }) => search.burgerActive);
+  const burgerIsActive = useSelector(({ search }: { search: RootStateBurger }) => search.burgerIsActive);
   const { burgerToggle } = useActions(actions);
   return (
     <>
-      {burgerActive && <Overlay />}
+      {burgerIsActive && <Overlay />}
       <div
-        className={`panel-menu ${burgerActive ? "panel-menu--transform" : ""}`}
+        className={`panel-menu ${burgerIsActive ? "panel-menu--transform" : ""}`}
       >
         <DeveloperLink />
         <div className="close-burger" onClick={burgerToggle}>

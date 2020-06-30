@@ -6,7 +6,7 @@ const initialState: ISearch = {
   showSearchedItems: false,
   resultsActors: null,
   resultsMovies: null,
-  burgerActive: false,
+  burgerIsActive: false,
   inputOpen: false,
   pageActors: 1,
   pageMovies: 1,
@@ -87,7 +87,7 @@ export const reducer = (state = initialState, action: ActionTypes): ISearch => {
     case types.BURGER_TOGGLE:
       return {
         ...state,
-        burgerActive: !state.burgerActive,
+        burgerIsActive: !state.burgerIsActive,
       };
     default:
       return state;

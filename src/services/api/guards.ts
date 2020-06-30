@@ -10,8 +10,7 @@ import {
 
 
 export const guards = {
-    movData: ({data}: { data: IActorsMovies<IMovies[]> }) => {
-        // console.log("h")
+    movData: ({data}: { data: IActorsMovies<IMovies> }) => {
         // if(Array.isArray(request.data.results)){
         //     return request.data.results
         // } else {
@@ -19,8 +18,7 @@ export const guards = {
         // }
         return data.results
     },
-    actData: ({data}: { data:  IActorsMovies<ITopActors[]> }) => {
-        // console.log("h")
+    actData: ({data}: { data:  IActorsMovies<ITopActors> }) => {
         // if(Array.isArray(request.data.results)){
         //     return request.data.results
         // } else {
@@ -29,7 +27,6 @@ export const guards = {
         return data.results
     },
     actorMovies: ({data}: { data: {cast: ICastActors[] | ICastMovies[]} }) => {
-        //console.log(data)
         // if(Array.isArray(request.data.cast)){
         //     return request.data.cast
         // } else {
@@ -55,8 +52,7 @@ export const guards = {
         // if(typeof data.profile_path !== "string") data.profile_path = null
         return data
     },
-    movieResults: ({data}: { data: { results:any } }) => {
-        console.log(data)
+    movieResults: ({data}: { data: { results: [] } }) => {
         // if(Array.isArray(data.results) && data.results.length !== 0){
         //     return data.results
         // } else {
@@ -64,18 +60,17 @@ export const guards = {
         // }
         return data.results
     },
-    searchData: ({data}:any) => {
+    searchData: <T>({data}: { data: IActorsMovies<T> }) => {
         const defaultData = {
             page: 1,
             total_results: 0, 
             total_pages: 0, 
             results: []
         }
-        if( Array.isArray(data.results)
-            && data.results.length !== 0
-            && typeof data.total_results === 'number'
-            && typeof data.total_pages === 'number'
-            && typeof data.page === 'number')
+        if( Array.isArray(data.results) && data.results.length !== 0)
+            // && typeof data.total_results === 'number'
+            // && typeof data.total_pages === 'number'
+            // && typeof data.page === 'number')
         {
             return data
         }
