@@ -92,7 +92,6 @@ export const Reviews = React.memo(({ movieInfo, addReview, movieId }: Props) => 
                 name="comment" 
                 id="comment">
               </textarea>
-
               <button className="review-form__submit" type="submit">Publish</button>
             </form>
           </>

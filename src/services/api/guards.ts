@@ -11,28 +11,25 @@ import {
 
 export const guards = {
     movData: ({data}: { data: IActorsMovies<IMovies> }) => {
-        // if(Array.isArray(request.data.results)){
-        //     return request.data.results
-        // } else {
-        //     return []
-        // }
-        return data.results
+        if(Array.isArray(data.results)){
+            return data.results
+        } else {
+            return []
+        }
     },
     actData: ({data}: { data:  IActorsMovies<ITopActors> }) => {
-        // if(Array.isArray(request.data.results)){
-        //     return request.data.results
-        // } else {
-        //     return []
-        // }
-        return data.results
+        if(Array.isArray(data.results)){
+            return data.results
+        } else {
+            return []
+        }
     },
     actorMovies: ({data}: { data: {cast: ICastActors[] | ICastMovies[]} }) => {
-        // if(Array.isArray(request.data.cast)){
-        //     return request.data.cast
-        // } else {
-        //     return []
-        // }
-        return data.cast
+        if(Array.isArray(data.cast)){
+            return data.cast
+        } else {
+            return []
+        }
     },
     detailsMov: ({data}: {data: IDetailsMovies}) => {
         // if(typeof data.backdrop_path !== "string") data.backdrop_path = null
@@ -53,12 +50,11 @@ export const guards = {
         return data
     },
     movieResults: ({data}: { data: { results: [] } }) => {
-        // if(Array.isArray(data.results) && data.results.length !== 0){
-        //     return data.results
-        // } else {
-        //     return []
-        // }
-        return data.results
+        if(Array.isArray(data.results) && data.results.length !== 0){
+            return data.results
+        } else {
+            return []
+        }
     },
     searchData: <T>({data}: { data: IActorsMovies<T> }) => {
         const defaultData = {

@@ -5,7 +5,7 @@ import {Card} from "components";
 import {makeImgUrl} from "helpers/make-img-url";
 import image from "assets/images/image.jpg";
 import {overviewEditor} from "helpers/overview-editor";
-import {IMovies} from "../../../react-app-env";
+import {IMovies} from "react-app-env";
 
 interface IContent {
   results: IMovies[] | any,

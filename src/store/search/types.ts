@@ -40,5 +40,5 @@ export type IActionSetPayloadMovies = IActionPayloadMoviesSearch & {type: string
 export type IActionPayloadActorsSearch = {actors: IActorsMovies<IActors>}
 export type IActionPayloadMoviesSearch = {movies: IActorsMovies<ICastMovies>}
 
-export type ActionTypes = (IActionSetPayloadActorsAndMovies & IActionSetPayloadActors & IActionSetPayloadMovies & IActionSearch)
+export type ActionTypes = IActionSetPayloadActorsAndMovies & IActionSetPayloadActors & IActionSetPayloadMovies & IActionSearch
 
