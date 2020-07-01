@@ -160,6 +160,8 @@ export interface IReviewsMovies {
     content: string,
     id: string,
     url?: string,
+    photoField?: object | null,
+    rateField?: number
 }
 
 export interface RouteComponentProps<P> {

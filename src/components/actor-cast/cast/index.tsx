@@ -1,5 +1,5 @@
 import React from "react";
-import {Actor, ArrowTop} from "components/index";
+import {Actor, ArrowTop} from "components";
 import {IActorsResult} from "store/actors/types";
 import {ICastActors} from "react-app-env";
 

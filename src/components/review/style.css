@@ -45,7 +45,6 @@
     margin: auto;
     font-size: 18px;
     font-weight: bold;
-    margin: 0px;
     padding: 0;
 }
 
@@ -66,4 +65,10 @@
     .review {
         width: 90%;
     }
+}
+
+.review-author__rate {
+    display: flex;
+    margin: 0 0 5px 0;
+    justify-content: start;
 }

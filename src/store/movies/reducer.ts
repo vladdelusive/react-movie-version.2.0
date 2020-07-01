@@ -57,8 +57,7 @@ function reducer(
           [action.movieId]: {
             ...state.moviesInfo[action.movieId],
             reviews: [
-              ...state.moviesInfo[action.movieId].reviews,
-              { ...action.review },
+              ...state.moviesInfo[action.movieId].reviews, { ...action.review },
             ],
           },
         },

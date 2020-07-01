@@ -30,7 +30,7 @@ export const Reviews = React.memo<IPropsReviews>(({ movieInfo, addReview, movieI
     }
 
     const id = new Date().valueOf() + nameField;
-    const review = {content: reviewField, author: nameField, id }
+    const review = {content: reviewField, author: nameField, id, photoField, rateField}
     addReview({movieId, review})
     setReviewField("")
     setNameField("")
@@ -45,8 +45,8 @@ export const Reviews = React.memo<IPropsReviews>(({ movieInfo, addReview, movieI
   const textTitle = reviews.length 
     ? `Write your review to "${title}" movie!`
     : `Write first review to "${title}" movie!` 
-  const comments = reviews.map(({ author, id, content }: IReviewsMovies ): JSX.Element => {
-    return <Review key={id} content={content} author={author} />;
+  const comments = reviews.map(({ author, id, content, rateField, photoField }: IReviewsMovies ): JSX.Element => {
+    return <Review key={id} content={content} author={author} rateField={rateField} photoField={photoField} />;
   });
 
   const checkFile = (e: any) => {

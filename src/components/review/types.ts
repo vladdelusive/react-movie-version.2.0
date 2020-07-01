@@ -1,4 +1,6 @@
 export interface IReview {
     content: string,
-    author: string
+    author: string,
+    rateField?: number,
+    photoField?: {} | null
 }
