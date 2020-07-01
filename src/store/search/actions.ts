@@ -42,19 +42,31 @@ export const actions = {
     setMovies: ({movies}: IActionPayloadMoviesSearch) => ({type: types.SET_SEARCH_MOVIES, movies}),
 
     fetchInputValue: (query: string): ThunkAction<Promise<void>, unknown, unknown, IActionSetPayloadActorsAndMovies> => async (dispatch) => {
-        const fetches = [API.SEARCH_MOVIE({query}), API.SEARCH_ACTOR({query})];
-        const [movies, actors] = await Promise.all(fetches).then(([mov, act]) => [guards.movieResults(mov), guards.movieResults(act)]);
-        dispatch(actions.setActorsAndMovies({actors, movies}))
+        try {
+            const fetches = [API.SEARCH_MOVIE({query}), API.SEARCH_ACTOR({query})];
+            const [movies, actors] = await Promise.all(fetches).then(([mov, act]) => [guards.movieResults(mov), guards.movieResults(act)]);
+            dispatch(actions.setActorsAndMovies({actors, movies}))
+        } catch(e) {
+            console.error(e)
+        }
     },
 
     fetchSearchActors: (query: string, page: number): ThunkAction<Promise<void>, unknown, unknown, IActionSetPayloadActors> => async (dispatch) => {
-        const fetched = await API.SEARCH_ACTOR({query, page})
-        dispatch(actions.setActors({actors: guards.searchData<IActors>(fetched)}))
+        try {
+            const fetched = await API.SEARCH_ACTOR({query, page})
+            dispatch(actions.setActors({actors: guards.searchData<IActors>(fetched)}))
+        } catch(e) {
+            console.error(e)
+        }
     },
 
     fetchSearchMovies: (query: string, page: number): ThunkAction<Promise<void>, unknown, unknown, IActionSetPayloadMovies>  => async (dispatch) => {
-        const fetched = await API.SEARCH_MOVIE({query, page})
-        dispatch(actions.setMovies({movies: guards.searchData<ICastMovies>(fetched)}))
+        try {
+            const fetched = await API.SEARCH_MOVIE({query, page})
+            dispatch(actions.setMovies({movies: guards.searchData<ICastMovies>(fetched)}))
+        } catch(e) {
+            console.error(e)
+        }
     }
 }
 

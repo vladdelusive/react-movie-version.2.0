@@ -12,20 +12,26 @@ export const types = {
 export const actions = { 
     fetchActors: (): ThunkAction<Promise<void>, IStore, unknown, IActionTopActors<IActorsResult[]>> => async (dispatch, getState) => {
         const {page} = getState().actors.topActors
-        const results = await API.TRENDY_ACTORS({page});
-        dispatch(actions.saveActors(guards.actData(results)))
+        try {
+            const results = await API.TRENDY_ACTORS({page});
+            dispatch(actions.saveActors(guards.actData(results)))
+        } catch(e) {
+            console.error(e)
+        }
     },
     saveActors: (payload: IActorsResult[]): IActionTopActors<IActorsResult[]> => ({type: types.LOAD_TOP_ACTORS, payload}),
 
-
-
     fetchData: (personId: number): ThunkAction<Promise<void>, IStore, unknown, IAction> => async (dispatch) => {
-        const fetches = [
-            API.ACTOR_DETAILS({personId}),
-            API.ACTOR_MOVIES({personId}),
-        ];
-        const [actorDetails, actorMovies] = await Promise.all(fetches).then(([details, movies])=>[guards.detailsAct(details), guards.actorMovies(movies)]);
-        dispatch(actions.setActorIdData({person: actorDetails, movies: actorMovies, id: personId}))
+        try {
+            const fetches = [
+                API.ACTOR_DETAILS({personId}),
+                API.ACTOR_MOVIES({personId}),
+            ];
+            const [actorDetails, actorMovies] = await Promise.all(fetches).then(([details, movies])=>[guards.detailsAct(details), guards.actorMovies(movies)]);
+            dispatch(actions.setActorIdData({person: actorDetails, movies: actorMovies, id: personId}))
+        } catch(e) {
+            console.error(e)
+        }
     },
     setActorIdData: ({person, movies, id}: IActorIdData) => ({type: types.SET_ACTOR_INFO, person, movies, id}),
 }
