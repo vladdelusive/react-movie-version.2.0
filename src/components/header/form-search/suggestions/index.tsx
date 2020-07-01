@@ -7,17 +7,9 @@ import "./style.css";
 
 import { actions } from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
+import {ISearchProps} from "./types";
 
-import { ITopActors, IMovies } from "react-app-env";
-
-
-interface ISearch {
-  value: string,
-  searchResultActors: ITopActors[],
-  searchResultMovies: IMovies[],
-}
-
-export const Search = React.memo(function({ value, searchResultActors, searchResultMovies }: ISearch) {
+export const Search = React.memo<ISearchProps>(({ value, searchResultActors, searchResultMovies }) => {
   const {toggleSuggestions, reloadPage} = useActions(actions)
 
   if (!searchResultMovies || !searchResultActors) return null;

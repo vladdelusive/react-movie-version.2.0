@@ -5,15 +5,11 @@ import {Content} from "./content";
 import {useSelector} from "react-redux";
 import {useActions} from "hooks/use-actions";
 import {actions} from "store/movies/actions";
-import {IMovies} from "react-app-env";
-
-interface IMoviesPage {
-  movies: IMovies[],
-  loading: boolean,
-}
+import {IStore} from "react-app-env";
+import {ITopMoviesSection} from "store/movies/types";
 
 export function MoviesPage() {
-  const {movies, loading} = useSelector(({movies}: {movies: {topMovies: IMoviesPage} })=>movies.topMovies)
+  const {movies, loading} = useSelector<IStore, ITopMoviesSection>(({movies})=> movies.topMovies)
   const {fetchMovies} = useActions(actions)
   useEffect(() => {
     if(!movies.length){

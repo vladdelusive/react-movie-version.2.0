@@ -1,16 +1,10 @@
 import React, {useState, useEffect, FormEvent} from "react";
 import "./style.css";
 import { Review } from "components";
-import {IMovieInfo} from "store/movies/types";
 import {IReviewsMovies} from "react-app-env";
+import {IPropsReviews} from "./types";
 
-interface Props {
-  movieInfo: IMovieInfo,
-  addReview: ({movieId, review}:{movieId: number, review: IReviewsMovies}) => void,
-  movieId: number
-}
-
-export const Reviews = React.memo(({ movieInfo, addReview, movieId }: Props) => {
+export const Reviews = React.memo<IPropsReviews>(({ movieInfo, addReview, movieId }) => {
   const { reviews, results: { title } } = movieInfo
   const [postIsAdd, setPostIsAdd] = useState(false)
   const [reviewForm, setReviewForm] = useState("")

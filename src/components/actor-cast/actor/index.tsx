@@ -4,7 +4,7 @@ import './style.css'
 import {Link} from 'react-router-dom'
 import { ICard } from "react-app-env";
 
-export function Actor({path, id, gender, name}: ICard) {
+export const Actor: React.FC<ICard> = React.memo<ICard>(({path, id, gender, name}) => {
     const image = makeImgUrl(path, {placeholder: gender === 2 ? "male" : "female"})
     return (
         <div className="card-actor">
@@ -20,4 +20,4 @@ export function Actor({path, id, gender, name}: ICard) {
             </div>
         </div>
     )
-}
+})

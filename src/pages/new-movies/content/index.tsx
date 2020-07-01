@@ -6,13 +6,9 @@ import {makeImgUrl} from "helpers/make-img-url";
 import image from "assets/images/image.jpg";
 import {overviewEditor} from "helpers/overview-editor";
 import {IMovies} from "react-app-env";
+import {IContentNewMovies} from "./types";
 
-interface IContent {
-  results: IMovies[] | any,
-  path: string
-}
-
-export const Content: React.FC<IContent> = React.memo(({ results, path }) => {
+export const Content: React.FC<IContentNewMovies> = React.memo<IContentNewMovies>(({ results, path }) => {
   const identityId: number[] = [];
   return results.map((movie: IMovies) => {
     if (identityId.find((el) => el === movie.id)) {

@@ -1,8 +1,9 @@
 import React from "react";
 import {SearchCard} from "components";
 import {IActors} from "store/search/types";
+import {ICastPropsActors} from "./types";
 
-export const SearchCardsContentActors = React.memo( ({ cast }: {cast: IActors[]}): any => {
+export const SearchCardsContentActors = React.memo<ICastPropsActors>( ({ cast }): any => {
   const identityId: number[] = [];
   const actors = cast.map((actor: IActors) => {
     if (identityId.find((el) => el === actor.id)) {

@@ -6,16 +6,9 @@ import MovieIcon from 'assets/images/MovieIcon.png'
 import { makeImgUrl} from "helpers/make-img-url";
 
 import './style.css'
+import {ISearchItem} from "./types";
 
-interface ISearchItem {
-    image: string | null,
-    title: string,
-    typeItem: string,
-    id: number,
-    setShowSearchedItems(bool: boolean): void
-}
-
-export function SearchItem({image, title, typeItem, id, setShowSearchedItems}: ISearchItem) {
+export const SearchItem = React.memo<ISearchItem>(({image, title, typeItem, id, setShowSearchedItems}) => {
     const link = (typeItem === "movie" ? "/movies/" : "/actors/") + id
     const nullImage = typeItem === "movie" ? MovieIcon : ActorIcon
     return (
@@ -35,4 +28,4 @@ export function SearchItem({image, title, typeItem, id, setShowSearchedItems}: I
             </div>
         </div>
     )
-}
+})

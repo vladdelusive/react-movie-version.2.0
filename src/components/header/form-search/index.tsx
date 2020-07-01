@@ -9,25 +9,14 @@ import {Search} from "./suggestions";
 import {actions} from 'store/search/actions'
 import {useActions} from "hooks/use-actions";
 
-import { ITopActors, IMovies } from "react-app-env";
+import {IStore} from "react-app-env";
+import {ITarget} from "./types";
 
 let fetchTimer: ReturnType<typeof setTimeout>
 const rootElement: HTMLElement | null = document.getElementById('root');
 
-interface RootState {
-    inputValue: string,
-    resultsActors: ITopActors[],
-    showSearchedItems: boolean,
-    resultsMovies: IMovies[],
-    inputOpen: boolean,
-}
-
-interface ITarget {
-    target: HTMLInputElement;
-}
-
 export const FormSearch = React.memo(() => {
-    const {inputValue, resultsActors, showSearchedItems, resultsMovies, inputOpen} = useSelector(({search}: { search: RootState}) => search);
+    const {inputValue, resultsActors, showSearchedItems, resultsMovies, inputOpen} = useSelector(({search}: IStore) => search);
     const {inputIsActive, reloadPage,toggleSuggestions, setInput, offloadData, fetchInputValue } = useActions(actions)
 
     const [classes, setClasses] = useState({ inputClass: "", btnClass: "",

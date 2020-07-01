@@ -6,13 +6,10 @@ import {Navbar} from './navbar'
 import {Logo} from "./logo";
 import {Burger} from './burger'
 import {FormSearch} from "./form-search";
-
-interface RootState {
-    inputOpen: boolean
-}
+import {IStore} from "react-app-env";
 
 export function Header() {
-    const inputOpen = useSelector(({search}: {search: RootState}) => search.inputOpen);
+    const inputOpen = useSelector<IStore>(({search}) => search.inputOpen);
     return (
         <header className={`header ${inputOpen ? "header__active" : "header__noActive"}`}>
             <div className="header__left">

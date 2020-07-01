@@ -5,7 +5,7 @@ import {ICastActors} from "react-app-env";
 
 type Props = IActorsResult | ICastActors
 
-export const Cast = React.memo(function({ cast }: { cast: Props[] }) {
+export const Cast = React.memo(({ cast }: {cast: Props[]}) => {
   const identityId: number[] = [];
   const actors = cast.map((actor) => {
     if (identityId.find((el: number) => el === actor.id)) {

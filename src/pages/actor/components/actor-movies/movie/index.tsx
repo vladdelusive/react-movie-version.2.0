@@ -3,14 +3,9 @@ import { makeImgUrl } from "helpers/make-img-url";
 
 import { Link } from "react-router-dom";
 import image from "assets/images/image.jpg";
+import {IPropsMovie} from "./types";
 
-interface IPropsMovie {
-    id: number,
-    title: string,
-    img: string
-}
-
-export function Movie({ id, img, title }: IPropsMovie) {
+export const Movie: React.FC<IPropsMovie> = React.memo<IPropsMovie>(({ id, img, title }) => {
   return (
     <div className="card">
       <div className="card__header">
@@ -28,4 +23,4 @@ export function Movie({ id, img, title }: IPropsMovie) {
       </div>
     </div>
   );
-}
+})

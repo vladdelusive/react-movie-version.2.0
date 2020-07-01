@@ -4,16 +4,12 @@ import {ActorDetails} from './components/actor-details'
 import {useSelector} from "react-redux";
 import {useActions} from "hooks/use-actions";
 import {actions} from "store/actors/actions";
-import {IStore, RouteComponentProps} from "react-app-env"
+import {IStore} from "react-app-env"
+import {IActorsState} from "store/actors/types";
+import {IPropsActorPage} from "./types";
 
-interface MatchParams {
-    actor: number;
-}
-
-interface Props extends RouteComponentProps<MatchParams> {}
-
-export const ActorPage: FC<Props> = React.memo((props) => {
-    const {actorsInfo} = useSelector(({actors}: IStore)=>actors)
+export const ActorPage: FC<IPropsActorPage> = React.memo<IPropsActorPage>((props) => {
+    const {actorsInfo} = useSelector<IStore, IActorsState>(({actors})=>actors)
     const {fetchData} = useActions(actions)
     useEffect(() => {
         if(!actorsInfo[props.match.params.actor]){

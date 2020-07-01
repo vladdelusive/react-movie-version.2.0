@@ -3,16 +3,12 @@ import { makeImgUrl} from "helpers/make-img-url";
 
 import image from 'assets/images/image.jpg';
 import {SearchMovie as Card} from "components";
-import {IMovies} from "react-app-env";
+import {IMovies as IMovie} from "react-app-env";
+import {ICastPropsMovies} from "./types";
 
-interface Interface {
-    results: IMovies[] | any,
-    path: string,
-}
-
-export const SearchCardsContentMovies = React.memo<Interface>(({ results, path }) => {
+export const SearchCardsContentMovies = React.memo<ICastPropsMovies>(({ results, path }) => {
     const identityId: number[] = []
-    return results.map((movie: IMovies) => {
+    return results.map((movie: IMovie) => {
         if(identityId.find((el)=>el===movie.id)){
             return ""
         }

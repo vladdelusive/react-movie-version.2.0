@@ -3,7 +3,7 @@ import {Loader, Cast, BtnLoader} from "components";
 import {useSelector} from "react-redux";
 import {useActions} from "hooks/use-actions";
 import {actions} from "store/actors/actions";
-import {IStore} from "../../react-app-env";
+import {IStore} from "react-app-env";
 
 export function Actors() {
   const {actors, loading} = useSelector(({actors}: IStore)=>actors.topActors)

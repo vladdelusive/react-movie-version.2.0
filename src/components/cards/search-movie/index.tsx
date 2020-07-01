@@ -1,14 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
+import {ICardProps} from "./types";
 
-interface ICard {
-    title: string,
-    poster: string,
-    pathTo: string,
-}
-
-export const Card = ({ title, poster, pathTo }: ICard) => {
+export const Card = React.memo<ICardProps>(({ title, poster, pathTo }) => {
   return (
     <div className="card search-card">
       <div className="card__header search-card__header">
@@ -21,4 +16,4 @@ export const Card = ({ title, poster, pathTo }: ICard) => {
       </div>
     </div>
   );
-}
+})

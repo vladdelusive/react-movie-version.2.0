@@ -2,14 +2,18 @@ import { IMovieState, ICastActors, IReviewsMovies, IMovies } from 'react-app-env
 import { types } from './actions'
 
 export interface IMoviesState {
-    topMovies: {
-        movies: IMovies[],
-        page: number,
-        loading: boolean,
-    },
-    moviesInfo: {
-        [key: number]: IMovieInfo
-    }
+    topMovies: ITopMoviesSection,
+    moviesInfo: IMovieInfoSection
+}
+
+export interface IMovieInfoSection {
+    [key: number]: IMovieInfo
+}
+
+export interface ITopMoviesSection {
+    movies: IMovies[],
+    page: number,
+    loading: boolean,
 }
 
 export interface IMovieInfo {

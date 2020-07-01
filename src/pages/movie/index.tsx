@@ -4,7 +4,7 @@ import "./style.css";
 
 import { badges } from "constants/constants";
 import image from "assets/images/image.jpg";
-import {Reviews} from './components'
+import {Reviews} from './components/reviews'
 import { makeImgUrl } from "helpers/make-img-url";
 import {Loader, Cast} from "components";
 import {useSelector} from "react-redux";
@@ -12,16 +12,12 @@ import {useActions} from "hooks/use-actions";
 import {actions} from "store/movies/actions";
 import {setRate} from "helpers/set-rate";
 
-import {IStore, RouteComponentProps} from "react-app-env";
+import {IStore} from "react-app-env";
+import {IPropsMovie} from "./types";
+import {IMovieInfoSection} from "store/movies/types";
 
-interface MatchParams {
-  movie: number;
-}
-
-interface Props extends RouteComponentProps<MatchParams> {}
-
-export const PageMovie: React.FC<Props> = React.memo((props) =>{
-  const movieInfo = useSelector(({movies}: IStore )=> movies.moviesInfo)
+export const PageMovie: React.FC<IPropsMovie> = React.memo<IPropsMovie>((props) =>{
+  const movieInfo = useSelector<IStore, IMovieInfoSection>(({movies} )=> movies.moviesInfo)
   const {fetchData, setBadges, addReview} = useActions(actions)
   const thisMovie = movieInfo[props.match.params.movie]
 

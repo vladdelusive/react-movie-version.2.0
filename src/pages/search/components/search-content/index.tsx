@@ -11,11 +11,11 @@ import 'rc-pagination/assets/index.css';
 import { actions } from 'store/search/actions'
 import { useActions } from 'hooks/use-actions'
 import {ISearch} from "store/search/types";
-
+import {IStore} from "react-app-env";
 
 export const SearchContent = React.memo(({query}: {query: string})=> {
     const {pageActors, pageMovies, searchedMovies, searchedActors, loading, totalPagesMovies, totalPagesActors} =
-        useSelector(({search}: { search: ISearch })=> search)
+        useSelector<IStore, ISearch>(({search})=> search)
     const {changeMoviePage, changeActorPage, fetchSearchActors, fetchSearchMovies } = useActions(actions)
     const moviesElementTitle = createRef<HTMLDivElement>()
     const actorsElementTitle = createRef<HTMLDivElement>()

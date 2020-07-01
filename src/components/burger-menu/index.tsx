@@ -7,13 +7,10 @@ import {Overlay} from "./overlay";
 import { DeveloperLink } from "components";
 import CloseBurger from "assets/images/closeBurger.png";
 import "./style.css";
-
-interface RootStateBurger {
-  burgerIsActive: boolean
-}
+import {IStore} from "react-app-env";
  
 export function BurgerMenu() {
-  const burgerIsActive = useSelector(({ search }: { search: RootStateBurger }) => search.burgerIsActive);
+  const burgerIsActive = useSelector<IStore>(({ search }) => search.burgerIsActive);
   const { burgerToggle } = useActions(actions);
   return (
     <>
