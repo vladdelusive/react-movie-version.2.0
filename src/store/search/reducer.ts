@@ -1,7 +1,7 @@
 import {types} from "./actions";
-import {ActionTypes, ISearch} from "./types";
+import {ActionTypes, ISearchState} from "./types";
 
-const initialState: ISearch = {
+const initialState: ISearchState = {
   inputValue: "",
   showSearchedItems: false,
   resultsActors: null,
@@ -17,7 +17,7 @@ const initialState: ISearch = {
   totalPagesActors: 0
 };
 
-export const reducer = (state = initialState, action: ActionTypes): ISearch => {
+export const reducer = (state = initialState, action: ActionTypes): ISearchState => {
   switch (action.type) {
     case types.UPLOAD_ACTORS_MOVIES:
       return {

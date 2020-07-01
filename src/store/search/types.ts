@@ -1,6 +1,6 @@
 import {ICastMovies, IActorsMovies} from "react-app-env";
 
-export interface ISearch {
+export interface ISearchState {
     inputValue: string,
     showSearchedItems: boolean,
     resultsActors: null | IActors[],

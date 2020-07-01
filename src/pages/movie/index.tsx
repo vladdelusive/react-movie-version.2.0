@@ -124,7 +124,7 @@ export const PageMovie: React.FC<IPropsMovie> = React.memo<IPropsMovie>((props) 
               <strong className="movie__type">Rate: </strong>
               <i>{Math.round(thisMovie.results.vote_average) || "not found..."}/10</i>
             </div>
-            {setRate(thisMovie.results)}
+            {setRate({starsNumber: thisMovie.results.vote_average})}
           </div>
           <hr className="line" />
           <div className="movie__section">

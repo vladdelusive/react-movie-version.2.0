@@ -18,7 +18,7 @@ export interface ITopActorsState {
     loading: boolean
 }
 
-export interface IActorsState{
+export interface IActorsState {
     topActors: ITopActorsState,
     actorsInfo: {
         [key: number]: IActorInfo

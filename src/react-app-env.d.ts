@@ -1,8 +1,14 @@
 /// <reference types="react-scripts" />
-import {ISearch} from "./store/search/types";
+import {ISearchState} from "./store/search/types";
 import { IMoviesState } from 'store/movies/types'
 import { IActorsState } from 'store/actors/types'
 import * as H from "history";
+
+export interface IStore {
+    search: ISearchState,
+    movies: IMoviesState,
+    actors: IActorsState,
+}
 
 export interface ICastActors {
     cast_id: number,
@@ -112,11 +118,6 @@ interface IPersonInfo {
     homepage: null | string
 }
 
-export interface IStore {
-    search: ISearch,
-    movies: IMoviesState, 
-    actors: IActorsState,
-}
 
 interface ISpokenLanguages {
     iso_639_1: string,
