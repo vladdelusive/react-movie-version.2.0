@@ -11,3 +11,4 @@ export {EasterEgg} from "./easter-egg";
 export {SearchCard} from "./cards/search-actor";
 export {Card as SearchMovie} from "./cards/search-movie";
 export {Review} from './review'
+export {FieldInput} from './form-field'
