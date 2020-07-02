@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 import icon from "assets/images/comment-icon.png";
 import {IReview} from "./types";
-import {setRate} from "../../helpers/set-rate";
+import {setRate} from "helpers/set-rate";
 
 export const Review = React.memo<IReview>(({ content, author, photoField, rateField }) =>{
     return (
@@ -22,7 +22,6 @@ export const Review = React.memo<IReview>(({ content, author, photoField, rateFi
                 </div>
                 <div className="review-comment">
                     <p className={`review-comment__text`}>
-                        {rateField}
                         {content.replace(/(http)..+/g, "")}
                     </p>
                 </div>

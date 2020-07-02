@@ -7,11 +7,11 @@ import {FieldInput, FileField, TextAreaField} from "components";
 import {setRate} from "helpers/set-rate";
 
 let FormReview = (props) => {
-    const { handleSubmit, reset } = props;
+    const { handleSubmit, reset, addPost, setPostIsAdd } = props;
     const [rateField, setRateField] = useState(0)
     const [isSubmit, setIsSubmit] = useState(false)
     return (
-        <form className="review-form" onSubmit={handleSubmit((values)=>submit(values, props.addPost, rateField, setIsSubmit, reset, setRateField))}>
+        <form className="review-form" onSubmit={handleSubmit((values)=>submit(values, addPost, rateField, setIsSubmit, reset, setRateField, setPostIsAdd))}>
           <div className="review-form__user">
             <div className="review-form__user-left">
               <Field
@@ -32,14 +32,13 @@ let FormReview = (props) => {
               />
             </div>
           </div>
-
             <div className="review-form__content">
                 <Field
                   type="text"
                   name="comment"
                   label="Review:"
                   component={TextAreaField}
-                  className="review-form__input"
+                  className="review-form__textarea"
                 />
             </div>
             <div className="review-form__file-section">

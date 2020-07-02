@@ -39,7 +39,7 @@ export const Reviews = React.memo<IPropsReviews>(({ movieInfo, addReview, movieI
           <div className="review-tip">
             <p className="review-tip__text">{textTitle}</p>
           </div>
-            <FormReview addPost={addPost}/>
+            <FormReview addPost={addPost} setPostIsAdd={setPostIsAdd}/>
           </>
         }
       </div>

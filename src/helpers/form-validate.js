@@ -21,7 +21,7 @@ export const validate = (values) => {
     }
 }
 
-export function submit(values, addPost, rateField, setIsSubmit, reset, setRateField) {
+export function submit(values, addPost, rateField, setIsSubmit, reset, setRateField, setPostIsAdd) {
     const warnings = {}
     if (!values?.comment || values?.comment.length < 5){
         warnings.comment = "Should be typed more than 5 letters!"
@@ -44,6 +44,7 @@ export function submit(values, addPost, rateField, setIsSubmit, reset, setRateFi
     reset()
     setRateField(0)
     setIsSubmit(false)
+    setPostIsAdd(true)
 }
 
 const checkFile = ({size, type}) => {

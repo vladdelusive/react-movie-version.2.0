@@ -1,0 +1,41 @@
+.review__title {
+    text-align: center;
+    margin: 0px;
+    font-size: 40px;
+    font-weight: bold;
+    display: block;
+}
+.reviews {
+    padding: 0 10px;
+    margin: auto;
+}
+
+.reviews__container {
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.review-field {
+    margin: 40px auto;
+    width: 90%;
+    max-width: 600px;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.review-form__label {
+    width: fit-content;
+    display: block;
+    padding: 0.8em 0 0.2em 0;
+    font-weight: 600;
+}
+.review-form__user .review-form__input {
+    width: 250px;
+}
