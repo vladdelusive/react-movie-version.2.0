@@ -40,7 +40,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
 }
 
-// First, read the current file sizes in build directory.
+// First, read the current file-field sizes in build directory.
 // This lets us display how much they changed later.
 measureFileSizesBeforeBuild(paths.appBuild)
   .then(previousFileSizes => {
