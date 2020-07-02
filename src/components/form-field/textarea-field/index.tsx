@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TextAreaField = React.memo((props) => {
+export const TextAreaField = React.memo((props: any) => {
     return (
         <>
             <label
