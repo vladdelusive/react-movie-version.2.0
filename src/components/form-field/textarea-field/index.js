@@ -10,7 +10,6 @@ export const TextAreaField = React.memo((props) => {
             </label>
             {
                 props.meta.touched &&
-                props.meta.visited &&
                 !props.meta.active &&
                 <div className="validation">
                     {props.meta.warning || props.meta.error}

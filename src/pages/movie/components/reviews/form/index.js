@@ -1,49 +1,17 @@
 import React, {useState} from "react";
 import {Field, reduxForm} from "redux-form";
 import '../style.css'
+import { submit, validate } from "helpers/form-validate";
 
 import {FieldInput, FileField, TextAreaField} from "components";
-import {validateEmail} from "helpers/email-checker";
-import {rightFileSize, validFileType} from "helpers/file-checker";
 import {setRate} from "helpers/set-rate";
 
-const warnChecker = (values) => {
-    const warnings = {}
-    console.log(values)
-    if (values?.comment && values?.comment.length < 5){
-        warnings.comment = "Should be typed more than 5 letters!"
-    }
-    if (values?.name && values?.name.length < 3){
-        warnings.name = "Should be more than 3 letters!"
-    }
-    if (values?.email && !validateEmail(values.email)) {
-        warnings.email = "Should be correct email!"
-    }
-    if (values?.photo && !checkFile(values.photo)) {
-        warnings.photo = "Should be img file and not more than 1MB!"
-    }
-    return warnings
-}
-
-const checkFile = ({size, type}) => {
-    if(validFileType(type) && rightFileSize(size)) {
-        return true
-    }
-    return false
-}
-
 let FormReview = (props) => {
-
-    const handleSubmit2 = (values) => {
-        console.log(values)
-        if(!values?.comment || !values?.name || !values?.email || !values?.photo) return
-        props.addPost(values, rateField)
-    }
-    const { handleSubmit, submitting } = props;
+    const { handleSubmit, reset } = props;
     const [rateField, setRateField] = useState(0)
-
+    const [isSubmit, setIsSubmit] = useState(false)
     return (
-        <form className="review-form" onSubmit={handleSubmit(handleSubmit2)}>
+        <form className="review-form" onSubmit={handleSubmit((values)=>submit(values, props.addPost, rateField, setIsSubmit, reset, setRateField))}>
           <div className="review-form__user">
             <div className="review-form__user-left">
               <Field
@@ -86,21 +54,18 @@ let FormReview = (props) => {
             </div>
             <div>
                 <label className="review-form__label">Set movie rate:</label>
-                {rateField>100 ? (
-                  <div className="validation">Should be set movie rate!</div>
-                ) : ""}
+                {isSubmit && !rateField ? <div className="validation">Should be set movie rate!</div> : ""}
                 {setRate({ starsNumber: rateField, onClickHandler: setRateField})}
             </div>
 
-            <button className="review-form__submit" type="submit" disabled={submitting}>Publish</button>
+            <button className="review-form__submit" type="submit">Publish</button>
         </form>
     );
 };
 
 FormReview = reduxForm({
-  // a unique name for the form
-  form: "review",
-  validate: warnChecker
+    form: "review",
+    validate,
 })(FormReview);
 
 export { FormReview };

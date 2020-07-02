@@ -2,6 +2,7 @@ import React from 'react'
 
 export const FileField = (props) => {
     const onChangeHandler = (e) => {
+        console.log(e.target.files[0])
         props.input.onChange(e.target.files[0])
     }
     return (
