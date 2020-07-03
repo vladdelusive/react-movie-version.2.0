@@ -3,7 +3,6 @@ import './style.css'
 
 export const FileField = (props: any) => {
     const onChangeHandler = (e: any) => {
-        console.log(e.target.files[0])
         props.input.onChange(e.target.files[0])
     }
     return (

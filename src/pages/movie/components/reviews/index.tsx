@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import { Review } from "components";
 import {IReviewsMovies} from "react-app-env";
-import {IPropsReviews} from "./types";
-import { FormReview } from "./form";
+import {IAddPost, IPropsReviews} from "./types";
+import { FormReviewComponent } from "./form";
 
 export const Reviews = React.memo<IPropsReviews>(({ movieInfo, addReview, movieId }) => {
   const { reviews, results: { title } } = movieInfo
   const [postIsAdd, setPostIsAdd] = useState(false)
 
-  const addPost = (values: any, rate: number): void => {
+  const addPost: IAddPost = (values, rate) => {
     const id = new Date().valueOf() + values.name;
     const review = {content: values.comment, author: values.name, id, photoField: values.photo, rateField: rate}
     addReview({movieId, review})
@@ -39,7 +39,7 @@ export const Reviews = React.memo<IPropsReviews>(({ movieInfo, addReview, movieI
           <div className="review-tip">
             <p className="review-tip__text">{textTitle}</p>
           </div>
-            <FormReview addPost={addPost} setPostIsAdd={setPostIsAdd}/>
+            <FormReviewComponent addPost={addPost} setPostIsAdd={setPostIsAdd}/>
           </>
         }
       </div>

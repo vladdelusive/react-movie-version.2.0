@@ -1,12 +1,18 @@
 import React, {useState} from "react";
-import {Field, reduxForm} from "redux-form";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import '../style.css'
-import { submit, validate } from "helpers/form-validate";
+import { submit, validate} from "helpers/validation";
 
 import {FieldInput, FileField, TextAreaField} from "components";
 import {setRate} from "helpers/set-rate";
+import {IAddPost} from "../types";
 
-let FormReview = (props) => {
+interface IProps {
+    addPost: IAddPost,
+    setPostIsAdd: (b:boolean) => void,
+}
+
+const FormReview: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props) => {
     const { handleSubmit, reset, addPost, setPostIsAdd } = props;
     const [rateField, setRateField] = useState(0)
     const [isSubmit, setIsSubmit] = useState(false)
@@ -62,9 +68,9 @@ let FormReview = (props) => {
     );
 };
 
-FormReview = reduxForm({
+const FormReviewComponent = reduxForm<{}, IProps>({
     form: "review",
     validate,
 })(FormReview);
 
-export { FormReview };
+export { FormReviewComponent };

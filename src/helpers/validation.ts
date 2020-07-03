@@ -1,9 +1,11 @@
 import {validateEmail} from "./email-checker";
-import {SubmissionError} from "redux-form";
+import {FormErrors, SubmissionError} from "redux-form";
 import {rightFileSize, validFileType} from "./file-checker";
+import {IFile, IValuesForm} from "pages/movie/components/reviews/types";
+import {ISubmit} from "./types";
 
-export const validate = (values) => {
-    const warnings = {}
+export const validate = (values: IValuesForm<IFile>): FormErrors<{} | void> => {
+    const warnings: IValuesForm<string> = {}
     if (values?.comment && values?.comment.length < 5){
         warnings.comment = "Should be typed more than 5 letters!"
     }
@@ -21,8 +23,8 @@ export const validate = (values) => {
     }
 }
 
-export function submit(values, addPost, rateField, setIsSubmit, reset, setRateField, setPostIsAdd) {
-    const warnings = {}
+export const submit: ISubmit = (values, addPost, rateField, setIsSubmit, reset, setRateField, setPostIsAdd) => {
+    const warnings: IValuesForm<string> = {}
     if (!values?.comment || values?.comment.length < 5){
         warnings.comment = "Should be typed more than 5 letters!"
     }
@@ -47,9 +49,7 @@ export function submit(values, addPost, rateField, setIsSubmit, reset, setRateFi
     setPostIsAdd(true)
 }
 
-const checkFile = ({size, type}) => {
-    if(validFileType(type) && rightFileSize(size)) {
-        return true
-    }
-    return false
+
+const checkFile = ({size, type}: IFile) => {
+    return validFileType(type) && rightFileSize(size);
 }

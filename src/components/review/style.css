@@ -70,5 +70,5 @@
 .review-author__rate {
     display: flex;
     margin: 0 0 5px 0;
-    justify-content: start;
+    justify-content: flex-start;
 }
