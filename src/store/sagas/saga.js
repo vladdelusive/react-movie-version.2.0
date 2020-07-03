@@ -7,7 +7,7 @@ import {select } from 'redux-saga/effects'
 function* fetchNewMovies(action) {
     try {
         const {page} = yield select(({movies})=>movies.topMovies);
-        const results = yield API.NEWLY_MOVIES(page);
+        const results = yield API.NEWLY_MOVIES({page});
         yield put({type: types.LOAD_TOP_MOVIES, payload: guards.movData(results)});
     } catch (e) {
         console.error(e)

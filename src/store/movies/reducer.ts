@@ -18,7 +18,6 @@ function reducer(
     case types.GET_TOP_MOVIES:
       return state
     case types.LOAD_TOP_MOVIES:
-      debugger
       return {
         ...state,
         topMovies: {

@@ -15,15 +15,6 @@ export const types = {
 }
 
 export const actions = {
-    // fetchMovies: (): ThunkAction<Promise<void>, IStore, unknown, IAction<IMovies[]>> => async (dispatch, getState) => {
-    //     const {page} = getState().movies.topMovies
-    //     try {
-    //         const results = await API.NEWLY_MOVIES({page});
-    //         dispatch(actions.saveMovies(guards.movData(results)))
-    //     } catch(e) {
-    //         console.error(e)
-    //     }
-    // },
     saveMovies: () => ({type: types.GET_TOP_MOVIES}),
 
     fetchData: (movieId: number): ThunkAction<Promise<void>, unknown, unknown, IActionPayloadData> => async (dispatch) => {

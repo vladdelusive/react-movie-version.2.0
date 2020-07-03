@@ -126,13 +126,17 @@ export const PageMovie: React.FC<IPropsMovie> = React.memo<IPropsMovie>((props) 
             </div>
             {setRate({starsNumber: thisMovie.results.vote_average})}
           </div>
-          <hr className="line" />
-          <div className="movie__section">
-            <div>
-              <strong className="movie__type">Runtime: </strong>
-              <span className="movie__type-runtime">{thisMovie.results.runtime} min</span>
-            </div>
-          </div>
+          { thisMovie.results.runtime ?
+              <>
+                <hr className="line" />
+                <div className="movie__section">
+                  <div>
+                    <strong className="movie__type">Runtime: </strong>
+                    <span className="movie__type-runtime">{thisMovie.results.runtime} min</span>
+                  </div>
+                </div>
+              </> : ""
+          }
           <hr className="line" />
           <div className="movie__section">
             <div className="movie__trailer">
