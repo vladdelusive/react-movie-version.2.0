@@ -7,6 +7,7 @@ import { IAction, IActionPayloadData, IActionPayloadBadges, IActionPayloadReview
 
 export const types = {
     LOAD_TOP_MOVIES: "@movies/top_movies/LOAD_TOP_MOVIES",
+    GET_TOP_MOVIES: "@movies/top_movies/GET_TOP_MOVIES",
     SET_DATA_INFO: "@movies/movies_info/SET_DATA_INFO",
     SET_BADGES_INFO: "@movies/movies_info/SET_BADGES_INFO",
     TOGGLE_LOADING_INFO: "@movies/movies_info/TOGGLE_LOADING_INFO",
@@ -14,17 +15,16 @@ export const types = {
 }
 
 export const actions = {
-    fetchMovies: (): ThunkAction<Promise<void>, IStore, unknown, IAction<IMovies[]>> => async (dispatch, getState) => {
-        const {page} = getState().movies.topMovies
-        try {
-            const results = await API.NEWLY_MOVIES({page});
-            dispatch(actions.saveMovies(guards.movData(results)))
-        } catch(e) {
-            console.error(e)
-        }
-    },
-    saveMovies: (payload: IMovies[]): IAction<IMovies[]> => ({type: types.LOAD_TOP_MOVIES, payload}),
-
+    // fetchMovies: (): ThunkAction<Promise<void>, IStore, unknown, IAction<IMovies[]>> => async (dispatch, getState) => {
+    //     const {page} = getState().movies.topMovies
+    //     try {
+    //         const results = await API.NEWLY_MOVIES({page});
+    //         dispatch(actions.saveMovies(guards.movData(results)))
+    //     } catch(e) {
+    //         console.error(e)
+    //     }
+    // },
+    saveMovies: () => ({type: types.GET_TOP_MOVIES}),
 
     fetchData: (movieId: number): ThunkAction<Promise<void>, unknown, unknown, IActionPayloadData> => async (dispatch) => {
         try {

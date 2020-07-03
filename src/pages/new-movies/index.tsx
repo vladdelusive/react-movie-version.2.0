@@ -10,10 +10,10 @@ import {ITopMoviesSection} from "store/movies/types";
 
 export function MoviesPage() {
   const {movies, loading} = useSelector<IStore, ITopMoviesSection>(({movies})=> movies.topMovies)
-  const {fetchMovies} = useActions(actions)
+  const {saveMovies} = useActions(actions)
   useEffect(() => {
     if(!movies.length){
-      fetchMovies()
+      saveMovies()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -31,7 +31,7 @@ export function MoviesPage() {
             <div className="section__content-container">
               <Content results={movies} path="/movies" />
             </div>
-              <BtnLoader handlerLoading={fetchMovies}>
+              <BtnLoader handlerLoading={saveMovies}>
                   Load more movies...
               </BtnLoader>
           </div>
