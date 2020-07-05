@@ -15,8 +15,6 @@ function reducer(
   action: IActionTypes
 ): IMoviesState {
   switch (action.type) {
-    case types.GET_TOP_MOVIES:
-      return state
     case types.LOAD_TOP_MOVIES:
       return {
         ...state,

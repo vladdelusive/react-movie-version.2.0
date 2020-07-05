@@ -5,20 +5,13 @@ import {ThunkAction} from "redux-thunk";
 import {IStore} from "react-app-env";
 
 export const types = {
+    GET_TOP_ACTORS: "@actors/top_actors/GET_TOP_ACTORS",
     LOAD_TOP_ACTORS: "@actors/top_actors/LOAD_TOP_ACTORS",
     SET_ACTOR_INFO: "@actors/actors_info/SET_DATA",
 }
 
 export const actions = { 
-    fetchActors: (): ThunkAction<Promise<void>, IStore, unknown, IActionTopActors<IActorsResult[]>> => async (dispatch, getState) => {
-        const {page} = getState().actors.topActors
-        try {
-            const results = await API.TRENDY_ACTORS({page});
-            dispatch(actions.saveActors(guards.actData(results)))
-        } catch(e) {
-            console.error(e)
-        }
-    },
+    getActors: ()=> ({type: types.GET_TOP_ACTORS}),
     saveActors: (payload: IActorsResult[]): IActionTopActors<IActorsResult[]> => ({type: types.LOAD_TOP_ACTORS, payload}),
 
     fetchData: (personId: number): ThunkAction<Promise<void>, IStore, unknown, IAction> => async (dispatch) => {

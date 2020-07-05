@@ -7,10 +7,10 @@ import {IStore} from "react-app-env";
 
 export function Actors() {
   const {actors, loading} = useSelector(({actors}: IStore)=>actors.topActors)
-  const {fetchActors} = useActions(actions)
+  const {getActors} = useActions(actions)
   useEffect(() => {
     if(!actors.length){
-      fetchActors()
+      getActors()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -25,7 +25,7 @@ export function Actors() {
         <>
           <Cast cast={actors} />
           <div className="section__footer">
-            <BtnLoader handlerLoading={fetchActors}>
+            <BtnLoader handlerLoading={getActors}>
               Load more actors...
             </BtnLoader>
           </div>

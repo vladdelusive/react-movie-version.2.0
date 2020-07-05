@@ -1,7 +1,7 @@
 import {API} from "services/api";
 import {guards} from 'services/api/guards'
 import {ThunkAction} from "redux-thunk";
-import {IMovies, IStore, IReviewsMovies} from "react-app-env";
+import {IMovies, IReviewsMovies} from "react-app-env";
 import {DEFAULT_TRAILER} from "constants/constants";
 import { IAction, IActionPayloadData, IActionPayloadBadges, IActionPayloadReviews, IActionPayload} from './types'
 
@@ -15,7 +15,8 @@ export const types = {
 }
 
 export const actions = {
-    saveMovies: () => ({type: types.GET_TOP_MOVIES}),
+    getMovies: () => ({type: types.GET_TOP_MOVIES}),
+    saveMovies: (payload: IMovies[]): IAction<IMovies[]> => ({type: types.LOAD_TOP_MOVIES, payload}),
 
     fetchData: (movieId: number): ThunkAction<Promise<void>, unknown, unknown, IActionPayloadData> => async (dispatch) => {
         try {

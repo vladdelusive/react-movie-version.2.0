@@ -2,7 +2,7 @@ import thunk from "redux-thunk";
 import { createStore, applyMiddleware, compose } from "redux";
 import { rootReducer as root} from './root-reducer'
 import createSagaMiddleware from 'redux-saga'
-import { mySaga } from "./sagas/saga";
+import { rootSaga } from "./root-saga";
 
 declare global {
     interface Window {
@@ -21,4 +21,4 @@ if(devTools) enhancers = compose(applyMiddleware(thunk, sagaMiddleware), devTool
 
 export const store = createStore(root, enhancers);
 
-sagaMiddleware.run(mySaga)
+sagaMiddleware.run(rootSaga)
