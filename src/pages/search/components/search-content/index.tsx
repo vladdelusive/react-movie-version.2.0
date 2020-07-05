@@ -68,7 +68,7 @@ export const SearchContent = React.memo(({query}: {query: string})=> {
                                 : <NotFound/>)
                     }
                     {
-                        (!loading && searchedMovies?.length) ? <Pagination
+                        (!loading && totalPagesMovies > 1) ? <Pagination
                         current={pageMovies}
                         total={totalPagesMovies}
                         onChange={onClickPageMovies}
@@ -97,7 +97,7 @@ export const SearchContent = React.memo(({query}: {query: string})=> {
                             )
                     }
                     {
-                        (!loading && searchedActors?.length) ? <Pagination
+                        (!loading && totalPagesActors > 1) ? <Pagination
                             current={pageActors}
                             total={totalPagesActors}
                             onChange={onClickPageActors}
