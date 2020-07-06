@@ -18,12 +18,12 @@ import {IMovieInfoSection} from "store/movies/types";
 
 export const PageMovie: React.FC<IPropsMovie> = React.memo<IPropsMovie>((props) =>{
   const movieInfo = useSelector<IStore, IMovieInfoSection>(({movies} )=> movies.moviesInfo)
-  const {fetchData, setBadges, addReview} = useActions(actions)
+  const {doFetchData, setBadges, addReviewInfo} = useActions(actions)
   const thisMovie = movieInfo[props.match.params.movie]
 
   useEffect(() => {
     if(!thisMovie){
-      fetchData(props.match.params.movie);
+      doFetchData(props.match.params.movie);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.match.params.movie]);
@@ -158,7 +158,7 @@ export const PageMovie: React.FC<IPropsMovie> = React.memo<IPropsMovie>((props) 
       </div>
       <Reviews
         movieId={props.match.params.movie}
-        addReview={addReview}
+        addReview={addReviewInfo}
         movieInfo={thisMovie}
       />
 

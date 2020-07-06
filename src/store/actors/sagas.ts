@@ -19,8 +19,8 @@ export function* watchRequestTopActors() {
     yield takeEvery(types.GET_TOP_ACTORS, fetchTopActors);
 }
 
-function* fetchActorData(actions: any) {
-    const { id }: {id: number} = actions
+function* fetchActorData(action: any) {
+    const { id }: {id: number} = action
     try {
         const { actorDetails, actorMovies } = yield all({
             actorDetails: call(API.ACTOR_DETAILS, {personId: id}),

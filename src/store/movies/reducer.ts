@@ -49,7 +49,7 @@ function reducer(
           },
         },
       };
-    case types.ADD_REVIEW_INFO:
+    case types.SET_REVIEW_INFO:
       return {
         ...state,
         moviesInfo: {

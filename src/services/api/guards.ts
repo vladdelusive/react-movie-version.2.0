@@ -5,7 +5,7 @@ import {
     IDetailsMovies,
     IDetailsActors,
     IMovies,
-    ITopActors, IPersonInfo
+    ITopActors, IPersonInfo, IMovieState
 } from "react-app-env";
 
 const typeError = new TypeError("Value type is not the expected.")
@@ -32,7 +32,7 @@ export const guards = {
             throw typeError
         }
     },
-    detailsMov: ({data}: {data: IDetailsMovies}) => {
+    detailsMov: ({data}: {data: IMovieState}) => {
         if ((typeof data.backdrop_path === "string" || data.backdrop_path === null) || (typeof data.overview === "string" || data.overview === null) ||
             (typeof data.poster_path === "string" || data.poster_path === null) || (typeof data.title === "string" ||  data.title === null) ||
             (typeof data.release_date === "string" ||  data.release_date === null) || (typeof data.vote_average === "number" || data.vote_average === null)
@@ -48,7 +48,7 @@ export const guards = {
         }
         throw typeError
     },
-    movieResults: ({data}: { data: { results: [] } }) => {
+    movieResults: ({data}: any ) => {
         if(Array.isArray(data.results)){
             return data.results
         } else {
