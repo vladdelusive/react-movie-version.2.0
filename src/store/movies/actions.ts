@@ -1,13 +1,9 @@
-import {API} from "services/api";
-import {guards} from 'services/api/guards'
-import {ThunkAction} from "redux-thunk";
 import {IMovies, IReviewsMovies} from "react-app-env";
-import {DEFAULT_TRAILER} from "constants/constants";
+
 import {
     IAction,
     IActionPayloadData,
     IActionPayloadBadges,
-    IActionPayloadReviews,
     IActionPayload,
     IActionSaga
 } from './types'

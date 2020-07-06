@@ -1,20 +1,20 @@
-import {API} from "services/api";
-import {guards} from 'services/api/guards'
 import {
     IActionSearch,
-    IActionSetPayloadActorsAndMovies,
-    IActionSetPayloadActors,
-    IActionSetPayloadMovies,
     IActionPayloadActorsSearch,
     IActionPayloadMoviesSearch,
     IActors
 } from "./types";
-import {ThunkAction} from "redux-thunk";
 import {ICastMovies} from "react-app-env";
 
 export const types = {
     UPLOAD_ACTORS_MOVIES: "@search/UPLOAD_ACTORS_MOVIES",
     GET_ACTORS_MOVIES: "@search/GET_ACTORS_MOVIES",
+
+    SET_SEARCH_ACTORS: "@search/SET_SEARCH_ACTORS",
+    GET_SEARCH_ACTORS: "@search/GET_SEARCH_ACTORS",
+
+    SET_SEARCH_MOVIES: "@search/SET_SEARCH_MOVIES",
+    GET_SEARCH_MOVIES: "@search/GET_SEARCH_MOVIES",
 
     OFFLOAD_DATA: "@search/OFFLOAD_DATA",
     TOGGLE_SUGGESTIONS: "@search/TOGGLE_SUGGESTIONS",
@@ -25,12 +25,6 @@ export const types = {
     RELOAD_PAGE: "@search/RELOAD_PAGE",
     INPUT_IS_ACTIVE: "@search/INPUT_IS_ACTIVE",
     BURGER_TOGGLE: "@search/BURGER_TOGGLE",
-
-    SET_SEARCH_ACTORS: "@search/SET_SEARCH_ACTORS",
-    GET_SEARCH_ACTORS: "@search/GET_SEARCH_ACTORS",
-
-    SET_SEARCH_MOVIES: "@search/SET_SEARCH_MOVIES",
-    GET_SEARCH_MOVIES: "@search/GET_SEARCH_MOVIES",
 }
 
 export const actions = {

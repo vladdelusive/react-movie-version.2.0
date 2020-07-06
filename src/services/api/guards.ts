@@ -2,7 +2,6 @@ import {
     ICastActors,
     IActorsMovies,
     ICastMovies,
-    IDetailsMovies,
     IDetailsActors,
     IMovies,
     ITopActors, IPersonInfo, IMovieState

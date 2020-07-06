@@ -1,4 +1,3 @@
-import thunk from "redux-thunk";
 import { createStore, applyMiddleware, compose } from "redux";
 import { rootReducer as root} from './root-reducer'
 import createSagaMiddleware from 'redux-saga'
@@ -16,8 +15,8 @@ const devTools = process.env.NODE_ENV === 'development'
 
 const sagaMiddleware = createSagaMiddleware()
 
-let enhancers = applyMiddleware(thunk, sagaMiddleware);
-if(devTools) enhancers = compose(applyMiddleware(thunk, sagaMiddleware), devTools)
+let enhancers = applyMiddleware(sagaMiddleware);
+if(devTools) enhancers = compose(applyMiddleware(sagaMiddleware), devTools)
 
 export const store = createStore(root, enhancers);
 
