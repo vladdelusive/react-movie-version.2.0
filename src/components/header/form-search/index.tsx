@@ -17,7 +17,7 @@ const rootElement: HTMLElement | null = document.getElementById('root');
 
 export const FormSearch = React.memo(() => {
     const {inputValue, resultsActors, showSearchedItems, resultsMovies, inputOpen} = useSelector(({search}: IStore) => search);
-    const {inputIsActive, reloadPage,toggleSuggestions, setInput, offloadData, fetchInputValue } = useActions(actions)
+    const {inputIsActive, reloadPage,toggleSuggestions, setInput, offloadData, getActorsAndMovies } = useActions(actions)
 
     const [classes, setClasses] = useState({ inputClass: "", btnClass: "",
         closeClass: "hide", sendClass: "hide"});
@@ -38,7 +38,7 @@ export const FormSearch = React.memo(() => {
             offloadData()
             return
         }
-        fetchTimer = setTimeout(() => fetchInputValue(target.value), FETCH_TIMEOUT);
+        fetchTimer = setTimeout(() => getActorsAndMovies(target.value), FETCH_TIMEOUT);
     }
 
     useEffect(() => {
