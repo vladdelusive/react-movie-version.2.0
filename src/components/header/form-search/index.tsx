@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import { FETCH_TIMEOUT } from 'constants/constants'
 
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
@@ -12,7 +11,6 @@ import {useActions} from "hooks/use-actions";
 import {IStore} from "react-app-env";
 import {ITarget} from "./types";
 
-let fetchTimer: ReturnType<typeof setTimeout>
 const rootElement: HTMLElement | null = document.getElementById('root');
 
 export const FormSearch = React.memo(() => {
@@ -33,12 +31,11 @@ export const FormSearch = React.memo(() => {
 
     const valueTarget = ({target}: ITarget) => {
         setInput(target.value)
-        clearTimeout(fetchTimer);
         if (target.value === "") {
             offloadData()
             return
         }
-        fetchTimer = setTimeout(() => getActorsAndMovies(target.value), FETCH_TIMEOUT);
+        getActorsAndMovies(target.value)
     }
 
     useEffect(() => {

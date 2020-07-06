@@ -1,11 +1,13 @@
-import { put, takeEvery, call, all } from 'redux-saga/effects'
+import { put, takeEvery, call, all, delay, takeLatest } from 'redux-saga/effects'
 import {API} from "services/api";
 import {types, actions} from "./actions";
 import {guards} from "services/api/guards";
 import {IActors} from "./types";
-import {ICastMovies} from "../../react-app-env";
+import {ICastMovies} from "react-app-env";
+import {FETCH_TIMEOUT} from "constants/constants";
 
 function* setActorsAndMovies(action: any) {
+    yield delay(FETCH_TIMEOUT)
     const { query } = action
     try {
         const {movies, actors} = yield all({
@@ -18,7 +20,7 @@ function* setActorsAndMovies(action: any) {
     }
 }
 export function* watchRequestActorsAndMovies() {
-    yield takeEvery(types.GET_ACTORS_MOVIES, setActorsAndMovies);
+    yield takeLatest(types.GET_ACTORS_MOVIES, setActorsAndMovies);
 }
 
 
@@ -34,7 +36,6 @@ function* setActors(action: any) {
 export function* watchRequestActors() {
     yield takeEvery(types.GET_SEARCH_ACTORS, setActors);
 }
-
 
 function* setMovies(action: any) {
     const { query, page } = action
