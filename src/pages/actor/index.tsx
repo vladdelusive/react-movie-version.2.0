@@ -10,10 +10,10 @@ import {IPropsActorPage} from "./types";
 
 export const ActorPage: FC<IPropsActorPage> = React.memo<IPropsActorPage>((props) => {
     const {actorsInfo} = useSelector<IStore, IActorsState>(({actors})=>actors)
-    const {fetchData} = useActions(actions)
+    const {getActorInfo} = useActions(actions)
     useEffect(() => {
         if(!actorsInfo[props.match.params.actor]){
-            fetchData(props.match.params.actor);
+            getActorInfo(props.match.params.actor);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.match.params.actor]);

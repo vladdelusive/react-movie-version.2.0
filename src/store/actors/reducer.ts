@@ -10,7 +10,7 @@ const initialState: IActorsState = {
   actorsInfo: {},
 };
 
-const reducer = (state = initialState, action: IActionTypes) => { 
+const reducer = (state = initialState, action: IActionTypes) => {
   switch (action.type) {
     case types.LOAD_TOP_ACTORS:
       return {

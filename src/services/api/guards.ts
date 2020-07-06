@@ -5,7 +5,7 @@ import {
     IDetailsMovies,
     IDetailsActors,
     IMovies,
-    ITopActors
+    ITopActors, IPersonInfo
 } from "react-app-env";
 
 const typeError = new TypeError("Value type is not the expected.")
@@ -25,7 +25,7 @@ export const guards = {
             throw typeError
         }
     },
-    actorMovies: ({data}: { data: {cast: ICastActors[] | ICastMovies[]} }) => {
+    actorMovies: ({data}: { data: {cast: ICastActors[] & ICastMovies[]} }) => {
         if(Array.isArray(data.cast)){
             return data.cast
         } else {
@@ -41,7 +41,7 @@ export const guards = {
         }
         throw typeError
     },
-    detailsAct: ({data}: {data: IDetailsActors }) => {
+    detailsAct: ({data}: {data: IDetailsActors & IPersonInfo }) => {
         if((typeof data.biography === "string" || data.biography === null) || (typeof data.birthday === "string" || data.birthday === null) || (typeof data.name === "string"
             || data.name === null) || (typeof data.place_of_birth === "string" || data.place_of_birth === null) || (typeof data.profile_path === "string" || data.profile_path === null) ) {
             return data
