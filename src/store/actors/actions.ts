@@ -1,4 +1,4 @@
-import {IActorsResult, IActionTopActors, IAction, IActorIdData } from "./types";
+import {IActorsResult, IActionTopActors, IAction, IActorIdData} from "./types";
 
 export const types = {
     GET_TOP_ACTORS: "@actors/top_actors/GET_TOP_ACTORS",

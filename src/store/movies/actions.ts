@@ -3,7 +3,14 @@ import {guards} from 'services/api/guards'
 import {ThunkAction} from "redux-thunk";
 import {IMovies, IReviewsMovies} from "react-app-env";
 import {DEFAULT_TRAILER} from "constants/constants";
-import { IAction, IActionPayloadData, IActionPayloadBadges, IActionPayloadReviews, IActionPayload} from './types'
+import {
+    IAction,
+    IActionPayloadData,
+    IActionPayloadBadges,
+    IActionPayloadReviews,
+    IActionPayload,
+    IActionSaga
+} from './types'
 
 export const types = {
     LOAD_TOP_MOVIES: "@movies/top_movies/LOAD_TOP_MOVIES",
@@ -28,6 +35,6 @@ export const actions = {
 
     setBadges: (payload: [], id: number): IActionPayloadBadges => ({type: types.SET_BADGES_INFO, payload, id}),
 
-    addReviewInfo: ({movieId, review}: {movieId: number, review: IReviewsMovies}) => ({type: types.ADD_REVIEW_INFO, movieId, review}),
-    setReviewInfo: ({movieId, review}: {movieId: number, review: IReviewsMovies}) => ({type: types.SET_REVIEW_INFO, movieId, review})
+    addReviewInfo: ({movieId, review}: {movieId: number, review: IReviewsMovies}): IActionSaga => ({type: types.ADD_REVIEW_INFO, movieId, review}),
+    setReviewInfo: ({movieId, review}: {movieId: number, review: IReviewsMovies}): IActionSaga => ({type: types.SET_REVIEW_INFO, movieId, review})
 }

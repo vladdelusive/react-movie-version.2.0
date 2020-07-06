@@ -2,13 +2,12 @@ import { put, takeEvery, call, all, delay, takeLatest } from 'redux-saga/effects
 import {API} from "services/api";
 import {types, actions} from "./actions";
 import {guards} from "services/api/guards";
-import {IActors} from "./types";
+import {IActionSaga, IActors} from "./types";
 import {ICastMovies} from "react-app-env";
 import {FETCH_TIMEOUT} from "constants/constants";
 
-function* setActorsAndMovies(action: any) {
+function* setActorsAndMovies({ query }: IActionSaga) {
     yield delay(FETCH_TIMEOUT)
-    const { query } = action
     try {
         const {movies, actors} = yield all({
             movies: call(API.SEARCH_MOVIE, {query}),
@@ -20,8 +19,7 @@ function* setActorsAndMovies(action: any) {
     }
 }
 
-function* setActors(action: any) {
-    const { query, page } = action
+function* setActors({ query, page }: IActionSaga) {
     try {
         const fetched = yield call(API.SEARCH_ACTOR, {query, page})
         yield put(actions.setSearchActors({actors: guards.searchData<IActors>(fetched)}))
@@ -30,8 +28,7 @@ function* setActors(action: any) {
     }
 }
 
-function* setMovies(action: any) {
-    const { query, page } = action
+function* setMovies({ query, page }: IActionSaga) {
     try {
         const fetched = yield call(API.SEARCH_MOVIE,{query, page})
         yield put(actions.setMovies({movies: guards.searchData<ICastMovies>(fetched)}))

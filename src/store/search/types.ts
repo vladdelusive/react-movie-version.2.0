@@ -21,6 +21,12 @@ export interface IActionSearch {
     payload: any,
 }
 
+export interface IActionSaga {
+    type: string,
+    query: string,
+    page?: number
+}
+
 export interface IActors {
     adult: boolean,
     gender: number,

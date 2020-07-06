@@ -5,6 +5,7 @@ import {guards} from "services/api/guards";
 import {select} from 'redux-saga/effects'
 import {IStore} from "react-app-env";
 import {DEFAULT_TRAILER} from "constants/constants";
+import {IActionSaga} from "./types";
 
 function* fetchTopMovies() {
     try {
@@ -16,8 +17,7 @@ function* fetchTopMovies() {
     }
 }
 
-function* fetchMovieData(action: any) {
-    const { movieId }: {movieId: number} = action
+function* fetchMovieData({ movieId }: {movieId: number, type: string}) {
     try {
         const { res, trail, castAct, rev } = yield all({
             res: call(API.MOVIE_DETAILS, {movieId}),
@@ -39,9 +39,8 @@ function* fetchMovieData(action: any) {
     }
 }
 
-function* setMovieReview(action: any) {
+function* setMovieReview({movieId, review}: IActionSaga) {
     yield delay(600)
-    const {movieId, review} = action
     console.table(review)
     yield put(actions.setReviewInfo({movieId, review}))
 }

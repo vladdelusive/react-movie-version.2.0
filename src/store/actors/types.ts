@@ -48,4 +48,9 @@ export interface IActorIdData {
     person: (IDetailsActors & IPersonInfo)
 }
 
+export interface IActionSaga {
+    id?: number,
+    type: string
+}
+
 export type IActionTypes = IActionTopActors<IActorsResult[]> & IActorIdData

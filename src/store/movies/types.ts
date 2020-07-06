@@ -29,6 +29,12 @@ export interface IAction<T = Record<any, any>> {
     payload: T
 }
 
+export interface IActionSaga {
+    movieId: number,
+    review: IReviewsMovies,
+    type: string
+}
+
 export type IActionPayloadData = {type: typeof types.SET_DATA_INFO} & IActionPayload
 export type IActionPayloadBadges = {type: typeof types.SET_BADGES_INFO, payload: [], id: number}
 export type IActionPayloadReviews = {type: typeof types.ADD_REVIEW_INFO, movieId: number, review: IReviewsMovies}

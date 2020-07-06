@@ -15,14 +15,13 @@ function* fetchTopActors() {
     }
 }
 
-function* fetchActorData(action: any) {
-    const { id }: {id: number} = action
+function* fetchActorData({id}: any) {
     try {
         const { actorDetails, actorMovies } = yield all({
             actorDetails: call(API.ACTOR_DETAILS, {personId: id}),
             actorMovies: call(API.ACTOR_MOVIES, {personId: id})
         });
-        yield put(actions.setActorIdData({person: guards.detailsAct(actorDetails), movies: guards.actorMovies(actorMovies), id: id}))
+        yield put(actions.setActorIdData({person: guards.detailsAct(actorDetails), movies: guards.actorMovies(actorMovies), id}))
     } catch(e) {
         console.error(e)
     }
