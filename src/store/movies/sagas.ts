@@ -16,11 +16,6 @@ function* fetchTopMovies() {
     }
 }
 
-export function* watchRequestTopMovies() {
-    yield takeEvery(types.GET_TOP_MOVIES, fetchTopMovies);
-}
-
-
 function* fetchMovieData(action: any) {
     const { movieId }: {movieId: number} = action
     try {
@@ -44,10 +39,6 @@ function* fetchMovieData(action: any) {
     }
 }
 
-export function* watchRequestMovie() {
-    yield takeEvery(types.GET_DATA_INFO, fetchMovieData);
-}
-
 function* setMovieReview(action: any) {
     yield delay(600)
     const {movieId, review} = action
@@ -56,6 +47,8 @@ function* setMovieReview(action: any) {
 }
 
 
-export function* watchPostReview() {
-    yield takeEvery(types.ADD_REVIEW_INFO, setMovieReview);
+export function* watchSagasMovies() {
+    yield takeEvery(types.ADD_REVIEW_INFO, setMovieReview)
+    yield takeEvery(types.GET_DATA_INFO, fetchMovieData)
+    yield takeEvery(types.GET_TOP_MOVIES, fetchTopMovies)
 }

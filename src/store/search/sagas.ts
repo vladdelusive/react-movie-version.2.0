@@ -19,10 +19,6 @@ function* setActorsAndMovies(action: any) {
         console.error(e)
     }
 }
-export function* watchRequestActorsAndMovies() {
-    yield takeLatest(types.GET_ACTORS_MOVIES, setActorsAndMovies);
-}
-
 
 function* setActors(action: any) {
     const { query, page } = action
@@ -32,9 +28,6 @@ function* setActors(action: any) {
     } catch(e) {
         console.error(e)
     }
-}
-export function* watchRequestActors() {
-    yield takeEvery(types.GET_SEARCH_ACTORS, setActors);
 }
 
 function* setMovies(action: any) {
@@ -46,6 +39,10 @@ function* setMovies(action: any) {
         console.error(e)
     }
 }
-export function* watchRequestMovies() {
-    yield takeEvery(types.GET_SEARCH_MOVIES, setMovies);
+
+
+export function* watchSagasSearch() {
+    yield takeEvery(types.GET_SEARCH_MOVIES, setMovies)
+    yield takeEvery(types.GET_SEARCH_ACTORS, setActors)
+    yield takeLatest(types.GET_ACTORS_MOVIES, setActorsAndMovies)
 }

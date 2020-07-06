@@ -1,4 +1,4 @@
-import { put, takeEvery, call, all } from 'redux-saga/effects'
+import {put, takeEvery, call, all} from 'redux-saga/effects'
 import {API} from "services/api";
 import {types, actions} from "./actions";
 import {guards} from "services/api/guards";
@@ -15,10 +15,6 @@ function* fetchTopActors() {
     }
 }
 
-export function* watchRequestTopActors() {
-    yield takeEvery(types.GET_TOP_ACTORS, fetchTopActors);
-}
-
 function* fetchActorData(action: any) {
     const { id }: {id: number} = action
     try {
@@ -32,6 +28,7 @@ function* fetchActorData(action: any) {
     }
 }
 
-export function* watchRequestActor() {
-    yield takeEvery(types.GET_ACTOR_INFO, fetchActorData);
+export function* watchSagasActors() {
+    yield takeEvery(types.GET_ACTOR_INFO, fetchActorData)
+    yield takeEvery(types.GET_TOP_ACTORS, fetchTopActors)
 }
