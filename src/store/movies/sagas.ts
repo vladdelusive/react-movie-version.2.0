@@ -10,7 +10,7 @@ import {IActionSaga} from "./types";
 function* fetchTopMovies() {
     try {
         const {page} = yield select(({movies}: IStore) => movies.topMovies);
-        const results = yield call(API.NEWLY_MOVIES, page)
+        const results = yield call(API.NEWLY_MOVIES, {page})
         yield put(actions.saveMovies(guards.movData(results)))
     } catch (e) {
         console.error(e)

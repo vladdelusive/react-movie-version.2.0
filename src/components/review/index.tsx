@@ -5,6 +5,7 @@ import {IReview} from "./types";
 import {setRate} from "helpers/set-rate";
 
 export const Review = React.memo<IReview>(({ content, author, photoField, rateField }) =>{
+    debugger
     return (
         <div className="review">
             <div className="review__side-left">

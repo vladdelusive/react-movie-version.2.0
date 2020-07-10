@@ -8,7 +8,7 @@ import {IStore} from "react-app-env";
 function* fetchTopActors() {
     const {page} = yield select(({actors}: IStore)=>actors.topActors)
     try {
-        const results = yield call(API.TRENDY_ACTORS, page);
+        const results = yield call(API.TRENDY_ACTORS, {page});
         yield put(actions.saveActors(guards.actData(results)))
     } catch(e) {
         console.error(e)
